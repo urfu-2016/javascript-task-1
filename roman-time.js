@@ -8,11 +8,9 @@ function toRoman(value, dict) {
     var result = "";
     while (value >= 0) {
         var keys = Object.keys(dict);
-        var i;
-        for (i = keys.length - 1; i >= 0; i--) {
-            if (keys[i] <= value) {
-                break;
-            }
+        var i = keys.length - 1;
+        while (i >= 0 && keys[i] > value) {
+            i--;
         }
         value -= keys[i];
         result += dict[keys[i]];
