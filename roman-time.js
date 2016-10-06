@@ -46,7 +46,7 @@ function numberToRoman(number) {
 
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
-    if (typeof(time) !== 'string' || time.indexOf(' ') != -1) {
+    if (typeof(time) !== 'string' || time.indexOf(' ') !== -1) {
         throw new TypeError();
     }
     var splitedTime = time.split(':');
