@@ -34,7 +34,7 @@ function arabianToRoman(num) {
 function isTime(hours, minutes) {
     if (hours > 23 || hours < 0 ||
         minutes > 59 || minutes < 0) {
-        throw new TypeError();
+        throw new TypeError('Неверное время');
     }
 }
 
@@ -47,14 +47,14 @@ function timeParse(time) {
     if (time.indexOf(':') === -1 ||
         time.indexOf('.') !== -1 ||
         time.indexOf(',') !== -1) {
-        throw new TypeError();
+        throw new TypeError('Неверное время');
     }
 
     time = time.split(':');
     var hours = parseInt(time[0]);
     var minutes = parseInt(time[1]);
     if (isNaN(hours) || isNaN(minutes)) {
-        throw new TypeError();
+        throw new TypeError('Неверное время');
     }
 
     isTime(hours, minutes);
