@@ -20,7 +20,7 @@ var ROMAN_NUMBERS = {
 
 function timeHasErrors(hours, minutes) {
     return isNaN(hours) || isNaN(minutes) ||
-        hours < 0 || hours > 24 || minutes < 0 || minutes >= 60;
+        hours < 0 || hours >= 24 || minutes < 0 || minutes >= 60;
 }
 
 function numberToRoman(number) {
