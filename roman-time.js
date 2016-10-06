@@ -78,7 +78,14 @@ function getRomeNumber(decimalNumber) {
         romeTime += ROME_NUMBERS_DICTIONARY['10'].repeat(decimalNumber.decimalDigit);
     }
 
-    romeTime += ROME_NUMBERS_DICTIONARY[decimalNumber.unitDigit.toString()];
+    var unitPart = decimalNumber.unitDigit;
+    if (unitPart !== 0) {
+        romeTime += ROME_NUMBERS_DICTIONARY[decimalNumber.unitDigit.toString()];
+    }
+
+    if (romeTime === '') {
+        romeTime = 'N';
+    }
 
     return romeTime;
 }
