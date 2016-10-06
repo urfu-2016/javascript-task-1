@@ -20,7 +20,14 @@ function arabToRoman(number) {
     return ret;
 }
 
+function checkTime(time) {
+    if (time.length !== 5) {
+        throw new TypeError();
+    }
+}
+
 function romanTime(time) {
+    checkTime(time);
     var hours = Number(time.split(':')[0]);
     var minutes = Number(time.split(':')[1]);
     if (typeof time === 'undefined' || isNaN(hours) ||
