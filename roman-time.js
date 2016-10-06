@@ -30,11 +30,8 @@ function romanTime(time) {
     var hours = splittedTime[0];
     var minutes = splittedTime[1];
 
-    var hoursDigits = getTimeDigits(hours);
-    var minutesDigits = getTimeDigits(minutes);
-
-    var romeHours = getRomeNumber(hoursDigits);
-    var romeMinutes = getRomeNumber(minutesDigits);
+    var romeHours = getRomeNumber(getTimeDigits(hours));
+    var romeMinutes = getRomeNumber(getTimeDigits(minutes));
     time = romeHours + ':' + romeMinutes;
 
     return time;
