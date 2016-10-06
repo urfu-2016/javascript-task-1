@@ -7,8 +7,9 @@
 function romanTime(time) {
     var timeArgs = time.split(':');
 
-    if (isIncorrectFormat(timeArgs) || isIncorrectTime(timeArgs))
+    if (isIncorrectFormat(timeArgs) || isIncorrectTime(timeArgs)) {
         throw new TypeError();
+    }
 
     var dict = { 1: "I", 4: "IV", 5: "V", 9: "IX", 10: "X", 40: "XL", 50: "L" };
     var result = [];
