@@ -37,10 +37,10 @@ function checkTime(time) {
         Number(splitedTime[1]) > 59 ||
         Number(splitedTime[1]) < 0) {
 
-        return true;
+        return false;
     }
 
-    return false;
+    return true;
 }
 
 /**
@@ -65,6 +65,5 @@ function romanTime(time) {
 
     return time;
 }
-
 
 module.exports = romanTime;
