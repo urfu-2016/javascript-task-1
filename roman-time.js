@@ -5,21 +5,42 @@
  * @returns {String} – число num в римском формате
  */
 function romanize(num) {
-    if (+num == 0)
+    if (Number(num) === 0) {
         return "N";
-    if (!+num)
+    }
+    if (!Number(num)) {
         return false;
+    }
+    var digits = String(num).split("");
+    var key = ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM",
+        "", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC",
+        "", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"
+    ];
+    var roman = "";
+    var i = 3;
+    while (i--) {
+        roman = (key[Number(digits.pop()) + (i * 10)] || "") + roman;
+    }
 
-    var digits = String(+num).split(""),
-        key = ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM",
-            "", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC",
-            "", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"
-        ],
-        roman = "",
-        i = 3;
-    while (i--)
-        roman = (key[+digits.pop() + (i * 10)] || "") + roman;
-    return Array(+digits.join("") + 1).join("M") + roman;
+    return Array(Number(digits.join("")) + 1).join("M") + roman;
+}
+
+/**
+ * @param {String} time – время в формате HH:MM (например, 09:05)
+ * @returns {bool} – true если время в правильном формате, false если нет
+ */
+function checkTime(time) {
+    var splitedTime = time.split(":");
+    if (splitedTime.length !== 2 ||
+        Number(splitedTime[0]) > 23 ||
+        Number(splitedTime[0]) < 0 ||
+        Number(splitedTime[1]) > 59 ||
+        Number(splitedTime[1]) < 0) {
+
+        return true;
+    }
+
+    return false;
 }
 
 /**
@@ -28,14 +49,11 @@ function romanize(num) {
  */
 function romanTime(time) {
     var timeError = new TypeError('Неверное время');
-    var splitedTime = time.split(":");
-    if (splitedTime.length != 2 ||
-        +splitedTime[0] > 23 ||
-        +splitedTime[0] < 0 ||
-        +splitedTime[1] > 59 ||
-        +splitedTime[1] < 0)
+    if (!checkTime(time)) {
         throw timeError;
-    var romanAray = []
+    }
+    var splitedTime = time.split(":");
+    var romanAray = [];
     for (var i = 0; i < 2; i++) {
         var romanized = romanize(splitedTime[i]);
         if (!romanized) {
@@ -43,7 +61,8 @@ function romanTime(time) {
         }
         romanAray.push(romanized);
     }
-    time = romanAray.join(":")
+    time = romanAray.join(":");
+
     return time;
 }
 
