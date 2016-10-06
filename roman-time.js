@@ -9,8 +9,8 @@ function toRoman(number) {
         result += smallDigits[number % 10];
     }
 
-    for (var i in bigDigits) {
-        var tens = number / bigDigits[i][0] >> 0;
+    for (var i = 0; i < bigDigits.length; i++) {
+        var tens = Math.floor(number / bigDigits[i][0]);
         for (var j = 0; j < tens; j++) {
             result = bigDigits[i][1] + result;
         }
@@ -39,7 +39,10 @@ function romanTime(time) {
         throw new TypeError();
     }
 
-    return toRoman(hours) + ':' + toRoman(minutes);
+    var romanHours = toRoman(hours);
+    var romanMinutes = toRoman(minutes);
+
+    return romanHours + ':' + romanMinutes;
 }
 
 module.exports = romanTime;
