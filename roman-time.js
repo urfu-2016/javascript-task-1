@@ -50,7 +50,7 @@ function romanTime(time) {
         throw new TypeError();
     }
     var splitedTime = time.split(':');
-    if (splitedTime.length !== 2) {
+    if (splitedTime.length !== 2 || splitedTime[0].length !== 2 || splitedTime[1].length !== 2) {
         throw new TypeError();
     }
     var hours = parseInt(splitedTime[0]);
