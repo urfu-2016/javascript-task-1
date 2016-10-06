@@ -15,7 +15,7 @@ function romanTime(time) {
     var result = [];
 
     for (var i = 0; i < 2; i++) {
-        result.push(convertToRoman(timeArgs[i], dict));
+        result.push(convertToRoman(parseInt(timeArgs[i]), dict));
     }
 
     return result.join(':');
