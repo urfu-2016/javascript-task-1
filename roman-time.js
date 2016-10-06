@@ -1,6 +1,6 @@
 "use strict";
 
-function isInRange (value, start, end) {
+function isInRange(value, start, end) {
     return value >= start && value < end;
 }
 
@@ -9,14 +9,18 @@ function toRoman(value, dict) {
     while (value >= 0) {
         var keys = Object.keys(dict);
         var i;
-        for (i = keys.length - 1; i >= 0 && keys[i] > value; i--) {}
+        for (i = keys.length - 1; i >= 0; i--) {
+            if (keys[i] <= value) {
+                break;
+            }
+        }
         value -= keys[i];
         result += dict[keys[i]];
         if (value === 0) {
             break;
         }
     }
-    
+
     return result;
 }
 
@@ -25,7 +29,7 @@ function isCorrectTime(parts) {
         parts[0].length !== 2 ||
         parts[1].length !== 2 ||
         !isInRange(parts[0], 0, 24) ||
-        !isInRange(parts[1], 0, 60)
+        !isInRange(parts[1], 0, 60);
 }
 
 /**
