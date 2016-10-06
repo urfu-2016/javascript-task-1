@@ -11,30 +11,45 @@ var romanMap = {
     50: 'L'
 };
 
+function getNextMaxNumber(number, keys) {
+    return Math.max.apply(null, keys.filter(function (key) {
+        return number >= key;
+    }));
+}
+
 function getRomanNumber(number) {
     var roman = '';
     var keys = Object.keys(romanMap);
     do {
-        for (var i = keys.length - 1; i >= 0; i--) {
-            if (number >= keys[i]) {
-                number -= keys[i];
-                roman += romanMap[keys[i]];
-                break;
-            }
-        }
+        var nextNumber = getNextMaxNumber(number, keys);
+        number -= nextNumber;
+        roman += romanMap[nextNumber];
     } while (number > 0);
+
     return roman;
+}
+
+function getInt(string) {
+    return parseInt(string);
+}
+
+function isInvalidTime(string) {
+    return !/\d\d:\d\d/.test(string);
+}
+
+function isInvalidTimeRange(time) {
+    return !isInRange(time[0], 0, 23) || !isInRange(time[1], 0, 59);
 }
 
 function isInRange(number, start, end) {
     return number >= start && number <= end;
 }
 
-Object.prototype.throwIf = function(f) {
-    if (f(this))
+function throwIf(condition) {
+    if (condition) {
         throw new TypeError('Неверное время');
-    return this;
-};
+    }
+}
 
 /**
  * @param {String} time – время в формате HH:MM (например, 09:05)
@@ -42,13 +57,13 @@ Object.prototype.throwIf = function(f) {
  */
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
-    return (time || '')
-        .throwIf(s => !/\d\d:\d\d/.test(s))
-        .split(':')
-        .map(i => parseInt(i))
-        .throwIf(arr => !isInRange(arr[0], 0, 23) || !isInRange(arr[1], 0, 59))
-        .map(getRomanNumber)
-        .join(':');
+    time = time || '';
+
+    throwIf(isInvalidTime(time));
+    var timeNumbers = time.split(':').map(getInt);
+    throwIf(isInvalidTimeRange(timeNumbers));
+
+    return timeNumbers.map(getRomanNumber).join(':');
 }
 
 module.exports = romanTime;
