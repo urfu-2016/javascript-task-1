@@ -8,7 +8,6 @@ function romanTime(time) {
     if (typeof(time) !== "string") {
         throw new TypeError();
     }
-    
     var timeArgs = time.split(':');
 
     if (isIncorrectFormat(timeArgs) || isIncorrectTime(timeArgs)) {
