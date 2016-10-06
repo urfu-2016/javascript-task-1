@@ -46,11 +46,11 @@ function numberToRoman(number) {
 
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
-    if (typeof(time) !== 'string') {
+    if (typeof(time) !== 'string' || time.indexOf(' ') != -1) {
         throw new TypeError();
     }
     var splitedTime = time.split(':');
-    if (splitedTime.length !== 2 || splitedTime[0].length !== 2 || splitedTime[1].length !== 2) {
+    if (splitedTime.length !== 2) {
         throw new TypeError();
     }
     var hours = parseInt(splitedTime[0]);
