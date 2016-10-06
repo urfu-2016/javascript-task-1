@@ -56,7 +56,7 @@ function isIncorrectTime(time) {
 
 function isIncorrectFormat(time) {
     return time.length !== 2 ||
-        time[0].length !== 2 || 
+        time[0].length !== 2 ||
         time[1].length !== 2;
 }
 
