@@ -1,11 +1,49 @@
 'use strict';
 
+var ROMAN_NUMBERS = {
+    0: '',
+    1: 'I',
+    2: 'II',
+    3: 'III',
+    4: 'IV',
+    5: 'V',
+    6: 'VI',
+    7: 'VII',
+    8: 'VIII',
+    9: 'IX',
+    10: 'X',
+    20: 'XX',
+    30: 'XXX',
+    40: 'XL',
+    50: 'L'
+};
+
 /**
- * @param {String} time – время в формате HH:MM (например, 09:05)
- * @returns {String} – время римскими цифрами (IX:V)
+ * @param {integer} num - число в арабской натации
+ * @returns {string} - римский эквивалент
  */
-function romanTime(time) {
-    // Немного авторского кода и замечательной магии
+function arabianToRoman(num) {
+    return num === 0 ? 'N' : ROMAN_NUMBERS[num - num % 10] + ROMAN_NUMBERS[num % 10];
+}
+
+/**
+ * Проверка на валидность времени
+ * @param {integer} hours - часы
+ * @param {integer} minutes - минуты
+ */
+function isTime(hours, minutes) {
+    if (hours > 23 || hours < 0 ||
+        minutes > 59 || minutes < 0) {
+        throw new TypeError();
+    }
+}
+
+/**
+ * Разбор строки времени на токены - часы, минты
+ * @param {string} time - строка времени
+ * @returns {{hours: Number, minutes: Number}} - объект время
+ */
+function timeParse(time) {
     if (time.indexOf(':') === -1 ||
         time.indexOf('.') !== -1 ||
         time.indexOf(',') !== -1) {
@@ -15,37 +53,28 @@ function romanTime(time) {
     time = time.split(':');
     var hours = parseInt(time[0]);
     var minutes = parseInt(time[1]);
-
-    if (isNaN(hours) || isNaN(minutes) ||
-        (hours > 23 || hours < 0) ||
-        (minutes > 59 || minutes < 0)) {
+    if (isNaN(hours) || isNaN(minutes)) {
         throw new TypeError();
     }
 
-    hours = hours === 0 ? 'N' : roman(hours - hours % 10) + roman(hours % 10);
-    minutes = minutes === 0 ? 'N' : roman(minutes - minutes % 10) + roman(minutes % 10);
+    isTime(hours, minutes);
 
-    return hours + ':' + minutes;
+    return {
+        hours: hours,
+        minutes: minutes
+    };
 }
 
-function roman(num) {
-    switch (num) {
-        case 1: return 'I';
-        case 2: return 'II';
-        case 3: return 'III';
-        case 4: return 'IV';
-        case 5: return 'V';
-        case 6: return 'VI';
-        case 7: return 'VII';
-        case 8: return 'VIII';
-        case 9: return 'IX';
-        case 10: return 'X';
-        case 20: return 'XX';
-        case 30: return 'XXX';
-        case 40: return 'XL';
-        case 50: return 'L';
-        default : return '';
-    }
+/**
+ * @param {String} time – время в формате HH:MM (например, 09:05)
+ * @returns {String} – время римскими цифрами (IX:V)
+ */
+function romanTime(time) {
+    // Немного авторского кода и замечательной магии
+
+    time = timeParse(time);
+
+    return arabianToRoman(time.hours) + ':' + arabianToRoman(time.minutes);
 }
 
 module.exports = romanTime;
