@@ -37,6 +37,6 @@ function romanTime(time) {
 - [О parseInt за 10 минут](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/parseInt)
 - [isNaN: Beginners guide](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/isNaN)
 - [Split, как метод для строк](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String/split)
-- [Как бросить исключение TypeError](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/TypeError)
+- [Как без стеснения бросить исключение](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/TypeError)
 
 <img width="764" alt="Время дедлайна" src="https://cloud.githubusercontent.com/assets/4534405/19152875/827fd116-8bed-11e6-87f2-9ac5cbde9fac.png">
