@@ -15,7 +15,7 @@ var ROMAN_NUMBERS = {
     6: 'V',
     7: 'V',
     8: 'V',
-    9: 'XI'
+    9: 'IX'
 };
 
 function timeHasErrors(hours, minutes) {
