@@ -6,15 +6,9 @@
  */
 function romanTime(time) {
     var timeArgs = time.split(':');
-    var hours = parseInt(timeArgs[0], 10);
-    var mins = parseInt(timeArgs[1], 10);
 
-    if (!isTime(hours, mins)) {
+    if (isIncorrectTime(timeArgs))
         throw new TypeError();
-    }
-
-    timeArgs[0] = hours;
-    timeArgs[1] = mins;
 
     var dict = { 1: "I", 4: "IV", 5: "V", 9: "IX", 10: "X", 40: "XL", 50: "L" };
     var result = [];
@@ -47,10 +41,18 @@ function convertToRoman(number, romanNumbers) {
     return result;
 }
 
-function isTime(hours, mins) {
-    return !(isNaN(hours) || isNaN(mins) ||
+function isIncorrectTime(time) {
+    if (time[0].length != 2 || time[1].length != 2) {
+        return true;
+    }
+
+    var hours = parseInt(time[0], 10);
+    var mins = parseInt(time[1], 10);
+
+    return hours.length != 2 || mins.length ||
+        isNaN(hours) || isNaN(mins) ||
         hours < 0 || hours > 23 ||
-        mins < 0 || mins > 59);
+        mins < 0 || mins > 59;
 }
 
 module.exports = romanTime;
