@@ -9,8 +9,9 @@ function romanTime(time) {
     var hours = parseInt(timeArgs[0], 10);
     var mins = parseInt(timeArgs[1], 10);
 
-    if (!isTime(hours, mins))
+    if (!isTime(hours, mins)) {
         throw new TypeError();
+    }
 
     timeArgs[0] = hours;
     timeArgs[1] = mins;
