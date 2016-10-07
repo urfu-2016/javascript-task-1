@@ -52,11 +52,17 @@ function romanTime(time) {
     }
     var hours = time.split(":")[0];
     var minutes = time.split(":")[1];
+    if ((hours.length !== 2) || 
+       (minutes.length !== 2) ||
+       (isNaN(Number(hours))) ||
+       (isNaN(Number(minutes)))){
+        throw error;
+    }
     if (!checkTime(time)) {
         throw error;
     }
-    var hoursStr = toRoman(hours);
-    var minutesStr = toRoman(minutes);
+    var hoursStr = toRoman(Number(hours));
+    var minutesStr = toRoman(Number(minutes));
     time = hoursStr + ":" + minutesStr;
 
     return time;
