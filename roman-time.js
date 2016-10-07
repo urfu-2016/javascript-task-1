@@ -33,6 +33,10 @@ function isCorrectNumber(number) {
     return true;
 }
 
+function isCorrectInputString(str) {
+    return typeof(str) !== 'string' || !/^\d\d:\d\d$/.test(str);
+}
+
 function isCorrectInputArray(input) {
     return input.length === 2 &&
         isCorrectNumber(input[0]) && isCorrectNumber(input[1]);
@@ -66,7 +70,7 @@ function numberToRoman(number) {
 
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
-    if (time === undefined || time === null) {
+    if (!isCorrectInputString(time)) {
         throw new TypeError();
     }
     var splitedTime = time.split(':');
