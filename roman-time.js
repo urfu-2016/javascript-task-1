@@ -19,50 +19,19 @@ var ROMAN_NUMBERS = {
 };
 
 /**
- * @param {integer} num - число в арабской натации
- * @returns {string} - римский эквивалент
+ * @param {Number} num - число в арабской натации
+ * @returns {String} - римский эквивалент
  */
 function arabianToRoman(num) {
     return num === 0 ? 'N' : ROMAN_NUMBERS[num - num % 10] + ROMAN_NUMBERS[num % 10];
 }
 
 /**
- * Проверка на валидность времени
- * @param {integer} hours - часы
- * @param {integer} minutes - минуты
+ * @param {String} time - потенциальная строка времени
+ * @returns {boolean} - да/нет
  */
-function isTime(hours, minutes) {
-    if (hours > 23 || hours < 0 ||
-        minutes > 59 || minutes < 0) {
-        throw new TypeError('Неверное время');
-    }
-}
-
-/**
- * Разбор строки времени на токены - часы, минты
- * @param {string} time - строка времени
- * @returns {{hours: Number, minutes: Number}} - объект время
- */
-function timeParse(time) {
-    if (time.indexOf(':') === -1 ||
-        time.indexOf('.') !== -1 ||
-        time.indexOf(',') !== -1) {
-        throw new TypeError('Неверное время');
-    }
-
-    time = time.split(':');
-    var hours = parseInt(time[0]);
-    var minutes = parseInt(time[1]);
-    if (isNaN(hours) || isNaN(minutes)) {
-        throw new TypeError('Неверное время');
-    }
-
-    isTime(hours, minutes);
-
-    return {
-        hours: hours,
-        minutes: minutes
-    };
+function isTime(time) {
+    return /^([0-1][0-9]|2[0-3]):[0-5][0-9]$/.test(time);
 }
 
 /**
@@ -71,10 +40,14 @@ function timeParse(time) {
  */
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
+    if (!isTime(time)) {
+        throw new TypeError('Неверное время');
+    }
+    time = time.split(':');
+    var hours = parseInt(time[0]);
+    var minutes = parseInt(time[1]);
 
-    time = timeParse(time);
-
-    return arabianToRoman(time.hours) + ':' + arabianToRoman(time.minutes);
+    return arabianToRoman(hours) + ':' + arabianToRoman(minutes);
 }
 
 module.exports = romanTime;
