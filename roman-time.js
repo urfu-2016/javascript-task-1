@@ -6,19 +6,15 @@
  */
 function romanTime(time) {
     var typeError = new TypeError('Неверное время');
-    try {
-        time = time.split(':');
-        if (Number(time[0]) > -1 && Number(time[0]) < 24 &&
-        Number(time[1]) > -1 && Number(time[1]) < 60) {
-            checkTime(time);
-            time = time[0] + ':' + time[1];
-
-            return time;
-        }
+    time = time.split(':');
+    if (Number(time[0]) < 0 || Number(time[0]) > 23 ||
+    Number(time[1]) < 0 || Number(time[1]) > 59) {
         throw typeError;
-    } catch (e) {
-        return e.message;
     }
+    checkTime(time);
+    time = time[0] + ':' + time[1];
+
+    return time;    
 }
 
 function checkTime(time) {
