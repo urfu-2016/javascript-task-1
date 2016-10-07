@@ -5,8 +5,8 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    var ARABIAN_NUMBERS = [50,40,10,9,5,4,1];
-    var ROMAN_NUMBERS = ["L", "XL", "X", "IX", "V", "IV", "I"];
+    var arabianNumbers = [50,40,10,9,5,4,1];
+    var romanNumbers = ["L", "XL", "X", "IX", "V", "IV", "I"];
 
     function toRoman(number) {
         if(number == 0)
@@ -16,12 +16,12 @@ function romanTime(time) {
 
         while (number > 0)
         {
-            for(var i = 0; i < ARABIAN_NUMBERS.length ; i++)
+            for(var i = 0; i < arabianNumbers.length ; i++)
             {
-                if (number >= ARABIAN_NUMBERS[i])
+                if (number >= arabianNumbers[i])
                 {
-                    number -= ARABIAN_NUMBERS[i];
-                    result += ROMAN_NUMBERS[i];
+                    number -= arabianNumbers[i];
+                    result += romanNumbers[i];
                     break;
                 }
             }
@@ -30,14 +30,14 @@ function romanTime(time) {
     }
 
     var arr = time.split(':');
-    if (arr.length != 2 || arr[0].length == 0 || arr[1].length == 0)
+    if (arr.length != 2 || arr[0].isNaN() || arr[1].isNaN())
         throw new TypeError('Неверное время');
 
-    var hours = parseInt(arr[0]);
+    var hours = parseInt(arr[0], 10);
     if(hours > 23 || hours < 0)
         throw new TypeError('Неверное время');
 
-    var minutes = parseInt(arr[1]);
+    var minutes = parseInt(arr[1], 10);
     if(minutes > 59 || minutes < 0)
         throw new TypeError('Неверное время');
 
