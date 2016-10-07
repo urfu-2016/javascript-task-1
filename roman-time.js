@@ -25,20 +25,13 @@ function toRoman(number) {
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    var parts = time.split(':');
-    if (parts.length !== 2) {
+    if (!/^(?:[0-2][0-3]|[0-1][0-9]):[0-5][0-9]$/.test(time)) {
         throw new TypeError();
     }
 
+    var parts = time.split(':');
     var hours = parseInt(parts[0]);
     var minutes = parseInt(parts[1]);
-
-    if (isNaN(hours) || isNaN(minutes) ||
-        hours < 0 || hours > 23 ||
-        minutes < 0 || minutes > 59) {
-        throw new TypeError();
-    }
-
     var romanHours = toRoman(hours);
     var romanMinutes = toRoman(minutes);
 
