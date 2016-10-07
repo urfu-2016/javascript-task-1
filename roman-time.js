@@ -11,9 +11,9 @@ function romanTime(time) {
         if (Number(time[0]) > -1 && Number(time[0]) < 24 
             && Number(time [1]) > -1 && Number(time [1]) < 60)
         {
-            if (time[0] == 0) time[0] = 'N';
+            if (Number(time[0]) === 0) time[0] = 'N';
             else time[0] = getRomeHours(time[0]);
-            if (time[1] == 0) time[1] = 'N';
+            if (Number(time[1]) === 0) time[1] = 'N';
             else time[1] = getRomeMinutes(time[1]);
             time = time[0] + ':' + time[1];
             return time;
