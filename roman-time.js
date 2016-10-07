@@ -5,8 +5,59 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    // Немного авторского кода и замечательной магии
-    return time;
+    if (typeof(time) !== "string") {
+        throw new TypeError();
+    }
+    var timeArgs = time.split(':');
+
+    if (isIncorrectFormat(timeArgs) || isIncorrectTime(timeArgs)) {
+        throw new TypeError();
+    }
+
+    var dict = { 1: "I", 4: "IV", 5: "V", 9: "IX", 10: "X", 40: "XL", 50: "L" };
+    var result = [];
+
+    for (var i = 0; i < 2; i++) {
+        result.push(convertToRoman(parseInt(timeArgs[i]), dict));
+    }
+
+    return result.join(':');
+}
+
+function convertToRoman(number, romanNumbers) {
+    if (number === 0) {
+        return "N";
+    }
+
+    var arabicNumbers = Object.keys(romanNumbers);
+    var result = "";
+    var index = arabicNumbers.length - 1;
+
+    while (number > 0) {
+        while (arabicNumbers[index] > number) {
+            index--;
+        }
+        var arabic = arabicNumbers[index];
+        number -= arabic;
+        result += romanNumbers[arabic];
+    }
+
+    return result;
+}
+
+function isIncorrectTime(time) {
+    var hours = Number(time[0]);
+    var mins = Number(time[1]);
+
+    return isNaN(hours) || isNaN(mins) ||
+        hours < 0 || hours > 23 ||
+        mins < 0 || mins > 59;
+}
+
+function isIncorrectFormat(time) {
+    return time.length !== 2 ||
+        time[0].length !== 2 ||
+        time[1].length !== 2;
 }
 
 module.exports = romanTime;
