@@ -8,7 +8,7 @@ function romanTime(time) {
 
     var romanOnes = ["N", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"];
 
-    var romanTens = ["", "X", "XX", "XXX", "XL", "L"];
+    var romanTens = ["N", "X", "XX", "XXX", "XL", "L"];
 
     var arrayOfDateDatas = time.split(":");
     var hours = Number(arrayOfDateDatas[0]);
@@ -26,6 +26,8 @@ function romanTime(time) {
 
         romanTimeString = romanTens[hoursTens] + romanOnes[hoursOnes] +
                 ":" + romanTens[minutesTens] + romanOnes[minutesOnes];
+        romanTimeString = romanTimeString.replace(/N:/g, ":");
+        romanTimeString = romanTimeString.replace(/N$/g, "");
 
     } else {
         throw new TypeError();
