@@ -26,9 +26,6 @@ function isTime(str) {
 }
 
 function getRomanNumber(number) {
-    if (isNaN(number)) {
-        throw new TypeError('Неверное время');
-    }
     if (number === 0) {
         return 'N';
     }
@@ -48,15 +45,14 @@ function getRomanNumber(number) {
 
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
-    if (!isTime(time) || time.length !== 5) {
+    if (!isTime(time) || time.search(/\d\d:\d\d/) === -1) {
         throw new TypeError('Неверное время');
     }
 
     var hours = time.split(':')[0];
     var minutes = time.split(':')[1];
-
-    hours = getRomanNumber(parseInt(hours));
-    minutes = getRomanNumber(parseInt(minutes));
+    hours = getRomanNumber(parseInt(hours, 10));
+    minutes = getRomanNumber(parseInt(minutes, 10));
 
     time = hours + ':' + minutes;
 
