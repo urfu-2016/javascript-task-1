@@ -48,6 +48,9 @@ function convertHighOrderDigit(digit) {
     if (digit === 5) {
         return 'L';
     }
+    if (digit === 4) {
+        return 'XL';
+    }
 
     return joinSymbols('', 'X', digit);
 }
