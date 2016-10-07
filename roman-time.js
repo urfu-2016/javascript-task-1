@@ -6,21 +6,17 @@
  */
 function romanTime(time) {
     var typeError = new TypeError('Неверное время');
-    if (time === null || time === undefined) {
+    romeTime = time.split(':');
+    if (Number(romeTime[0]) < 0 || Number(romeTime[0]) > 23 ||
+    Number(romeTime[1]) < 0 || Number(romeTime[1]) > 59 ||
+    time === null || time === undefined ||
+    isNaN(romeTime[0]) || isNaN(romeTime[1])) {
         throw typeError;
     }
-    time = time.split(':');
-    if (isNaN(time[0]) || isNaN(time[1])) {
-        throw typeError;
-    }
-    if (Number(time[0]) < 0 || Number(time[0]) > 23 ||
-    Number(time[1]) < 0 || Number(time[1]) > 59) {
-        throw typeError;
-    }
-    checkTime(time);
-    time = time[0] + ':' + time[1];
+    checkTime(romeTime);
+    romeTime = romeTime[0] + ':' + romeTime[1];
 
-    return time;
+    return romeTime;
 }
 
 function checkTime(time) {
