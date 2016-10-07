@@ -33,7 +33,7 @@ function convertNumber(stringNumber, maxValue) {
 }
 
 function parseNumber(stringNumber, maxValue) {
-    if (stringNumber.match(/^\d{2}$/) === null) {
+    if (stringNumber.match(/^\d\d?$/) === null) {
         throw new TypeError();
     }
     var number = parseInt(stringNumber);
