@@ -49,18 +49,18 @@ function convertHighOrderDigit(digit) {
         return 'L';
     }
 
-    return joinSymbols('', 'X', digit);;
+    return joinSymbols('', 'X', digit);
 }
 
 function convertLowerOrderDigit(digit) {
-    if (0 <= digit && digit <= 3) {
+    if (digit <= 0 && digit <= 3) {
         return joinSymbols('', 'I', digit);
     }
     if (digit === 4) {
         return 'IV';
     }
-    if (5 <= digit && digit <= 8) {
-        return joinSymbols('V', 'I', digit - 5)
+    if (digit <= 5 && digit <= 8) {
+        return joinSymbols('V', 'I', digit - 5);
     }
     if (digit === 9) {
         return 'IX';
