@@ -13,7 +13,7 @@ function romanTime(time) {
     if (typeof time !== 'string') {
         throw new TypeError();
     }
-    if (!isValidString) {
+    if (!isValidString(time)) {
         throw new TypeError();
     }
     var splitedTime = time.split(':');
