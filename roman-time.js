@@ -38,6 +38,9 @@ function romanTime(time) {
     }
 
     var splittedTime = time.split(':');
+    if (splittedTime.length !== 2) {
+        throw new TypeError();
+    }
     var hours = parseInt(splittedTime[0]);
     var minutes = parseInt(splittedTime[1]);
     if (isNaN(hours) || isNaN(minutes) ||
