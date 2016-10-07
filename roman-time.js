@@ -30,8 +30,8 @@ function getHHMM(time) {
 
 
 function getFirstDigit(num) {
-    if (num === 0) {
-        return "";
+    if (num === 5) {
+        return "L";
     }
     if (num >= 1 && num <= 3) {
         return repeat("X", num);
@@ -40,7 +40,7 @@ function getFirstDigit(num) {
         return "XL";
     }
 
-    return "L";
+    return "";
 }
 
 
@@ -55,7 +55,7 @@ function getDigit(num, first) {
         return repeat("I", num);
     }
     if (num >= 5 && num <= 8) {
-        return "V" + repeat("I", num - 5);
+        return "V".concat(repeat("I", num - 5));
     }
     if (num === 9) {
         return "IX";
@@ -74,8 +74,8 @@ function repeat(str, n) {
 }
 
 function deleteExcess(num) {
-    if (num.length === 2 && num[1] === "N") {
-        return num[0];
+    if (num.length !== 1 && num[num.length-1] === "N") {
+        return num.substr(0, num.length-1);
     }
 
     return num;
@@ -95,7 +95,7 @@ function romanTime(time) {
     var hhmm = getHHMM(time);
     var hours = hhmm.hours;
     var minutes = hhmm.minutes;
-    if (hours.length !== 2 || minutes.length !== 2) {
+    if (hours.length > 2 || minutes.length > 2) {
         throwError();
     }
     hours = parseInt(hours);
