@@ -12,7 +12,7 @@ function romanTime(time) {
     var answer = [];
     answer.push(romanNumber(parseInt(splittedTime[0]), 23));
     answer.push(romanNumber(parseInt(splittedTime[1]), 59));
-    // Немного авторского кода и замечательной магии
+    
     return answer.join(':');
 }
 
@@ -31,12 +31,12 @@ function romanNumber(number, maxValue) {
 }
 
 var TENS_DICTIONARY = {
-    1 : 'X',
-    2 : 'XX',
-    3 : 'XXX',
-    4 : 'XL',
-    5 : 'L'
-}
+    1 :'X',
+    2 :'XX',
+    3 :'XXX',
+    4 :'XL',
+    5 :'L'
+};
 function romanTens(num) {
     if (typeof TENS_DICTIONARY[num] !== 'undefined') {
         return TENS_DICTIONARY[num];
@@ -44,17 +44,17 @@ function romanTens(num) {
 }
 
 var NUMERAL_DICTIONARY = {
-    0: '',
-    1 : 'I',
-    2 : 'II',
-    3 : 'III',
-    4 : 'IV',
-    5 : 'V',
-    6 : 'VI',
-    7 : 'VII',
-    8 : 'VIII',
-    9 : 'IX'
-}
+    0 :'',
+    1 :'I',
+    2 :'II',
+    3 :'III',
+    4 :'IV',
+    5 :'V',
+    6 :'VI',
+    7 :'VII',
+    8 :'VIII',
+    9 :'IX'
+};
 function romanNumerals(num) {
     if (typeof NUMERAL_DICTIONARY[num] !== 'undefined') {
         return NUMERAL_DICTIONARY[num];
