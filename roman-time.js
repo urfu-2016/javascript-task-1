@@ -38,7 +38,7 @@ function romanTime(time) {
     var hours = parseInt(splittedTime[0]);
     var minutes = parseInt(splittedTime[1]);
     if (isNaN(hours) || isNaN(minutes) || hours > 23 || minutes > 59) {
-        throw TypeError;
+        throw TypeError();
     }
 
     return fromArabianToRoman(hours) + ':' + fromArabianToRoman(minutes);
