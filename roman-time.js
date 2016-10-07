@@ -19,7 +19,7 @@ function romanTime(time) {
 
 function isCorrectTime(hours, minutes) {
 
-    return !(hours > 23) && !(minutes > 59) && (hours >= 0) && (minutes >= 0);
+    return (hours < 24) && (minutes < 60) && (hours >= 0) && (minutes >= 0);
 }
 
 function isCorrectFormat(format) {
