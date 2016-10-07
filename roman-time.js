@@ -48,37 +48,31 @@ function convertHighOrderDigit(digit) {
     if (digit === 5) {
         return 'L';
     }
-    var romeDigit = '';
-    for (var i = 1; i <= digit; i++) {
-        romeDigit += 'X';
-    }
 
-    return romeDigit;
+    return joinSymbols('', 'X', digit);;
 }
 
 function convertLowerOrderDigit(digit) {
-    switch (digit) {
-        case 1:
-            return 'I';
-        case 2:
-            return 'II';
-        case 3:
-            return 'III';
-        case 4:
-            return 'IV';
-        case 5:
-            return 'V';
-        case 6:
-            return 'VI';
-        case 7:
-            return 'VII';
-        case 8:
-            return 'VIII';
-        case 9:
-            return 'IX';
-        default:
-            return '';
+    if (0 <= digit && digit <= 3) {
+        return joinSymbols('', 'I', digit);
     }
+    if (digit === 4) {
+        return 'IV';
+    }
+    if (5 <= digit && digit <= 8) {
+        return joinSymbols('V', 'I', digit - 5)
+    }
+    if (digit === 9) {
+        return 'IX';
+    }
+}
+
+function joinSymbols(thisSymbol, thatSymbol, count) {
+    for (var i = 1; i <= count; i++) {
+        thisSymbol += thatSymbol;
+    }
+
+    return thisSymbol;
 }
 
 module.exports = romanTime;
