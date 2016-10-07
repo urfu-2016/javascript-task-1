@@ -7,7 +7,8 @@
 function romanTime(time) {
     try {
         time = time.split(':');
-        if (Number(time[0]) > -1 && Number(time[0]) < 24 && Number(time[1]) > -1 && Number(time[1]) < 60) {
+        if (Number(time[0]) > -1 && Number(time[0]) < 24 &&
+        Number(time[1]) > -1 && Number(time[1]) < 60) {
             if (Number(time[0]) === 0) {
                 time[0] = 'N';
             } else {
@@ -19,8 +20,8 @@ function romanTime(time) {
                 time[1] = getRomeMinutes(time[1]);
             }
             time = time[0] + ':' + time[1];
-            return time;
 
+            return time;
         } else {
             return 'Неверное время';
         }
@@ -35,8 +36,8 @@ function getRomeHours(hours) {
         romeHours += 'X';
     }
     romeHours += getUnits(hours);
-    return romeHours;
 
+    return romeHours;
 }
 
 function getRomeMinutes(minutes) {
@@ -51,8 +52,8 @@ function getRomeMinutes(minutes) {
         romeMinutes += 'L';
     }
     romeMinutes += getUnits(minutes);
-    return romeMinutes;
 
+    return romeMinutes;
 }
 
 function getUnits(time) {
@@ -61,22 +62,23 @@ function getUnits(time) {
         for (var i = 0; i < time % 10; i++){
             unit += 'I';
         }
-        return unit;
 
+        return unit;
     } else if (time % 10 === 4) {
         unit += 'IV';
+
         return unit;
     } else if (time % 10 < 9) {
         unit += 'V';
         for (var k = 0; k < (time % 10 - 5); k++) {
             unit += 'I';
         }
-        return unit;
 
+        return unit;
     }
     unit += 'IX';
-    return unit;
 
+    return unit;
 }
 
 module.exports = romanTime;
