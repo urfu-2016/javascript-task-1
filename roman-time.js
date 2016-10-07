@@ -27,18 +27,19 @@ function getHHMM(time) {
 
 function getDigit(num, first) {
     if (first) {
-        if (num == 0) {
+        if (num === 0) {
             return "";
         }
         if (num >= 1 && num <= 3) {
             return repeat("X", num);
         }
-        if (num == 4) {
+        if (num === 4) {
             return "XL";
         }
+
         return "L";
     }
-    if (num == 0) {
+    if (num === 0) {
         return "N";
     }
     if (num >= 1 && num <= 3) {
@@ -47,7 +48,7 @@ function getDigit(num, first) {
     if (num >= 5 && num <= 8) {
         return "V" + repeat("I", num - 5);
     }
-    if (num == 9) {
+    if (num === 9) {
         return "IX";
     }
 
@@ -64,7 +65,7 @@ function repeat(str, n) {
 }
 
 function deleteExcess(num) {
-    if (num.length == 2 && num[1] == "N") return num[1];
+    if (num.length === 2 && num[1] === "N") return num[1];
 
     return num;
 }
@@ -77,15 +78,23 @@ function getPartRoman(num) {
 }
 
 function romanTime(time) {
-    if (time === null || time === undefined) throwError();
+    if (time === null || time === undefined) {
+        throwError();
+    }
     var hhmm = getHHMM(time);
     var hours = hhmm.hours;
     var minutes = hhmm.minutes;
-    if (hours.length != 2 || minutes.length != 2) throwError();
+    if (hours.length !== 2 || minutes.length !== 2) {
+        throwError();
+    }
     hours = parseInt(hours);
     minutes = parseInt(minutes);
-    if (isNaN(hours) || isNaN(minutes)) throwError();
-    if (!(isValidHour(hours) && isValidMinute(minutes))) throwError();
+    if (isNaN(hours) || isNaN(minutes)) {
+        throwError();
+    }
+    if (!(isValidHour(hours) && isValidMinute(minutes))) {
+        throwError();
+    }
 
     return getPartRoman(hours) + ":" + getPartRoman(minutes);
 }
