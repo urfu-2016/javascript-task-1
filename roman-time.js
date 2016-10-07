@@ -9,8 +9,8 @@ function romanTime(time) {
     if (!isCorrectTime(data)) {
         throw new TypeError('Неверное время');
     }
-    var hours = data[0];
-    var minutes = data[1];
+    var hours = parseInt(data[0], 10);
+    var minutes = parseInt(data[1], 10);
     time = convertToRoman(hours) + ':' + convertToRoman(minutes);
 
     return time;
