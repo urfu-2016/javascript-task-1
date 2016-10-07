@@ -14,18 +14,24 @@ function romanTime(time) {
     var hours = Number(arrayOfDateDatas[0]);
     var minutes = Number(arrayOfDateDatas[1]);
 
-    if (hours >= 0 && hours <= 23 && minutes >= 0 && minutes <= 59 && hours % 1 === 0 && minutes % 1 === 0) {
+    var romanTimeString;
+
+    if (hours >= 0 && hours <= 23 && minutes >= 0 && minutes <= 59 &&
+            hours % 1 === 0 && minutes % 1 === 0) {
         var hoursOnes = hours % 10;
         var hoursTens = (hours - hoursOnes) / 10;
 
         var minutesOnes = minutes % 10;
         var minutesTens = (minutes - minutesOnes) / 10;
 
-        var romanTimeString = romanTens[hoursTens] + romanOnes[hoursOnes] + ":" + romanTens[minutesTens] + romanOnes[minutesOnes];
-        return romanTimeString;
+        romanTimeString = romanTens[hoursTens] + romanOnes[hoursOnes] +
+                ":" + romanTens[minutesTens] + romanOnes[minutesOnes];
+
     } else {
         throw new TypeError();
     }
+
+    return romanTimeString;
 }
 
 module.exports = romanTime;
