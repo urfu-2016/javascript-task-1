@@ -98,11 +98,20 @@ function romanTime(time) {
     if (hours.length > 2 || minutes.length > 2) {
         throwError();
     }
-    hours = parseInt(hours);
-    minutes = parseInt(minutes);
+    hours = strToInt(hours);
+    minutes = strToInt(minutes);
     throwIfInvalid(hours, minutes);
 
     return getPartRoman(hours) + ":" + getPartRoman(minutes);
+}
+
+function strToInt(num) {
+    var numToInt = parseInt(num);
+    var floatToInt = parseFloat(num);
+    if (Math.floor(floatToInt) === numToInt) {
+        return numToInt;
+    }
+    throwError();
 }
 
 function throwIfInvalid(hours, minutes) {
