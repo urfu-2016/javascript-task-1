@@ -7,8 +7,7 @@
 function romanTime(time) {
     try {
         var data = time.split(':');
-    }
-    catch (e) {
+    } catch (e) {
         throw new TypeError('Неверное время');
     }
     if (!isCorrectTime(data)) {
