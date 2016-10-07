@@ -1,5 +1,5 @@
 'use strict';
-console.log(romanTime('001:0'));
+
 /**
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
