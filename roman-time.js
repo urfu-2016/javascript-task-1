@@ -18,11 +18,10 @@ function romanTime(time) {
 }
 
 function isCorrectTime(format) {
-
     var data = format.split(':');
     var hours = parseInt(data[0], 10);
     var minutes = parseInt(data[1], 10);
-    
+
     return (hours < 24) && (minutes < 60) && (hours >= 0) && (minutes >= 0);
 }
 
