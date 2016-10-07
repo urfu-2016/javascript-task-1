@@ -96,7 +96,7 @@ function romanTime(time) {
     var hours = hhmm.hours;
     var minutes = hhmm.minutes;
     if (hours.length > 2 || minutes.length > 2 ||
-        !Number.isInteger(hours) || !Number.isInteger(minutes)) {
+        !isValidInteger(hours) || !isValidInteger(minutes)) {
         throwError();
     }
     hours = parseInt(hours);
@@ -104,6 +104,11 @@ function romanTime(time) {
     throwIfInvalid(hours, minutes);
 
     return getPartRoman(hours) + ":" + getPartRoman(minutes);
+}
+
+
+function isValidInteger(num) {
+    return (num.match(/^\d?\d$/) !== null);
 }
 
 function throwIfInvalid(hours, minutes) {
