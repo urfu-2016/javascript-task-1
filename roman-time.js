@@ -74,8 +74,8 @@ function repeat(str, n) {
 }
 
 function deleteExcess(num) {
-    if (num.length !== 1 && num[num.length-1] === "N") {
-        return num.substr(0, num.length-1);
+    if (num.length !== 1 && num[num.length - 1] === "N") {
+        return num.substr(0, num.length - 1);
     }
 
     return num;
