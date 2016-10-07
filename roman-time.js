@@ -95,7 +95,8 @@ function romanTime(time) {
     var hhmm = getHHMM(time);
     var hours = hhmm.hours;
     var minutes = hhmm.minutes;
-    if (hours.length > 2 || minutes.length > 2 || !Number.isInteger(hours) || !Number.isInteger(minutes)) {
+    if (hours.length > 2 || minutes.length > 2 ||
+        !Number.isInteger(hours) || !Number.isInteger(minutes)) {
         throwError();
     }
     hours = parseInt(hours);
