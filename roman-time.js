@@ -5,18 +5,26 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    var typeError = new TypeError('Неверное время');
-    romeTime = time.split(':');
-    if (Number(romeTime[0]) < 0 || Number(romeTime[0]) > 23 ||
-    Number(romeTime[1]) < 0 || Number(romeTime[1]) > 59 ||
-    time === null || time === undefined ||
-    isNaN(romeTime[0]) || isNaN(romeTime[1])) {
+    checkFormat(time);    
+    if (Number(time[0]) < 0 || Number(time[0]) > 23 ||
+    Number(time[1]) < 0 || Number(time[1]) > 59) {
         throw typeError;
     }
-    checkTime(romeTime);
-    romeTime = romeTime[0] + ':' + romeTime[1];
+    checkTime(time);
+    time = time[0] + ':' + time[1];
 
-    return romeTime;
+    return time;
+}
+
+function checkFormat(time) {
+    var typeError = new TypeError('Неверное время');
+    if (time === null || time === undefined) {
+        throw typeError;
+    }
+    time = time.split(':');
+    if (isNaN(time[0]) || isNaN(time[1])) {
+        throw typeError;
+    }
 }
 
 function checkTime(time) {
