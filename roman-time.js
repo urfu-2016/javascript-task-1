@@ -10,9 +10,11 @@ function romanTime(time) {
         throw typeError;
     }
     time = time.split(':');
+    if (isNaN(time[0]) || isNaN(time[1])) {
+        throw typeError;
+    }
     if (Number(time[0]) < 0 || Number(time[0]) > 23 ||
-    Number(time[1]) < 0 || Number(time[1]) > 59 ||
-    isNaN(time[0]) || isNaN(time[1])) {
+    Number(time[1]) < 0 || Number(time[1]) > 59) {
         throw typeError;
     }
     checkTime(time);
