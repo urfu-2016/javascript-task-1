@@ -37,12 +37,20 @@ function romanTime(time) {
         return valueMin <= number && number <= valueMax;
     }
 
+    function parseToInt(number) {
+        if (/^[0-9]+$/.test(number) && !isNaN(parseInt(number))) {
+            return parseInt(number);
+        }
+
+        return NaN;
+    }
+
     var splittedTime = time.split(':');
     if (splittedTime.length !== 2) {
         throw new TypeError();
     }
-    var hours = parseInt(splittedTime[0]);
-    var minutes = parseInt(splittedTime[1]);
+    var hours = parseToInt(splittedTime[0]);
+    var minutes = parseToInt(splittedTime[1]);
     if (isNaN(hours) || isNaN(minutes) ||
         !numberIsBetween(hours, 0, 23) || !numberIsBetween(minutes, 0, 59)) {
         throw new TypeError();
