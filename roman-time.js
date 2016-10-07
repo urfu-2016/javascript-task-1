@@ -25,7 +25,7 @@ function isCorrectTime(data) {
 }
 
 function convertToRoman(value) {
-    if (value === 0){
+    if (value === 0) {
         return 'N';
     }
 
@@ -44,21 +44,21 @@ function convertToRoman(value) {
 
 function getRomanTime(romanNumerals, value) {
     var arrayNumbers = Object.keys(romanNumerals).sort(compareNumeric);
-    var romanTime = '';
+    var result = '';
     var index = 0;
 
     while (value > 0) {
         if (value >= Number(arrayNumbers[index])) {
             value -= arrayNumbers[index];
-            romanTime += romanNumerals[arrayNumbers[index]];
-        }
-        else {
+            result += romanNumerals[arrayNumbers[index]];
+        } else {
             if (index !== arrayNumbers.length) {
                 index++;
             }
         }
     }
-    return romanTime;
+    
+    return result;
 }
 
 function compareNumeric(first, second) {
