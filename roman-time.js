@@ -22,11 +22,11 @@ function isCorrectTime(time) {
         var data = time.split(':');
         var hours = parseInt(data[0], 10);
         var minutes = parseInt(data[1], 10);
+
+        return (!isNaN(hours) && !isNaN(minutes) && !(hours > 23) && !(minutes > 59));
     } catch (e) {
         throw new TypeError('Неверное время');
     }
-
-    return (!isNaN(hours) && !isNaN(minutes) && !(hours > 23) && !(minutes > 59));
 }
 
 function convertToRoman(value) {
