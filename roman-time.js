@@ -25,19 +25,25 @@ function getHHMM(time) {
     return hhmm;
 }
 
+
+function getFirstDigit(num) {
+    if (num === 0) {
+        return "";
+    }
+    if (num >= 1 && num <= 3) {
+        return repeat("X", num);
+    }
+    if (num === 4) {
+        return "XL";
+    }
+
+    return "L";
+}
+
+
 function getDigit(num, first) {
     if (first) {
-        if (num === 0) {
-            return "";
-        }
-        if (num >= 1 && num <= 3) {
-            return repeat("X", num);
-        }
-        if (num === 4) {
-            return "XL";
-        }
-
-        return "L";
+        return getFirstDigit(num);
     }
     if (num === 0) {
         return "N";
@@ -57,7 +63,7 @@ function getDigit(num, first) {
 
 function repeat(str, n) {
     var res = "";
-    for (var i=0; i < n; i++) {
+    for (var i = 0; i < n; i++) {
         res += str;
     }
 
@@ -65,7 +71,9 @@ function repeat(str, n) {
 }
 
 function deleteExcess(num) {
-    if (num.length === 2 && num[1] === "N") return num[1];
+    if (num.length === 2 && num[1] === "N") {
+        return num[1];
+    }
 
     return num;
 }
@@ -89,14 +97,17 @@ function romanTime(time) {
     }
     hours = parseInt(hours);
     minutes = parseInt(minutes);
+
+    return getPartRoman(hours) + ":" + getPartRoman(minutes);
+}
+
+function throwIfInvalid(hours, minutes) {
     if (isNaN(hours) || isNaN(minutes)) {
         throwError();
     }
     if (!(isValidHour(hours) && isValidMinute(minutes))) {
         throwError();
     }
-
-    return getPartRoman(hours) + ":" + getPartRoman(minutes);
 }
 
 function throwError() {
