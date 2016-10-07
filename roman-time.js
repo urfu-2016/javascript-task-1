@@ -37,7 +37,7 @@ function romanTime(time) {
     var splittedTime = time.split(':');
     var hours = parseInt(splittedTime[0]);
     var minutes = parseInt(splittedTime[1]);
-    if (isNaN(hours) || isNaN(minutes) || hours > 23 || minutes > 59) {
+    if (isNaN(hours) || isNaN(minutes) || hours > 23 || minutes > 59 || hours < 0 || minutes < 0) {
         throw new TypeError();
     }
 
@@ -45,3 +45,8 @@ function romanTime(time) {
 }
 
 module.exports = romanTime;
+
+for (var i = 0; i < 60; i++)
+{
+    console.log(fromArabianToRoman(i));
+}
