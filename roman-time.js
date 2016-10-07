@@ -46,8 +46,8 @@ function convertToRoman(number, romanNumbers) {
 }
 
 function isIncorrectTime(time) {
-    var hours = +time[0];
-    var mins = +time[1];
+    var hours = Number(time[0]);
+    var mins = Number(time[1]);
 
     return isNaN(hours) || isNaN(mins) ||
         hours < 0 || hours > 23 ||
