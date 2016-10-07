@@ -52,9 +52,8 @@ function getRomanTime(romanNumerals, value) {
             value -= arrayNumbers[index];
             result += romanNumerals[arrayNumbers[index]];
         } else if (index !== arrayNumbers.length) {
-                index++;
+            index++;
         }
-
     }
 
     return result;
