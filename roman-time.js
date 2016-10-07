@@ -20,36 +20,45 @@ function romanNumber(number, maxValue) {
     if (isNaN(number) || number < 0 || number > maxValue) {
         throw new TypeError('Неверное время');
     }
-    var romanNumber = "";
+    var romanNum = "";
     if (number > 9) {
-        var num = Math.floor(number / 10);
-        switch (num) {
-            case 3: romanNumber += "X";
-            case 2: romanNumber += "X";
-            case 1: romanNumber += "X";
-                break;
-            case 4: romanNumber += "X";
-            case 5: romanNumber += "L";
-                break;
-        }
+        romanNum += romanTens(Math.floor(number / 10));
     }
     number %= 10;
-    switch (number) {
-        case 3: romanNumber += "I";
-        case 2: romanNumber += "I";
-        case 1: romanNumber += "I";
-            break;
-        case 4: romanNumber += "IV";
-            break;
-        case 5: romanNumber += "V";
-        case 8: romanNumber += "I";
-        case 7: romanNumber += "I";
-        case 6: romanNumber += "I";
-            break;
-        case 9: romanNumber += "IX"
-    }
+    romanNum += romanNumerals(number);
 
-    return romanNumber === "" ? "N" : romanNumber;
+    return romanNum === "" ? "N" : romanNum;
+}
+
+var TENS_DICTIONARY = {
+    1 : 'X',
+    2 : 'XX',
+    3 : 'XXX',
+    4 : 'XL',
+    5 : 'L'
+}
+function romanTens(num) {
+    if (typeof TENS_DICTIONARY[num] !== 'undefined') {
+        return TENS_DICTIONARY[num];
+    }
+}
+
+var NUMERAL_DICTIONARY = {
+    0: '',
+    1 : 'I',
+    2 : 'II',
+    3 : 'III',
+    4 : 'IV',
+    5 : 'V',
+    6 : 'VI',
+    7 : 'VII',
+    8 : 'VIII',
+    9 : 'IX'
+}
+function romanNumerals(num) {
+    if (typeof NUMERAL_DICTIONARY[num] !== 'undefined') {
+        return NUMERAL_DICTIONARY[num];
+    }
 }
 
 module.exports = romanTime;
