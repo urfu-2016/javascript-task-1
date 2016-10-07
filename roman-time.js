@@ -5,7 +5,12 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    var data = time.split(':');
+    try {
+        var data = time.split(':');
+    }
+    catch (e) {
+        throw new TypeError('Неверное время');
+    }
     if (!isCorrectTime(data)) {
         throw new TypeError('Неверное время');
     }
