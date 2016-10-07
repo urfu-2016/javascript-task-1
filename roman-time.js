@@ -34,7 +34,7 @@ function isCorrectNumber(number) {
 }
 
 function isCorrectInputString(str) {
-    return typeof(str) !== 'string' || !/^\d\d:\d\d$/.test(str);
+    return typeof(str) !== 'string' || /^\d\d:\d\d$/.test(str);
 }
 
 function isCorrectInputArray(input) {
