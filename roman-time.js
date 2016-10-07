@@ -66,7 +66,7 @@ var romanTime = function (time) {
         throw new TypeError('Argument must be a string');
     }
 
-    if (!time.match(/([01][0-9]|[2][0-3]):[0-5][0-9]/)) {
+    if (!time.match(/^([01][0-9]|[2][0-3]):[0-5][0-9]$/)) {
         throw new TypeError('Argument must be in HH:MM format');
     }
 
