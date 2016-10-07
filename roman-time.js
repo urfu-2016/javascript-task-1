@@ -7,6 +7,7 @@
 function romanTime(time) {
     var typeError = new TypeError('Неверное время');
     checkFormat(time);
+    time = time.split(':');
     if (Number(time[0]) < 0 || Number(time[0]) > 23 ||
     Number(time[1]) < 0 || Number(time[1]) > 59) {
         throw typeError;
