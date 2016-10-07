@@ -19,33 +19,28 @@ function toRoman(num) {
             i = 0;
         }
     }
-    
+
     return roman;
 }
+
 /**
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {bool} – правильно введено или нет
  */
 function checkTime(time) {
-    var hours = time.split(":")[0];
-    var minutes = time.split(":")[1];
-    if (isNaN(Number(minutes)) || 
-        isNaN(Number(hours)) || 
-        hours.length !== 2 || 
-        minutes.length !== 2) {
-
-        return false;
-    }
-    if ((Number(hours) < 0) || 
-       (Number(hours) > 23) || 
-       (Number(minutes) < 0) || 
-       (Number(minutes) > 60)) {
+    var cTime = time.split(":");
+    if ((cTime.length !== 2) ||
+       (Number(cTime[0]) < 0) ||
+       (Number(cTime[0]) > 23) ||
+       (Number(cTime[1]) < 0) ||
+       (Number(cTime[1]) > 60)) {
 
         return false;
     }
 
     return true;
 }
+
 /**
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
