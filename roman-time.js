@@ -18,6 +18,23 @@ var ROMAN_NUMBERS = {
     9: 'IX'
 };
 
+var ARABIAN_NUMBERS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+
+function isCorrectNumber(number) {
+    for (var i in number) {
+        if (ARABIAN_NUMBERS.indexOf(i) === -1) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+function isCorrectInputArray(input) {
+    return input.length === 2 &&
+        isCorrectNumber(input[0]) && isCorrectNumber(input[1]);
+}
+
 function timeHasErrors(hours, minutes) {
     return isNaN(hours) || isNaN(minutes) ||
         hours < 0 || hours >= 24 || minutes < 0 || minutes >= 60;
@@ -50,7 +67,7 @@ function romanTime(time) {
         throw new TypeError();
     }
     var splitedTime = time.split(':');
-    if (splitedTime.length !== 2) {
+    if (!isCorrectInputArray(splitedTime)) {
         throw new TypeError();
     }
     var hours = parseInt(splitedTime[0]);
