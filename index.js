@@ -11,5 +11,8 @@ console.info(romanTime('00:00'));
 // Выведет 'XXIII:LIX'
 console.info(romanTime('23:59'));
 
-// Выбросится ошибка [TypeError: Неверное время]
-console.info(romanTime('24:00'));
+// // Выбросится ошибка [TypeError: Неверное время]
+// console.info(romanTime('24:00'));
+
+// // Throws error
+// console.info(romanTime(123));
