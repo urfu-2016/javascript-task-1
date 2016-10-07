@@ -5,7 +5,8 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    checkFormat(time);    
+    var typeError = new TypeError('Неверное время');
+    checkFormat(time);
     if (Number(time[0]) < 0 || Number(time[0]) > 23 ||
     Number(time[1]) < 0 || Number(time[1]) > 59) {
         throw typeError;
