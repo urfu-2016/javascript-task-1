@@ -36,13 +36,13 @@ function checkInput(time) {
 }
 
 function checkHours(h) {
-    if (h > 23 || isNaN(h)) {
+    if (h < 0 || h > 23 || isNaN(h)) {
         throw new TypeError('Часы от 0 до 23');
     }
 }
 
 function checkMinutes(m) {
-    if (m > 59 || isNaN(m)) {
+    if (m < 0 || m > 59 || isNaN(m)) {
         throw new TypeError('Минуты от 0 до 59');
     }
 }
