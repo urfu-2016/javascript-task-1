@@ -11,48 +11,36 @@ function romanTime(time) {
         throw error;
     }
     var hours = time.split(":")[0];
-    var minutes = time.split(":")[1];
-    if (isNaN(+minutes) || isNaN(+hours)) {
+    var min = time.split(":")[1];
+    if (isNaN(Number(min)) || isNaN(Number(hours)) || hours.length !== 2 || min.length !== 2) {
         throw error;
     }
-    if ((hours.length !== 2) || (minutes.length !== 2)) {
-        throw error;
-    }
-    hours = +hours;
-    minutes = +minutes;
-    if ((hours < 0) || (hours > 23) || (minutes < 0) || (minutes > 60)) {
+    hours = Number(hours);
+    min = Number(min);
+    if ((hours < 0) || (hours > 23) || (min < 0) || (min > 60)) {
         throw error;
     }
     var Romanic = ["L", "XL", "X", "IX", "V", "IV", "I", "N"];
     var Arab = [50, 40, 10, 9, 5, 4, 1, 0];
     var hoursStr = "";
-    var minutesStr = "";
-    if (hours === 0) {
-        hoursStr = "N";
-    }
-    else {
-        for (var i = 0; i < Arab.length; i++) {
-            if ((hours >= Arab[i]) && (hours !== 0)) {
-                hoursStr += Romanic[i];
-                hours -= Arab[i];
-                i = 0;
-            }
+    var minStr = "";
+    (hours === 0) ? hoursStr = "N" : hoursStr = "";
+    (min === 0) ? minStr = "N" : hoursStr = "";
+    for (var i = 0; i < Arab.length; i++) {
+        if (hours >= Arab[i] && hours != 0) {
+            hoursStr += Romanic[i];
+            hours -= Arab[i];
+            i = 0;
         }
     }
-    if (minutes === 0) {
-        minutesStr = "N";
-    }
-    else {
-        for (i = 0; i < Arab.length; i++) {
-            if ((minutes >= Arab[i]) && (minutes != 0)) {
-                minutesStr += Romanic[i];
-                minutes -= Arab[i];
-                i = 0;
-            }
+    for (var i = 0; i < Arab.length; i++) {
+        if (min >= Arab[i] && min != 0) {
+            minStr += Romanic[i];
+            min -= Arab[i];
+            i = 0;
         }
     }
-    time = hoursStr + ":" + minutesStr;
-    
+    time = hoursStr + ":" + minStr;
     return time;
 }
 
