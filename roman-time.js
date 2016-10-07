@@ -70,8 +70,8 @@ function romanTime(time) {
     if (!isCorrectInputArray(splitedTime)) {
         throw new TypeError();
     }
-    var hours = parseInt(splitedTime[0]);
-    var minutes = parseInt(splitedTime[1]);
+    var hours = parseInt(splitedTime[0], 10);
+    var minutes = parseInt(splitedTime[1], 10);
     if (timeHasErrors(hours, minutes)) {
         throw new TypeError();
     }
