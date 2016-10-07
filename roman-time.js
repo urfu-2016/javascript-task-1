@@ -12,7 +12,7 @@ function romanTime(time) {
     Number(time[1]) < 0 || Number(time[1]) > 59) {
         throw typeError;
     }
-    checkTime(time);
+    changeTime(time);
     time = time[0] + ':' + time[1];
 
     return time;
@@ -24,12 +24,13 @@ function checkFormat(time) {
         throw typeError;
     }
     time = time.split(':');
-    if (isNaN(time[0]) || isNaN(time[1])) {
+    if (isNaN(time[0]) || isNaN(time[1]) ||
+    time[0].length !== 2 ||time[1].length !== 2) {
         throw typeError;
     }
 }
 
-function checkTime(time) {
+function changeTime(time) {
     if (Number(time[0]) === 0) {
         time[0] = 'N';
     } else {
