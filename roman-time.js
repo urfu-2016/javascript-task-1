@@ -26,6 +26,9 @@ function isTime(str) {
 }
 
 function getRomanNumber(number) {
+    if (isNaN(number)) {
+        throw new TypeError('Неверное время');
+    }
     if (number === 0) {
         return 'N';
     }
