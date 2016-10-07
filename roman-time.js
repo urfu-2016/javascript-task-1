@@ -5,7 +5,7 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    if (!isCorrectFormat(time) && time.length !== 5) {
+    if (!isCorrectFormat(time)) {
         throw new TypeError('Неверное время');
     }
     var data = time.split(':');
@@ -27,7 +27,7 @@ function isCorrectTime(format) {
 
 function isCorrectFormat(format) {
 
-    return (/\d\d:\d\d/.test(format) && isCorrectTime(format));
+    return (/\d\d:\d\d/.test(format) && isCorrectTime(format) && format.length === 5);
 }
 
 function convertToRoman(value) {
