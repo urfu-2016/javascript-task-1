@@ -89,7 +89,7 @@ function getPartRoman(num) {
 }
 
 function romanTime(time) {
-    if (time === null || time === undefined) {
+    if (typeof time !== "string") {
         throwError();
     }
     var hhmm = getHHMM(time);
