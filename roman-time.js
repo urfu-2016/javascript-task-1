@@ -36,11 +36,16 @@ function getRomeHours(hours){
 
 function getRomeMinutes(minutes){
     var romeMinutes = '';
-    if (minutes < 40)
+    if (minutes < 40){
         for (var i = 0; i < Math.floor( minutes / 10 ); i++){
             romeMinutes += 'X';
-    } else if (Math.floor( minutes / 10 ) === 4) romeMinutes += 'XL';
-    else romeMinutes += 'L';
+        }
+    } else if (Math.floor( minutes / 10 ) === 4) {
+        romeMinutes += 'XL';
+    }
+    else {
+        romeMinutes += 'L';
+    }
     return romeMinutes += getUnits(minutes);
 }
 
@@ -50,16 +55,20 @@ function getUnits(time){
         for (var i = 0; i < time % 10 ; i++){
             unit += 'I';
         }
+
         return unit;
-    } else if(time % 10 === 4){
+    } else if (time % 10 === 4){
+
         return unit += 'IV';
     } else if(time % 10 < 9){
         unit += 'V';
         for (var i = 0; i < (time % 10 - 5) ; i++){
             unit += 'I';
         }
+
         return unit;
     } else {
+        
         return unit += 'IX';
     }
 }
