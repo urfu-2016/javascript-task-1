@@ -10,10 +10,16 @@ function romanTime(time) {
         throw new TypeError('Неверное время');
     }
     var answer = [];
-    answer.push(romanNumber(parseInt(splittedTime[0]), 23));
-    answer.push(romanNumber(parseInt(splittedTime[1]), 59));
+    answer.push(romanNumber(filterInt(splittedTime[0]), 23));
+    answer.push(romanNumber(filterInt(splittedTime[1]), 59));
 
     return answer.join(':');
+}
+
+function filterInt(value) {
+    if(/^(\-|\+)?([0-9]+|Infinity)$/.test(value))
+        return Number(value);
+    return NaN;
 }
 
 function romanNumber(number, maxValue) {
