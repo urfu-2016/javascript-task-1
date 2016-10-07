@@ -45,7 +45,7 @@ function getRomanNumber(number) {
 
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
-    if (!isTime(time) || time.search(/\d\d:\d\d/) === -1) {
+    if (!isTime(time) || time.search(/^\d\d:\d\d$/) === -1) {
         throw new TypeError('Неверное время');
     }
 
