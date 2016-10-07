@@ -72,7 +72,7 @@ function repeat(str, n) {
 
 function deleteExcess(num) {
     if (num.length === 2 && num[1] === "N") {
-        return num[1];
+        return num[0];
     }
 
     return num;
