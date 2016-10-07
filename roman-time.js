@@ -1,5 +1,5 @@
 'use strict';
-
+console.log(romanTime('001:0'));
 /**
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
@@ -25,6 +25,9 @@ function isCorrectTime(hours, minutes) {
 function isCorrectFormat(format) {
     try {
         var data = format.split(':');
+        if (data[0].length !== 2 || data[1].length !== 2) {
+            return false;
+        }
         var hours = parseInt(data[0], 10);
         var minutes = parseInt(data[1], 10);
 
