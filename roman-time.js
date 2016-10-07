@@ -30,6 +30,8 @@ function toRoman(num) {
 function checkTime(time) {
     var cTime = time.split(":");
     if ((cTime.length !== 2) ||
+       (isNaN(Number(cTime[0]))) ||
+       (isNaN(Number(cTime[1]))) ||
        (Number(cTime[0]) < 0) ||
        (Number(cTime[0]) > 23) ||
        (Number(cTime[1]) < 0) ||
@@ -52,10 +54,7 @@ function romanTime(time) {
     }
     var hours = time.split(":")[0];
     var minutes = time.split(":")[1];
-    if ((hours.length !== 2) || 
-       (minutes.length !== 2) ||
-       (isNaN(Number(hours))) ||
-       (isNaN(Number(minutes)))){
+    if ((hours.length !== 2) || (minutes.length !== 2)) {
         throw error;
     }
     if (!checkTime(time)) {
