@@ -9,23 +9,28 @@ function romanTime(time) {
         time = time.split(':');
         if (Number(time[0]) > -1 && Number(time[0]) < 24 &&
         Number(time[1]) > -1 && Number(time[1]) < 60) {
-            if (Number(time[0]) === 0) {
-                time[0] = 'N';
-            } else {
-                time[0] = getRomeHours(time[0]);
-            }
-            if (Number(time[1]) === 0) {
-                time[1] = 'N';
-            } else {
-                time[1] = getRomeMinutes(time[1]);
-            }
-            time = time[0] + ':' + time[1];
+        checkTime(time);
+        time = time[0] + ':' + time[1];
 
-            return time;
+        return time;
         }
+
         return 'Неверное время';
     } catch (e) {
         return e.message;
+    }
+}
+
+function checkTime(time) {
+    if (Number(time[0]) === 0) {
+        time[0] = 'N';
+    } else {
+        time[0] = getRomeHours(time[0]);
+    }
+    if (Number(time[1]) === 0) {
+        time[1] = 'N';
+    } else {
+        time[1] = getRomeMinutes(time[1]);
     }
 }
 
