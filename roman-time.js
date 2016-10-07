@@ -97,6 +97,7 @@ function romanTime(time) {
     }
     hours = parseInt(hours);
     minutes = parseInt(minutes);
+    throwIfInvalid(hours, minutes);
 
     return getPartRoman(hours) + ":" + getPartRoman(minutes);
 }
