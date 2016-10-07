@@ -17,6 +17,9 @@ function isValidMinute(minute) {
 function getHHMM(time) {
     var hhmm = Object();
     var splitted = time.split(":");
+    if (splitted.length !== 2){
+        throwError();
+    }
     var hours = splitted[0];
     var minutes = splitted[1];
     hhmm.hours = hours;
