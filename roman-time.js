@@ -21,10 +21,11 @@ function romanTime(time) {
             }
             time = time[0] + ':' + time[1];
             return time;
+
         } else {
             return 'Неверное время';
         }
-    } catch(e) {
+    } catch (e) {
         return e.name + ': ' + e.message;
     }
 }
@@ -49,6 +50,7 @@ function getRomeMinutes(minutes) {
         romeMinutes += 'L';
     }
     return romeMinutes += getUnits(minutes);
+
 }
 
 function getUnits(time) {
@@ -58,6 +60,7 @@ function getUnits(time) {
             unit += 'I';
         }
         return unit;
+
     } else if (time % 10 === 4) {
         return unit += 'IV';
     } else if (time % 10 < 9) {
@@ -66,8 +69,10 @@ function getUnits(time) {
             unit += 'I';
         }
         return unit;
+
     } else {
-        return unit += 'IX';
+        unit += 'IX';
+        return unit;
     }
 }
 
