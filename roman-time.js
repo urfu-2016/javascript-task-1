@@ -20,12 +20,12 @@ function romanTime(time) {
 
 function checkFormat(time) {
     var typeError = new TypeError('Неверное время');
-    if (time === null || time === undefined) {
+    if (time === null || time === undefined ||
+    time.length !== 5) {
         throw typeError;
     }
     time = time.split(':');
-    if (isNaN(time[0]) || isNaN(time[1]) ||
-    time[0].length !== 2 ||time[1].length !== 2) {
+    if (isNaN(time[0]) || isNaN(time[1])) {
         throw typeError;
     }
 }
