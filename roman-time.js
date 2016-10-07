@@ -14,7 +14,7 @@ function romanTime(time) {
     checkTime(time);
     time = time[0] + ':' + time[1];
 
-    return time;    
+    return time;
 }
 
 function checkTime(time) {
