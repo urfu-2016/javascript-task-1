@@ -33,11 +33,15 @@ function fromArabianToRoman(arabianNumber) {
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    // Немного авторского кода и замечательной магии
+    function numberIsBetween(number, valueMin, valueMax) {
+        return valueMin <= number && number <= valueMax;
+    }
+
     var splittedTime = time.split(':');
     var hours = parseInt(splittedTime[0]);
     var minutes = parseInt(splittedTime[1]);
-    if (isNaN(hours) || isNaN(minutes) || hours > 23 || minutes > 59 || hours < 0 || minutes < 0) {
+    if (isNaN(hours) || isNaN(minutes) ||
+        !numberIsBetween(hours, 0, 23) || !numberIsBetween(minutes, 0, 59)) {
         throw new TypeError();
     }
 
@@ -45,8 +49,3 @@ function romanTime(time) {
 }
 
 module.exports = romanTime;
-
-for (var i = 0; i < 60; i++)
-{
-    console.log(fromArabianToRoman(i));
-}
