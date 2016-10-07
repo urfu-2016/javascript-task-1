@@ -53,13 +53,13 @@ function convertHighOrderDigit(digit) {
 }
 
 function convertLowerOrderDigit(digit) {
-    if (digit <= 0 && digit <= 3) {
+    if (digit >= 0 && digit <= 3) {
         return joinSymbols('', 'I', digit);
     }
     if (digit === 4) {
         return 'IV';
     }
-    if (digit <= 5 && digit <= 8) {
+    if (digit >= 5 && digit <= 8) {
         return joinSymbols('V', 'I', digit - 5);
     }
     if (digit === 9) {
