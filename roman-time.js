@@ -5,31 +5,31 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    try{
+    try {
         time = time.split(':');
-        if (Number(time[0]) > -1 && Number(time[0]) < 24 && 
-            Number(time [1]) > -1 && Number(time [1]) < 60) {
-                if (Number(time[0]) === 0) {
-                    time[0] = 'N';
-                } else {
-                    time[0] = getRomeHours(time[0]);
-                }
-                if (Number(time[1]) === 0) {
-                    time[1] = 'N';
-                } else {
-                    time[1] = getRomeMinutes(time[1]);
-                }
-                time = time[0] + ':' + time[1];
-                return time;
+        if (Number(time[0]) > -1 && Number(time[0]) < 24 &&
+            Number(time[1]) > -1 && Number(time[1]) < 60) {
+            if (Number(time[0]) === 0) {
+                time[0] = 'N';
+            } else {
+                time[0] = getRomeHours(time[0]);
+            }
+            if (Number(time[1]) === 0) {
+                time[1] = 'N';
+            } else {
+                time[1] = getRomeMinutes(time[1]);
+            }
+            time = time[0] + ':' + time[1];
+            return time;
         } else {
-            throw new TypeError('Неверное время');
+            return 'Неверное время';
         }
     } catch(e) {
         return e.name + ': ' + e.message;
     }
 }
 
-function getRomeHours(hours){
+function getRomeHours(hours) {
     var romeHours = '';
     for (var i = 0; i < Math.floor(hours / 10); i++) {
         romeHours += 'X';
@@ -37,7 +37,7 @@ function getRomeHours(hours){
     return romeHours += getUnits(hours);
 }
 
-function getRomeMinutes(minutes){
+function getRomeMinutes(minutes) {
     var romeMinutes = '';
     if (minutes < 40) {
         for (var i = 0; i < Math.floor(minutes / 10); i++) {
@@ -51,7 +51,7 @@ function getRomeMinutes(minutes){
     return romeMinutes += getUnits(minutes);
 }
 
-function getUnits(time){
+function getUnits(time) {
     var unit = '';
     if (time % 10 < 4) {
         for (var i = 0; i < time % 10 ; i++){
@@ -60,9 +60,9 @@ function getUnits(time){
         return unit;
     } else if (time % 10 === 4) {
         return unit += 'IV';
-    } else if(time % 10 < 9) {
+    } else if (time % 10 < 9) {
         unit += 'V';
-        for (var i = 0; i < (time % 10 - 5) ; i++) {
+        for (var k = 0; k < (time % 10 - 5) ; k++) {
             unit += 'I';
         }
         return unit;
