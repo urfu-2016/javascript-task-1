@@ -5,6 +5,7 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
+    var typeError = new TypeError('Неверное время')
     try {
         time = time.split(':');
         if (Number(time[0]) > -1 && Number(time[0]) < 24 &&
@@ -15,7 +16,7 @@ function romanTime(time) {
             return time;
         }
 
-        return 'Неверное время';
+        throw typeError;
     } catch (e) {
         return e.message;
     }
