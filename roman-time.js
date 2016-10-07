@@ -17,8 +17,8 @@ function romanTime(time) {
     }
     checkInput(time);
     time = time.split(':');
-    var h = parseInt(time[0]);
-    var m = parseInt(time[1]);
+    var h = Number(time[0]);
+    var m = Number(time[1]);
     checkHours(h);
     checkMinutes(m);
     var iH = ar.indexOf(h);
