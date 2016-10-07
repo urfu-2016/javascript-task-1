@@ -22,9 +22,8 @@ function romanTime(time) {
             time = time[0] + ':' + time[1];
 
             return time;
-        } else {
-            return 'Неверное время';
         }
+        return 'Неверное время';
     } catch (e) {
         return e.message;
     }
@@ -59,7 +58,7 @@ function getRomeMinutes(minutes) {
 function getUnits(time) {
     var unit = '';
     if (time % 10 < 4) {
-        for (var i = 0; i < time % 10; i++){
+        for (var i = 0; i < time % 10; i++) {
             unit += 'I';
         }
 
