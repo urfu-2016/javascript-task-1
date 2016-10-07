@@ -4,8 +4,25 @@
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
  */
+function toRoman(num) {
+    var roman = "";
+    var i = 0;
+    if (num === 0) {
+        return "N";
+    }
+    var Romanic = ["L", "XL", "X", "IX", "V", "IV", "I", "N"];
+    var Arab = [50, 40, 10, 9, 5, 4, 1, 0];
+    for (i = 0; i < Arab.length; i++) {
+        if (num >= Arab[i] && num !== 0) {
+            roman += Romanic[i];
+            num -= Arab[i];
+            i = 0;
+        }
+    }
+    return roman;
+}
+ 
 function romanTime(time) {
-    // Немного авторского кода и замечательной магии
     var error = new TypeError("Неверное время");
     if ((time === undefined) || (time === null)) {
         throw error;
@@ -22,24 +39,8 @@ function romanTime(time) {
     }
     var Romanic = ["L", "XL", "X", "IX", "V", "IV", "I", "N"];
     var Arab = [50, 40, 10, 9, 5, 4, 1, 0];
-    var hoursStr = "";
-    var minStr = "";
-    (hours === 0) ? hoursStr = "N" : hoursStr = "";
-    (min === 0) ? minStr = "N" : hoursStr = "";
-    for (var i = 0; i < Arab.length; i++) {
-        if (hours >= Arab[i] && hours != 0) {
-            hoursStr += Romanic[i];
-            hours -= Arab[i];
-            i = 0;
-        }
-    }
-    for (var i = 0; i < Arab.length; i++) {
-        if (min >= Arab[i] && min != 0) {
-            minStr += Romanic[i];
-            min -= Arab[i];
-            i = 0;
-        }
-    }
+    var hoursStr = toRoman(hours);
+    var minStr = toRoman(min);
     time = hoursStr + ":" + minStr;
     return time;
 }
