@@ -95,24 +95,14 @@ function romanTime(time) {
     var hhmm = getHHMM(time);
     var hours = hhmm.hours;
     var minutes = hhmm.minutes;
-    if (hours.length > 2 || minutes.length > 2) {
+    if (hours.length > 2 || minutes.length > 2 || !Number.isInteger(hours) || !Number.isInteger(minutes)) {
         throwError();
     }
-    hours = strToInt(hours);
-    minutes = strToInt(minutes);
+    hours = parseInt(hours);
+    minutes = parseInt(minutes);
     throwIfInvalid(hours, minutes);
 
     return getPartRoman(hours) + ":" + getPartRoman(minutes);
-}
-
-function strToInt(num) {
-    for (var digit in num) {
-        if (!(Number.isInteger(digit))) {
-            throwError();
-        }
-    }
-
-    return parseInt(num);
 }
 
 function throwIfInvalid(hours, minutes) {
