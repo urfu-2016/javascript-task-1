@@ -30,7 +30,7 @@ function convertNumber(number, maxValue) {
     if (number === 0) {
         return 'N';
     }
-    if (number > maxValue || number < 0) {
+    if (number > maxValue || number < 0 || isNaN(number)) {
         throw new TypeError();
     }
 
