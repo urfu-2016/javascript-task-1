@@ -106,12 +106,13 @@ function romanTime(time) {
 }
 
 function strToInt(num) {
-    var numToInt = parseInt(num);
-    var floatToInt = parseFloat(num);
-    if (Math.floor(floatToInt) === numToInt) {
-        return numToInt;
+    for (var digit in num) {
+        if (!(Number.isInteger(digit))) {
+            throwError();
+        }
     }
-    throwError();
+
+    return parseInt(num);
 }
 
 function throwIfInvalid(hours, minutes) {
