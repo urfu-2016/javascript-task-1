@@ -5,7 +5,7 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    if (!isCorrectFormat(time) || time.length !== 5) {
+    if (!isCorrectFormat(time)) {
         throw new TypeError('Неверное время');
     }
     var data = time.split(':');
@@ -17,24 +17,17 @@ function romanTime(time) {
 
 }
 
-function isCorrectTime(hours, minutes) {
+function isCorrectTime(format) {
 
+    var data = format.split(':');
+    var hours = parseInt(data[0], 10);
+    var minutes = parseInt(data[1], 10);
     return (hours < 24) && (minutes < 60) && (hours >= 0) && (minutes >= 0);
 }
 
 function isCorrectFormat(format) {
-    try {
-        var data = format.split(':');
-        if (data[0].length !== 2 || data[1].length !== 2) {
-            return false;
-        }
-        var hours = parseInt(data[0], 10);
-        var minutes = parseInt(data[1], 10);
 
-        return (!isNaN(hours) && !isNaN(minutes) && isCorrectTime(hours, minutes));
-    } catch (e) {
-        throw new TypeError('Неверное время');
-    }
+    return (/\d\d:\d\d/.test(format) && isCorrectTime(format));
 }
 
 function convertToRoman(value) {
