@@ -30,7 +30,7 @@ function romanTime(time) {
     }
 
     var arr = time.split(':');
-    if (arr.length != 2 || arr[0].isNaN() || arr[1].isNaN())
+    if (arr.length != 2 || arr[0].length != 2 || arr[1].length != 2)
         throw new TypeError('Неверное время');
 
     var hours = parseInt(arr[0], 10);
