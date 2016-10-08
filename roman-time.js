@@ -6,22 +6,14 @@
  */
 function romanTime(time) {
     var result = [];
-    try {
-        var timeWithoutSeparator = time.split(':');
-        var hours = parseInt(timeWithoutSeparator[0]);
-        var minutes = parseInt(timeWithoutSeparator[1]);
-        var dozens = ['', 'X', 'XX', 'XXX', 'XL', 'L'];
-        var units = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
-        var i;
+    var dozens = ['', 'X', 'XX', 'XXX', 'XL', 'L'];
+    var units = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
+    var i;
 
-        if (time.length !== 5 || isNaN(hours) || isNaN(minutes)) {
-            throw new TypeError('Неверный формат входных данных');
-        }
-        if (hours > 23 || minutes > 59) {
-            throw new TypeError('Неверный формат времени');
-        }
+    try {
+        validateData(time);
     } catch (e) {
-        console.log(e.name + ": " + e.message);
+        return e.name + ": " + e.message;
     }
 
     for (i = 0; i < dozens.length; i++) {
@@ -41,15 +33,28 @@ function romanTime(time) {
             result[4] = units[i].toString();
         }
     }
-    if (result[0]  === '' && result[1] === '') {
+    if (result[0] === '' && result[1] === '') {
         result[0] = 'N';
     }
-    if (result[3]  === '' && result[4] === '') {
+    if (result[3] === '' && result[4] === '') {
         result[3] = 'N';
     }
     result[2] = ':';
 
     return result.join("");
+}
+
+function validateData(time) {
+    var timeWithoutSeparator = time.split(':');
+    var hours = parseInt(timeWithoutSeparator[0]);
+    var minutes = parseInt(timeWithoutSeparator[1]);
+
+    if (time.length !== 5 || isNaN(hours) || isNaN(minutes)) {
+        throw new TypeError('Неверный формат входных данных');
+    }
+    if (hours > 23 || minutes > 59) {
+        throw new TypeError('Неверный формат времени');
+    }
 }
 
 module.exports = romanTime;
