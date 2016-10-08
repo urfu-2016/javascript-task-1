@@ -8,13 +8,23 @@ var ARABIAN_NUMBERS = [50, 40, 10, 9, 5, 4, 1];
 var ROMAN_NUMBERS = ["L", "XL", "X", "IX", "V", "IV", "I"];
 
 function romanTime(time) {
+    function validateForm(line) {
+        if (line.length !== 5 || line[2] !== ':') {
+            return false;
+        }
+
+        return true;
+    }
+
     var arr = time.split(':');
     var hours = parseInt(arr[0], 10);
     var minutes = parseInt(arr[1], 10);
 
-    if (hours > 23 || hours < 0 ||
-        minutes > 59 || minutes < 0 ||
-        arr.length !== 2) {
+    if (!validateForm(time) ||
+        hours > 23 ||
+        hours < 0 ||
+        minutes > 59 ||
+        minutes < 0) {
         throw new TypeError('Неверное время');
     }
 
