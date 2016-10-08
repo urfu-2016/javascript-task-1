@@ -7,7 +7,7 @@
 
 function convertNumber(arabicNumber) {
     var FIRST_DIGITS = ['', 'X', 'XX', 'XXX', 'XL', 'L'];
-    var SECONDS_DIGITS = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VII', 'IX', 'X'];
+    var SECONDS_DIGITS = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
     if (arabicNumber === 0) {
         return ('N');
     }
