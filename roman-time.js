@@ -40,7 +40,7 @@ function getRomanTime(number) {
 
 function checkValidTime(time) {
     var re = /(([0,1][0-9])|(2[0-3])):[0-5][0-9]/;
-    if (re.test(time)) {
+    if (re.test(time) && time.length === 5) {
 
         return true;
     }
