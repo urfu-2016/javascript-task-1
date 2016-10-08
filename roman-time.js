@@ -1,51 +1,58 @@
 'use strict';
 
-var romanAnalogues = { 1: "I", 4: "IV", 5: "V", 9: "IX", 10: "X", 40: "XL", 50: "L" };
+var romanAnalogues = {
+    1: "I",
+    4: "IV",
+    5: "V",
+    9: "IX",
+    10: "X",
+    40: "XL",
+    50: "L"
+};
 
 function checkTime(time, tag) {
-	var result = parseInt(time, 10);
-	
-	if (tag === "hours")
-		if (!((result <= 23) && (result >= 0)) || (isNaN(result)))
-			throw new TypeError("Incorrect time");
-	else if (tag === "minutes")
-		if (!((result <= 59) && (result >= 0)) || (isNaN(result)))
-			throw new TypeError("Incorrect time");
-	return result;
+    var result = parseInt(time, 10);
+    if ((tag === "hours") && (0 <= result) && (result <= 23))
+        return result;
+
+    if ((tag === "minutes") && (0 <= result) && (result <= 59))
+        return result;
+
+    throw new TypeError();
 }
- 
+
 function getMaximumInsideDict(elem) {
- 	var difference = Number.MAX_SAFE_INTEGER;
- 	var searchFor;
- 	var keys = Object.keys(romanAnalogues);
- 	
- 	for (var i =0; i < keys.length; i++) {
- 		var curDiff = elem - keys[i];
- 		if (curDiff < difference && curDiff >= 0) {
- 			difference = curDiff;
- 			searchFor = keys[i];
-		}
+    var difference = Number.MAX_SAFE_INTEGER;
+    var searchFor;
+    var keys = Object.keys(romanAnalogues);
 
-	}
+    for (var id = 0; id < keys.length; id++) {
+        var curDiff = elem - keys[id];
+        if (curDiff < difference && curDiff >= 0) {
+            difference = curDiff;
+            searchFor = keys[id];
+        }
 
-	return searchFor;
+    }
+
+    return searchFor;
 }
 
 function convertArabicToRoman(measure) {
-	if (measure === 0) {
- 		return "N";
- 	}
- 	var number = getMaximumInsideDict(measure);
- 	
- 	if (number == measure) {
- 		return romanAnalogues[number];
- 	}
-	return romanAnalogues[number] + convertArabicToRoman(measure - number); 
-	
+    if (measure === 0) {
+        return "N";
+    }
+    var number = getMaximumInsideDict(measure);
+
+    if (number == measure) {
+        return romanAnalogues[number];
+    }
+    return romanAnalogues[number] + convertArabicToRoman(measure - number);
+
 }
 
 function returnRomanResult(hours, minutes) {
-	return convertArabicToRoman(hours) + ":" + convertArabicToRoman(minutes);
+    return convertArabicToRoman(hours) + ":" + convertArabicToRoman(minutes);
 }
 
 /**
@@ -54,17 +61,15 @@ function returnRomanResult(hours, minutes) {
  */
 function romanTime(time) {
     try {
-    	
-		var value = time.split(":");
-		var hours = checkTime(parseInt(value[0]), "hours");
-		var minutes = checkTime(parseInt(value[1]), "minutes");
-		
-		return returnRomanResult(hours, minutes);
-	}
 
-	catch (e) {
-		throw new TypeError("Incorrect time");
-	}
+        var value = time.split(":");
+        var hours = checkTime(parseInt(value[0]), "hours");
+        var minutes = checkTime(parseInt(value[1]), "minutes");
+
+        return returnRomanResult(hours, minutes);
+    } catch (exception) {
+        throw new TypeError("Incorrect time");
+    }
 
 }
 
