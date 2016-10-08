@@ -5,7 +5,7 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    if (time === null || time === undefined || checkSpecialChars(time)) {
+    if (checkSpecialChars(time)) {
         throw new TypeError('Неверное время');
     }
     var timeParts = time.split(':');
@@ -115,7 +115,8 @@ function checkLengthPartsOfTime(timeParts) {
 }
 
 function checkSpecialChars(time) {
-    return  (time.indexOf(',') !== -1 || time.indexOf('+') !== -1);
+    return (time === null || time === undefined ||
+        time.indexOf(',') !== -1 || time.indexOf('+') !== -1);
 }
 
 module.exports = romanTime;
