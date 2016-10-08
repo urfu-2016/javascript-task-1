@@ -20,61 +20,32 @@ function getRomanTime(number) {
     if (number === 0) {
         return "N";
     }
+
+    var arrNumber = [1, 4, 5, 9, 10, 40, 50];
+    var rimNumber = ["I", "IV", "V", "IX", "X", "XL", "L"];
     var answer = "";
 
-    var _number = number;
-    var c = Math.floor(_number / 10);
-
-    if (c === 5) {
-        answer += "L";
-    } else {
-        for (var i = 0; i < c; i++) {
-            answer += "X";
+    var i = arrNumber.length - 1;
+    while (number > 0) {
+        if (number >= arrNumber[i]) {
+            answer += rimNumber[i];
+            number -= arrNumber[i];
+        } else {
+            i--;
         }
     }
-    _number -= c * 10;
-    if (_number === 9) {
-        answer += "IX";
-        return answer;
-    }
-    if (_number >= 5) {
-        answer += "V";
-        _number -= 5;
-    }
 
-    if (_number === 4) {
-        answer += "IV";
-        return answer;
-    }
-    for (var i = 0; i < _number; i++) {
-        answer += "I";
-    }
     return answer;
 }
 
-
 function checkValidTime(time) {
-    if (typeof time !== 'string' || time.length !== 5) {
-        return false;
-    }
-    if (time === '00:00') {
+    var re = /(([0,1][0-9])|(2[0-3])):[0-5][0-9]/;
+    if (re.test(time)) {
+
         return true;
     }
-    if (time[2] !== ':') {
-        return false;
-    }
-    var first = time.slice(0, 2);
-    var second = time.slice(3, 5);
 
-
-    if (isNaN(first) || isNaN(time.slice(second))) {
-        return false;
-    }
-
-    if (Number(first) < 0 || Number(first) > 23 || Number(second) < 0 || Number(second) > 59) {
-        return false;
-    }
-    return true;
+    return false;
 }
 
 module.exports = romanTime;
