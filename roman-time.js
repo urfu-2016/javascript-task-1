@@ -23,7 +23,7 @@ function checkTime(time, up, down, message) {
 
 function checkInput(timeGroups) {
     if (timeGroups === null || timeGroups.length !== 2) {
-        throw new TypeError('неверный формат ввода');
+        throw new TypeError('неверный формат чисел');
     }
     if (timeGroups[0].length !== 2 || timeGroups[1].length !== 2) {
         throw new TypeError('длина каждого числа должна быть 2');
@@ -31,6 +31,9 @@ function checkInput(timeGroups) {
 }
 
 function romanTime(time) {
+    if (time.match(/\d{2}.\d{2}/) === null) {
+        throw new TypeError('неверный формат ввода');
+    }
     var timeGroups = time.split(':');
     checkInput(timeGroups);
     var hours = parseInt(timeGroups[0]);
