@@ -20,6 +20,7 @@ function romanTime(time) {
 
 function parseTime(time) {
     var parsedTime = time.split(':');
+
     return parsedTime.map(function (e) {
 
         return Number(e);
@@ -47,8 +48,7 @@ function convertRomanToArabic(value) {
             value -= arabic[i];
             result += roman[i];
         }
-    }
-    
+    }    
     return result;
 }
 
