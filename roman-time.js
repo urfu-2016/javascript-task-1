@@ -37,8 +37,8 @@ function romanTime(time) {
         return romanTimeString;
     }
 
-    function isValid(time) {
-        if (typeof time === "string" && time.match(/^\d{1,2}:\d{1,2}$/gi) !== null) {
+    function isValid(timeString) {
+        if (typeof timeString === "string" && timeString.match(/^\d{1,2}:\d{1,2}$/gi) !== null) {
 
             return true;
         }
