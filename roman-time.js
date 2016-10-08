@@ -49,7 +49,7 @@ function convertArabicToRoman(measure) {
     if (number === measure) {
         return romanAnalogues[number];
     }
-    
+
     return romanAnalogues[number] + convertArabicToRoman(measure - number);
 
 }
