@@ -52,8 +52,7 @@ function romanTime(time) {
     if (hours >= 0 && hours <= 23 && minutes >= 0 && minutes <= 59 &&
             hours % 1 === 0 && minutes % 1 === 0) {
 
-        romanTimeString = createRomanTimeString(hours, minutes);
-        romanTimeString = deleteZeroesFromRomanTime(romanTimeString);
+        romanTimeString = deleteZeroesFromRomanTime(createRomanTimeString(hours, minutes));
 
     } else {
         throw new TypeError();
