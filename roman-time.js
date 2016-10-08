@@ -48,6 +48,8 @@ function getRoman(partOfTime) {
 function getTens(romeTime, tens) {
     if (tens === 9) {
         romeTime += 'IX';
+    } else if (tens === 4) {
+        romeTime += 'IV';
     } else if (tens / 5 >= 1) {
         romeTime += 'V';
         for (var i = 0; i < tens % 5; i++) {
