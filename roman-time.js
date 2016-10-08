@@ -9,7 +9,14 @@ var romanAnalogues = {
     40: "XL",
     50: "L"
 };
+function slicing(string) {
+    var values = string.split(":");
+    if (values.length > 2) {
+        throw new TypeError("Not a Time");
+    }
 
+    return values;
+}
 function checkTime(time, tag) {
     var result = parseInt(time, 10);
     if (isNaN(result)) {
@@ -73,7 +80,8 @@ function returnRomanResult(hours, minutes) {
 function romanTime(time) {
     try {
 
-        var value = time.split(":");
+        var value = slicing(time);
+        
         var hours = checkTime(parseInt(value[0]), "hours");
         var minutes = checkTime(parseInt(value[1]), "minutes");
 
