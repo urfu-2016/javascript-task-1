@@ -1,6 +1,6 @@
 'use strict';
 
-var romanAnalogues = {1: "I", 4: "IV",5: "V", 9: "IX", 10: "X", 40: "XL", 50: "L" };
+var romanAnalogues = { 1: "I", 4: "IV", 5: "V", 9: "IX", 10: "X", 40: "XL", 50: "L" };
 
 function checkTime(time, tag) {
 	var result = parseInt(time, 10);
@@ -21,25 +21,28 @@ function getMaximumInsideDict(elem) {
  	
  	for (var i =0; i < keys.length; i++) {
  		var curDiff = elem - keys[i];
- 		if (curDiff < difference && curDiff >= 0)
- 		{
+ 		if (curDiff < difference && curDiff >= 0) {
  			difference = curDiff;
  			searchFor = keys[i];
+		}
 
- 		}
 	}
+
 	return searchFor;
 }
 
 function convertArabicToRoman(measure) {
-	if (measure == 0)
+	if (measure === 0) {
  		return "N";
+ 	}
  	var number = getMaximumInsideDict(measure);
- 	if (number == measure)
+ 	
+ 	if (number == measure) {
  		return romanAnalogues[number];
-
- 	return romanAnalogues[number] + convertArabicToRoman(measure - number); 
-	}
+ 	}
+	return romanAnalogues[number] + convertArabicToRoman(measure - number); 
+	
+}
 
 function returnRomanResult(hours, minutes) {
 	return convertArabicToRoman(hours) + ":" + convertArabicToRoman(minutes);
@@ -51,6 +54,7 @@ function returnRomanResult(hours, minutes) {
  */
 function romanTime(time) {
     try {
+    	
 		var value = time.split(":");
 		var hours = checkTime(parseInt(value[0]), "hours");
 		var minutes = checkTime(parseInt(value[1]), "minutes");
