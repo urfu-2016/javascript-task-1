@@ -1,14 +1,12 @@
 'use strict';
 
-/**
- * @param {String} time – время в формате HH:MM (например, 09:05)
- * @returns {String} – время римскими цифрами (IX:V)
- */
+jshint maxdepth:3
+
 function inRoman(element) {
-    var arab = [1,4,5,9,10,40,50];
-    var roman = ['I','IV','V','IX','X','XL','L'];
+    var arab = [1, 4, 5, 9, 10, 40, 50];
+    var roman = ['I', 'IV', 'V', 'IX', 'X', 'XL', 'L'];
     var elementRom = '';
-    var nombElem = arab.length - 1;
+    var nombElem = 6;
     if (element === '00') {
         elementRom = 'N'
     } else {
@@ -26,11 +24,13 @@ function inRoman(element) {
 }
 
 function check(strEl, intEl, form) {
-    if (strEl.length > 2)
+    if (strEl.length > 2){
         return false;
+    }
     if(intEl > form) {
         return false;
     }
+    
     return true;
 }
 
@@ -41,9 +41,8 @@ function exept() {
         return e.message;
     }
 }
- 
+jshint maxdepth:5
 function romanTime(time) {
-    // Немного авторского кода и замечательной магии
     try {
         var arraySplitTyme = time.split(':');
         var hh = parseInt(arraySplitTyme[0], 10);
@@ -54,15 +53,17 @@ function romanTime(time) {
                     if (check(arraySplitTyme[1], mm, 59)) {
                         time = inRoman(arraySplitTyme[0]) + ':';
                         time += inRoman(arraySplitTyme[1]);
+                        
                         return time;
                     }
-                } 
+                }
             }
         }
+        
         return exept();
     } catch (e) {
-		return exept();
-	}
+        return exept();
+    }
 }
 
 module.exports = romanTime;
