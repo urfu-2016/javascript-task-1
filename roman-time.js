@@ -12,6 +12,9 @@ var romanAnalogues = {
 
 function checkTime(time, tag) {
     var result = parseInt(time, 10);
+    if (isNaN(result)) {
+        throw new TypeError("Incorrect time");
+    }
     if ((tag === "hours") && (result >= 0) && (result <= 23)) {
         return result;
     }
@@ -20,7 +23,7 @@ function checkTime(time, tag) {
         return result;
     }
 
-    throw new TypeError();
+    throw new TypeError("Incorrect time");
 }
 
 function getMaximumInsideDict(elem) {
