@@ -130,11 +130,12 @@ function translateToRome(data, currentTime, checkToHourOrMinute) {
 }
 
 function romanTime(time) {
-    var arrayOfHourAndMinute = time.split(':');
-    var hour = arrayOfHourAndMinute[0];
-    var minute = arrayOfHourAndMinute[1];
+    var arrData = time.split(':');
+    var hour = arrData[0];
+    var minute = arrData[1];
+    var checkToLen = (arrData.length !== 2) || (hour.length !== 2) || (minute.length !== 2);
 
-    if ((hour.length !== 2) || (minute.length !== 2) || uncorrectData(minute, hour)) {
+    if (checkToLen || uncorrectData(minute, hour)) {
         throw new TypeError();
     } else {
         time = '';
