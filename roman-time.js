@@ -6,11 +6,11 @@ function toRoman(num) {
     var roman = ["L", "XL", "X", "IX", "V", "IV", "I"];
     for (var i = 0; i <= decimal.length; i++) {
         while (num % decimal[i] < num) {
-          result += roman[i];
-          num -= decimal[i];
+            result += roman[i];
+            num -= decimal[i];
         }
     }
-    
+
     return result;
 }
 
@@ -23,7 +23,7 @@ function romanTime(time) {
         throw new TypeError('Input time has wrong format!');
     }
     time = time.split(':');
-    
+
     return toRoman(parseInt(time[0])) + ':' + toRoman(parseInt(time[1]));
 }
 
