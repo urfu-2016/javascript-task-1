@@ -19,7 +19,9 @@ function arabToRoman(num) {
 }
 
 function isTypeOk(time) {
-    return typeof time === 'string' || time instanceof String || time !== null || time !== undefined;
+    var isString = typeof time === 'string' || time instanceof String;
+
+    return isString || time !== null || time !== undefined;
 }
 
 function isTimeCorrect(mins, hours) {
