@@ -50,7 +50,6 @@ function convertRomanToArabic(value) {
         }
     }
 
-    
     return result;
 }
 
