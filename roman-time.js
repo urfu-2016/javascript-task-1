@@ -7,7 +7,7 @@
 function romanTime(time) {
     var timeParts = time.split(':');
     if (timeParts.length !== 2 || isNaN(parseInt(timeParts[0])) || isNaN(parseInt(timeParts[1])) ||
-parseInt(timeParts[0]) > 23 || parseInt(timeParts[1] > 59)) {
+parseInt(timeParts[0]) > 23 || parseInt(timeParts[1]) > 59 || parseInt(timeParts[0]) < 0 || parseInt([1]) < 0) {
         throw new TypeError('Неверное время');
     }
 
