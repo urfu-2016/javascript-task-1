@@ -41,21 +41,26 @@ function getMaximumInsideDict(elem) {
 }
 
 function convertArabicToRoman(measure) {
-    if (measure === 0) {
-        return "N";
-    }
     var number = getMaximumInsideDict(measure);
+
+    if (measure === 0) {
+        return "";
+    }
 
     if (number === measure) {
         return romanAnalogues[number];
     }
-
+    
     return romanAnalogues[number] + convertArabicToRoman(measure - number);
 
 }
 
 function returnRomanResult(hours, minutes) {
-    return convertArabicToRoman(hours) + ":" + convertArabicToRoman(minutes);
+    var convertedHours = (hours === 0) ? "N" : convertArabicToRoman(hours);
+    var convertedMinutes = (minutes === 0) ? "N" : convertArabicToRoman(minutes);
+
+    return convertedHours + ":" + convertedMinutes;
+    
 }
 
 /**
