@@ -1,7 +1,7 @@
 'use strict';
 
 function toRoman(num) {
-    var result = '';
+    var result = 'N';
     var decimal = [50, 40, 10, 9, 5, 4, 1];
     var roman = ["L", "XL", "X", "IX", "V", "IV", "I"];
     for (var i = 0; i <= decimal.length; i++) {
