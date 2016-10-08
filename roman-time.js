@@ -134,7 +134,7 @@ function romanTime(time) {
     var hour = arrayOfHourAndMinute[0];
     var minute = arrayOfHourAndMinute[1];
 
-    if (uncorrectData(minute, hour)) {
+    if ((hour.length !== 2) || (minute.length !== 2) || uncorrectData(minute, hour)) {
         throw new TypeError();
     } else {
         time = '';
