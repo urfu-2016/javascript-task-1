@@ -13,9 +13,10 @@ function romanTime(time) {
         conversionZeros(result);
         result[2] = ':';
     } catch (e) {
-        console.log(e.name + ": " + e.message);
+
+        return e;
     }
-    
+
     return result.join("");
 }
 
