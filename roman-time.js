@@ -9,6 +9,7 @@ var romanAnalogues = {
     40: "XL",
     50: "L"
 };
+
 function slicing(string) {
     var values = string.split(":");
     if (values.length > 2) {
@@ -17,6 +18,15 @@ function slicing(string) {
 
     return values;
 }
+function checkInteger(argument) {
+    var newValue = Number(argument);
+    if (newValue === parseInt(argument, 10)) {
+        return newValue;
+    }
+
+    throw new TypeError("Not decimal");
+}
+
 function checkTime(time, tag) {
     var result = parseInt(time, 10);
     if (isNaN(result)) {
@@ -82,8 +92,8 @@ function romanTime(time) {
 
         var value = slicing(time);
 
-        var hours = checkTime(parseInt(value[0]), "hours");
-        var minutes = checkTime(parseInt(value[1]), "minutes");
+        var hours = checkTime(checkInteger(value[0]), "hours");
+        var minutes = checkTime(checkInteger(value[1]), "minutes");
 
         return returnRomanResult(hours, minutes);
     } catch (exception) {
