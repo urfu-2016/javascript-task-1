@@ -13,25 +13,20 @@ function transform(arabicTime) {
     if ((arabicTime == '0') || (arabicTime == '00')) {
         return 'N';
     }
-    else {
-        romanTime += x[Math.floor(n / 10)];
-        n %= 10;
-        romanTime += i[n];
-        return romanTime;
-    }
+    romanTime += x[Math.floor(n / 10)];
+    n %= 10;
+    romanTime += i[n];
+    return romanTime;
     
 }
 function romanTime(time) {
     var timeList = time.split(':');
-    //лучше проверять, что содержат ровно два символа, , а потом что находятся в диапазоне - чтобы избежать корректности '12:000005';
     var isHours = (timeList[0].length == 2) & (timeList[0] <= 24) & (timeList[0] >= 0);
     var isMinutes = (timeList[1].length == 2) & (timeList[1] <= 60) & (timeList[1] >= 0);
     if  (isHours & isMinutes & isNaN(timeList[2])) {
         return transform(timeList[0]) + ':' + transform(timeList[1])
     }
-    else {
-        return new TypeError();
-    }
+    return new TypeError();
 }
 module.exports = romanTime;
 
