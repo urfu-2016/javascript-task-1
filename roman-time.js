@@ -17,29 +17,32 @@ function romanTime(time) {
 function errorChecking(time) {
     var partOfTime = time.split(':');
     for (var i = 0; i < partOfTime.length; i++) {
-        if (isNaN(parseInt(partOfTime[i])) || parseInt(partOfTime[i]) < 0 || parseInt(partOfTime[0]) > 23 || parseInt(partOfTime[1]) > 59) {
+        if (isNaN(parseInt(partOfTime[i])) || parseInt(partOfTime[i]) < 0) {
+            throw new TypeError('Неверное время');
+        }
+        if (parseInt(partOfTime[0]) > 23 || parseInt(partOfTime[1]) > 59) {
             throw new TypeError('Неверное время');
         }
     }
 }
 
 function getRoman(partOfTime) {
-    var romanTime = '';
+    var timeRoman = '';
     if (partOfTime >= 50) {
-        romanTime += 'L';
-        romanTime = getTens(romanTime, partOfTime % 50);
+        timeRoman += 'L';
+        timeRoman = getTens(timeRoman, partOfTime % 50);
     } else if (partOfTime >= 40 && partOfTime < 50) {
-        romanTime += 'XL';
-        romanTime = getTens(romanTime, partOfTime % 40);
+        timeRoman += 'XL';
+        timeRoman = getTens(timeRoman, partOfTime % 40);
     } else if (partOfTime < 40) {
         for (var i = 1; i <= partOfTime / 10; i++) {
-            romanTime += 'X';
+            timeRoman += 'X';
         }
-        romanTime = getTens(romanTime, partOfTime % 10);
+        timeRoman = getTens(timeRoman, partOfTime % 10);
     }
-    romanTime = checkNull(partOfTime, romanTime);
+    timeRoman = checkNull(partOfTime, timeRoman);
 
-    return romanTime;
+    return timeRoman;
 }
 
 function getTens(romeTime, tens) {
