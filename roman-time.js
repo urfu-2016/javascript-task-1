@@ -19,7 +19,7 @@ function arabToRoman(num) {
 }
 
 function isTypeOk(time) {
-    return typeof time === 'string' || time instanceof String;
+    return typeof time === 'string' || time instanceof String || time !== null || time !== undefined;
 }
 
 function isTimeCorrect(mins, hours) {
@@ -36,10 +36,13 @@ function isTimeInBounds(mins, hours) {
  */
 function romanTime(time) {
     var error = new TypeError('Неверное время');
-    if (time === null || time === undefined || !isTypeOk(time)) {
+    if (!isTypeOk(time)) {
         throw error;
     }
     time = time.split(':');
+    if (time[0] === '' || time[1] === '') {
+        throw error;
+    }
     var mins = Number(time[1]);
     var hours = Number(time[0]);
     if (!isTimeCorrect(mins, hours) || !isTimeInBounds(mins, hours)) {
