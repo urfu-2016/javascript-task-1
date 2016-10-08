@@ -50,7 +50,7 @@ function convertArabicToRoman(measure) {
     if (number === measure) {
         return romanAnalogues[number];
     }
-    
+
     return romanAnalogues[number] + convertArabicToRoman(measure - number);
 
 }
@@ -60,7 +60,7 @@ function returnRomanResult(hours, minutes) {
     var convertedMinutes = (minutes === 0) ? "N" : convertArabicToRoman(minutes);
 
     return convertedHours + ":" + convertedMinutes;
-    
+
 }
 
 /**
