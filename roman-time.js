@@ -1,7 +1,5 @@
 'use strict';
 
-jshint maxdepth:5;
-
 function romanTime(time) {
     try {
         var arraySplitTyme = time.split(':');
