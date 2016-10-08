@@ -9,6 +9,7 @@ function romanTime(time) {
     function deleteZeroesFromRomanTime(romanTimeString) {
         romanTimeString = romanTimeString.replace(/oo/g, "N");
         romanTimeString = romanTimeString.replace(/o/g, "");
+
         return romanTimeString;
     }
 
@@ -19,6 +20,7 @@ function romanTime(time) {
         var minutesOnes = minutes % 10;
         var romanTimeString = romanTens[(hours - hoursOnes) / 10] + romanOnes[hoursOnes] +
                 ":" + romanTens[(minutes - minutesOnes) / 10] + romanOnes[minutesOnes];
+
         return romanTimeString;
     }
 
