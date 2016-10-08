@@ -48,7 +48,8 @@ function convertRomanToArabic(value) {
             value -= arabic[i];
             result += roman[i];
         }
-    }    
+    }
+    
     return result;
 }
 
