@@ -6,16 +6,11 @@
  */
 function romanTime(time) {
     var result = [];
-    try {
-        validateData(time);
-        conversionDozens(result, time);
-        conversionUnits(result, time);
-        conversionZeros(result);
-        result[2] = ':';
-    } catch (e) {
-
-        return e;
-    }
+    validateData(time);
+    conversionDozens(result, time);
+    conversionUnits(result, time);
+    conversionZeros(result);
+    result[2] = ':';
 
     return result.join("");
 }
