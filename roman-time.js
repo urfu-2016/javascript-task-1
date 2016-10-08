@@ -45,7 +45,6 @@ function romanTime(time) {
         throw new TypeError();
     }
 
-
     return romanTimeString;
 }
 
