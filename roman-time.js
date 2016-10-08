@@ -6,8 +6,7 @@
  */
 function romanTime(time) {
     var timeParts = time.split(':');
-    if (timeParts.length !== 2 || isNaN(parseInt(timeParts[0])) || isNaN(parseInt(timeParts[1])) ||
-parseInt(timeParts[0]) > 23 || parseInt(timeParts[1]) > 59 || parseInt(timeParts[0]) < 0 || parseInt([1]) < 0) {
+    if (checkTime(timeParts) || checkDataAsTime(timeParts)) {
         throw new TypeError('Неверное время');
     }
 
@@ -85,6 +84,25 @@ function getRomanUnits(units) {
     }
 
     return romanNumberUnits;
+}
+
+function checkTime(timeParts) {
+    var isTime = timeParts.length !== 2;
+    var isNumberHour = isNaN(parseInt(timeParts[0]));
+    var isNumberMinute = isNaN(parseInt(timeParts[1]));
+
+
+    return (isTime || isNumberHour || isNumberMinute);
+
+
+}
+function checkDataAsTime(timeParts) {
+    var isHour = parseInt(timeParts[0]) > 23;
+    var isMinute = parseInt(timeParts[1]) > 59;
+    var isHourNumeral = parseInt(timeParts[0]) < 0;
+    var isMinuteNumeral = parseInt(timeParts[1]) < 0;
+
+    return (isHour || isMinute || isHourNumeral || isMinuteNumeral);
 }
 
 module.exports = romanTime;
