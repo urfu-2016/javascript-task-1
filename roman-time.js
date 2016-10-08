@@ -24,39 +24,39 @@ function romanTime(time) {
         return romanTimeString;
     }
 
-    var arrayOfDateDatas;
+    function getRomanTimeString(hours, minutes) {
+        var romanTimeString;
+        if (hours >= 0 && hours <= 23 && minutes >= 0 && minutes <= 59) {
 
-    try {
-        arrayOfDateDatas = time.split(":");
-    } catch (e1) {
+            romanTimeString = deleteZeroesFromRomanTime(createRomanTimeString(hours, minutes));
+
+        } else {
+            throw new TypeError();
+        }
+
+        return romanTimeString;
+    }
+
+    function isValid(time) {
+        if (typeof time === "string" && time.match(/^\d{1,2}:\d{1,2}$/gi) !== null) {
+
+            return true;
+        }
+
+        return false;
+    }
+
+
+    if (!isValid(time)) {
         throw new TypeError();
     }
 
-    if (arrayOfDateDatas[0] === "" || arrayOfDateDatas[1] === "") {
-        throw new TypeError();
-    }
+    var arrayOfDateDatas = time.split(":");
 
-    var hours;
-    var minutes;
+    var hours = Number(arrayOfDateDatas[0]);
+    var minutes = Number(arrayOfDateDatas[1]);
 
-    try {
-        hours = Number(arrayOfDateDatas[0]);
-        minutes = Number(arrayOfDateDatas[1]);
-    } catch (e2) {
-        throw new TypeError();
-    }
-
-
-    var romanTimeString;
-
-    if (hours >= 0 && hours <= 23 && minutes >= 0 && minutes <= 59 &&
-            hours % 1 === 0 && minutes % 1 === 0) {
-
-        romanTimeString = deleteZeroesFromRomanTime(createRomanTimeString(hours, minutes));
-
-    } else {
-        throw new TypeError();
-    }
+    var romanTimeString = getRomanTimeString(hours, minutes);
 
     return romanTimeString;
 }
