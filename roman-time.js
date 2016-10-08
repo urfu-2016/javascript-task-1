@@ -7,10 +7,10 @@
 function romanTime(time) {
 
     function deleteZeroesFromRomanTime(romanTimeString) {
-        romanTimeString = romanTimeString.replace(/oo/g, "N");
-        romanTimeString = romanTimeString.replace(/o/g, "");
+        var romanTimeStringWithoutZeroes = romanTimeString.replace(/oo/g, "N");
+        romanTimeStringWithoutZeroes = romanTimeStringWithoutZeroes.replace(/o/g, "");
 
-        return romanTimeString;
+        return romanTimeStringWithoutZeroes;
     }
 
     function createRomanTimeString(hours, minutes) {
@@ -24,12 +24,28 @@ function romanTime(time) {
         return romanTimeString;
     }
 
-    var arrayOfDateDatas = time.split(":");
+    var arrayOfDateDatas;
+
+    try {
+        arrayOfDateDatas = time.split(":");
+    } catch (e1) {
+        throw new TypeError();
+    }
+
     if (arrayOfDateDatas[0] === "" || arrayOfDateDatas[1] === "") {
         throw new TypeError();
     }
-    var hours = Number(arrayOfDateDatas[0]);
-    var minutes = Number(arrayOfDateDatas[1]);
+
+    var hours;
+    var minutes;
+
+    try {
+        hours = Number(arrayOfDateDatas[0]);
+        minutes = Number(arrayOfDateDatas[1]);
+    } catch (e2) {
+        throw new TypeError();
+    }
+
 
     var romanTimeString;
 
