@@ -12,11 +12,11 @@ var romanAnalogues = {
 
 function checkTime(time, tag) {
     var result = parseInt(time, 10);
-    if ((tag === "hours") && (0 <= result) && (23 >= result)) {
+    if ((tag === "hours") && (result >= 0) && (result <= 23)) {
         return result;
     }
 
-    if ((tag === "minutes") && (0 <= result) && (59 >= result)) {
+    if ((tag === "minutes") && (result >= 0) && (result <= 59)) {
         return result;
     }
 
@@ -48,8 +48,8 @@ function convertArabicToRoman(measure) {
 
     if (number === measure) {
         return romanAnalogues[number];
-
     }
+    
     return romanAnalogues[number] + convertArabicToRoman(measure - number);
 
 }
