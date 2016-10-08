@@ -14,8 +14,7 @@ function romanTime(time) {
             throw new TypeError('Неверный формат времени (HH:MM)', 'roman-time.js');
         }
     } catch (e) {
-
-        return e;
+        alert(e.name + ':' + e.message);
     }
     time = conversionTime(hours, mins);
 
