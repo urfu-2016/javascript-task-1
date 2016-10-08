@@ -4,8 +4,8 @@
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
  */
-var arabianNumbers = [50, 40, 10, 9, 5, 4, 1];
-var romanNumbers = ["L", "XL", "X", "IX", "V", "IV", "I"];
+var ARABIAN_NUMBERS = [50, 40, 10, 9, 5, 4, 1];
+var ROMAN_NUMBERS = ["L", "XL", "X", "IX", "V", "IV", "I"];
 
 function romanTime(time) {
     var arr = time.split(':');
@@ -20,16 +20,17 @@ function romanTime(time) {
 }
 
 function toRoman(number) {
+    number = parseInt(number, 10);
+    var result = '';
+
     if (number === 0) {
         return "N";
     }
 
-    var result = '';
-
-    for (var i = 0; i < arabianNumbers.length; i++) {
-        if (number >= arabianNumbers[i]) {
-            number -= arabianNumbers[i];
-            result += romanNumbers[i];
+    for (var i = 0; i < ARABIAN_NUMBERS.length; i++) {
+        if (number >= ARABIAN_NUMBERS[i]) {
+            number -= ARABIAN_NUMBERS[i];
+            result += ROMAN_NUMBERS[i];
             i = 0;
         }
     }
