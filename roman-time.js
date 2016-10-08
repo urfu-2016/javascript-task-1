@@ -5,13 +5,18 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
+    var result = [];
     try {
         validateData(time);
     } catch (e) {
         return e.name + ": " + e.message;
     }
+    conversionDozens(result, time);
+    conversionUnits(result, time);
+    conversionZeros(result);
+    result[2] = ':';
 
-    return conversionTime(time);
+    return result.join("");
 }
 
 function validateData(time) {
@@ -27,10 +32,8 @@ function validateData(time) {
     }
 }
 
-function conversionTime(time) {
-    var result = [];
+function conversionDozens(result, time) {
     var dozens = ['', 'X', 'XX', 'XXX', 'XL', 'L'];
-    var units = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
     var i;
 
     for (i = 0; i < dozens.length; i++) {
@@ -41,6 +44,13 @@ function conversionTime(time) {
             result[3] = dozens[i].toString();
         }
     }
+
+    return result;
+}
+
+function conversionUnits(result, time) {
+    var units = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
+    var i;
     for (i = 0; i < units.length; i++) {
         if (parseInt(time[1]) === i) {
             result[1] = units[i].toString();
@@ -49,15 +59,19 @@ function conversionTime(time) {
             result[4] = units[i].toString();
         }
     }
+
+    return result;
+}
+
+function conversionZeros(result) {
     if (result[0] === '' && result[1] === '') {
         result[0] = 'N';
     }
     if (result[3] === '' && result[4] === '') {
         result[3] = 'N';
     }
-    result[2] = ':';
 
-    return result.join("");
+    return result;
 }
 
 module.exports = romanTime;
