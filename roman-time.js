@@ -24,7 +24,7 @@ function romanTime(time) {
 
     var hours;
     var minutes;
-    
+
     try {
         var arrayOfDateDatas = time.split(":");
         hours = Number(arrayOfDateDatas[0]);
@@ -44,6 +44,7 @@ function romanTime(time) {
     } else {
         throw new TypeError();
     }
+
 
     return romanTimeString;
 }
