@@ -1,6 +1,34 @@
 'use strict';
 
-jshint maxdepth:3
+jshint maxdepth:5;
+
+function romanTime(time) {
+    try {
+        var arraySplitTyme = time.split(':');
+        var hh = parseInt(arraySplitTyme[0], 10);
+        var mm = parseInt(arraySplitTyme[1], 10);
+		if (!isNaN(hh)) {
+            if (!isNaN(mm)) {
+                if (check(arraySplitTyme[0], hh, 23)) {
+                    if (check(arraySplitTyme[1], mm, 59)) {
+                        time = inRoman(arraySplitTyme[0]) + ':';
+                        time += inRoman(arraySplitTyme[1]);
+                        
+                        return time;
+                    }
+                }
+            }
+        }
+        
+        return exept();
+    } catch (e) {
+        return exept();
+    }
+}
+
+module.exports = romanTime;
+
+jshint maxdepth:3;
 
 function inRoman(element) {
     var arab = [1, 4, 5, 9, 10, 40, 50];
@@ -41,29 +69,3 @@ function exept() {
         return e.message;
     }
 }
-jshint maxdepth:5
-function romanTime(time) {
-    try {
-        var arraySplitTyme = time.split(':');
-        var hh = parseInt(arraySplitTyme[0], 10);
-        var mm = parseInt(arraySplitTyme[1], 10);
-		if (!isNaN(hh)) {
-            if (!isNaN(mm)) {
-                if (check(arraySplitTyme[0], hh, 23)) {
-                    if (check(arraySplitTyme[1], mm, 59)) {
-                        time = inRoman(arraySplitTyme[0]) + ':';
-                        time += inRoman(arraySplitTyme[1]);
-                        
-                        return time;
-                    }
-                }
-            }
-        }
-        
-        return exept();
-    } catch (e) {
-        return exept();
-    }
-}
-
-module.exports = romanTime;
