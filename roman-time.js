@@ -15,7 +15,7 @@ function romanTime(time) {
         }
     } catch (e) {
 
-        return '0';
+        return e;
     }
     time = conversionTime(hours, mins);
 
@@ -27,13 +27,13 @@ function conversionTime(hours, mins) {
     var splitH = hours.toString().split('');
     var splitM = mins.toString().split('');
     var decs = ['N', 'X', 'XX', 'XXX', 'XL', 'L'];
-    var nums = ['N', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
+    var nums = ['N', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
     if (hours < 10 && mins <= 10) {
-        time = nums[splitH[0]] + ':' + nums[splitM[0]];
+        time = nums[hours] + ':' + nums[mins] ;
     } else if (hours < 10 && mins > 10) {
         time = nums[splitH[0]] + ':' + decs[splitM[0]] + nums[splitM[1]];
     } else if (hours >= 10 && mins <= 10) {
-        time = decs[splitH[0]] + nums[splitH[1]] + ':' + nums[splitM[0]];
+        time = decs[hours] + nums[splitH[1]] + ':' + nums[mins];
     } else if (hours >= 10 && mins > 10) {
         time = decs[splitH[0]] + nums[splitH[1]] + ':' + decs[splitM[0]] + nums[splitM[1]];
     }
