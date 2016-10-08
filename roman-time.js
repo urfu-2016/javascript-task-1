@@ -9,7 +9,7 @@ function romanTime(time) {
         throw new TypeError('Неверное время');
     }
     var timeParts = time.split(':');
-    if (checkTime(timeParts) || checkDataAsTime(timeParts)) {
+    if (checkTime(timeParts) || checkDataAsTime(timeParts) || checkLengthPartsOfTime(timeParts)) {
         throw new TypeError('Неверное время');
     }
 
@@ -89,23 +89,29 @@ function getRomanUnits(units) {
     return romanNumberUnits;
 }
 
-function checkTime(timeParts) {
+function checkDataAsTime(timeParts) {
     var isTime = timeParts.length !== 2;
     var isNumberHour = isNaN(parseInt(timeParts[0]));
     var isNumberMinute = isNaN(parseInt(timeParts[1]));
-
 
     return (isTime || isNumberHour || isNumberMinute);
 
 
 }
-function checkDataAsTime(timeParts) {
+function checkTime(timeParts) {
     var isHour = parseInt(timeParts[0]) > 23;
     var isMinute = parseInt(timeParts[1]) > 59;
     var isHourNumeral = parseInt(timeParts[0]) < 0;
     var isMinuteNumeral = parseInt(timeParts[1]) < 0;
 
     return (isHour || isMinute || isHourNumeral || isMinuteNumeral);
+}
+
+function checkLengthPartsOfTime(timeParts) {
+    var isHourTwoCorrectSymbols = timeParts[0].trim().length !== 2 || timeParts[0].length !== 2;
+    var isMinuteTwoCorrectSymbols = timeParts[1].trim().length !== 2 || timeParts[1].length !== 2;
+
+    return isHourTwoCorrectSymbols || isMinuteTwoCorrectSymbols;
 }
 
 module.exports = romanTime;
