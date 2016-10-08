@@ -81,7 +81,7 @@ function romanTime(time) {
     try {
 
         var value = slicing(time);
-        
+
         var hours = checkTime(parseInt(value[0]), "hours");
         var minutes = checkTime(parseInt(value[1]), "minutes");
 
