@@ -1,5 +1,7 @@
 ﻿"use strict";
 
+"use strict";
+
 /**
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
@@ -24,16 +26,12 @@ function romanTime(time) {
         return romanTimeString;
     }
 
-    var hours;
-    var minutes;
-
-    try {
-        var arrayOfDateDatas = time.split(":");
-        hours = Number(arrayOfDateDatas[0]);
-        minutes = Number(arrayOfDateDatas[1]);
-    } catch (e) {
+    var arrayOfDateDatas = time.split(":");
+    if (arrayOfDateDatas[0] === "" || arrayOfDateDatas[1] === "") {
         throw new TypeError();
     }
+    var hours = Number(arrayOfDateDatas[0]);
+    var minutes = Number(arrayOfDateDatas[1]);
 
     var romanTimeString;
 
