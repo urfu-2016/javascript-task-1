@@ -22,8 +22,8 @@ function isTypeOk(time) {
     return typeof time === 'string' || time instanceof String;
 }
 
-function isTimeNaN(mins, hours) {
-    return isNaN(mins) || isNaN(hours);
+function isTimeCorrect(mins, hours) {
+    return !isNaN(mins) && !isNaN(hours) && parseInt(mins) === mins && parseInt(hours) === hours;
 }
 
 function isTimeInBounds(mins, hours) {
@@ -42,7 +42,7 @@ function romanTime(time) {
     time = time.split(':');
     var mins = Number(time[1]);
     var hours = Number(time[0]);
-    if (isTimeNaN(mins, hours) || !isTimeInBounds(mins, hours)) {
+    if (!isTimeCorrect(mins, hours) || !isTimeInBounds(mins, hours)) {
         throw error;
     }
 
