@@ -71,12 +71,13 @@ function getRomanUnits(units) {
         case 4:
             romanNumberUnits = 'IV';
             break;
-        case units > 4:
-            romanNumberUnits = 'V';
-            moduloOfFive = units - 5;
-            break;
         default:
-            moduloOfFive = units;
+            if (units > 4) {
+                romanNumberUnits = 'V';
+                moduloOfFive = units - 5;
+            } else {
+                moduloOfFive = units;
+            }
     }
 
     for (var j = 0; j < moduloOfFive; j++) {
