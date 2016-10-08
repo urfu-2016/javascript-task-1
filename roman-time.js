@@ -13,7 +13,7 @@ function romanTime(time) {
     var minutes = parseInt(arr[1], 10);
 
     function validateForm() {
-        if (time.length !== 5 || time[2] !== ':' || isNaN(minutes) || isNaN(hours)) {
+        if (time.length !== 5 || time.search(/\d{2}:\d{2}/) < 0) {
             return false;
         }
 
