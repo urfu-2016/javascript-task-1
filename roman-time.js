@@ -12,11 +12,13 @@ var romanAnalogues = {
 
 function checkTime(time, tag) {
     var result = parseInt(time, 10);
-    if ((tag === "hours") && (0 <= result) && (result <= 23))
+    if ((tag === "hours") && (0 <= result) && (23 >= result)) {
         return result;
+    }
 
-    if ((tag === "minutes") && (0 <= result) && (result <= 59))
+    if ((tag === "minutes") && (0 <= result) && (59 >= result)) {
         return result;
+    }
 
     throw new TypeError();
 }
@@ -44,8 +46,9 @@ function convertArabicToRoman(measure) {
     }
     var number = getMaximumInsideDict(measure);
 
-    if (number == measure) {
+    if (number === measure) {
         return romanAnalogues[number];
+
     }
     return romanAnalogues[number] + convertArabicToRoman(measure - number);
 
