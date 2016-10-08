@@ -30,7 +30,7 @@ function romanTime(time) {
 }
 
 function checkInput(time) {
-    if (time === null || time === undefined) {
+    if (time === null || time === undefined || time.length > 4) {
         throw new TypeError();
     }
 }
