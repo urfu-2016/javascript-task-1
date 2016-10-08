@@ -32,7 +32,7 @@ function getRoman(partOfTime) {
         romanTime += 'XL';
         romanTime = getTens(romanTime, partOfTime % 40);
     } else if (partOfTime < 40) {
-        for (var i = 1; i <= partOfTime/10; i++) {
+        for (var i = 1; i <= partOfTime / 10; i++) {
             romanTime += 'X';
         }
         romanTime = getTens(romanTime, partOfTime % 10);
@@ -42,26 +42,27 @@ function getRoman(partOfTime) {
     return romanTime;
 }
 
-function getTens(romanTime, tens) {
+function getTens(romeTime, tens) {
     if (tens === 9) {
-        romanTime += 'IX'
+        romeTime += 'IX';
     } else if (tens / 5 >= 1) {
-        romanTime += 'V';
+        romeTime += 'V';
         for (var i = 0; i < tens % 5; i++) {
-            romanTime += 'I';
+            romeTime += 'I';
         }
     } else {
-        for (var i = 0; i < tens; i++) {
-            romanTime += 'I';
+        for (var k = 0; k < tens; k++) {
+            romeTime += 'I';
         }
     }
 
-    return romanTime;
+    return romeTime;
 }
 
 function checkNull(numb, rom) {
-    if (parseInt(numb) === 0)
+    if (parseInt(numb) === 0) {
         return 'N';
+    }
 
     return rom;
 }
