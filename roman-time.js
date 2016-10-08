@@ -15,21 +15,25 @@ function romanTime(time) {
     var hours = convertRomanToArabic(parsedTime[0]);
     var minutes = convertRomanToArabic(parsedTime[1]);
     return hours + ':' + minutes;
+
 }
 
 function parseTime(time) {
     var parsedTime = time.split(':');
-    return parsedTime.map(function(e) {
+    return parsedTime.map( function(e) {
         return Number(e);
     });
+
 }
 
 function isCorrectHoursRange(time) {
     return time[0] >= 0 && time[0] <= 23;
+
 }
 
 function isCorrectTimeFormat(time) {
     return /^[0-2][0-9]:[0-5][0-9]$/.test(time);
+
 }
 
 function convertRomanToArabic(value) {
@@ -46,6 +50,7 @@ function convertRomanToArabic(value) {
         }
     }
     return result;
+
 }
 
 module.exports = romanTime;
