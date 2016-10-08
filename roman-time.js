@@ -9,12 +9,8 @@ function romanTime(time) {
     var splitTime = time.split(':', 2);
     var hours = parseInt(splitTime[0]);
     var mins = parseInt(splitTime[1]);
-    try {
-        if (!isNaN(hours) && !isNaN(mins) && (hours > 23 || mins > 59 || hours < 0 || mins < 0)) {
-            throw new TypeError('Неверный формат времени (HH:MM)', 'roman-time.js');
-        }
-    } catch (e) {
-        alert(e.name + ':' + e.message);
+    if (!isNaN(hours) && !isNaN(mins) && (hours > 23 || mins > 59 || hours < 0 || mins < 0)) {
+        throw new TypeError('Неверный формат времени (HH:MM)', 'roman-time.js');
     }
     time = conversionTime(hours, mins);
 
