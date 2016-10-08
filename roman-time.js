@@ -26,7 +26,6 @@ function romanTime(time) {
 
 module.exports = romanTime;
 
-jshint maxdepth:3;
 
 function inRoman(element) {
     var arab = [1, 4, 5, 9, 10, 40, 50];
