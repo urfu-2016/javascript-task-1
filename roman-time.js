@@ -21,12 +21,18 @@ function checkTime(time, up, down, message) {
     }
 }
 
+function checkInput(timeGroups) {
+    if (timeGroups === null || timeGroups.length !== 2) {
+        throw new TypeError('неверный формат ввода');
+    }
+    if (timeGroups[0].length !== 2 || timeGroups[1].length !== 2) {
+        throw new TypeError('длина каждого числа должна быть 2');
+    }
+}
+
 function romanTime(time) {
     var timeGroups = time.split(':');
-
-    if (timeGroups === null || timeGroups.length !== 2) {
-        throw new TypeError('строка не является временем');
-    }
+    checkInput(timeGroups);
     var hours = parseInt(timeGroups[0]);
     var minutes = parseInt(timeGroups[1]);
     checkTime(hours, 24, 0, 'часы вне корректного диапозона');
