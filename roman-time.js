@@ -7,7 +7,6 @@ function isTime(time) {
     }
 }
 
-// jshint maxdepth:5
 function translationFromArabicToRoman(number) {
     if (!number) {
         return 'N';
