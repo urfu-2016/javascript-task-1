@@ -8,14 +8,14 @@ function isValiable(hour, minute) {
 
 function roman(units, dozens) {
     var res;
-    var romanUnits = ["","I","II","III","IV","V","VI","VII","VIII","IX"];
-    var romanDozens = ["","X","XX","XXX","XL","L"];
+    var romanUnits = ['','I','II','III','IV','V','VI','VII','VIII','IX'];
+    var romanDozens = ['','X','XX','XXX','XL','L'];
     if (units == 0){
-        res = "N";
+        res = 'N';
     }else{
         res = romanDozens[(units - units % 10)/10] + romanUnits[units % 10]
     }
-    res += ':'
+    res += ':';
     if (dozens == 0){
         res += 'N'
     }else{
@@ -25,13 +25,14 @@ function roman(units, dozens) {
 }
 
 function romanTime(time) {
-    time = time.split(':')
-    var hour = Number(time[0])
-    var minute = Number(time[1])
+    time = time.split(':');
+    var hour = Number(time[0]);
+    var minute = Number(time[1]);
 
-    isValiable(hour, minute)
-    time  =  roman(hour, minute)
+    isValiable(hour, minute);
+    time  =  roman(hour, minute);
     return time;
 }
 
 module.exports = romanTime;
+
