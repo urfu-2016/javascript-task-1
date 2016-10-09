@@ -26,8 +26,6 @@ function romanTime(time) {
     // Немного авторского кода и замечательной магии
     var hours = time.split(':')[0];
     var minutes = time.split(':')[1];
-    console.log(hours);
-    console.log(minutes);
     var hoursCheck = Number(hours) < 24 && Number(hours) >= 0;
     var minutesCheck = Number(minutes) >= 0 && Number(minutes) < 60;
     if (hoursCheck && minutesCheck) {
