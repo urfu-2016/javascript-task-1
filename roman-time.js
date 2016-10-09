@@ -1,10 +1,5 @@
 'use strict';
 
-/**
- * @param {String} time – время в формате HH:MM (например, 09:05)
- * @returns {String} – время римскими цифрами (IX:V)
- */
-
 function romanTime(time) {
     checkTime(time);
     var arrayOfTime = (time.toString()).split(':');
@@ -30,7 +25,7 @@ function checkTime(time) {
     }
 }
 
-function checkHour(hourArab, stringHour) {
+function checkHour(hourArab) {
     if (isNaN(hourArab) || hourArab > 23 || hourArab < 0) {
         return 1;
     }
@@ -38,7 +33,7 @@ function checkHour(hourArab, stringHour) {
     return 0;
 }
 
-function checkMinute(minArab, stringMin) {
+function checkMinute(minArab) {
     if (isNaN(minArab) || minArab > 59 || minArab < 0) {
         return 1;
     }
