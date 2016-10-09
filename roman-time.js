@@ -15,7 +15,12 @@ function romanTime(time) {
 
 function tryParse(time) {
     try {
-        return time.split(":").map(
+        var listTime = time.split(":");
+        if (listTime.length !== 2) {
+            return null;
+        }
+
+        return listTime.map(
             function (num) {
                 return parseInt(num);
             });
