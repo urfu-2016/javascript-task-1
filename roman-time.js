@@ -61,7 +61,7 @@ function isCorrectTime(splitTime) {
             return false;
         }
     }
-    if(splitTime[2] !== ':'){
+    if (splitTime[2] !== ':') {
         return false;
     }
 
