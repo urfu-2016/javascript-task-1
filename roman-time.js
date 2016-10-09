@@ -41,13 +41,15 @@ function convertValue(num) {
     return outStr;
 }
 
+function checkValidMore(num, max, min) {
+    return isNaN(num) || num > max || num < min;
+}
+
 function checkValid(time) {
     var splitTime = time.split(':');
     var hour = parseInt(splitTime[0]);
     var minute = parseInt(splitTime[1]);
-    var hourCheck = isNaN(hour) || hour > 23;
-    var minuteCheck = isNaN(minute) || minute > 59;
-    if (hourCheck || minuteCheck) {
+    if (checkValidMore(hour, 23, 0) || checkValidMore(minute, 59, 0)) {
         throw new TypeError('Error');
     }
 
