@@ -38,13 +38,15 @@ function checkValidMore(num, max, min) {
 }
 
 function checkValid(time) {
-    var splitTime = time.split(':', 1);
+    var splitTime = time.split(':', 2);
+    if (splitTime[0] === '' || splitTime[1] === '') {
+        throw new TypeError('Error');
+    }
     var hour = Number(splitTime[0]);
     var minute = Number(splitTime[1]);
     if (checkValidMore(hour, 23, 0) || checkValidMore(minute, 59, 0)) {
         throw new TypeError('Error');
     }
-
     return [hour, minute];
 }
 
