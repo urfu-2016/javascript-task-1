@@ -17,7 +17,7 @@
 дописать:
 
 ```js
-function romanTime(time) {
+function convertToRomanTime(time) {
     // Немного авторского кода и замечательной магии
     return time;
 }
