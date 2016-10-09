@@ -6,7 +6,7 @@
  */
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
-    if (!checkValidTime(time)) {
+    if (!/^(([0,1][0-9])|(2[0-3])):[0-5][0-9]$/.test(time)) {
         throw new TypeError('Wrong time');
     }
 
@@ -36,16 +36,6 @@ function getRomanTime(number) {
     }
 
     return answer;
-}
-
-function checkValidTime(time) {
-    var re = /(([0,1][0-9])|(2[0-3])):[0-5][0-9]/;
-    if (re.test(time) && time.length === 5) {
-
-        return true;
-    }
-
-    return false;
 }
 
 module.exports = romanTime;
