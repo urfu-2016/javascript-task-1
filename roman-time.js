@@ -17,12 +17,12 @@ function romanTime(time) {
         hours = parseInt(hours);
         minutes = parseInt(minutes);
     }
-    if (((hours >= 0) && (hours < 24)) && (minutes >= 0) && (minutes < 60)) {
+    if (((hours >= 0) && (hours < 24)) && ((minutes >= 0) && (minutes < 60))) {
         var romanHours = toRoman(hours);
         var romanMinutes = toRoman(minutes);
         time = romanHours + ':' + romanMinutes;
     } else {
-        throw new TypeError('неверное время');
+        throw new TypeError('Неверное время');
     }
 
     return time;
@@ -33,12 +33,12 @@ function toRoman(number) {
         return 'N';
     }
     var roman = '';
-    var decimals = [50, 40, 10, 9, 5, 4, 1];
-    var romanNumbers = ['L', 'XL', 'X', 'IX', 'V', 'IV', 'I'];
-    for (var i = 0; i < decimals.length; i++) {
-        while (number >= decimals[i]) {
-            roman += romanNumbers[i];
-            number -= decimals[i];
+    var ARABIC_NUMBERS = [50, 40, 10, 9, 5, 4, 1];
+    var ROMAN_NUMBERS = ['L', 'XL', 'X', 'IX', 'V', 'IV', 'I'];
+    for (var i = 0; i < ARABIC_NUMBERS.length; i++) {
+        while (number >= ARABIC_NUMBERS[i]) {
+            roman += ROMAN_NUMBERS[i];
+            number -= ARABIC_NUMBERS[i];
         }
     }
 
