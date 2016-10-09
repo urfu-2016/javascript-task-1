@@ -7,6 +7,7 @@ function isTime(time) {
     }
 }
 
+// jshint maxdepth:5
 function translationFromArabicToRoman(number) {
     if (!number) {
         return 'N';
@@ -18,9 +19,9 @@ function translationFromArabicToRoman(number) {
     for (i in alphabet) {
         if ({}.hasOwnProperty.call(alphabet, i)) {
             while (number >= alphabet[i]) {
-            rom = rom + i;
-            number = number - alphabet[i];
-        }
+                rom = rom + i;
+                number = number - alphabet[i];
+            }
         }
     }
 
