@@ -40,9 +40,9 @@ function conversionTime(hours, mins) {
     var time = [];
     var decs = ['', 'X', 'XX', 'XXX', 'XL', 'L'];
     var nums = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
-    time[0] = decs[hours / 10 | 0];
+    time[0] = decs[parseInt(hours / 10)];
     time[1] = nums[hours % 10];
-    time[3] = decs[mins / 10 | 0];
+    time[3] = decs[parseInt(mins / 10)];
     time[4] = nums[mins % 10];
     if (hours === 0) {
         time[0] = 'N';
