@@ -8,17 +8,17 @@ function romanTime(time) {
     rightTimeLength(time);
     var str = time.split(':');
     rightNoteTime(str);
-    var hour = parseInt(str[0]);
-    var minuts = parseInt(str[1]);
+    var hour = Number(str[0]);
+    var minuts = Number(str[1]);
     isNan(hour, minuts);
     rightTime(hour, minuts);
-    var newTime = findStr(parseInt(hour)) + ':';
-    newTime += findStr(parseInt(minuts));
+    var newTime = findStr(Number(hour)) + ':';
+    newTime += findStr(Number(minuts));
 
     return newTime;
 }
 function rightTimeLength(time) {
-    if (time.length !== 5 || time === null || typeof(time) === undefined) {
+    if (time.length !== 5 || time === null || typeof time === "undefined") {
         throw new TypeError();
     }
 }
@@ -44,7 +44,7 @@ function rightTime(hour, minuts) {
 
 function findStr(number) {
     var arr = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII',
-               'IX', 'X', 'XX', 'XXX', 'XL', 'L', 'LX'];
+               'IX', 'X', 'XX', 'XXX', 'XL', 'L'];
     var str = '';
     if ((number / 10) >= 1) {
         str += arr[Math.floor(number / 10) + 8];
