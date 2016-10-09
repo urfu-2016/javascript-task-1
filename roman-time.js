@@ -5,16 +5,25 @@
  * @returns {String} – время римскими цифрами (IX:V)
   */
 function romanTime(time) {
-    var timeParse = time.split(":").map(
-        function (num) {
-            return parseInt(num);
-        });
-    if (!checkHours(timeParse[0]) || !checkMinutes(timeParse[1])) {
+    var timeParse = tryParse(time);
+    if (!timeParse || !checkHours(timeParse[0]) || !checkMinutes(timeParse[1])) {
         throw new TypeError("Неверное время");
     }
 
     return toRoman(timeParse[0]) + ":" + toRoman(timeParse[1]);
 }
+
+function tryParse(time) {
+    try {
+        return time.split(":").map(
+            function (num) {
+                return parseInt(num);
+            });
+    } catch (e) {
+        return null;
+    }
+}
+
 var conformity = {
     1: "I", 2: "II", 3: "III", 4: "IV", 5: "V",
     6: "VI", 7: "VII", 8: "VIII", 9: "IX" };
