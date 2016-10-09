@@ -20,4 +20,16 @@ describe('Модуль roman-time', function () {
     it('должен выбрасывать исключение TypeError для 24:00', function () {
         assert.throws(romanTime.bind(null, '24:00'), TypeError);
     });
+    it('должен выбрасывать исключение TypeError для null', function () {
+        assert.throws(romanTime.bind(null, null), TypeError);
+    });
+    it('должен выбрасывать исключение TypeError для underfined', function () {
+        assert.throws(romanTime.bind(null, undefined), TypeError);
+    });
+    it('должен выбрасывать исключение TypeError для , безче', function () {
+        assert.throws(romanTime.bind(null, 'безче'), TypeError);
+    });
+    it('должен выбрасывать исключение TypeError для , безче', function () {
+        assert.throws(romanTime.bind('uu:uu'), TypeError);
+    });
 });

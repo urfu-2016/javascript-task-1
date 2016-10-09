@@ -10,6 +10,7 @@ function romanTime(time) {
     rightNoteTime(str);
     var hour = parseInt(str[0]);
     var minuts = parseInt(str[1]);
+    isNan(hour, minuts);
     rightTime(hour, minuts);
     var newTime = findStr(hour) + ':';
     newTime += findStr(minuts);
@@ -17,14 +18,23 @@ function romanTime(time) {
     return newTime;
 }
 function rightTimeLength(time) {
-    if (time.length > 5) {
+    if (time.length !== 5 || time === null || time === undefined) {
         throw new TypeError();
     }
 }
 function rightNoteTime(str) {
+    if (str.length !== 2) {
+        throw new TypeError();
+    }
     if (str[0].length !== 2 || str[1].length !== 2) {
         throw new TypeError();
     }
+}
+function isNan(hour, minuts) {
+    if (isNaN(hour) || isNaN(minuts)) {
+        throw new TypeError();
+    }
+
 }
 function rightTime(hour, minuts) {
     if (hour > 23 || hour < 0 || minuts > 59 || minuts < 0) {
