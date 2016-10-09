@@ -22,14 +22,14 @@ function romanTime(time) {
     // Немного авторского кода и замечательной магии
     var splitTime = time.split(":");
     var hourMinute = [Number(splitTime[0]), Number(splitTime[1])];
-    if(hourMinute[0] > 23 || hourMinute[1] > 59){
+    if (hourMinute[0] > 23 || hourMinute[1] > 59) {
         throw new TypeError("Bad format");
-    } 
-    if (isNaN(hourMinute[0]) || isNaN(hourMinute[1])){
+    }
+    if (isNaN(hourMinute[0]) || isNaN(hourMinute[1])) {
         throw new TypeError("Bad format");
     }
     time = arabToRoman(hourMinute[0]) + ":" + arabToRoman(hourMinute[1]);
-    
+
     return time;
 }
 
