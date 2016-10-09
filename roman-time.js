@@ -7,7 +7,7 @@
 function romanTime(time) {
     var result = [];
     validateData(time);
-    validateTime(time)
+    validateTime(time);
     conversionDozens(result, time);
     conversionUnits(result, time);
     conversionZeros(result);
