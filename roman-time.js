@@ -6,9 +6,8 @@
  */
 
 function romanTime(time) {
+    checkTime(time);
     var arrayOfTime = (time.toString()).split(':');
-    console.log(parseInt(arrayOfTime[0], 10))
-    console.log(parseInt(arrayOfTime[1], 10))
     var hourArab = parseInt(arrayOfTime[0], 10);
     var minArab = parseInt(arrayOfTime[1], 10);
     if (checkHour(hourArab) + checkMinute(minArab) > 0) {
@@ -19,6 +18,12 @@ function romanTime(time) {
     time = hourRoman + ':' + minRoman;
 
     return time;
+}
+function checkTime(time) {
+    if (time === null || time === undefined) {
+        throw new TypeError('Неверное время');
+    }
+
 }
 
 function checkHour(hourArab) {
