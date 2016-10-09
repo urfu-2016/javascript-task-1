@@ -24,10 +24,10 @@ function romanNumber(number) {
 
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
-    var hours = time.split(':')[0];
-    var minutes = time.split(':')[1];
-    var hoursCheck = Number(hours) < 24 && Number(hours) >= 0;
-    var minutesCheck = Number(minutes) >= 0 && Number(minutes) < 60;
+    var hours = parseInt(time.split(':')[0], 10);
+    var minutes = parseInt(time.split(':')[1], 10);
+    var hoursCheck = !isNaN(hours) && hours < 24 && hours >= 0;
+    var minutesCheck = !isNaN(minutes) && minutes >= 0 && minutes < 60;
     if (hoursCheck && minutesCheck) {
     	return romanNumber(Number(hours)) + ':' + romanNumber(Number(minutes));
     }
