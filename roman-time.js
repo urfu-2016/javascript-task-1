@@ -57,9 +57,12 @@ function conversionTime(hours, mins) {
 
 function isCorrectTime(splitTime) {
     for (var i = 0; i < splitTime.length; i++) {
-        if (isNaN(parseInt(splitTime[i])) && splitTime[2] !== ':' && i !== 2) {
+        if (isNaN(parseInt(splitTime[i])) && i !== 2) {
             return false;
         }
+    }
+    if(splitTime[2] !== ':'){
+        return false;
     }
 
     return true;
