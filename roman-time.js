@@ -11,7 +11,7 @@ function convertToRoman(num1, num2, time) {
         time = 'N';
     } else {
         var counter = 0;
-        while (time > 10) {
+        while (time >= 10) {
             time -= 10;
             counter++;
         }
