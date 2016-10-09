@@ -7,6 +7,7 @@
 function romanTime(time) {
     var result = [];
     validateData(time);
+    validateTime(time)
     conversionDozens(result, time);
     conversionUnits(result, time);
     conversionZeros(result);
@@ -25,6 +26,14 @@ function validateData(time) {
     if (time.length !== 5 || isNaN(hours) || isNaN(minutes) || isNaN(hoursN) || isNaN(minutesN)) {
         throw new TypeError('Неверный формат входных данных');
     }
+
+}
+
+function validateTime(time) {
+    var timeStr = time.split(':');
+    var hours = parseInt(timeStr[0]);
+    var minutes = parseInt(timeStr[1]);
+
     if (hours > 23 || minutes > 59 || timeStr[0].length !== 2 || timeStr[1].length !== 2) {
         throw new TypeError('Неверный формат времени');
     }
