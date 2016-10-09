@@ -24,20 +24,18 @@ function convertValue(num) {
     }
 
     var lists = [50, 10, 5, 1];
-    var i = 0;
     var outStr = '';
-    while (i < lists.length) {
+    for (var i = 0; i < lists.length; ) {
+        if (num < lists[i]) {
+            i++;
+            continue;
+        }
         var special = checkSpecialState(num);
         if (special !== null) {
             return outStr + special;
         }
-
         outStr += newMap[lists[i]];
         num -= lists[i];
-
-        if (num < lists[i]) {
-            i++;
-        }
     }
 
     return outStr;
