@@ -12,18 +12,31 @@ var romanHour = "";
 var romanMinute = "";
 var romanNumber = "";
 
-function isCorrect(hour, minute) {
+function isCorrectCount(hour, minute) {
     if (hour.length > 2 || minute.length > 2) {
-        return false;
-    }
-    if (parseInt(hour, 10) > 23 || parseInt(hour, 10) < 0 ||
-            parseInt(minute, 10) > 59 || parseInt(minute, 10) < 0) {
         return false;
     }
 
     return true;
 }
 
+function isCorrectHour(hour) {
+    if (hour > 23 || hour < 0 || typeof hour === "None") {
+        return false;
+    }
+
+    return true;
+}
+
+function isCorrectMinute(minute) {
+    if (minute > 59 || minute < 0 || typeof minute === "None") {
+        return false;
+    }
+
+    return true;
+}
+
+// jshint maxdepth:5
 function translate(number) {
     var i = 0;
     if (number === 0) {
@@ -50,7 +63,7 @@ function romanTime(time) {
     // Немного авторского кода и замечательной магии
     var hour = parseInt(time.split(":")[0], 10);
     var minute = parseInt(time.split(":")[1], 10);
-    if (isCorrect(hour, minute)) {
+    if (isCorrectMinute(minute) && isCorrectCount(hour, minute) && isCorrectHour(hour)) {
         romanHour = translate(hour);
         romanNumber = "";
         romanMinute = translate(minute);
