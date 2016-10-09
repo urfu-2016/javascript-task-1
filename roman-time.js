@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /**
  * @param {String} time – время в формате HH:MM (например, 09:05)
@@ -8,8 +8,6 @@ var arabic = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40, 50, 60];
 var roman = ["N", "I", "II", "III", "IV", "V", "VI", "VII", "VIII",
         "IX", "X", "XX", "XXX", "XL", "L", "LX"];
 
-var hour;
-var minute;
 var romanHour = "";
 var romanMinute = "";
 var romanNumber = "";
@@ -50,8 +48,8 @@ function translate(number) {
 
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
-    hour = parseInt(time.split(":")[0], 10);
-    minute = parseInt(time.split(":")[1], 10);
+    var hour = parseInt(time.split(":")[0], 10);
+    var minute = parseInt(time.split(":")[1], 10);
     if (isCorrect(hour, minute)) {
         romanHour = translate(hour);
         romanNumber = "";
