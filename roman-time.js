@@ -24,42 +24,32 @@ var __ROMAN_TIME = {
 };
 
 function romanTime(time) {
-    var parseTime = getParsedTime(time) || 'notTime';
+    var parseTime = getParsedTime(time);
+    var minutes = parseTime[1];
+    var hours = parseTime[0];
+    var romanTimeFormat = getRomanNum(hours) + ':' + getRomanNum(minutes);
 
-    if (parseTime !== 'notTime') {
-        var minutes = parseTime[0];
-        var hours = parseTime[1];
-        var romanTimeFormat = getRomanHours(minutes) + ':' + getRomanMinutes(hours);
-
-        return romanTimeFormat;
-    }
-    throw new TypeError('Неверное время');
+    return romanTimeFormat;
 }
 
-function getRomanHours(hh) {
-    var firstNum = Math.floor(hh / 10) * 10;
-    var secondNum = Math.floor(hh % 10);
-    var hours = __ROMAN_TIME[firstNum] + __ROMAN_TIME[secondNum];
+function getRomanNum(num) {
+    var firstNum = Math.floor(num / 10) * 10;
+    var secondNum = Math.floor(num % 10);
+    var romanNum = __ROMAN_TIME[firstNum] + __ROMAN_TIME[secondNum];
 
-    return hh === 0 ? 'N' : hours;
-}
-
-function getRomanMinutes(mm) {
-    var firstNum = Math.floor(mm / 10) * 10;
-    var secondNum = Math.floor(mm % 10);
-    var minutes = __ROMAN_TIME[firstNum] + __ROMAN_TIME[secondNum];
-
-    return mm === 0 ? 'N' : minutes;
+    return num === 0 ? 'N' : romanNum;
 }
 
 function getParsedTime(time) {
-    if (typeof time !== 'string') {
-        return false;
-    }
-    var hours = parseInt(time.split(':')[0]);
-    var minutes = parseInt(time.split(':')[1]);
+    var hours = time.split(':')[0];
+    var minutes = time.split(':')[1];
+    hours = hours.length < 3 ? Number(hours) : 24;
+    minutes = minutes.length < 3 ? Number(minutes) : 60;
+    if (checkValidTime(hours, minutes)) {
 
-    return checkValidTime(hours, minutes) ? [hours, minutes] : false;
+        return [hours, minutes];
+    }
+    throw new TypeError('Неверное время');
 }
 
 function checkValidTime(hh, mm) {
