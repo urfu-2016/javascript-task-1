@@ -1,15 +1,15 @@
 'use strict';
-function ConvertToRomanNum(num){
-	var romanNum = ['N', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XX', 'XXX', 'XL', 'L'];
-	if (num < 11) {
-		num  = romanNum[num];
-	}
-	else if (num % 10 === 0) {
-			num = romanNum[((num - num % 10) / 10 + 9)]; 
-		}
-		else { 
-			num = romanNum[((num - num % 10) / 10 + 9)] + romanNum[num % 10];
-			}
+function ConvertToRomanNum(num) {
+	var rN = ['N', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XX', 'XXX', 'XL', 'L'];
+				if (num < 11) {
+				num = rN[num];
+}
+				else if (num % 10 === 0) {
+				num = rN[((num - num % 10) / 10 + 9)]; 
+}
+				else { 
+				num = rN[((num - num % 10) / 10 + 9)] + rN[num % 10];
+}
 	return num;
 }
 /**
