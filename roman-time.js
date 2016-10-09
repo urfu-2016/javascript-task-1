@@ -1,13 +1,13 @@
 'use strict';
 
 var numbersMap = [
-    {arabic: 50, roman: 'L'},
-    {arabic: 40, roman: 'XL'},
-    {arabic: 10, roman: 'X'},
-    {arabic: 9, roman: 'IX'},
-    {arabic: 5, roman: 'V'},
-    {arabic: 4, roman: 'IV'},
-    {arabic: 1, roman: 'I'}
+    { arabic: 50, roman: 'L' },
+    { arabic: 40, roman: 'XL' },
+    { arabic: 10, roman: 'X' },
+    { arabic: 9, roman: 'IX' },
+    { arabic: 5, roman: 'V' },
+    { arabic: 4, roman: 'IV' },
+    { arabic: 1, roman: 'I' }
 ];
 
 /**
@@ -15,7 +15,6 @@ var numbersMap = [
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-
     if (!isCorrectFormat(time)) {
         throw new TypeError('Некорректный формат времни. Ожидался: HH:MM');
     }
@@ -27,10 +26,10 @@ function romanTime(time) {
     if (!isCorrectTimeRange(numbers[0], numbers[1])) {
         throw new Error('Неверный формат времени. Часы в диапозоне от 0 до 23, минуты от 0 до 59.');
     }
-    console.log(numbers);
-    var romanTime = numbers.map(convertNumberFromArabicToRoman).join(':');
 
-    return romanTime;
+    var romanNumbers = numbers.map(convertNumberFromArabicToRoman).join(':');
+
+    return romanNumbers;
 }
 
 function convertNumberFromArabicToRoman(number) {
