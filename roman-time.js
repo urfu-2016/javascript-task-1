@@ -30,6 +30,15 @@ function romanNumber(number) {
 
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
+    try {
+        var timeArray = time.split(':');
+    }
+    catch(err) {
+        throw new TypeError('Неверное время');
+    }
+    if (timeArray.length > 2) {
+        throw new TypeError('Неверное время');
+    }
     var hours = parseInt(time.split(':')[0], 10);
     var minutes = parseInt(time.split(':')[1], 10);
     var hoursCheck = !isNaN(hours) && hours < 24 && hours >= 0;
