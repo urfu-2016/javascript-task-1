@@ -23,6 +23,10 @@ function checkTime(time) {
     if (time === null || time === undefined) {
         throw new TypeError('Неверное время');
     }
+    var arrayTime = (time.toString()).split(':');
+    if ((parseInt(arrayTime[0], 10)).toString() !== arrayTime[0]) {
+        throw new TypeError('Неверное время');
+    }
 
 }
 
