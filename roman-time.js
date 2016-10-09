@@ -19,14 +19,19 @@ function romanTime(time) {
 
     return time;
 }
+
 function checkTime(time) {
-    if (time === null || time === undefined) {
+    var arrayTime = (time.toString()).split(':');
+    if (time === null || time === undefined || arrayTime.length !== 2 || time.length !== 5) {
+        throw new TypeError('Неверное время');
+    }
+    if (/[^[0-9,:]/.test(time)) {
         throw new TypeError('Неверное время');
     }
 }
 
 function checkHour(hourArab, stringHour) {
-    if (isNaN(hourArab) || hourArab > 23 || hourArab < 0 || /\s/g.test(stringHour)) {
+    if (isNaN(hourArab) || hourArab > 23 || hourArab < 0) {
         return 1;
     }
 
@@ -34,7 +39,7 @@ function checkHour(hourArab, stringHour) {
 }
 
 function checkMinute(minArab, stringMin) {
-    if (isNaN(minArab) || minArab > 59 || minArab < 0 || /\s/g.test(stringMin)) {
+    if (isNaN(minArab) || minArab > 59 || minArab < 0) {
         return 1;
     }
 
