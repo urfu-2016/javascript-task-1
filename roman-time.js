@@ -18,10 +18,10 @@ function convertTensRoman(tens) {
 
 function timeInRoman(time) {
     var splitedTime = time.split("");
-    var hourTen = convertTensRoman(parseInt(splitedTime[0]));
-    var hourUnits = convertUnitsRoman(parseInt(splitedTime[1]));
-    var minuteTen = convertTensRoman(parseInt(splitedTime[2]));
-    var minuteUnits = convertUnitsRoman(parseInt(splitedTime[3]));
+    var hourTen = convertTensRoman(parseInt(splitedTime[0], 10));
+    var hourUnits = convertUnitsRoman(parseInt(splitedTime[1], 10));
+    var minuteTen = convertTensRoman(parseInt(splitedTime[2], 10));
+    var minuteUnits = convertUnitsRoman(parseInt(splitedTime[3], 10));
     if (hourTen + hourUnits === "") {
         hourUnits = "N";
     }
@@ -34,7 +34,7 @@ function timeInRoman(time) {
 }
 
 function romanTime(time) {
-    if (!/^([0-2]?[0-3]|[0-1]?\d):[0-5]\d$/.test(time) || isNaN(time)) {
+    if (!/^([0-2]?[0-3]||[0-1]?\d):[0-5]\d$/.test(time)) {
         throw new TypeError("Неверное время");
     }
     if (time === "00:00") {
