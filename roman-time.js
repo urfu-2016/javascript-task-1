@@ -47,6 +47,7 @@ function checkValid(time) {
     if (checkValidMore(hour, 23, 0) || checkValidMore(minute, 59, 0)) {
         throw new TypeError('Error');
     }
+    
     return [hour, minute];
 }
 
