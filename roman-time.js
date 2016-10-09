@@ -50,24 +50,33 @@ function intToRomanNumber(number) {
     }
 
     var result = '';
-    var romanIntegers = [0, 1, 5, 10, 50];
-    var romanDigits = ['N', 'I', 'V', 'X', 'L'];
 
     var index = 4; // Индекс наибольшей возможной римской цифры
     while (number !== 0) {
-        var indexOfSubtrahend = getIndexOfPossibleSubtractedDigit(index);
-        while (number >= romanIntegers[index] - romanIntegers[indexOfSubtrahend]) {
-            number -= romanIntegers[index];
-            if (number < 0) {
-                number += romanIntegers[indexOfSubtrahend];
-                result += romanDigits[indexOfSubtrahend];
-            }
-            result += romanDigits[index];
-        }
+        var cycleResult = calculateNextResultDigits(number, index);
+        number = cycleResult[0];
+        result += cycleResult[1];
         index--;
     }
 
     return result;
+}
+
+function calculateNextResultDigits(number, index) {
+    var result = '';
+    var romanIntegers = [0, 1, 5, 10, 50];
+    var romanDigits = ['N', 'I', 'V', 'X', 'L'];
+    var indexOfSubtrahend = getIndexOfPossibleSubtractedDigit(index);
+    while (number >= romanIntegers[index] - romanIntegers[indexOfSubtrahend]) {
+        number -= romanIntegers[index];
+        if (number < 0) {
+            number += romanIntegers[indexOfSubtrahend];
+            result += romanDigits[indexOfSubtrahend];
+        }
+        result += romanDigits[index];
+    }
+
+    return [number, result];
 }
 
 function getIndexOfPossibleSubtractedDigit(index) {
