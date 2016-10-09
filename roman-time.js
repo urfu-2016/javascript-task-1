@@ -6,9 +6,13 @@
  */
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
-    var splitTime = time.split(':', 2);
-    var hours = parseInt(splitTime[0]);
-    var mins = parseInt(splitTime[1]);
+    var splitTime = time.split('', 5);
+    if (isCorrectTime(splitTime) && splitTime[2] === ':') {
+        var hours = parseInt(splitTime[0] + splitTime[1]);
+        var mins = parseInt(splitTime[3] + splitTime[4]);
+    } else {
+        throw new TypeError('Неверный формат времени (HH:MM)', 'roman-time.js');
+    }
     if (!isNaN(hours) && !isNaN(mins) && (hours > 23 || mins > 59 || hours < 0 || mins < 0)) {
         throw new TypeError('Неверный формат времени (HH:MM)', 'roman-time.js');
     }
@@ -24,9 +28,11 @@ function conversionTime(hours, mins) {
     var decs = ['N', 'X', 'XX', 'XXX', 'XL', 'L'];
     var nums = ['N', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
     if (hours < 10 && mins <= 10) {
-        time = nums[hours] + ':' + nums[mins];
+        time = decs[hours] + ':' + nums[mins];
+    } else if (hours < 10 && (mins % 10) === 0) {
+        time = decs[hours] + ':' + decs[mins / 10];
     } else if (hours < 10 && mins > 10) {
-        time = nums[splitH[0]] + ':' + decs[splitM[0]] + nums[splitM[1]];
+        time = decs[splitH[0]] + ':' + decs[splitM[0]] + nums[splitM[1]];
     } else if (hours >= 10 && mins <= 10) {
         time = decs[hours] + nums[splitH[1]] + ':' + nums[mins];
     } else if (hours >= 10 && mins > 10) {
@@ -34,6 +40,16 @@ function conversionTime(hours, mins) {
     }
 
     return time;
+}
+
+function isCorrectTime(splitTime) {
+    for (var i = 0; i < splitTime.length; i++) {
+        if (isNaN(parseInt(splitTime[i]))) {
+            return false;
+        }
+    }
+
+    return true;
 }
 
 module.exports = romanTime;
