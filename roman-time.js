@@ -1,14 +1,6 @@
 'use strict';
 
 /**
- * @param {Number} n – получает на вход число (например, 3)
- * @returns {Boolean} – верно ли что число целое (true)
- */
-function isInt(n) {
-    return (Number(n) === n && n % 1 === 0);
-}
-
-/**
  * @param {Number} data – получает на вход число - часы или минуты (например, 3)
  * @returns {String} – римскую версию числа (III)
  */
@@ -51,17 +43,30 @@ function isValidate(h, m) {
 }
 
 /**
+ * @param {String} data – часы или минуты (например, 12)
+ * @returns {Number} m - минуты (например, 12)
+ */
+function parseTime(data) {
+    if (data.length !== 2) {
+        throw new TypeError('Неверное время');
+    }
+    try {
+        return parseInt(data);
+    } catch (e) {
+        throw new TypeError('Неверное время');
+    }
+
+}
+
+/**
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
     var startTime = time.split(':');
-    var hours = Number(startTime[0]);
-    var minutes = Number(startTime[1]);
+    var hours = parseTime(startTime[0]);
+    var minutes = parseTime(startTime[1]);
 
-    if (!isInt(hours) || !isInt(minutes)) {
-        throw new TypeError('Неверное время');
-    }
     isValidate(hours, minutes);
 
     time = returnRomanTime(hours) + ":" + returnRomanTime(minutes);
