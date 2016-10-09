@@ -42,9 +42,9 @@ function romanTime(time) {
     }
     if (/^([0-2]?[0-3]|[0-1]?\d):[0-5]\d$/.test(time)) {
         time = time.replace(/:/, "");
-	    if (time.length == 3) {
-	        time = "0" + time;
-	    }
+        if (time.length === 3) {
+            time = "0" + time;
+        }
         time = timeInRoman(time);
     }
 
