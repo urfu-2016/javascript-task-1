@@ -27,7 +27,7 @@ function romanTime(time) {
     // Немного авторского кода и замечательной магии
     var splitTime = time.split(":");
     var hourMinute = [Number(splitTime[0]), Number(splitTime[1])];
-    if (inDistance(hourMinute[0], 0, 23) || inDistance(hourMinute[1], 0, 59) || splitTime !== 2) {
+    if (inDistance(hourMinute[0], 0, 23) || inDistance(hourMinute[1], 0, 59) || splitTime.length !== 2) {
         throw new TypeError("Bad format");
     }
     if (isNaN(hourMinute[0]) || isNaN(hourMinute[1])) {
