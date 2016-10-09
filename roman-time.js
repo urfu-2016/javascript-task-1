@@ -19,9 +19,8 @@ function errorChecking(time) {
     for (var i = 0; i < partOfTime.length; i++) {
         if (isNaN(parseInt(partOfTime[i])) || parseInt(partOfTime[i]) < 0) {
             throw new TypeError('Неверное время');
-        } else if (parseInt(partOfTime[0]) > 23 || parseInt(partOfTime[1]) > 59) {
-            throw new TypeError('Неверное время');
-        } else if (Number(partOfTime[i]) - Math.floor(partOfTime[i]) === 0) {
+        }
+        if (parseInt(partOfTime[0]) > 23 || parseInt(partOfTime[1]) > 59) {
             throw new TypeError('Неверное время');
         }
     }
@@ -66,6 +65,9 @@ function getTens(romeTime, tens) {
 }
 
 function checkNull(numb, rom) {
+    if (Number(numb) - Math.floor(numb) != 0) {
+        throw new TypeError('Неверное время');
+    }
     if (parseInt(numb) === 0) {
         return 'N';
     }
