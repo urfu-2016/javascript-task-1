@@ -18,17 +18,13 @@ function arabToRoman(num) {
     return result;
 }
 
-function isTypeOk(time) {
-    var isString = typeof time === 'string' || time instanceof String;
+function isString(time) {
+    var isNullOrUndefined = time === null || time === undefined;
 
-    return isString || time !== null || time !== undefined;
+    return typeof time === 'string' || time instanceof String || !isNullOrUndefined;
 }
 
-function isTimeCorrect(mins, hours) {
-    return !isNaN(mins) && !isNaN(hours) && parseInt(mins) === mins && parseInt(hours) === hours;
-}
-
-function isTimeInBounds(mins, hours) {
+function isTimeInBounds(hours, mins) {
     return mins >= 0 && mins < 60 && hours >= 0 && hours < 24;
 }
 
@@ -38,16 +34,18 @@ function isTimeInBounds(mins, hours) {
  */
 function romanTime(time) {
     var error = new TypeError('Неверное время');
-    if (!isTypeOk(time)) {
+    if (!isString(time)) {
         throw error;
     }
-    time = time.split(':');
-    if (time[0] === '' || time[1] === '') {
+
+    time = time.match(/^(\d{2}):(\d{2})$/);
+    if (time === null || time[1] === undefined || time[2] === undefined) {
         throw error;
     }
-    var mins = Number(time[1]);
-    var hours = Number(time[0]);
-    if (!isTimeCorrect(mins, hours) || !isTimeInBounds(mins, hours)) {
+
+    var mins = Number(time[2]);
+    var hours = Number(time[1]);
+    if (!isTimeInBounds(hours, mins)) {
         throw error;
     }
 
