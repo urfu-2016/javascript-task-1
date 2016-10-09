@@ -21,7 +21,7 @@ function tenDigits(romTime) {
                 return 'L';
         }
     } else {
-            return 'N';
+        return 'N';
     }
 }
 function oneDigits(romTime) {
@@ -49,18 +49,21 @@ function oneDigits(romTime) {
                 return 'IX';
         }
     } else {
-            return '';
-        }
+        return '';
+    }
 }
+
 /**
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
     var timeArr = time.split(':');
-    var hours = timeArr[0];
-    var minutes = timeArr[1];
-    if (timeArr.length <= 2 && time.length <= 5 && hours < 24 && minutes < 60 && hours >= 0 && minutes >= 0) {
+    if (timeArr.length <= 2 && time.length <= 5) {
+        var hours = timeArr[0];
+        var minutes = timeArr[1];
+    }
+    if (hours < 24 && minutes < 60 && hours >= 0 && minutes >= 0) {
         return tenDigits(hours) + oneDigits(hours) + ':' + tenDigits(minutes) + oneDigits(minutes);
     }
     throw new TypeError('TypeError');
