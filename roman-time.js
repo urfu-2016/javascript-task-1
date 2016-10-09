@@ -23,7 +23,7 @@ function getRomanType(number) {
 }
 
 function checkFormat(time) {
-    if (time.length > 5 || time === null || time === undefined) {
+    if (time.length !== 5 || time === null || time === undefined) {
         throw new TypeError('Неверное время');
     }
 }
@@ -51,7 +51,7 @@ function romanTime(time) {
     } catch (e) {
         console.error(e.message);
     }
-    checkHours(hours, minutes);
+    checkHours(hours);
     checkMinutes(minutes);
     time = getRomanType(hours) + ":" + getRomanType(minutes);
 
