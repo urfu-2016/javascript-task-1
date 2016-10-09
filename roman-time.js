@@ -34,7 +34,7 @@ function timeInRoman(time) {
 }
 
 function romanTime(time) {
-    if (!/^([0-2]?[0-3]|[0-1]?\d):[0-5]\d$/.test(time)) {
+    if (!/^([0-2]?[0-3]|[0-1]?\d):[0-5]\d$/.test(time) || isNaN(time)) {
         throw new TypeError("Неверное время");
     }
     if (time === "00:00") {
