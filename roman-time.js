@@ -41,7 +41,7 @@ function trySplit(time) {
     try {
         var parts = time.split(':');
         var numbers = [parseInt(parts[0]), parseInt(parts[1])];
-        if (parts.length === 2 && !isNaN(numbers[0]) && !isNaN(numbers[1])) {
+        if (parts.length === 2 && (!(isNaN(numbers[0]))) && (!(isNaN(numbers[1])))) {
             return numbers;
         }
 

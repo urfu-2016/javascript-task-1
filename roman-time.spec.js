@@ -38,10 +38,6 @@ describe('Модуль roman-time', function () {
     });
 
     it('должен выбрасывать исключение TypeError для 001:1', function () {
-        assert.throws(convertToRomanTime.bind(null, "001:1"), TypeError);
-    });
-
-    it('должен выбрасывать исключение TypeError для 9:30', function () {
-        assert.strictEqual(convertToRomanTime("90030"), "IX:XXX");
+        assert.throws(convertToRomanTime.bind(null, "111:1"), TypeError);
     });
 });
