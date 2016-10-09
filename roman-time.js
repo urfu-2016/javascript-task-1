@@ -7,8 +7,8 @@
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
     var splitTime = time.split('', 5);
-    var hours = parseInt(splitTime[0] + splitTime[1]);
-    var mins = parseInt(splitTime[3] + splitTime[4]);
+    var hours = parseInt(splitTime[0] + splitTime[1], 10);
+    var mins = parseInt(splitTime[3] + splitTime[4], 10);
     if (checkCorrectTime(splitTime, hours, mins)) {
         time = conversionTime(hours, mins);
     }
@@ -40,9 +40,9 @@ function conversionTime(hours, mins) {
     var time = [];
     var decs = ['', 'X', 'XX', 'XXX', 'XL', 'L'];
     var nums = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
-    time[0] = decs[parseInt(hours / 10)];
+    time[0] = decs[parseInt((hours / 10), 10)];
     time[1] = nums[hours % 10];
-    time[3] = decs[parseInt(mins / 10)];
+    time[3] = decs[parseInt((mins / 10), 10)];
     time[4] = nums[mins % 10];
     if (hours === 0) {
         time[0] = 'N';
