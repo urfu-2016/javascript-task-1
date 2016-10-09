@@ -16,7 +16,7 @@ function romanTime(time) {
 function tryParse(time) {
     try {
         var listTime = time.split(":");
-        if (listTime.length !== 2) {
+        if (time.length !== 5 || listTime.length !== 2) {
             return null;
         }
 
