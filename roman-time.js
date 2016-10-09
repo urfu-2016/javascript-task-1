@@ -6,20 +6,22 @@
  */
 
 function romanNumber(number) {
-	var ROMAN_NUMERALS = {50: 'L', 40: 'XL', 10: 'X', 9: 'IX', 5: 'V', 4: 'IV', 1: 'I'};
-	var result = '';
-	var numerals = Object.keys(ROMAN_NUMERALS).sort(function(a, b) {return b - a});
-	if (number == 0) {
-		return 'N';
-	}
-	var i;
-	for (i = 0; i < numerals.length; i++) {
-		while (numerals[i] <= number) {
-			result += ROMAN_NUMERALS[numerals[i]];
-			number -= numerals[i];
-		}
-	}
-	return result;
+    var ROMAN_NUMERALS = { 50: 'L', 40: 'XL', 10: 'X', 9: 'IX', 5: 'V', 4: 'IV', 1: 'I' };
+    var result = '';
+    var numerals = Object.keys(ROMAN_NUMERALS);
+    numerals = numerals.sort( function(a, b) { return b - a; } );
+    if (number === 0) {
+        return 'N';
+    }
+    var i;
+    for (i = 0; i < numerals.length; i++) {
+        while (numerals[i] <= number) {
+            result += ROMAN_NUMERALS[numerals[i]];
+            number -= numerals[i];
+        }
+    }
+    
+    return result;
 }
 
 function romanTime(time) {
@@ -31,9 +33,7 @@ function romanTime(time) {
     if (hoursCheck && minutesCheck) {
     	return romanNumber(hours) + ':' + romanNumber(minutes);
     }
-    else {
-    	throw new TypeError('Неверное время');
-    }
+        throw new TypeError('Неверное время');
 }
 
 module.exports = romanTime;
