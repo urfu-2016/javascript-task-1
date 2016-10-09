@@ -64,6 +64,9 @@ function parseTime(data) {
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
+    if (typeof time !== 'string' && time.length !== 5) {
+        throw new TypeError('Неверное время');
+    }
     var startTime = time.split(':');
     var hours = parseTime(startTime[0]);
     var minutes = parseTime(startTime[1]);
