@@ -42,10 +42,12 @@ function replaceNumbers(number) {
     var newTime = '';
 
     for (var i = 0; i < number.length; i++) {
-        if (number[i] !== '0' && number !== '00' && !isNaN(number[i])) {
+        if (number[i] !== '0' && number !== '00' && !isNaN(parseInt(number[i]))) {
             newTime += findDiget(number[i], i);
         } else if (number[i] === '0' && number[i + 1] === '0') {
             newTime += ROMAN_NUMBER_1[i];
+        } else if (isNaN(parseInt(number[i]))) {
+            throw new TypeError('Что-то пошло не по плану');
         }
     }
 
