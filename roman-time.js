@@ -7,7 +7,8 @@
 
 function convertToRoman(num1, num2, time) {
     if (time === 0) {
-        return 'N';
+
+        time = 'N';
     } else {
         var counter = 0;
         while (time > 10) {
@@ -15,11 +16,13 @@ function convertToRoman(num1, num2, time) {
             counter++;
         }
         if (counter === 0) {
-            return time = num1[time];
+            time = num1[time];
         } else {
-            return time = num2[counter] + num1[time];
+            time = num2[counter] + num1[time];
         }
     }
+
+    return time;
 }
 
 function romanTime(time) {
