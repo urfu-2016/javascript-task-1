@@ -9,7 +9,11 @@ function romanNumber(number) {
     var ROMAN_NUMERALS = { 50: 'L', 40: 'XL', 10: 'X', 9: 'IX', 5: 'V', 4: 'IV', 1: 'I' };
     var result = '';
     var numerals = Object.keys(ROMAN_NUMERALS);
-    numerals = numerals.sort( function(a, b) { return b - a; } );
+    numerals = numerals.sort(
+        function(a, b){
+            return b - a;
+        }
+    );
     if (number === 0) {
         return 'N';
     }
@@ -20,7 +24,7 @@ function romanNumber(number) {
             number -= numerals[i];
         }
     }
-    
+
     return result;
 }
 
@@ -31,9 +35,9 @@ function romanTime(time) {
     var hoursCheck = !isNaN(hours) && hours < 24 && hours >= 0;
     var minutesCheck = !isNaN(minutes) && minutes >= 0 && minutes < 60;
     if (hoursCheck && minutesCheck) {
-    	return romanNumber(hours) + ':' + romanNumber(minutes);
+        return romanNumber(hours) + ':' + romanNumber(minutes);
     }
-        throw new TypeError('Неверное время');
+    throw new TypeError('Неверное время');
 }
 
 module.exports = romanTime;
