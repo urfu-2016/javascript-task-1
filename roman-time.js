@@ -38,7 +38,7 @@ function checkValidMore(num, max, min) {
 }
 
 function checkValid(time) {
-    var splitTime = time.split(':');
+    var splitTime = time.split(':', 1);
     var hour = Number(splitTime[0]);
     var minute = Number(splitTime[1]);
     if (checkValidMore(hour, 23, 0) || checkValidMore(minute, 59, 0)) {
