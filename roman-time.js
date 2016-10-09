@@ -26,7 +26,7 @@ function romanTime(time) {
         minutes = splitTime[1];
     }
     // Немного авторского кода и замечательной магии
-    if ((hours >= 0) && (isNaN(time)) && (hours < 24) && (minutes >= 0) && (minutes < 60) &&
+    if ((hours >= 0) && (time.length <= 5) && (hours < 24) && (minutes >= 0) && (minutes < 60) &&
         (splitTime[0].length === 2) && splitTime[1].length === 2) {
         time = arabtoroman(hours) + ':' + arabtoroman(minutes);
 
