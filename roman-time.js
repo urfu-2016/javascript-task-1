@@ -28,7 +28,6 @@ function checkCorrectTime(splitTime, hours, mins) {
 }
 
 function isCorrectRange(hours, mins) {
-    
     if (hours > 23 || mins > 59 || hours < 0 || mins < 0) {
 
         return true;
