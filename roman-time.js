@@ -20,7 +20,8 @@ function checkSpecialState(num) {
 
 function convertValue(num) {
     if (num in newMap) {
-        return newMap[num]}
+        return newMap[num];
+    }
 
     var lists = [50, 10, 5, 1];
     var i = 0;
@@ -46,11 +47,10 @@ function checkValid(time) {
     var splitTime = time.split(':');
     var hour = parseInt(splitTime[0]);
     var minute = parseInt(splitTime[1]);
-    if (hour > 23 || minute > 59 || isNaN(hour) || isNaN(minute) ||
-        hour < 0 || minute < 0) {
+    if (23 < hour < 0 || isNaN(hour) || isNaN(minute) || 59 < minute < 0) {
         throw new TypeError('Error');
     }
-    
+
     return [hour, minute];
 }
 
