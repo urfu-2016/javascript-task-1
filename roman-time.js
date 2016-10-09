@@ -23,6 +23,9 @@ function errorChecking(time) {
         if (parseInt(partOfTime[0]) > 23 || parseInt(partOfTime[1]) > 59) {
             throw new TypeError('Неверное время');
         }
+        if (Number(partOfTime[i])-Math.floor(partOfTime[i]) === 0) {
+            throw new TypeError('Неверное время');
+        }
     }
 }
 
