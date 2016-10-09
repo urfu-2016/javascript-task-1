@@ -10,9 +10,7 @@ function romanTime(time) {
     var hours = parseInt(partsTime[0], 10);
     var minutes = parseInt(partsTime[1], 10);
 
-    if (typeof hours !== 'number' || typeof minutes !== 'number' ||
-        partsTime[0].length !== 2 || partsTime[1].length !== 2 ||
-        hours < 0 || hours >= 24 || minutes < 0 || minutes >= 60) {
+   if (!/^(?:[0-2][0-3]|[0-1][0-9]):[0-5][0-9]$/.test(time)) {
         throw new TypeError('Неверное время');
     }
 
