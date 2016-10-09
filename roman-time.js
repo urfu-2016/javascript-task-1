@@ -27,9 +27,9 @@ function conversionTime(hours, mins) {
     var decs = ['N', 'X', 'XX', 'XXX', 'XL', 'L'];
     var nums = ['N', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
     if (hours < 10 && mins <= 10) {
-        time = decs[hours] + ':' + nums[mins];
+        time = nums[hours] + ':' + nums[mins];
     } else if (hours < 10 && (mins % 10) === 0) {
-        time = decs[hours] + ':' + decs[mins / 10];
+        time = nums[hours] + ':' + decs[mins / 10];
     } else if (hours < 10 && mins > 10) {
         time = decs[splitH[0]] + ':' + decs[splitM[0]] + nums[splitM[1]];
     } else if (hours >= 10 && mins <= 10) {
