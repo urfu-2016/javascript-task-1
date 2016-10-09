@@ -6,9 +6,8 @@
  */
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
-    var partsTime = time.split(':');
-    var hours = parseInt(partsTime[0], 10);
-    var minutes = parseInt(partsTime[1], 10);
+    var hours = Number(time.slice(0, 2));
+    var minutes = Number(time.slice(3, 5));
 
    if (!/^(?:[0-2][0-3]|[0-1][0-9]):[0-5][0-9]$/.test(time)) {
         throw new TypeError('Неверное время');
