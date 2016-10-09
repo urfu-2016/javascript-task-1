@@ -7,7 +7,7 @@
 
 function convertDecade(num) {
     if (num === 4) {
-        return 'IL';
+        return 'XL';
     }
 
     return 'L'.repeat(Math.floor(num / 5)) + 'X'.repeat(num % 5);
