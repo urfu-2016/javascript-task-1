@@ -18,12 +18,16 @@ function arabToRoman(number) {
     return firstDigit[fDigit] + secondDigit[sDigit];
 }
 
+function inDistance(value, min, max){
+    
+    return (value < min || value > max);
+}
 
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
     var splitTime = time.split(":");
     var hourMinute = [Number(splitTime[0]), Number(splitTime[1])];
-    if (hourMinute[0] > 23 || hourMinute[1] > 59) {
+    if (inDistance(hourMinute[0],0,23) || inDistance(hourMinute[1], 0, 59)) {
         throw new TypeError("Bad format");
     }
     if (isNaN(hourMinute[0]) || isNaN(hourMinute[1])) {
