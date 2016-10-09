@@ -30,23 +30,15 @@ function romanNumber(number) {
 
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
-    var timeArray;
-    try {
-        timeArray = time.split(':');
-    } catch (err) {
+    var formatCheck = /^[0-2][0-9]:[0-5][0-9]$/.test(time);
+    if (!formatCheck) {
         throw new TypeError('Неверное время');
     }
-    if (timeArray.length !== 2) {
-        throw new TypeError('Неверное время');
-    }
-    if (timeArray[0].length !== 2 || timeArray[1].length !== 2) {
-        throw new TypeError('Неверное время');
-    }
+    var timeArray = time.split(':');
     var hours = parseInt(timeArray[0], 10);
     var minutes = parseInt(timeArray[1], 10);
-    var hoursCheck = !isNaN(hours) && hours < 24 && hours >= 0;
-    var minutesCheck = !isNaN(minutes) && minutes >= 0 && minutes < 60;
-    if (hoursCheck && minutesCheck) {
+    var hoursCheck = hours <= 23 && hours >= 0;
+    if (hoursCheck) {
         return romanNumber(hours) + ':' + romanNumber(minutes);
     }
     throw new TypeError('Неверное время');
