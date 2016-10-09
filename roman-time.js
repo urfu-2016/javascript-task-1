@@ -16,14 +16,17 @@ function romanTime(time) {
 }
 
 function validateData(time) {
-    var timeWithoutSeparator = time.split(':');
-    var hours = parseInt(timeWithoutSeparator[0]);
-    var minutes = parseInt(timeWithoutSeparator[1]);
 
-    if (time.length !== 5 || isNaN(hours) || isNaN(minutes)) {
+    var timeStr = time.split(':');
+    var hours = parseInt(timeStr[0]);
+    var minutes = parseInt(timeStr[1]);
+    var hoursNumb = parseInt(timeStr[0][1]);
+    var minutesNumb = parseInt(timeStr[1][1]);
+
+    if (time.length !== 5 || isNaN(hours) || isNaN(minutes) || isNaN(hoursNumb) || isNaN(minutesNumb)) {
         throw new TypeError('Неверный формат входных данных');
     }
-    if (hours > 23 || minutes > 59) {
+    if (hours > 23 || minutes > 59 || timeStr[0].length !== 2 || timeStr[1].length !== 2) {
         throw new TypeError('Неверный формат времени');
     }
 }
