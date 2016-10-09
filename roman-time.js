@@ -28,6 +28,8 @@ function convertToRomanTime(time) {
     if (intParts === null || !isCorrectTimeParts(intParts) || time.length !== 5) {
         throw new TypeError("Неправильные входные данные");
     }
+    if (typeof intParts[0] !== 'number' || typeof intParts[1] !== 'number')
+        throw new TypeError();
 
     return convertToRoman(intParts[0]) + ":" + convertToRoman(intParts[1]);
 }
