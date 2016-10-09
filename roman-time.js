@@ -10,7 +10,7 @@ function romanNumber(number) {
     var result = '';
     var numerals = Object.keys(ROMAN_NUMERALS);
     numerals = numerals.sort(
-        function(a, b){
+        function (a, b) {
             return b - a;
         }
     );
