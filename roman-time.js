@@ -28,8 +28,13 @@ function checkCorrectTime(splitTime, hours, mins) {
 }
 
 function isCorrectRange(hours, mins) {
+    
+    if (hours > 23 || mins > 59 || hours < 0 || mins < 0) {
 
-    return hours > 23 || mins > 59 || hours < 0 || mins < 0 ? true : false;
+        return true;
+    }
+
+    return false;
 }
 
 function conversionTime(hours, mins) {
