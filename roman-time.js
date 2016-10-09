@@ -22,7 +22,26 @@ function getRomanType(number) {
     return time;
 }
 
+function checkFormat(time) {
+    if (time.length > 5 || time === null || time === undefined) {
+        throw new TypeError('Неверное время');
+    }
+}
+
+function checkHours(hours) {
+    if (hours >= 24 || hours < 0 || isNaN(hours)) {
+        throw new TypeError('Неверное время');
+    }
+}
+
+function checkMinutes(minutes) {
+    if (minutes >= 60 || minutes < 0 || isNaN(minutes)) {
+        throw new TypeError('Неверное время');
+    }
+}
+
 function romanTime(time) {
+    checkFormat(time);
     var numbers = time.split(":");
     var hours = 0;
     var minutes = 0;
@@ -32,9 +51,8 @@ function romanTime(time) {
     } catch (e) {
         console.error(e.message);
     }
-    if (hours >= 24 || hours < 0 || minutes >= 60 || minutes < 0) {
-        throw new TypeError('Неверное время');
-    }
+    checkHours(hours, minutes);
+    checkMinutes(minutes);
     time = getRomanType(hours) + ":" + getRomanType(minutes);
 
     return time;
