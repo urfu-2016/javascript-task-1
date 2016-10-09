@@ -24,7 +24,7 @@ function checkInputValidity(time) {
 }
 
 function checkInputFormat(time) {
-    if (time.length !== 5 || time.indexOf(':') !== 2) {
+    if (!/^\d\d:\d\d$/.test(time)) {
         throw new TypeError('Неверное время');
     }
 }
