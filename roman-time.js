@@ -9,8 +9,8 @@ function romanTime(time) {
     var hours = Number(time.slice(0, 2));
     var minutes = Number(time.slice(3, 5));
 
-   if (!/^(?:[0-2][0-3]|[0-1][0-9]):[0-5][0-9]$/.test(time)) {
-        throw new TypeError('Неверное время');
+    if (!/^(?:[0-2][0-3]|[0-1][0-9]):[0-5][0-9]$/.test(time)) {
+       throw new TypeError('Неверное время');
     }
 
     return getRoman(hours) + ":" + getRoman(minutes);
