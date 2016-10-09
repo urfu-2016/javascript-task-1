@@ -25,13 +25,13 @@ function convertToRoman(number) {
  */
 function convertToRomanTime(time) {
     var parts = time.split(":");
-    var numbers = [parseInt(parts[0]), parseInt(parts[1])];
+    var numbers = [Number(parts[0]), Number(parts[1])];
     var incorrect = isNaN(numbers[0]) || isNaN(numbers[1]) || (!(isCorrectTimeParts(numbers)));
     if (time.length !== 5 || incorrect) {
         throw new TypeError("Неправильные входные данные");
     }
 
-    return convertToRoman(numbers[0]) + ":" + convertToRoman(numbers[1]);
+    return convertToRoman(Number(numbers[0])) + ":" + convertToRoman(Number(numbers[1]));
 }
 
 /**
