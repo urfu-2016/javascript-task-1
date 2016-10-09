@@ -65,7 +65,7 @@ function getTens(romeTime, tens) {
 }
 
 function checkNull(numb, rom) {
-    if (Number(numb) - Math.floor(numb) != 0) {
+    if (Number(numb) - Math.floor(numb) !== 0) {
         throw new TypeError('Неверное время');
     }
     if (parseInt(numb) === 0) {
