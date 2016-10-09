@@ -25,7 +25,7 @@ function convertValue(num) {
 
     var lists = [50, 10, 5, 1];
     var outStr = '';
-    for (var i = 0; i < lists.length; ) {
+    for (var i = 0; i < lists.length;) {
         if (num < lists[i]) {
             i++;
             continue;
