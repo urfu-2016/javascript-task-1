@@ -9,11 +9,9 @@ var newMap = { '0': 'N', '1': 'I', '5': 'V', '10': 'X', '50': 'L' };
 
 
 function checkSpecialState(num) {
-    if (num+1 in newMap) {
-
+    if (num + 1 in newMap) {
         return 'I' + newMap[num + 1];
-    } else if (num+10 in newMap) {
-
+    } else if (num + 10 in newMap) {
         return 'I' + newMap[num + 10];
     }
 
@@ -29,7 +27,7 @@ function convertValue(num) {
     var outStr = '';
     while (i < lists.length) {
         var special = checkSpecialState(num);
-        if (special != null){
+        if (special !== null) {
             return outStr + special;
         }
 
@@ -44,18 +42,22 @@ function convertValue(num) {
     return outStr;
 }
 
-
-function romanTime(time) {
+function checkValid(time) {
     var splitTime = time.split(':');
     var hour = parseInt(splitTime[0]);
     var minute = parseInt(splitTime[1]);
     if (hour > 23 || minute > 59 || isNaN(hour) || isNaN(minute) ||
-    hour < 0 || minute < 0) {
+        hour < 0 || minute < 0) {
         throw new TypeError('Error');
     }
-    var newHour = convertValue(hour);
-    var newMinute = convertValue(minute);
-    // Немного авторского кода и замечательной магии
+    
+    return [hour, minute];
+}
+
+function romanTime(time) {
+    var parsed = checkValid(time);
+    var newHour = convertValue(parsed[0]);
+    var newMinute = convertValue(parsed[1]);
 
     return newHour + ':' + newMinute;
 }
