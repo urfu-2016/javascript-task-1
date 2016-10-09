@@ -4,11 +4,11 @@ function convertToRomanNum(num) {
     var rNty = ['XX', 'XXX', 'XL', 'L'];
     if (num < 11) {
         num = rN[num];
-}
+    }
     else {
         var tempNum = rNty[(num - num % 10) / 10 - 2];
         if (num % 10 !== 0) {
-        num = tempNum + rN[num % 10];
+            num = tempNum + rN[num % 10];
     }
     }
 
@@ -24,10 +24,9 @@ function romanTime(time) {
     var hours = parseInt(arrHoursMin[0], 10);
     var min = parseInt(arrHoursMin[1], 10);
     if (hours < 24 && min < 60) {
-    hours = convertToRomanNum(hours);
-    min = convertToRomanNum(min);
-    time = hours + ':' + min;
-	
+        hours = convertToRomanNum(hours);
+        min = convertToRomanNum(min);
+        time = hours + ':' + min;
     return time;
     }
     throw new TypeError('Неверное время');
