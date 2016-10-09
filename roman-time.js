@@ -10,7 +10,7 @@ function romanTime(time) {
     var arrayOfTime = (time.toString()).split(':');
     var hourArab = parseInt(arrayOfTime[0], 10);
     var minArab = parseInt(arrayOfTime[1], 10);
-    if (checkHour(hourArab) + checkMinute(minArab) > 0) {
+    if (checkHour(hourArab, arrayOfTime[0]) + checkMinute(minArab, arrayOfTime[1]) > 0 ) {
         throw new TypeError('Неверное время');
     }
     var hourRoman = hourChange(hourArab);
@@ -23,23 +23,18 @@ function checkTime(time) {
     if (time === null || time === undefined) {
         throw new TypeError('Неверное время');
     }
-    var arrayTime = (time.toString()).split(':');
-    if ((parseInt(arrayTime[0], 10)).toString() !== arrayTime[0]) {
-        throw new TypeError('Неверное время');
-    }
-
 }
 
-function checkHour(hourArab) {
-    if (isNaN(hourArab) || hourArab > 23 || hourArab < 0) {
+function checkHour(hourArab, stringHour) {
+    if (isNaN(hourArab) || hourArab > 23 || hourArab < 0 || /\s/g.test(stringHour)) {
         return 1;
     }
 
     return 0;
 }
 
-function checkMinute(minArab) {
-    if (isNaN(minArab) || minArab > 59 || minArab < 0) {
+function checkMinute(minArab, stringMin) {
+    if (isNaN(minArab) || minArab > 59 || minArab < 0 || /\s/g.test(stringMin)) {
         return 1;
     }
 
