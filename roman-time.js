@@ -17,7 +17,7 @@ function romanTime(time) {
 }
 
 function checkCorrectTime(splitTime, hours, mins) {
-    if (!isCorrectTime(splitTime) && splitTime[2] === ':') {
+    if (!isCorrectTime(splitTime) && splitTime[2] === ':' || splitTime.length !== 5) {
         throw new TypeError('Неверный формат времени (HH:MM)', 'roman-time.js');
     }
     if (isNaN(hours) || isNaN(mins) || isCorrectRange(hours, mins)) {
@@ -28,12 +28,8 @@ function checkCorrectTime(splitTime, hours, mins) {
 }
 
 function isCorrectRange(hours, mins) {
-    if (hours > 23 || mins > 59 || hours < 0 || mins < 0) {
 
-        return true;
-    }
-
-    return false;
+    return hours > 23 || mins > 59 || hours < 0 || mins < 0 ? true : false;
 }
 
 function conversionTime(hours, mins) {
