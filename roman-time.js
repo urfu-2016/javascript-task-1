@@ -17,12 +17,11 @@ function arabtoroman(arab) {
  */
 
 function romanTime(time) {
-    // Немного авторского кода и замечательной магии
-
     var splitTime = time.split(':');
     var hours = splitTime[0];
     var minutes = splitTime[1];
-    if ((hours >= 0) && (hours < 24) && (minutes >= 0) && (minutes < 60) &&
+    // Немного авторского кода и замечательной магии
+    if ((hours >= 0) && (isNaN(time)) && (hours < 24) && (minutes >= 0) && (minutes < 60) &&
         (splitTime[0].length === 2) && splitTime[1].length === 2) {
         time = arabtoroman(hours) + ':' + arabtoroman(minutes);
 
@@ -30,5 +29,4 @@ function romanTime(time) {
     }
     throw new TypeError();
 }
-
 module.exports = romanTime;
