@@ -38,8 +38,8 @@ function checkValidMore(num, max, min) {
 }
 
 function checkValid(time) {
-    var splitTime = time.split(':', 2);
-    if (splitTime[0] === '' || splitTime[1] === '') {
+    var splitTime = time.split(':');
+    if (splitTime[0] === '' || splitTime[1] === '' || splitTime.length > 2) {
         throw new TypeError('Error');
     }
     var hour = Number(splitTime[0]);
