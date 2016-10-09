@@ -6,7 +6,45 @@
  */
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
-    return time;
+    var partsTime = time.split(':');
+    var hours = parseInt(partsTime[0], 10);
+    var minutes = parseInt(partsTime[1], 10);
+
+    if (typeof hours !== 'number' || typeof minutes !== 'number') {
+        throw new TypeError('Неверное время');
+    }
+
+    if (partsTime[0].length !== 2 || partsTime[1].length !== 2) {
+        throw new TypeError('Неверное время');
+    }
+
+    if (hours < 0 || hours >= 24 || minutes < 0 || minutes >= 60) {
+        throw new TypeError('Неверное время');
+    }
+
+    return getRoman(hours) + ":" + getRoman(minutes);
 }
 
+function getRoman(number) {
+    if (number === 0) {
+        return 'N';
+    }
+
+    var ROMAN_DICTIONARY = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XX', 'XXX', 'XL', 'L'];
+    var ARABIAN_DICTIONARY = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40, 50];
+    var result = '';
+
+    var i = ARABIAN_DICTIONARY.length - 1;
+
+    while (number > 0){
+        if (number >= ARABIAN_DICTIONARY[i]) {
+            result = result + ROMAN_DICTIONARY[i];
+            number = number - ARABIAN_DICTIONARY[i];
+        }
+        else {
+            i--;
+        }
+    }
+    return result;
+}
 module.exports = romanTime;
