@@ -20,11 +20,20 @@ function checkCorrectTime(splitTime, hours, mins) {
     if (!isCorrectTime(splitTime) && splitTime[2] === ':') {
         throw new TypeError('Неверный формат времени (HH:MM)', 'roman-time.js');
     }
-    if (isNaN(hours) || isNaN(mins) || hours > 23 || mins > 59 || hours < 0 || mins < 0) {
+    if (isNaN(hours) || isNaN(mins) || isCorrectRange(hours, mins)) {
         throw new TypeError('Неверный формат времени (HH:MM)', 'roman-time.js');
     }
 
     return true;
+}
+
+function isCorrectRange(hours, mins) {
+    if (hours > 23 || mins > 59 || hours < 0 || mins < 0) {
+
+        return true;
+    }
+
+    return false;
 }
 
 function conversionTime(hours, mins) {
