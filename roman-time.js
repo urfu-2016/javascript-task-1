@@ -26,7 +26,7 @@ function romanTime(time) {
             RomHour += rom_mind[n];
             hour -= arab_mind[n];
         }
-        else n--;
+        else n--;//второй цикл
     }
     var k = arab_mind.length-1;
        while (min>0) {
