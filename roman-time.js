@@ -10,7 +10,7 @@ function romanTime(time) {
     var arrayOfTime = (time.toString()).split(':');
     var hourArab = parseInt(arrayOfTime[0], 10);
     var minArab = parseInt(arrayOfTime[1], 10);
-    if (checkHour(hourArab, arrayOfTime[0]) + checkMinute(minArab, arrayOfTime[1]) > 0 ) {
+    if (checkHour(hourArab, arrayOfTime[0]) + checkMinute(minArab, arrayOfTime[1]) > 0) {
         throw new TypeError('Неверное время');
     }
     var hourRoman = hourChange(hourArab);
