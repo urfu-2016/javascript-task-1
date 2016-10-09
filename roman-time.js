@@ -43,14 +43,8 @@ function checkMinutes(minutes) {
 function romanTime(time) {
     checkFormat(time);
     var numbers = time.split(":");
-    var hours = 0;
-    var minutes = 0;
-    try {
-        hours = parseInt(numbers[0]);
-        minutes = parseInt(numbers[1]);
-    } catch (e) {
-        console.error(e.message);
-    }
+    var hours = parseInt(numbers[0]);
+    var minutes = parseInt(numbers[1]);
     checkHours(hours);
     checkMinutes(minutes);
     time = getRomanType(hours) + ":" + getRomanType(minutes);
