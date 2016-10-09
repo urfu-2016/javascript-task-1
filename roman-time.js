@@ -18,7 +18,7 @@ function romanTime(time) {
     return newTime;
 }
 function rightTimeLength(time) {
-    if (time.length !== 5 || time === null || time === undefined) {
+    if (time.length > 5 || time === null || time === undefined) {
         throw new TypeError();
     }
 }
@@ -26,7 +26,7 @@ function rightNoteTime(str) {
     if (str.length !== 2) {
         throw new TypeError();
     }
-    if (str[0].length !== 2 || str[1].length !== 2) {
+    if (str[1].length !== 2) {
         throw new TypeError();
     }
 }
