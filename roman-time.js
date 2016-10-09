@@ -5,40 +5,32 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 
-var newMap = { '0': 'N', '1': 'I', '5': 'V', '10': 'X', '50': 'L' };
-
-
-function checkSpecialState(num) {
-    if (num + 1 in newMap) {
-        return 'I' + newMap[num + 1];
-    } else if (num + 10 in newMap) {
-        return 'I' + newMap[num + 10];
+function convertDecade(num) {
+    if (num === 4) {
+        return 'IL';
     }
 
-    return null;
+    return 'L'.repeat(Math.floor(num / 5)) + 'X'.repeat(num % 5);
 }
 
+function convertUnits(num) {
+    if (num === 9) {
+        return 'IX';
+    }
+    if (num === 4) {
+        return 'IV';
+    }
+
+    return 'V'.repeat(Math.floor(num / 5)) + 'I'.repeat(num % 5);
+}
+
+
 function convertValue(num) {
-    if (num in newMap) {
-        return newMap[num];
+    if (num === 0) {
+        return 'N';
     }
 
-    var lists = [50, 10, 5, 1];
-    var outStr = '';
-    for (var i = 0; i < lists.length;) {
-        if (num < lists[i]) {
-            i++;
-            continue;
-        }
-        var special = checkSpecialState(num);
-        if (special !== null) {
-            return outStr + special;
-        }
-        outStr += newMap[lists[i]];
-        num -= lists[i];
-    }
-
-    return outStr;
+    return convertDecade(Math.floor(num / 10)) + convertUnits(num % 10);
 }
 
 function checkValidMore(num, max, min) {
