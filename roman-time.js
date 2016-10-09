@@ -34,14 +34,17 @@ function timeInRoman(time) {
 }
 
 function romanTime(time) {
-    if (!/^([0-2][0-3]|[0-1]\d):[0-5]\d$/.test(time)) {
+    if (!/^([0-2]?[0-3]|[0-1]?\d):[0-5]\d$/.test(time)) {
         throw new TypeError("Неверное время");
     }
     if (time === "00:00") {
         time = "N:N";
     }
-    if (/^([0-2][0-3]|[0-1]\d):[0-5]\d$/.test(time)) {
+    if (/^([0-2]?[0-3]|[0-1]?\d):[0-5]\d$/.test(time)) {
         time = time.replace(/:/, "");
+	    if (time.length == 3) {
+	        time = "0" + time;
+	    }
         time = timeInRoman(time);
     }
 
