@@ -5,16 +5,31 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    if (time.length > 5 || time === "24:00") {
-        throw new TypeError();
-    }
+    rightTimeLength(time);
     var str = time.split(':');
+    rightNoteTime(str);
     var hour = parseInt(str[0]);
     var minuts = parseInt(str[1]);
+    rightTime(hour, minuts);
     var newTime = findStr(hour) + ':';
     newTime += findStr(minuts);
 
     return newTime;
+}
+function rightTimeLength(time) {
+    if (time.length > 5) {
+        throw new TypeError();
+    }
+}
+function rightNoteTime(str) {
+    if (str[0].length !== 2 || str[1].length !== 2) {
+        throw new TypeError();
+    }
+}
+function rightTime(hour, minuts) {
+    if (hour > 23 || hour < 0 || minuts > 59 || minuts < 0) {
+        throw new TypeError();
+    }
 }
 
 function findStr(number) {
