@@ -10,11 +10,11 @@ var tensRoman = ["", "X", "XX", "XXX", "XL", "L"];
 
 function convertUnitsRoman(units) {
     return unitsRoman[units];
-};
+}
 
 function convertTensRoman(tens) {
     return tensRoman[tens];
-};
+}
 
 function timeInRoman(time) {
     var splitedTime = time.split("");
@@ -29,7 +29,6 @@ function timeInRoman(time) {
         minuteUnits = "N";
     }
     time = hourTen + hourUnits + ":" + minuteTen + minuteUnits;
-    
     return time;
 }
 
@@ -37,15 +36,14 @@ function romanTime(time) {
     if (!/^([0-2][0-3]|[0-1]\d):[0-5]\d$/.test(time)) {
         throw new TypeError("Неверное время");
     }
-    if (time == "00:00") {
+    if (time === "00:00") {
         time = "N:N";
     }
     if (/^([0-2][0-3]|[0-1]\d):[0-5]\d$/.test(time)) {
         time = time.replace(/:/, "");
         time = timeInRoman(time);
     }
-	
-    return time;
+	return time;
 }
 
 
