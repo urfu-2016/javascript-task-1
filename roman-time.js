@@ -47,7 +47,8 @@ function isValidate(h, m) {
  * @returns {Number} m - минуты (например, 12)
  */
 function parseTime(data) {
-    if (data.length !== 2) {
+    var re = /^\d\d$/;
+    if (!re.test(data)) {
         throw new TypeError('Неверное время');
     }
     try {
