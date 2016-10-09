@@ -5,23 +5,18 @@
  * @returns {String} - римское число соответствующее number
  */
 function convertToRoman(number) {
-    var arabic = [1, 4, 5, 9, 10, 40, 50];
-    var roman = ['I', 'IV', 'V', 'IX', 'X', 'XL', 'L'];
-    if (number === 0) {
-        return 'N';
-    }
-    var answer = '';
-    var i = arabic.length - 1;
-    while (number > 0) {
-        if (number >= arabic[i]) {
-            answer += roman[i];
-            number -= arabic[i];
-        } else {
-            i--;
-        }
+    var decades = ["", "X", "XX", "XXX", "XL", "L"];
+    var units = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"];
+    var numberString = number.toString();
+    if (numberString.length > 2) {
+        throw new TypeError("Не двухразрядное");
+    } else if (numberString.length === 2) {
+        return decades[parseInt(numberString[0])] + units[parseInt(numberString[1])];
+    } else if (numberString.length === 1 && number !== 0) {
+        return units[parseInt(numberString[0])];
     }
 
-    return answer;
+    return "N";
 }
 
 /**
@@ -29,33 +24,15 @@ function convertToRoman(number) {
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function convertToRomanTime(time) {
-    var intParts = trySplit(time);
-    if (intParts === null || !isCorrectTimeParts(intParts) || time.length !== 5) {
+    var parts = time.split(":");
+    var numbers = [parseInt(parts[0]), parseInt(parts[1])];
+    var incorrect = isNaN(numbers[0]) || isNaN(numbers[1]) || (!(isCorrectTimeParts(numbers)));
+    if (time.length !== 5 || incorrect) {
         throw new TypeError("Неправильные входные данные");
     }
 
-    return convertToRoman(intParts[0]) + ":" + convertToRoman(intParts[1]);
+    return convertToRoman(numbers[0]) + ":" + convertToRoman(numbers[1]);
 }
-
-/**
- * @param {String} time - некоторая строка
- * @returns {Array<int> | null} - возвращает массив из двух чисел, если time
- *          является строкой в формате HH:MM, иначе null
- */
-function trySplit(time) {
-    try {
-        var parts = time.split(':');
-        var numbers = [parseInt(parts[0]), parseInt(parts[1])];
-        if (parts.length === 2 && (!(isNaN(numbers[0]))) && (!(isNaN(numbers[1])))) {
-            return numbers;
-        }
-
-        return null;
-    } catch (e) {
-        return null;
-    }
-}
-
 
 /**
  * @param {Array<int>} intParts - массив чисел длины 2
