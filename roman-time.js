@@ -7,10 +7,9 @@
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
     var splitTime = time.split('', 5);
-    if (isCorrectTime(splitTime) && splitTime[2] === ':') {
-        var hours = parseInt(splitTime[0] + splitTime[1]);
-        var mins = parseInt(splitTime[3] + splitTime[4]);
-    } else {
+    var hours = parseInt(splitTime[0] + splitTime[1]);
+    var mins = parseInt(splitTime[3] + splitTime[4]);
+    if (!isCorrectTime(splitTime) && splitTime[2] === ':') {
         throw new TypeError('Неверный формат времени (HH:MM)', 'roman-time.js');
     }
     if (!isNaN(hours) && !isNaN(mins) && (hours > 23 || mins > 59 || hours < 0 || mins < 0)) {
@@ -44,7 +43,7 @@ function conversionTime(hours, mins) {
 
 function isCorrectTime(splitTime) {
     for (var i = 0; i < splitTime.length; i++) {
-        if (isNaN(parseInt(splitTime[i]))) {
+        if (isNaN(parseInt(splitTime[i])) && i !== 2) {
             return false;
         }
     }
