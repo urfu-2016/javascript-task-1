@@ -47,8 +47,8 @@ function checkValid(time) {
     var splitTime = time.split(':');
     var hour = parseInt(splitTime[0]);
     var minute = parseInt(splitTime[1]);
-    var hourCheck = isNaN(hour) || hour < 0 || hour > 23;
-    var minuteCheck = isNaN(minute) || minute < 0 || minute > 59;
+    var hourCheck = isNaN(hour) || hour > 23;
+    var minuteCheck = isNaN(minute) || minute > 59;
     if (hourCheck || minuteCheck) {
         throw new TypeError('Error');
     }
