@@ -24,7 +24,7 @@ function romanTime(time) {
     });
 
     if (!isCorrectTimeRange(numbers[0], numbers[1])) {
-        throw new TypeError('Неверный формат времени. Часы в диапозоне от 0 до 23, минуты от 0 до 59.');
+        throw new TypeError('Неверный формат времени.');
     }
 
     var romanNumbers = numbers.map(convertNumberFromArabicToRoman).join(':');
