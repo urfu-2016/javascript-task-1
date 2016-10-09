@@ -5,6 +5,9 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
+    checkInputValidity(time);
+    checkInputFormat(time);
+
     var parsedInput = tryParseInput(time);
     var hours = parsedInput[0];
     var minutes = parsedInput[1];
@@ -12,72 +15,67 @@ function romanTime(time) {
     return intToRomanNumber(hours) + ':' + intToRomanNumber(minutes);
 }
 
-function tryParseInput(time) {
+function checkInputValidity(time) {
     try {
         time.toString();
     } catch (err) {
-        throw TypeError('Некорректный ввод');
+        throw new TypeError('Некорректный ввод');
     }
+}
+
+function checkInputFormat(time) {
     if (time.length !== 5 || time.indexOf(':') === -1) {
-        throw TypeError('Неправильный формат времени');
+        throw new TypeError('Неправильный формат времени');
     }
+}
 
+function tryParseInput(time) {
     var splittedString = time.split(':');
-    if (splittedString.length !== 2) {
-        throw TypeError('Неправильный формат времени');
+    if (splittedString.length === 2) {
+        var hours = parseInt(splittedString[0]);
+        var minutes = parseInt(splittedString[1]);
+        var isHoursCorrect = !isNaN(hours) && hours >= 0 && hours <= 23;
+        var isMinutesCorrect = !isNaN(minutes) && minutes >= 0 && minutes <= 59;
+        if (isHoursCorrect && isMinutesCorrect) {
+            return [hours, minutes];
+        }
     }
 
-    var hours = parseInt(splittedString[0]);
-    var minutes = parseInt(splittedString[1]);
-    if (isNaN(hours) || isNaN(minutes) || hours < 0 || hours > 23 || minutes < 0 || minutes > 59) {
-        throw TypeError('Неправильный формат времени');
-    }
-
-    return [hours, minutes];
+    throw new TypeError('Неправильный формат времени');
 }
 
 function intToRomanNumber(number) {
-    // TODO: Придумать что-нибудь с именованием, ибо оно не очень
-    var result = '';
     if (number === 0) {
-        result = 'N';
-    } else {
-        var indexOfBiggestPossibleRomanDigit = 4;
-        var romanInts = [0, 1, 5, 10, 50];
-        var romanDigits = ['N', 'I', 'V', 'X', 'L'];
-        while (number !== 0) {
-            var indexOfPossibleDigitBefore = getIndexOfPossibleDigitBefore(indexOfBiggestPossibleRomanDigit);
-            while (number >= romanInts[indexOfBiggestPossibleRomanDigit] - romanInts[indexOfPossibleDigitBefore]) {
-                number -= romanInts[indexOfBiggestPossibleRomanDigit];
-                if (number < 0) {
-                    if (indexOfPossibleDigitBefore === 0)
-                        throw new Error('Какая-то чушь произошла');
-                    result += romanDigits[indexOfPossibleDigitBefore];
-                    number += romanInts[indexOfPossibleDigitBefore];
-                }
-                result += romanDigits[indexOfBiggestPossibleRomanDigit];
+        return 'N';
+    }
+
+    var result = '';
+    var romanIntegers = [0, 1, 5, 10, 50];
+    var romanDigits = ['N', 'I', 'V', 'X', 'L'];
+
+    var index = 4; // Индекс наибольшей возможной римской цифры
+    while (number !== 0) {
+        var indexOfSubtrahend = getIndexOfPossibleSubtractedDigit(index);
+        while (number >= romanIntegers[index] - romanIntegers[indexOfSubtrahend]) {
+            number -= romanIntegers[index];
+            if (number < 0) {
+                number += romanIntegers[indexOfSubtrahend];
+                result += romanDigits[indexOfSubtrahend];
             }
-            indexOfBiggestPossibleRomanDigit--;
+            result += romanDigits[index];
         }
+        index--;
     }
 
     return result;
 }
 
-function getIndexOfPossibleDigitBefore(index) {
+function getIndexOfPossibleSubtractedDigit(index) {
     if (index > 1) {
-        return index - index%2 - 1;
+        return index - index % 2 - 1;
     }
 
     return 0;
-}
-
-function checkIntToRomanNumber() {
-    var i = 0;
-    while (i <= 60) {
-        console.log('' + i + ' = ' + intToRomanNumber(i));
-        i++;
-    }
 }
 
 module.exports = romanTime;
