@@ -29,7 +29,7 @@ function timeInRoman(time) {
         minuteUnits = "N";
     }
     time = hourTen + hourUnits + ":" + minuteTen + minuteUnits;
-    
+
     return time;
 }
 
@@ -44,7 +44,7 @@ function romanTime(time) {
         time = time.replace(/:/, "");
         time = timeInRoman(time);
     }
-   	
+
     return time;
 }
 
