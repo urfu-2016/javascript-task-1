@@ -20,10 +20,7 @@ function tryParse(time) {
             return null;
         }
 
-        return listTime.map(
-            function (num) {
-                return parseInt(num);
-            });
+        return listTime.map(Number);
     } catch (e) {
         return null;
     }
