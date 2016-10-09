@@ -30,6 +30,9 @@ function romanNumber(number) {
 
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
+    if (time.length !== 5) {
+    	throw new TypeError('Неверное время');
+    }
     var timeArray;
     try {
         timeArray = time.split(':');
