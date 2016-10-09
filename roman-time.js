@@ -9,21 +9,20 @@ function romanTime(time) {
     var hour = null;
     var minute = null;
     var arrayOfTime = time.split(':');
-    var hourArabic = parseInt(arrayOfTime[0], 10);
-    var minuteArabic = parseInt(arrayOfTime[1], 10);
-    if (parseInt(arrayOfTime[0], 10) === 0) {
-        hour = 'N';
-    } else if (isNaN(hourArabic) || hourArabic > 23 || hourArabic < 0) {
+    var hourArab = parseInt(arrayOfTime[0], 10);
+    var minArab = parseInt(arrayOfTime[1], 10);
+    if (isNaN(hourArab) || hourArab > 23 || hourArab < 0 || isNaN(minArab) || minArab > 59 || minArab < 0) {
         throw new TypeError('Неверное время');
-    } else if (!isNaN(parseInt(arrayOfTime[0], 10))) {
-        hour = parseNumber(parseInt(arrayOfTime[0], 10));
     }
-    if (parseInt(arrayOfTime[1], 10) === 0) {
-        minute = 'N';
-    } else if (isNaN(minuteArabic) || minuteArabic > 59 || minuteArabic < 0) {
-        throw new TypeError('Неверное время');
+    if (hourArab === 0) {
+        hour = 'N';
     } else {
-        minute = parseNumber(parseInt(arrayOfTime[1], 10));
+        hour = parseNumber(hourArab);
+    }
+    if (minArab === 0) {
+        minute = 'N';
+    } else {
+        minute = parseNumber(minArab);
     }
     time = hour + ':' + minute;
 
@@ -32,15 +31,13 @@ function romanTime(time) {
 
 function parseNumber(num) {
     var arabic = [1, 4, 5, 9, 10, 40, 50];
-    var romanic = ['I','IV','V','IX','X','XL','L'];
+    var romanic = ['I', 'IV', 'V', 'IX', 'X', 'XL', 'L'];
     var roman = '';
-    var index = arabic.length - 1;
-    while(num > 0)
-    {
-        if(num >= arabic[index])
-        {
-            roman += romanic[index];
+    var index = arabic.length -1;
+    while (num !== 0) {
+        if (num >= arabic[index]) {
             num -= arabic[index];
+            roman += romanic[index];
         } else {
             index--;
         }
