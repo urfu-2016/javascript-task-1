@@ -12,8 +12,8 @@ function romanTime(time) {
     var minuts = parseInt(str[1]);
     isNan(hour, minuts);
     rightTime(hour, minuts);
-    var newTime = findStr(hour) + ':';
-    newTime += findStr(minuts);
+    var newTime = findStr(parseInt(hour)) + ':';
+    newTime += findStr(parseInt(minuts));
 
     return newTime;
 }
