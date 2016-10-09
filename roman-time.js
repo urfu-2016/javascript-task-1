@@ -5,8 +5,8 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 
-var romanNumbers1 = ['N', 'X', 'XX', 'XXX', 'XL', 'L'];
-var romanNumbers2 = ['N', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
+var ROMAN_NUMBER_1 = ['N', 'X', 'XX', 'XXX', 'XL', 'L'];
+var ROMAN_NUMBER_2 = ['N', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
 
 function romanTime(time) {
 
@@ -15,51 +15,54 @@ function romanTime(time) {
     }
 
     var curentTime = time.split(':');
-    var curentHour = curentTime[0];
-    var curentMinute = curentTime[1];
+    var hour = curentTime[0];
+    var minute = curentTime[1];
 
-    checkAdditionly(curentHour, curentMinute);
+    validateTime(hour, minute);
 
-    var romanHour = replaceNumbers(curentHour);
-    var romanMinute = replaceNumbers(curentMinute);
+    var romanHour = replaceNumbers(hour);
+    var romanMinute = replaceNumbers(minute);
     time = romanHour + ':' + romanMinute;
 
     return time;
 }
 
-function checkAdditionly(curentHour, curentMinute) {
-    if (parseInt(curentHour) > 23 || curentHour.length !== 2) {
+// Функция validateTime(h, m) делает дополнительные проверки формата полей часы/минуты
+function validateTime(h, m) {
+    if (parseInt(h) > 23 || h.length !== 2) {
         throw new TypeError('Неверный формат поля "hours"');
-    } else if (parseInt(curentMinute) > 59 || curentHour.length !== 2) {
+    } else if (parseInt(m) > 59 || m.length !== 2) {
         throw new TypeError('Неверный формат поля "minutes"');
     }
 
 }
 
+// функция replaceNumbers(number) перебирает, проверяет и заменяет каждое числло
 function replaceNumbers(number) {
     var newTime = '';
 
     for (var i = 0; i < number.length; i++) {
-        if (number[i] !== '0' && number !== '00' && !isNaN(parseInt(number[i]))) {
+        if (number[i] !== '0' && number !== '00' && !isNaN(number[i])) {
             newTime += findDiget(number[i], i);
         } else if (number[i] === '0' && number[i + 1] === '0') {
-            newTime += romanNumbers1[i];
+            newTime += ROMAN_NUMBER_1[i];
         }
     }
 
     return newTime;
 }
 
+// Функция findDiget(diget, position) подбирает соответствующую цифру римского формата
 function findDiget(diget, position) {
     var intDiget = parseInt(diget);
     var newDiget = '';
 
     switch (position) {
         case 0:
-            newDiget = romanNumbers1[intDiget];
+            newDiget = ROMAN_NUMBER_1[intDiget];
             break;
         case 1:
-            newDiget = romanNumbers2[intDiget];
+            newDiget = ROMAN_NUMBER_2[intDiget];
             break;
         default:
             throw new TypeError('Что-то пошло не по плану');
