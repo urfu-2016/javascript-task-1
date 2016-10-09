@@ -42,6 +42,6 @@ describe('Модуль roman-time', function () {
     });
 
     it('должен выбрасывать исключение TypeError для 9:30', function () {
-        assert.strictEqual(convertToRomanTime("9:30"), "IX:XXX");
+        assert.strictEqual(convertToRomanTime("90030"), "IX:XXX");
     });
 });
