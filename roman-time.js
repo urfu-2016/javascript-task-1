@@ -4,9 +4,7 @@ function convertToRomanNum(num) {
     var rNty = ['XX', 'XXX', 'XL', 'L'];
     if (num < 11) {
         num = rN[num];
-    }
-    else 
-	{
+    } else {
         var tempNum = rNty[(num - num % 10) / 10 - 2];
         if (num % 10 !== 0) {
             num = tempNum + rN[num % 10];
@@ -29,7 +27,7 @@ function romanTime(time) {
         min = convertToRomanNum(min);
         time = hours + ':' + min;
         
-		return time;
+        return time;
     }
     throw new TypeError('Неверное время');
 }
