@@ -37,24 +37,22 @@ function isCorrectRange(hours, mins) {
 }
 
 function conversionTime(hours, mins) {
-    var time = '';
-    var splitH = hours.toString().split('');
-    var splitM = mins.toString().split('');
-    var decs = ['N', 'X', 'XX', 'XXX', 'XL', 'L'];
-    var nums = ['N', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
-    if (hours < 10 && mins <= 10) {
-        time = nums[hours] + ':' + nums[0] + nums[mins];
-    } else if (hours < 10 && (mins % 10) === 0) {
-        time = nums[hours] + ':' + decs[mins / 10];
-    } else if (hours < 10 && mins > 10) {
-        time = decs[splitH[0]] + ':' + decs[splitM[0]] + nums[splitM[1]];
-    } else if (hours >= 10 && mins <= 10) {
-        time = decs[hours] + nums[splitH[1]] + ':' + nums[mins];
-    } else if (hours >= 10 && mins > 10) {
-        time = decs[splitH[0]] + nums[splitH[1]] + ':' + decs[splitM[0]] + nums[splitM[1]];
+    var time = [];
+    var decs = ['', 'X', 'XX', 'XXX', 'XL', 'L'];
+    var nums = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
+    time[0] = decs[hours / 10 | 0];
+    time[1] = nums[hours % 10];
+    time[3] = decs[mins / 10 | 0];
+    time[4] = nums[mins % 10];
+    if (hours === 0) {
+        time[0] = 'N';
     }
+    if (mins === 0) {
+        time[3] = 'N';
+    }
+    time[2] = ':';
 
-    return time;
+    return time.join('');
 }
 
 function isCorrectTime(splitTime) {
