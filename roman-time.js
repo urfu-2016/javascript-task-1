@@ -30,8 +30,8 @@ function romanTime(time) {
         5: 'V', 6: 'VI', 7: 'VII', 8: 'VIII', 9: 'IX' };
     var secondRomanNumbers = { 1: 'X', 2: 'XX', 3: 'XXX', 4: 'XL', 5: 'L' };
     if (tempTime[0] > 0 && tempTime[0] < 23 && tempTime[1] > 0 && tempTime[1] < 59) {
-        tempTime[0] = convertToRoman(firstRomanNumbersm, secondRomanNumbers, tempTime[0]);
-        tempTime[1] = convertToRoman(firstRomanNumbersm, secondRomanNumbers, tempTime[1]);
+        tempTime[0] = convertToRoman(firstRomanNumbers, secondRomanNumbers, tempTime[0]);
+        tempTime[1] = convertToRoman(firstRomanNumbers, secondRomanNumbers, tempTime[1]);
     } else {
         throw new TypeError('Неверный формат времени');
     }
