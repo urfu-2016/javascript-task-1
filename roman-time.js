@@ -5,18 +5,23 @@
  * @returns {String} - римское число соответствующее number
  */
 function convertToRoman(number) {
-    var decades = ["", "X", "XX", "XXX", "XL", "L"];
-    var units = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"];
-    var numberString = number.toString();
-    if (numberString.length > 2) {
-        throw new TypeError("Не двухразрядное");
-    } else if (numberString.length === 2) {
-        return decades[parseInt(numberString[0])] + units[parseInt(numberString[1])];
-    } else if (numberString.length === 1 && number !== 0) {
-        return units[parseInt(numberString[0])];
+    var arabic = [1, 4, 5, 9, 10, 40, 50];
+    var roman = ['I', 'IV', 'V', 'IX', 'X', 'XL', 'L'];
+    if (number === 0) {
+        return 'N';
+    }
+    var answer = '';
+    var i = arabic.length - 1;
+    while (number > 0) {
+        if (number >= arabic[i]) {
+            answer += roman[i];
+            number -= arabic[i];
+        } else {
+            i--;
+        }
     }
 
-    return "N";
+    return answer;
 }
 
 /**
@@ -27,9 +32,6 @@ function convertToRomanTime(time) {
     var intParts = trySplit(time);
     if (intParts === null || !isCorrectTimeParts(intParts) || time.length !== 5) {
         throw new TypeError("Неправильные входные данные");
-    }
-    if (typeof intParts[0] !== 'number' || typeof intParts[1] !== 'number') {
-        throw new TypeError();
     }
 
     return convertToRoman(intParts[0]) + ":" + convertToRoman(intParts[1]);
