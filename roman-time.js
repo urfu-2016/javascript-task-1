@@ -25,7 +25,7 @@ function convertToRoman(number) {
  */
 function convertToRomanTime(time) {
     var intParts = trySplit(time);
-    if (intParts === null || !(isCorrectTimeParts(intParts))) {
+    if (intParts === null || !isCorrectTimeParts(intParts)) {
         throw new TypeError("Неправильные входные данные");
     }
 
@@ -40,8 +40,9 @@ function convertToRomanTime(time) {
 function trySplit(time) {
     try {
         var parts = time.split(':');
+        var correct = parts.length === 2 && parts[0].length <= 2 && parts[1].length === 2;
         var numbers = [parseInt(parts[0]), parseInt(parts[1])];
-        if (parts.length === 2 && (!isNaN(numbers[0])) && (!isNaN(numbers[1]))) {
+        if (parts.length === 2 && !isNaN(numbers[0]) && !isNaN(numbers[1]) && correct) {
             return numbers;
         }
 

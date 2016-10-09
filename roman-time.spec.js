@@ -20,4 +20,28 @@ describe('Модуль roman-time', function () {
     it('должен выбрасывать исключение TypeError для 24:00', function () {
         assert.throws(convertToRomanTime.bind(null, '24:00'), TypeError);
     });
+
+    it('должен выбрасывать исключение TypeError для aa:bb', function () {
+        assert.throws(convertToRomanTime.bind(null, 'aa:bb'), TypeError);
+    });
+
+    it('должен выбрасывать исключение TypeError для null', function () {
+        assert.throws(convertToRomanTime.bind(null, null), TypeError);
+    });
+
+    it('должен выбрасывать исключение TypeError для undefined', function () {
+        assert.throws(convertToRomanTime.bind(null, undefined), TypeError);
+    });
+
+    it('должен выбрасывать исключение TypeError для :::::', function () {
+        assert.throws(convertToRomanTime.bind(null, ":::::"), TypeError);
+    });
+
+    it('должен выбрасывать исключение TypeError для 001:1', function () {
+        assert.throws(convertToRomanTime.bind(null, "001:1"), TypeError);
+    });
+
+    it('должен выбрасывать исключение TypeError для 9:30', function () {
+        assert.strictEqual(convertToRomanTime("9:30"), "IX:XXX");
+    });
 });
