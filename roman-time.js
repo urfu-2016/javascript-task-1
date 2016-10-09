@@ -19,13 +19,13 @@ function checkInputValidity(time) {
     try {
         time.toString();
     } catch (err) {
-        throw new TypeError('Некорректный ввод');
+        throw new TypeError('Неверное время');
     }
 }
 
 function checkInputFormat(time) {
     if (time.length !== 5 || time.indexOf(':') === -1) {
-        throw new TypeError('Неправильный формат времени');
+        throw new TypeError('Неверное время');
     }
 }
 
@@ -41,7 +41,7 @@ function tryParseInput(time) {
         }
     }
 
-    throw new TypeError('Неправильный формат времени');
+    throw new TypeError('Неверное время');
 }
 
 function intToRomanNumber(number) {
