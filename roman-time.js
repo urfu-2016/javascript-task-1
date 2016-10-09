@@ -11,19 +11,16 @@ function convertToRoman(num1, num2, time) {
         time = 'N';
     } else {
         var counter = 0;
-        while (time >= 10) {
+        while (time > 10) {
             time -= 10;
             counter++;
         }
         if (counter === 0) {
             time = num1[time];
         } else {
-            if (time === 0) {
-                time = num2[counter];
-            } else {
-                time = num2[counter] + num1[time];
-            }
+            time = num2[counter] + num1[time];
         }
+
     }
 
     return time;
@@ -34,7 +31,7 @@ function romanTime(time) {
     tempTime[0] = parseInt(tempTime[0], 10);
     tempTime[1] = parseInt(tempTime[1], 10);
     var firstRomanNumbers = { 1: 'I', 2: 'II', 3: 'III', 4: 'IV',
-        5: 'V', 6: 'VI', 7: 'VII', 8: 'VIII', 9: 'IX' };
+        5: 'V', 6: 'VI', 7: 'VII', 8: 'VIII', 9: 'IX', 10: 'X' };
     var secondRomanNumbers = { 1: 'X', 2: 'XX', 3: 'XXX', 4: 'XL', 5: 'L' };
     if (tempTime[0] >= 0 && tempTime[0] <= 23 && tempTime[1] >= 0 && tempTime[1] <= 59) {
         tempTime[0] = convertToRoman(firstRomanNumbers, secondRomanNumbers, tempTime[0]);
