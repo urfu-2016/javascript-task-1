@@ -53,6 +53,9 @@ function getRomanMinutes(mm) {
 }
 
 function getParsedTime(time) {
+    if (typeof time !== 'string') {
+        return false;
+    }
     var hours = parseInt(time.split(':')[0]);
     var minutes = parseInt(time.split(':')[1]);
 
