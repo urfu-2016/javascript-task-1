@@ -41,14 +41,11 @@ function getRomanNum(num) {
 }
 
 function getParsedTime(time) {
-    if (typeof time !== 'string') {
-        throw new TypeError('Неверное время');
-    }
     var hours = time.split(':')[0];
     var minutes = time.split(':')[1];
     hours = hours.length < 3 ? Number(hours) : 24;
     minutes = minutes.length < 3 ? Number(minutes) : 60;
-    if (checkValidTime(hours, minutes)) {
+    if (checkValidTime(hours, minutes) && time.split(':').length < 3) {
 
         return [hours, minutes];
     }
