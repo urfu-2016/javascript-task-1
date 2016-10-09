@@ -12,7 +12,7 @@ function romanTime(time) {
     if (!isCorrectTime(splitTime) && splitTime[2] === ':') {
         throw new TypeError('Неверный формат времени (HH:MM)', 'roman-time.js');
     }
-    if (!isNaN(hours) && !isNaN(mins) && (hours > 23 || mins > 59 || hours < 0 || mins < 0)) {
+    if (isNaN(hours) || isNaN(mins) || hours > 23 || mins > 59 || hours < 0 || mins < 0) {
         throw new TypeError('Неверный формат времени (HH:MM)', 'roman-time.js');
     }
     time = conversionTime(hours, mins);
