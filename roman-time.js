@@ -26,7 +26,7 @@ function checkTime(time) {
     var hours = splitTime[0];
     var minutes = splitTime[1];
 
-    if (isNaN(hours) || isNaN(minutes) || !hours || !minutes) {
+    if (checkTimeParts(hours, minutes)) {
 
         return;
     }
@@ -36,6 +36,11 @@ function checkTime(time) {
 
         return [hours, minutes];
     }
+}
+
+function checkTimeParts(hours, minutes) {
+
+    return (isNaN(hours) || isNaN(minutes) || !hours || hours === ' ' || !minutes || hours === ' ');
 }
 
 function checkTimeInterval(hours, minutes) {
