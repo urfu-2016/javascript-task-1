@@ -29,7 +29,7 @@ function romanTime(time) {
     var hoursCheck = !isNaN(hours) && hours < 24 && hours >= 0;
     var minutesCheck = !isNaN(minutes) && minutes >= 0 && minutes < 60;
     if (hoursCheck && minutesCheck) {
-    	return romanNumber(Number(hours)) + ':' + romanNumber(Number(minutes));
+    	return romanNumber(hours) + ':' + romanNumber(minutes);
     }
     else {
     	throw new TypeError('Неверное время');
