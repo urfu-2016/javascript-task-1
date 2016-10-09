@@ -9,12 +9,29 @@ function romanTime(time) {
     var hours = parsedInput[0];
     var minutes = parsedInput[1];
 
-    return intToRomanNumber(hours) + '' + intToRomanNumber(minutes);
+    return intToRomanNumber(hours) + ':' + intToRomanNumber(minutes);
 }
 
 function tryParseInput(time) {
-    var hours = 0;
-    var minutes = 0;
+    try {
+        time.toString();
+    } catch (err) {
+        throw TypeError('Некорректный ввод');
+    }
+    if (time.length !== 5 || time.indexOf(':') === -1) {
+        throw TypeError('Неправильный формат времени');
+    }
+
+    var splittedString = time.split(':');
+    if (splittedString.length !== 2) {
+        throw TypeError('Неправильный формат времени');
+    }
+
+    var hours = parseInt(splittedString[0]);
+    var minutes = parseInt(splittedString[1]);
+    if (isNaN(hours) || isNaN(minutes) || hours < 0 || hours > 23 || minutes < 0 || minutes > 59) {
+        throw TypeError('Неправильный формат времени');
+    }
 
     return [hours, minutes];
 }
