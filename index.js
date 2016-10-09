@@ -1,15 +1,15 @@
 'use strict';
 
-var romanTime = require('./roman-time');
+var convertToRomanTime = require('./roman-time');
 
 // Выведет 'IX:X'
-console.info(romanTime('09:10'));
+console.info(convertToRomanTime('09:10'));
 
 // Выведет 'N:N'
-console.info(romanTime('00:00'));
+console.info(convertToRomanTime('00:00'));
 
 // Выведет 'XXIII:LIX'
-console.info(romanTime('23:59'));
+console.info(convertToRomanTime('23:59'));
 
 // Выбросится ошибка [TypeError: Неверное время]
-console.info(romanTime('24:00'));
+console.info(convertToRomanTime('24:00'));
