@@ -43,7 +43,7 @@ function conversionTime(hours, mins) {
     var decs = ['N', 'X', 'XX', 'XXX', 'XL', 'L'];
     var nums = ['N', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
     if (hours < 10 && mins <= 10) {
-        time = nums[hours] + ':' + nums[mins];
+        time = nums[hours] + ':' + nums[0] + nums[mins];
     } else if (hours < 10 && (mins % 10) === 0) {
         time = nums[hours] + ':' + decs[mins / 10];
     } else if (hours < 10 && mins > 10) {
