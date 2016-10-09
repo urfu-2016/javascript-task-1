@@ -1,12 +1,54 @@
 'use strict';
 
-/**
- * @param {String} time – время в формате HH:MM (например, 09:05)
- * @returns {String} – время римскими цифрами (IX:V)
- */
-function romanTime(time) {
-    // Немного авторского кода и замечательной магии
+var romanNumbers = ["N", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"];
+var romanDecade = ["X", "XX", "XXX", "XL", "L"];
+
+function getRomanType(number) {
+    var decade = (number - number % 10) / 10;
+    var units = number % 10;
+    var time = "";
+    if (number === 0) {
+        time += "N";
+
+        return time;
+    }
+    if (decade > 0) {
+        time += romanDecade[decade - 1];
+    }
+    if (units > 0) {
+        time += romanNumbers[units];
+    }
+
     return time;
 }
 
+function checkFormat(time) {
+    if (time.length !== 5 || time === null || time === undefined) {
+        throw new TypeError('Неверное время');
+    }
+}
+
+function checkHours(hours) {
+    if (hours >= 24 || hours < 0 || isNaN(hours)) {
+        throw new TypeError('Неверное время');
+    }
+}
+
+function checkMinutes(minutes) {
+    if (minutes >= 60 || minutes < 0 || isNaN(minutes)) {
+        throw new TypeError('Неверное время');
+    }
+}
+
+function romanTime(time) {
+    checkFormat(time);
+    var numbers = time.split(":");
+    var hours = Number(numbers[0]);
+    var minutes = Number(numbers[1]);
+    checkHours(hours);
+    checkMinutes(minutes);
+    time = getRomanType(hours) + ":" + getRomanType(minutes);
+
+    return time;
+}
 module.exports = romanTime;
