@@ -14,16 +14,17 @@ function arabToRoman(number) {
     }
     var fDigit = parseInt(number / 10);
     var sDigit = parseInt(number % 10);
-    
+
     return firstDigit[fDigit] + secondDigit[sDigit];
-} 
+}
 
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
     var splitTime = time.split(":");
     var hourMinute = new Array(Number(splitTime[0]), Number(splitTime[1]));
-    
-    if (isNaN(hourMinute[0]) || isNaN(hourMinute[1]) || hourMinute[0] < 0 || hourMinute[1] < 0 || hourMinute[0] > 23 || hourMinute[1] > 59){
+    //    || hourMinute[0] < 0 || hourMinute[1] < 0 || hourMinute[0] > 23 || hourMinute[1] > 59){
+     
+    if (isNaN(hourMinute[0]) || isNaN(hourMinute[1]){
         throw new TypeError("Bad format");
     }
     time = arabToRoman(hourMinute[0]) + ":" + arabToRoman(hourMinute[1]);
