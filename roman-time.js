@@ -5,8 +5,8 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    var arr = time.split(':'), 
-        hour = parseInt(arr[0]);
+    var arr = time.split(':');
+    var hour = parseInt(arr[0]);
     var minutes = parseInt(arr[1]);
     var romanNumber = ['N', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII',
                        'VIII', 'IX', 'X', 'XX', 'XXX', 'XL', 'L', 'LX'];
@@ -33,7 +33,7 @@ function romanTime(time) {
     } else {
         time = timeHour + ':' + timeMinutes;
     }
-    
+
     return time;
 }
 
