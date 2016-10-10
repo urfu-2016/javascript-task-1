@@ -5,10 +5,12 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    if (isNaN(parseInt(time))) throw new TypeError(['Неверное время']);
+    if (isNaN(parseInt(time))) {
+        throw new TypeError(['Неверное время']);
+    }
     var array = time.split(':');
-    var hour = array[0]; //string
-    var minutes = array[1]; //string
+    var hour = array[0];
+    var minutes = array[1];
     if (!(isCorrectHour(hour) && isCorrectMinutes(minutes))) {
         throw new TypeError(['Неверное время']);
     }
@@ -29,33 +31,51 @@ function romanTime(time) {
         40: 'XL',
         50: 'L'
     };
-    if (hour[0] == '0' && hour[1]=='0')
-        time= dictionary[0] + ':';
-    else if (hour[0]=='0')
-        time = dictionary[hour[1]] + ':';
-    else if (hour[1] == 0)
-        time = dictionary[hour[0] * 10] + ':';
-    else
-        time = dictionary[hour[0] * 10] + dictionary[hour[1]] + ':';
-    if ( minutes[0]== '0' && minutes[1]=='0')
+    if (hour[0] === '0' && hour[1] === '0') {
+        time = dictionary[0] + ':';
+    }
+    else {
+        if (hour[0] === '0') {
+            time = dictionary[hour[1]] + ':';
+        }
+        else {
+            if (hour[1] === 0) {
+                time = dictionary[hour[0] * 10] + ':';
+            }
+            else {
+                time = dictionary[hour[0] * 10] + dictionary[hour[1]] + ':';
+            }
+        }
+    }
+    if (minutes[0] === '0' && minutes[1] === '0') {
         time = time + dictionary[0];
-    else if (minutes[0] == '0')
-        time = time + dictionary[minutes[1]];
-    else if (minutes[1] == 0)
-        time = time + dictionary[minutes[0] * 10];
-    else
-        time = time+ dictionary[minutes[0] * 10] + dictionary[minutes[1]];
+    }
+    else {
+        if (minutes[0] === '0') {
+            time = time + dictionary[minutes[1]];
+        }
+        else {
+            if (minutes[1] === 0) {
+                time = time + dictionary[minutes[0] * 10];
+            }
+            else {
+                time = time + dictionary[minutes[0] * 10] + dictionary[minutes[1]];
+            }
+        }
+    }
 
-        return time;
+    return time;
 }
 
 function isCorrectHour(hour) {
     hour = parseInt(hour);
+
     return (hour <= 23 && hour >= 0);
 }
 
 function isCorrectMinutes(minutes) {
     minutes = parseInt(minutes);
+
     return (minutes <= 59 && minutes >= 0);
 }
 
