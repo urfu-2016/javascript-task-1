@@ -61,10 +61,11 @@ function romanTime(time) {
         !isNaN(tempTime[0]) && !isNaN(tempTime[1])) {
         tempTime[0] = convertToRoman(firstRomanNumbers, secondRomanNumbers, tempTime[0]);
         tempTime[1] = convertToRoman(firstRomanNumbers, secondRomanNumbers, tempTime[1]);
+        time = tempTime.join(':');
     } else {
         throw new TypeError('Неверный формат времени');
     }
-    time = tempTime.join(':');
+
 
     return time;
 }
