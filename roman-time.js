@@ -13,6 +13,7 @@ function romanTime(time) {
         hours = convertToRomanNumber(hours);
         min = convertToRomanNumber(min);
         time = hours + ':' + min;
+        
         return time;
     }
     throw new TypeError('Неверное время');
@@ -23,14 +24,16 @@ function convertToRomanNumber(number) {
     var romanNumberTens = ['X', 'XX', 'XXX', 'XL', 'L'];
     if (number < 11) {
         number = romanNumber[number];
-    } 
-    else {
+    } else {
         var tempNum = romanNumberTens[(number - number % 10) / 10 - 1];
-        if (number % 10 != 0) {
+        if (number % 10 !== 0) {
             number = tempNum + romanNumber[number % 10];
         }
-        else number = tempNum;
+        else {
+            number = tempNum;
+        }
     }
+    
     return number;
 }
 
