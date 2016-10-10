@@ -1,7 +1,8 @@
 'use strict';
 
 function isValiable(hour, minute) {
-    return hour > 23 || hour < 0 || minute > 59 || minute < 0;
+    return hour > 23 || hour < 0 || minute > 59 || minute < 0 ||
+        time[1].length === 0 || time[0].length === 0;
 }
 
 function roman(units, dozens) {
@@ -30,7 +31,7 @@ function romanTime(time) {
     time = time.split(':');
     var hour = Number(time[0]);
     var minute = Number(time[1]);
-    if (isNaN(minute) || isNaN(hour) || isValiable(hour, minute)) {
+    if (isNaN(minute) || isNaN(hour) || isValiable(hour, minute, time )) {
         throw new TypeError("Неверное время");
     } else {
         time = roman(hour, minute);
