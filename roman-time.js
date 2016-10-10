@@ -6,14 +6,13 @@
  */
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
-    checkUndefined(time);
+    checkUndefinedAndNaN(time);
     checkLength(time);
     var timeArray = [];
-    if (time.charAt(2) === ":") {
-        timeArray = time.split(':');
-    } else {
+    if (time.charAt(2) != ":") {
         throw new TypeError("Некорректное время");
     }
+    timeArray = time.split(':');
     var arabicHour = 0;
     var arabicMinute = 0;
     try {
@@ -30,8 +29,8 @@ function romanTime(time) {
     return result;
 }
 
-function checkUndefined(time) {
-    if (time === undefined) {
+function checkUndefinedAndNaN(time) {
+    if (time === undefined || isNaN(time)) {
         throw new TypeError("Некорректное время");
     }
 }
