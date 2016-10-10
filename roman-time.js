@@ -23,6 +23,9 @@ function romanTime(time) {
 }
 
 function checkTime(time) {
+    if (time.length > 5) {
+        throw new TypeError('Неверный ввод!');
+    }
     var t = time.split(':');
     t[0] = Number(t[0]);
     t[1] = Number(t[1]);
