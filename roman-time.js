@@ -28,10 +28,10 @@ function checkValidation(time) {
     try {
         var temp = time[0].split('');
         temp = temp.concat(time[1].split(''));
-        temp[0] = parseInt(temp[0], 10);
-        temp[1] = parseInt(temp[1], 10);
-        temp[2] = parseInt(temp[2], 10);
-        temp[3] = parseInt(temp[3], 10);
+        temp[0] = Number([0]);
+        temp[1] = Number(temp[1]);
+        temp[2] = Number(temp[2]);
+        temp[3] = Number(temp[3]);
         if (temp[0] >= 0 && temp[0] <= 2 &&
             temp[1] >= 0 && temp[1] <= 9 &&
             temp[2] >= 0 && temp[2] <= 5 &&
@@ -51,8 +51,8 @@ function romanTime(time) {
         5: 'V', 6: 'VI', 7: 'VII', 8: 'VIII', 9: 'IX', 10: 'X' };
     var secondRomanNumbers = { 1: 'X', 2: 'XX', 3: 'XXX', 4: 'XL', 5: 'L' };
     if (checkValidation(tempTime) && time.length === 5 && tempTime.length === 2) {
-        tempTime[0] = parseInt(tempTime[0], 10);
-        tempTime[1] = parseInt(tempTime[1], 10);
+        tempTime[0] = Number(tempTime[0]);
+        tempTime[1] = Number(tempTime[1]);
     } else {
         throw new TypeError('Неверный формат времени');
     }
