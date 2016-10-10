@@ -13,7 +13,7 @@ function romanTime(time) {
         hours = convertToRomanNumber(hours);
         min = convertToRomanNumber(min);
         time = hours + ':' + min;
-        
+
         return time;
     }
     throw new TypeError('Неверное время');
@@ -32,7 +32,7 @@ function convertToRomanNumber(number) {
             number = tempNum;
         }
     }
-    
+
     return number;
 }
 
