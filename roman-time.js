@@ -6,8 +6,16 @@
  */
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
+    if (time === undefined) {
+        throw new TypeError("Некорректное время");
+    }
     checkLength(time);
-    var timeArray = time.split(':');
+    var timeArray = [];
+    if (time.charAt(2) === ":") {
+        timeArray = time.split(':');
+    } else {
+        throw new TypeError("Некорректное время");
+    }
     var arabicHour = 0;
     var arabicMinute = 0;
     try {
