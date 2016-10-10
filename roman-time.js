@@ -1,8 +1,9 @@
 'use strict';
 
-function isValiable(hour, minute, time) {
-    return hour > 23 || hour < 0 || minute > 59 || minute < 0 ||
-        time[1].length !== 2 || time[0].length !== 2;
+var regex = /\d\d:\d\d/;
+
+function isValiable(hour, minute) {
+    return hour > 23 || hour < 0 || minute > 59 || minute < 0;
 }
 
 function roman(units, dozens) {
@@ -25,13 +26,13 @@ function roman(units, dozens) {
 }
 
 function romanTime(time) {
-    if (time === null || time === undefined) {
+    if (time === null || time === undefined || time.match(regex) === null) {
         throw new TypeError("Неверное время");
     }
     time = time.split(':');
     var hour = Number(time[0]);
     var minute = Number(time[1]);
-    if (isNaN(minute) || isNaN(hour) || isValiable(hour, minute, time)) {
+    if (isValiable(hour, minute)) {
         throw new TypeError("Неверное время");
     } else {
         time = roman(hour, minute);
