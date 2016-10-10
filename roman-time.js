@@ -27,8 +27,18 @@ function arabToRoman(arabNumber) {
 }
 
 function parseNumber(number, min, max) {
-    var num = parseInt(number, 10);
-    if (isNaN(num) || num < min || number > max) {
+    if (number.length !== 2) {
+        throw new TypeError();
+    }
+
+    var tens = parseInt(number[0], 10);
+    var units = parseInt(number[1], 10);
+    if (isNaN(tens) || isNaN(units)) {
+        throw new TypeError();
+    }
+
+    var num = tens * 10 + units;
+    if (num < min || number > max) {
         throw new TypeError();
     }
 
