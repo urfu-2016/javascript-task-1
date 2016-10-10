@@ -82,7 +82,11 @@ function romanTime(time) {
     var getHour = parseInt(splitDate[0], 10);
     var getMin = parseInt(splitDate[1], 10);
 
-    if (!checkType(time) || checkNullUndf(time) || checkNaN(getHour, getMin) || !checkRegExp(time)) {
+    if (!checkType(time) || checkNullUndf(time) || checkNaN(getHour, getMin)) {
+
+        throw new TypeError('Incorrect time format!');
+
+    } else if (!checkRegExp(time)) {
 
         throw new TypeError('Incorrect time format!');
 
