@@ -9,6 +9,7 @@ function romanTime(time) {
 
         return 'N';
     }
+    isValid(time);
     // Немного авторского кода и замечательной магии
     var hoursMin = time.split(':');
     var hours = parseInt(hoursMin[0], 10);
@@ -24,6 +25,11 @@ function romanTime(time) {
     }
     throw new TypeError('Неверное время');
 }
+
+function isValid(time) {
+    if (time === null || time === undefined || time.length > 5 || time.length !== 5)) {
+        throw new TypeError('Неверное время');
+ }
 
 function convertToRomanNumber(number) {
     var romanNumber = ['N', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
