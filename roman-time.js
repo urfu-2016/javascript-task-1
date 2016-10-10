@@ -76,21 +76,15 @@ function checkType(time) {
 
 }
 
-function checkUndf(time) {
-
-    return typeof time === undefined;
-}
-
 function checkNullUndf(time) {
 
     if (time === null || time === undefined) {
 
         return true;
 
-    } else {
-
-        return false;
     }
+
+    return false;
 
 }
 
