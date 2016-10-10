@@ -4,31 +4,31 @@
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
  */
-function toRoman (x, Res){
+function toRoman (x, Res) {
     if (x >= 50) {
         return toRoman (x - 50, Res + 'L');
     }
-    else if (x >= 40) {
+    if (x >= 40) {
             return toRoman (x - 40, Res + 'XL');
-         }
-    else if (x >= 10) {
+    }
+    if (x >= 10) {
             return toRoman (x - 10, Res + 'X');
-         }
-    else if (x >= 9) {
+    }
+    if (x >= 9) {
             return toRoman (x - 9, Res + 'IX');
-         }
-    else if (x >= 5) {
+    }
+    if (x >= 5) {
             return toRoman (x - 5, Res + 'V');
-         }
-    else if (x >= 4) {
+    }
+    if (x >= 4) {
             return toRoman (x - 4, Res + 'IV');
-         }
-    else if (x >= 1) {
+    }
+    if (x >= 1) {
             return toRoman (x - 1, Res + 'I')
-         }
-    else if (Res === '') {
+    }
+    if (Res === '') {
             return "N";
-         }
+    }
     
     return Res;
 }
