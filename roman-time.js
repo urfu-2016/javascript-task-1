@@ -9,15 +9,13 @@ function isTime(time) {
     if (time === undefined) {
         throw new TypeError();
     }
-    if (time.length == 5) {
+    if (time.length === 5) {
         if (time.charAt(2) === ":") {
             trueTime = isNumber(time);
-       }
-        else {
+        } else {
             throw new TypeError();
         }
-    }
-    else {
+    } else {
         throw new TypeError();
     }
 
@@ -44,8 +42,7 @@ function reformInArabic(units, one, five) {
         for (var i = 0; i < units; i++) {
             romanUnits = romanUnits + one;
         }
-    }
-    else {
+    } else {
         romanUnits = reformInArabic2(units, one, five);
     }
 
