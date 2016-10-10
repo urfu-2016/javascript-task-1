@@ -15,9 +15,9 @@ function romanTime(time) {
         throw new TypeError();
     }
 
-    var [hours, minutes] = time.split(':').map(Number).map(toRoman);
+    var romanTime = time.split(':').map(Number).map(toRoman);
 
-    return hours + ":" + minutes;
+    return romanTime.join(':');
 }
 
 function toRoman(number) {
