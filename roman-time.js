@@ -38,6 +38,7 @@ function isValidLength(time) {
     if (time.length === 5) {
         return true;
     }
+
     return false;
 }
 
