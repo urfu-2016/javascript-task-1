@@ -5,7 +5,7 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 
-var unitsRoman = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VII", "IX"];
+var unitsRoman = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"];
 var tensRoman = ["", "X", "XX", "XXX", "XL", "L"];
 
 function convertUnitsRoman(units) {
@@ -34,17 +34,14 @@ function timeInRoman(time) {
 }
 
 function romanTime(time) {
-    if (!/^([0-2]?[0-3]||[0-1]?\d):[0-5]\d$/.test(time)) {
+    if (!/^(2[0-3]||[0-1]\d):[0-5]\d$/.test(time)) {
         throw new TypeError("Неверное время");
     }
     if (time === "00:00") {
         time = "N:N";
     }
-    if (/^([0-2]?[0-3]|[0-1]?\d):[0-5]\d$/.test(time)) {
+    if (/^(2[0-3]|[0-1]\d):[0-5]\d$/.test(time)) {
         time = time.replace(/:/, "");
-        if (time.length === 3) {
-            time = "0" + time;
-        }
         time = timeInRoman(time);
     }
 
