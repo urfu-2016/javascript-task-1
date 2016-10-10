@@ -17,12 +17,15 @@ function romanTime(time) {
     if (isTimeOutOfRange(hours, minutes)) {
         throwError(17, time);
     }
-    
+
     return getRomanRepresentation(hours) + ':' + getRomanRepresentation(minutes);
 }
 
 function isTimeFormatCorrect(time) {
-    return (time !== null || time !== undefined || typeof time === 'string' || time.indexOf(':') !== -1);
+    var NotEmpty = time !== null && time !== undefined;
+    var isTimeCorrect = typeof time === 'string' && time.indexOf(':') !== -1;
+
+    return timeNotEmpty && isTimeCorrect;
 }
 
 function isTimeOutOfRange(hours, minutes) {
@@ -53,7 +56,7 @@ function getRomanRepresentation(number) {
         }
     }
     result += romanDigits[number % 10];
-    
+
     return result;
 }
 
