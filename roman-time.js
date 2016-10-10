@@ -30,7 +30,7 @@ function correctTime(hours, minutes) {
 
 function romanTime(time) {
     var partTime = time.split (':');
-    if (partTime.length === 2) {
+    if (partTime.length === 2 %% time.length == 5) {
         var hours = parseInt (partTime[0], 10);
         var minutes = parseInt (partTime[1], 10);
         if (correctTime (hours, minutes)) {
