@@ -34,8 +34,8 @@ function romanTime(time) {
     var arrHM = time.split(':');
     var hours = parseInt(arrHM[0], 10);
     var min = parseInt(arrHM[1], 10);
-    if (isValid(time)) {
-        if (hours < 24 && min < 60 && arrHM[0].length == 2 && arrHM.length === 2) {
+    if (isValid(time) && arrHM.length === 2) {
+        if (hours < 24 && min < 60 && arrHM[0].length === 2 && arrHM[1].length === 2) {
             hours = convertToRomanNum(hours);
             min = convertToRomanNum(min);
             time = hours + ':' + min;
