@@ -9,7 +9,7 @@ function romanTime(time) {
     var hoursMin = time.split(':');
     var hours = parseInt(hoursMin[0], 10);
     var min = parseInt(hoursMin[1], 10);
-    if (hours < 24 && min < 60 && hoursMin[0].length === 2 && hoursMin[1].length === 2) {
+    if (hours < 24 && min < 60 && hoursMin[0].length <= 2 && hoursMin[1].length <= 2) {
         hours = convertToRomanNumber(hours);
         min = convertToRomanNumber(min);
         time = hours + ':' + min;
