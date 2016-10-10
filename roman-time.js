@@ -16,7 +16,7 @@ var romanNumer = {
     30: 'XXX',
     40: 'XL',
     50: 'L'
-    };
+};
 
 // Разделяем время на часы и минуты
 function splitStringTime(stringTime) {
@@ -31,7 +31,7 @@ function splitStringTime(stringTime) {
 
     }
 
-        return splitTimeResult;
+    return splitTimeResult;
 }
 
 // Ковертиуем и 'склеиваем' время
@@ -95,9 +95,9 @@ function romanTime(time) {
     var splitDate = time.split(':');
     var getHour = splitDate[0];
     var getMinutes = splitDate[1];
-    var ERROR_MESSAGE = 'Incorrect time format!';
+    var ERROR_MESSAGE = 'Incorrect format time!';
 
-    if (!checkTimeOnType(time)) {
+    if (!checkTimeOnType(time) || checkTimeOnUndf(time) || checkTimeOnNaN(getHour, getMinutes)) {
 
         throw new TypeError(ERROR_MESSAGE);
 
@@ -108,13 +108,6 @@ function romanTime(time) {
         throw new TypeError(ERROR_MESSAGE);
 
     }
-
-    if (checkTimeOnUndf(time) || checkTimeOnNaN(getHour, getMinutes)) {
-
-        throw new TypeError(ERROR_MESSAGE);
-
-    }
-        //console.log(checkTimeOnNull(time));
 
     var HH = splitStringTime(getHour);
     var dozensHours = parseInt(HH[0] * 10, 10); // Десятки в часах
