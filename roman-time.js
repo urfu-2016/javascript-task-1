@@ -8,7 +8,7 @@ function romanTime(time) {
     // Немного авторского кода и замечательной магии
     checkUndefined(time);
     checkLength(time);
-    var timeArray = [];
+    timeArray = time.split(':');
     var arabicHour = 0;
     var arabicMinute = 0;
     try {
