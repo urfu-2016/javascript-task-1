@@ -81,9 +81,17 @@ function checkUndf(time) {
     return typeof time === undefined;
 }
 
-function checkNull(time) {
+function checkNullUndf(time) {
 
-    return time === null;
+    if (time === null || time === undefined) {
+
+        return true;
+
+    } else {
+
+        return false;
+    }
+
 }
 
 function checkLen(hrs, min) {
@@ -101,8 +109,8 @@ function romanTime(time) {
     var getHour = splitDate[0];
     var getMin = splitDate[1];
 
-    if (!checkType(time) || checkUndf(time) || checkNaN(getHour, getMin) ||
-        !checkCorrect(getHour, getMin) || checkNull(time) || !checkLen(getHour, getMin)) {
+    if (!checkType(time) || checkNullUndf(time) || checkNaN(getHour, getMin) ||
+        !checkCorrect(getHour, getMin) || !checkLen(getHour, getMin)) {
 
         throw new TypeError('Incorrect time format!');
 
