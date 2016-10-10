@@ -7,7 +7,7 @@ var separator = ":";
 function isCorrectTime(time) {
     if ((canSeparate(time)) && (parseInt(splitTime(time)[0], 10) > -1) &&
     (parseInt(splitTime(time)[0], 10) < 24) && (parseInt(splitTime(time)[1], 10) > -1) &&
-    (parseInt(splitTime(time)[1], 10) < 60)) {
+    (parseInt(splitTime(time)[1], 10) < 60) && (time.length === 5)) {
         return true;
     }
 
