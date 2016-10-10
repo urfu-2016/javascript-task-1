@@ -21,7 +21,7 @@ function splitTime(time) {
 }
 
 function canSeparate(time) {
-    var REG_EXP = /\d{1,2}:\d{2}/;
+    var REG_EXP = /\d{2}:\d{2}/;
     if (REG_EXP.test(time)) {
         return true;
     }
