@@ -54,7 +54,7 @@ function romanTime(time) {
     } else {
         var hours = parseInt(splitTime(time)[0], 10);
         var minutes = parseInt(splitTime(time)[1], 10);
-        
+
         return convertTime(hours) + separator + convertTime(minutes);
     }
 }
