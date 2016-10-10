@@ -18,7 +18,7 @@ function isValid(time) {
         throw new TypeError('Неверное время');
     } else {
         var arrHM = time.split(':');
-        if (arrHM[0].length !== 2 && arrHM[1].length !== 2) {
+        if (arrHM[0].length !== 2 || arrHM[1].length !== 2 || isNaN(arrHM[0]) || isNaN(arrHM[1])) {
             throw new TypeError('Неверное время');
         }
     }
