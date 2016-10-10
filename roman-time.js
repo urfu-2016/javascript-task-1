@@ -6,36 +6,27 @@
  */
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
-    checkUndefined(time);
-    checkLength(time);
-    var timeArray = time.split(':');
-    var arabicHour = 0;
-    var arabicMinute = 0;
-    try {
-        arabicHour = parseInt(timeArray[0]);
-        arabicMinute = parseInt(timeArray[1]);
-    } catch (e) {
+    var result = "";
+    if (!isValidTime(time)) {
         throw new TypeError("Некорректное время");
     }
-    checkNaN(arabicHour, arabicMinute);
-    checkInterval(arabicHour, arabicMinute);
-    var result = "";
+    var timeArray = time.split(':');
+    var arabicHour = parseInt(timeArray[0]);;
+    var arabicMinute = parseInt(timeArray[1]);
     result = convertTime(arabicHour) + ":" + convertTime(arabicMinute);
 
     return result;
 }
 
-function checkUndefined(time) {
-    if (time === undefined) {
-        throw new TypeError("Некорректное время");
-    }
-}
+function isValidTime(time) {
+    var timeArray = time.split(':');
+    var arabicHour = parseInt(timeArray[0]);;
+    var arabicMinute = parseInt(timeArray[1]);
+    checkNaN(arabicHour, arabicMinute);
 
-function checkInterval(arabicHour, arabicMinute) {
-    if (arabicHour < 0 || arabicMinute < 0 || arabicHour > 23 || arabicMinute > 59) {
-        throw new TypeError("Некорректное время");
-    }
-}
+    return (/\d\d:\d\d/.test(time) && arabicHour >= 0 && arabicMinute >= 0 &&
+     arabicHour < 24 && arabicMinute < 60 && isValidLength(time));
+} 
 
 function checkNaN(arabicHour, arabicMinute) {
     if (isNaN(arabicHour) || isNaN(arabicMinute)) {
@@ -43,9 +34,11 @@ function checkNaN(arabicHour, arabicMinute) {
     }
 }
 
-function checkLength(time) {
-    if (time.length > 5) {
-        throw new TypeError("Некорректное время");
+function isValidLength(time) {
+    if (time.length === 5) {
+        return true;
+    } else {
+        return false;     
     }
 }
 
