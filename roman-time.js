@@ -7,7 +7,7 @@
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
 
-    //счетчики циклов
+    // счетчики циклов
     var i;
     var j;
 
@@ -23,7 +23,8 @@ function romanTime(time) {
         hours = parseInt(timeArr[0], 10);
         minutes = parseInt(timeArr[1], 10);
 
-        if (isNaN(hours) || isNaN(minutes) || hours > 23 || hours < 0 || minutes > 59 || minutes < 0) {
+        if (isNaN(hours) || isNaN(minutes) || hours > 23 ||
+            hours < 0 || minutes > 59 || minutes < 0) {
             throw new TypeError('TypeError: Неверное время');
         }
 
@@ -40,16 +41,16 @@ function romanTime(time) {
 
     function convertNum(num) {
 
-        if (num == 0) {
+        if (num === 0) {
             return 'N';
         }
 
-        //максимальное число повторений подряд римской цифры в числе
+        // максимальное число повторений подряд римской цифры в числе
         var repeatLimit = 3;
-        //Римское число - составной объект
+        // Римское число - составной объект
         var romanNum = {
 
-            //массив разрядов числа по римскому основанию
+            // массив разрядов числа по римскому основанию
             accord: [
                 {
                     'arab': 50,
@@ -64,16 +65,14 @@ function romanTime(time) {
                     'count': 0,
                     'addition': '',
                     'addCount': 0
-                }
-                ,
+                },
                 {
                     'arab': 5,
                     'roman': 'V',
                     'count': 0,
                     'addition': '',
                     'addCount': 0
-                }
-                ,
+                },
                 {
                     'arab': 1,
                     'roman': 'I',
@@ -85,14 +84,13 @@ function romanTime(time) {
             ]
         };
 
-
-        //остаток от деления (для начала равен самому числу)
+        // остаток от деления (для начала равен самому числу)
         var mod = num;
         for (i = 0; i < romanNum.accord.length; i++) {
             romanNum.accord[i].count = parseInt(mod / romanNum.accord[i].arab);
             mod %= romanNum.accord[i].arab;
         }
-        //исключение повторов числа более 3 раз
+        // исключение повторов числа более 3 раз
         for (i = 0; i < romanNum.accord.length; i++) {
             if (romanNum.accord[i].count > repeatLimit) {
                 romanNum.accord[i].count = 1;
@@ -108,13 +106,14 @@ function romanTime(time) {
             }
         }
 
-        //конкатенировать число из цифр
+        // конкатенировать число из цифр
         var rom = '';
         for (j = 0; j < romanNum.accord.length; j++) {
             for (i = 0; i < romanNum.accord[j].count; i++) {
                 rom += romanNum.accord[j].roman + romanNum.accord[j].addition;
             }
         }
+
         return rom;
     }
 
