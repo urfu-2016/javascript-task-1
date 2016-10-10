@@ -28,8 +28,7 @@ function convertToRomanNumber(number) {
         var tempNum = romanNumberTens[(number - number % 10) / 10 - 1];
         if (number % 10 !== 0) {
             number = tempNum + romanNumber[number % 10];
-        }
-        else {
+        } else {
             number = tempNum;
         }
     }
