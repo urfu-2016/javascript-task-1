@@ -29,7 +29,8 @@ function romanTime(time) {
 function isValid(time) {
     if (time === null || time === undefined || time.length > 5 || time.length !== 5) {
         throw new TypeError('Неверное время');
- }
+    }
+}
 
 function convertToRomanNumber(number) {
     var romanNumber = ['N', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
