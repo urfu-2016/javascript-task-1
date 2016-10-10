@@ -14,11 +14,11 @@ function convertToRomanNum(num) {
     return num;
 }
 function isValid(time) {
-    if (time.length > 5 || time === null) {
+    if (time.length > 5 || time == null) {
         throw new TypeError('Неверное время');
     } else {
         var arrHM = time.split(':');
-        if (arrHM[0].length !== 2 || arrHM[1].length !== 2 || isNaN(arrHM[0]) || isNaN(arrHM[1])) {
+        if (arrHM.length !== 2 || isNaN(arrHM[0]) || isNaN(arrHM[1])) {
             throw new TypeError('Неверное время');
         }
     }
