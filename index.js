@@ -1,19 +1,15 @@
 'use strict';
+
 var romanTime = require('./roman-time');
-// Выведет 'IX:X';
+
+// Выведет 'IX:X'
 console.info(romanTime('09:10'));
-// Выведет 'N:N';
+
+// Выведет 'N:N'
 console.info(romanTime('00:00'));
-// Выведет 'XXIII:LIX';
+
+// Выведет 'XXIII:LIX'
 console.info(romanTime('23:59'));
-// Выбросится ошибка [TypeError: Неверное время];
+
+// Выбросится ошибка [TypeError: Неверное время]
 console.info(romanTime('24:00'));
-// Выбросится ошибка [TypeError: Неверное время];
-console.info(romanTime('4:5'));
-console.info(romanTime('23:123'));
-console.info(romanTime('null'));
-console.info(romanTime('undefined'));
-console.info(romanTime(''));
-console.info(romanTime('десяти:три'));
-console.info(romanTime('1:2:3'));
-console.info(romanTime('1a:22'));
