@@ -1,7 +1,7 @@
 'use strict';
 
-function isCorrectValue(value, minRange, maxRange) {
-    return !(isNaN(value) || value < minRange || value > maxRange);
+function isCorrectValue(value, minValue, maxValue) {
+    return !(isNaN(value) || value < minValue || value > maxValue);
 }
 
 function isCorrectHour(hour) {
@@ -51,7 +51,7 @@ function decToRoman(value) {
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    if (!time) {
+    if (!time || time.length !== "HH:MM".length) {
         throw new TypeError("Неверное время");
     }
 
