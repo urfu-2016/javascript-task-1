@@ -26,7 +26,7 @@ function roman(units, dozens) {
 }
 
 function romanTime(time) {
-    if (typeof time !== "string" || time.match(regex) === null) {
+    if (typeof time !== "string" || time.length !== 5 || time.match(regex) === null) {
         throw new TypeError("Неверное время");
     }
     time = time.split(':');
