@@ -7,24 +7,8 @@
 function toRomanTime(parseHour,parseMinute) {
     var romanHour = '';
     var romanMinute = '';
-    var romanNumerals = {
-        'I',
-        'IV',
-        'V',
-        'IX',
-        'X',
-        'XL',
-        'L'
-    };
-    var arabicNumerals = {
-        1,
-        4,
-        5,
-        9,
-        10,
-        40,
-        50
-    };
+    var romanNumerals = ['I', 'IV', 'V', 'IX', 'X', 'XL', 'L'];
+    var arabicNumerals = [1, 4, 5, 9, 10, 40, 50];
     var position = romanNumerals.length - 1 ;
     if (parseMinute !== 0) {
         while (parseMinute > 0) {
