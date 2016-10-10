@@ -22,14 +22,12 @@ function romanTime(time) {
     var arrHM = time.split(':');
     var hours = parseInt(arrHM[0], 10);
     var min = parseInt(arrHM[1], 10);
-    if (arrHM[0].length === 2 && arrHM[1].length === 2 && arrHM.length === 2) {
-        if(hours < 24 && min < 60){
+    if (hours < 24 && min < 60 && time.length < 6) {
         hours = convertToRomanNum(hours);
         min = convertToRomanNum(min);
         time = hours + ':' + min;
 
         return time;
-        }
     }
     throw new TypeError('Неверное время');
 }
