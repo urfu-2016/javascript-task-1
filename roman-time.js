@@ -7,7 +7,6 @@
 
 function convertToRoman(num1, num2, time) {
     if (time === 0) {
-
         time = 'N';
     } else {
         var counter = 0;
@@ -26,17 +25,24 @@ function convertToRoman(num1, num2, time) {
 }
 
 function checkValidation(time) {
-    var temp = time[0].split('');
-    if (temp[0] >= 0 && temp[0] <= 2 &&
-        temp[1] >= 0 && temp[1] <= 9) {
-        temp = time[1].split('');
-        if (temp[0] >= 0 && temp[0] <= 5 &&
-            temp[1] >= 0 && temp[1] <= 9) {
+    try {
+        var temp = time[0].split('');
+        temp = temp.concat(time[1].split(''));
+        temp[0] = parseInt(temp[0], 10);
+        temp[1] = parseInt(temp[1], 10);
+        temp[2] = parseInt(temp[2], 10);
+        temp[3] = parseInt(temp[3], 10);
+        if (temp[0] >= 0 && temp[0] <= 2 &&
+            temp[1] >= 0 && temp[1] <= 9 &&
+            temp[2] >= 0 && temp[2] <= 5 &&
+            temp[3] >= 0 && temp[3] <= 9) {
             return true;
         }
-    }
 
-    return false;
+        return false;
+    } catch (e) {
+        return false;
+    }
 }
 
 function romanTime(time) {
