@@ -31,7 +31,7 @@ function correctTime(hours, minutes) {
 function romanTime(time) {
     var error = new TypeError ("Неверное время");
     if (isNaN (parseInt (time, 10))) {
-	    return error;
+        return error;
     }
     var partTime = time.split (':');
     if (partTime.length === 2 && time.length === 5) {
