@@ -8,6 +8,8 @@ function convertToRomanNum(num) {
         var tempNum = rNty[(num - num % 10) / 10 - 1];
         if (num % 10 !== 0) {
             num = tempNum + rN[num % 10];
+        } else {
+            num = tempNum;
         }
     }
 
