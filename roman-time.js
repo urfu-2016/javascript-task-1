@@ -7,7 +7,6 @@
 
 function convertToRoman(num1, num2, time) {
     if (time === 0) {
-
         time = 'N';
     } else {
         var counter = 0;
@@ -26,17 +25,28 @@ function convertToRoman(num1, num2, time) {
 }
 
 function checkValidation(time) {
-    var temp = time[0].split('');
-    if (temp[0] >= 0 && temp[0] <= 2 &&
-        temp[1] >= 0 && temp[1] <= 9) {
-        temp = time[1].split('');
-        if (temp[0] >= 0 && temp[0] <= 5 &&
-            temp[1] >= 0 && temp[1] <= 9) {
+    try {
+        var temp = time[0].split('');
+        temp = temp.concat(time[1].split(''));
+        temp[0] = Number([0]);
+        temp[1] = Number(temp[1]);
+        temp[2] = Number(temp[2]);
+        temp[3] = Number(temp[3]);
+        if (temp[0] >= 0 && temp[0] <= 2 &&
+            temp[1] >= 0 && temp[1] <= 9 &&
+            temp[2] >= 0 && temp[2] <= 5 &&
+            temp[3] >= 0 && temp[3] <= 9 &&
+            !isNaN(temp[0]) && !isNaN(temp[1]) &&
+            !isNaN(temp[2]) && !isNaN(temp[3])) {
+
             return true;
         }
-    }
 
-    return false;
+        return false;
+    } catch (e) {
+
+        return false;
+    }
 }
 
 function romanTime(time) {
@@ -51,13 +61,15 @@ function romanTime(time) {
         throw new TypeError('Неверный формат времени');
     }
     if (tempTime[0] >= 0 && tempTime[0] <= 23 &&
-        tempTime[1] >= 0 && tempTime[1] <= 59) {
+        tempTime[1] >= 0 && tempTime[1] <= 59 &&
+        !isNaN(tempTime[0]) && !isNaN(tempTime[1])) {
         tempTime[0] = convertToRoman(firstRomanNumbers, secondRomanNumbers, tempTime[0]);
         tempTime[1] = convertToRoman(firstRomanNumbers, secondRomanNumbers, tempTime[1]);
+        time = tempTime.join(':');
     } else {
         throw new TypeError('Неверный формат времени');
     }
-    time = tempTime.join(':');
+
 
     return time;
 }
