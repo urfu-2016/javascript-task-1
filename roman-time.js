@@ -15,7 +15,7 @@ function isTime(time) {
     else {
         throw new TypeError();
     }
-    
+
     return trueTime;
 }
 function isNumber(time) {
@@ -23,14 +23,18 @@ function isNumber(time) {
         if (parseInt(time.charAt(i)) !== parseInt(time.charAt(i)) && i !== 2) {
             throw new TypeError();
         }
-        else if (parseInt(time.charAt(0) + time.charAt(1)) > 23) {
-            throw new TypeError();
+        else {
+            if (parseInt(time.charAt(0) + time.charAt(1)) > 23) {
+                throw new TypeError();
+            }
         }
-        else if (parseInt(time.charAt(3) + time.charAt(4)) > 59) {
-            throw new TypeError();
+        else {
+            if (parseInt(time.charAt(3) + time.charAt(4)) > 59) {
+                throw new TypeError();
+            }
         }
     }
-    
+
     return true;
 }
 function reformInArabic(units, one, five) {
@@ -38,32 +42,46 @@ function reformInArabic(units, one, five) {
     if (units === "0") {
         romanUnits = "";
     }
-    else if (units < 4) {
-        for (var i = 0; i < units; i++) {
-            romanUnits = romanUnits + one;
+    else {
+        if (units < 4) {
+            for (var i = 0; i < units; i++) {
+                romanUnits = romanUnits + one;
+            }
         }
     }
-    else if (units === 4) {
+    else {
+        romanUnits = reformInArabic2(units, one, five);
+    }
+
+    return romanUnits;
+}
+function reformInArabic2(units, one, five) {
+    var romanUnits = "";
+    if (units === 4) {
         romanUnits = one + five;
     }
-    else if (units < 9) {
-        romanUnits = five; 
-        for (var j = 0; j < units - 5; j++) {
-            romanUnits = romanUnits + one;
+    else {
+        if (units < 9) {
+            romanUnits = five;
+            for (var j = 0; j < units - 5; j++) {
+                romanUnits = romanUnits + one;
+            }
         }
     }
-    else if (units === 9) {
-        romanUnits = "I";
-        romanUnits = romanUnits + "X";
+    else {
+        if (units === 9) {
+            romanUnits = "I";
+            romanUnits = romanUnits + "X";
+        }
     }
-    
+
     return romanUnits;
 }
 function isZero(a, b) {
     if (parseInt(a) === 0 && parseInt(b) === 0) {
         return true;
     }
-    
+
     return false;
 }
 function romanTime(time) {
