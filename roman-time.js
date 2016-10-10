@@ -27,13 +27,9 @@ function isNumber(time) {
     for (var i = 0; i < time.length; i++) {
         if (parseInt(time.charAt(i)) !== parseInt(time.charAt(i)) && i !== 2) {
             throw new TypeError();
-        }
-        else if (parseInt(time.charAt(0) + time.charAt(1)) > 23) 
-        {
+        } else if (parseInt(time.charAt(0) + time.charAt(1)) > 23) {
             throw new TypeError();
-        }
-        else if (parseInt(time.charAt(3) + time.charAt(4)) > 59) 
-        {
+        } else if (parseInt(time.charAt(3) + time.charAt(4)) > 59) {
             throw new TypeError();
         }
     }
@@ -44,15 +40,12 @@ function reformInArabic(units, one, five) {
     var romanUnits = "";
     if (units === "0") {
         romanUnits = "";
-    }
-    else if (units < 4) 
-    {
+    } else if (units < 4) {
         for (var i = 0; i < units; i++) {
             romanUnits = romanUnits + one;
         }
     }
-    else 
-    {
+    else {
         romanUnits = reformInArabic2(units, one, five);
     }
 
@@ -62,16 +55,12 @@ function reformInArabic2(units, one, five) {
     var romanUnits = "";
     if (units === 4) {
         romanUnits = one + five;
-    }
-    else if (units < 9) 
-    {
+    } else if (units < 9) {
         romanUnits = five;
         for (var j = 0; j < units - 5; j++) {
             romanUnits = romanUnits + one;
         }
-    }
-    else if (units === 9) 
-    {
+    } else if (units === 9) {
         romanUnits = "I";
         romanUnits = romanUnits + "X";
     }
