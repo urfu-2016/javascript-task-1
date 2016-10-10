@@ -10,14 +10,16 @@ var TENS = ['', 'X', 'XX', 'XXX', 'XL', 'L'];
 var TIME_PATTERN = /^(([0-1][0-9])|(2[0-3])):[0-5][0-9]$/;
 
 function romanTime(time) {
-    time = String(time)
+    time = String(time);
     if (!TIME_PATTERN.test(time)) {
         throw new TypeError();
     }
 
-    var romanTime = time.split(':').map(Number).map(toRoman);
+    var romanNumbers = time.split(':')
+    .map(Number)
+    .map(toRoman);
 
-    return romanTime.join(':');
+    return romanNumbers.join(':');
 }
 
 function toRoman(number) {
@@ -25,7 +27,7 @@ function toRoman(number) {
         return 'N';
     }
 
-    return TENS[Math.floor(number / 10)] + UNITS[number % 10]
+    return TENS[Math.floor(number / 10)] + UNITS[number % 10];
 }
 
 module.exports = romanTime;
