@@ -5,14 +5,14 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    var arr = time.split(':');
-    var hour = parseInt(arr[0]);
-    var minutes = parseInt(arr[1]);
-    var romanNumber = ['N', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII',
-                       'VIII', 'IX', 'X', 'XX', 'XXX', 'XL', 'L', 'LX'];
-    var arabicNumber = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40, 50, 60];
+    var arr = time.split(':'),
+      hour = parseInt(arr[0]),
+      minutes = parseInt(arr[1]),
+      romanNumber = ['N', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII',
+                       'VIII', 'IX', 'X', 'XX', 'XXX', 'XL', 'L', 'LX'],
+      arabicNumber = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40, 50, 60];
 
-    var timeHour;
+    var timeHour, timeMinutes;
     if (hour <= 10) {
         timeHour = romanNumber[arabicNumber.indexOf(hour)];
     } else {
@@ -20,7 +20,6 @@ function romanTime(time) {
         romanNumber[arabicNumber.indexOf(hour % 10)];
     }
 
-    var timeMinutes;
     if (minutes <= 10) {
         timeMinutes = romanNumber[arabicNumber.indexOf(minutes)];
     } else {
