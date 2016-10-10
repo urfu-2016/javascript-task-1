@@ -26,9 +26,9 @@ function romanTime(time) {
 }
 
 function checkLength(time) {
-	if (time.length > 5) {
-		throw new TypeError("Некорректное время");
-	}
+    if (time.length > 5) {
+        throw new TypeError("Некорректное время");
+    }
 }
 
 function convertTime(number) {
