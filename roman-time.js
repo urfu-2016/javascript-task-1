@@ -9,14 +9,13 @@ function romanTime(time) {
     var timeArray = time.split(':');
     var arabicHour = 0;
     var arabicMinute = 0;
-    try{
+    try {
         arabicHour = parseInt(timeArray[0]);
         arabicMinute = parseInt(timeArray[1]);
-    }
-    catch (e){
+    } catch (e) {
         throw new TypeError("Некорректное время");
     }
-    if (isNaN(arabicHour) || isNaN(arabicMinute) || arabicHour > 23 || arabicMinute > 59){
+    if (isNaN(arabicHour) || isNaN(arabicMinute) || arabicHour > 23 || arabicMinute > 59) {
         throw new TypeError("Некорректное время");
     }
     var result = "";
@@ -25,14 +24,14 @@ function romanTime(time) {
     return result;
 }
 
-function convertTime(number){
+function convertTime(number) {
     var dozens = { 0: "", 1: "X", 2: "XX", 3: "XXX", 4: "XL", 5: "L" };
-    var units = { 0: "", 1: "I", 2: "II", 3: "III", 4: "IV", 5: "V", 6: "VI", 7: "VII", 8: "VIII", 9: "IX" };
+    var units = { 0: "", 1: "I", 2: "II", 3: "III", 4: "IV", 5: "V",
+     6: "VI", 7: "VII", 8: "VIII", 9: "IX" };
     var result = "";
-    if (number === 0){
+    if (number === 0) {
         result = "N";
-    }
-    else{
+    } else {
         result = dozens[parseInt(number / 10)] + units[parseInt(number % 10)];
     }
 
