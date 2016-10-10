@@ -13,19 +13,19 @@ function convertToRomanNum(num) {
 
     return num;
 }
-function isValid(time){
-    if (time.length > 6){
+function isValid(time) {
+    if (time.length > 6) {
         throw new TypeError('Неверное время');
     } else {
         var arrHM = time.split(':');
-        if (arrHM[0].length !== 2 && arrHM[1].length !== 2){
+        if (arrHM[0].length !== 2 && arrHM[1].length !== 2) {
             throw new TypeError('Неверное время');
         }
     }
 
     return true;
 }
-        
+
 /**
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
@@ -34,13 +34,13 @@ function romanTime(time) {
     var arrHM = time.split(':');
     var hours = parseInt(arrHM[0], 10);
     var min = parseInt(arrHM[1], 10);
-    if (isValid(time)){
+    if (isValid(time)) {
         if (hours < 24 && min < 60) {
-        hours = convertToRomanNum(hours);
-        min = convertToRomanNum(min);
-        time = hours + ':' + min;
+            hours = convertToRomanNum(hours);
+            min = convertToRomanNum(min);
+            time = hours + ':' + min;
 
-        return time;
+            return time;
         }
     }
     throw new TypeError('Неверное время');
