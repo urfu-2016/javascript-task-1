@@ -16,6 +16,7 @@ function romanTime(time) {
     } catch (e) {
         throw new TypeError("Некорректное время");
     }
+    checkNaN(arabicHour, arabicMinute);
     if (arabicHour < 0 || arabicMinute < 0 || arabicHour > 23 || arabicMinute > 59) {
         throw new TypeError("Некорректное время");
     }
@@ -25,7 +26,7 @@ function romanTime(time) {
     return result;
 }
 
-function checkNaN(time) {
+function checkNaN(arabicHour, arabicMinute) {
     if (isNaN(arabicHour) || isNaN(arabicMinute)) {
         throw new TypeError("Некорректное время");
     }
