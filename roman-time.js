@@ -5,7 +5,7 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    if (isNaN(parseInt(time))) {
+    if (isNaN(parseInt(time)) || time.length !== 5) {
         throw new TypeError(['Неверное время']);
     }
     var array = time.split(':');
@@ -96,3 +96,4 @@ function getMinutes(dictionary, minutes) {
 
 
 module.exports = romanTime;
+
