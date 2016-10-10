@@ -54,20 +54,20 @@ function getHour(dictionary, hour) {
     var time;
     if (hour[0] === '0' && hour[1] === '0') {
         time = dictionary[0];
+
+        return time;
     }
-    else {
-        if (hour[0] === '0') {
-            time = dictionary[hour[1]];
-        }
-        else {
-            if (hour[1] === '0') {
-                time = dictionary[hour[0] * 10];
-            }
-            else {
-                time = dictionary[hour[0] * 10] + dictionary[hour[1]];
-            }
-        }
+    if (hour[0] === '0') {
+        time = dictionary[hour[1]];
+
+        return time;
     }
+    if (hour[1] === '0') {
+        time = dictionary[hour[0] * 10];
+
+        return time;
+    }
+    time = dictionary[hour[0] * 10] + dictionary[hour[1]];
 
     return time;
 }
@@ -76,20 +76,20 @@ function getMinutes(dictionary, minutes) {
     var time;
     if (minutes[0] === '0' && minutes[1] === '0') {
         time = dictionary[0];
+
+        return time;
     }
-    else {
-        if (minutes[0] === '0') {
-            time = dictionary[minutes[1]];
-        }
-        else {
-            if (minutes[1] === '0') {
-                time = dictionary[minutes[0] * 10];
-            }
-            else {
-                time = dictionary[minutes[0] * 10] + dictionary[minutes[1]];
-            }
-        }
+    if (minutes[0] === '0') {
+        time = dictionary[minutes[1]];
+
+        return time;
     }
+    if (minutes[1] === '0') {
+        time = dictionary[minutes[0] * 10];
+
+        return time;
+    }
+    time = dictionary[minutes[0] * 10] + dictionary[minutes[1]];
 
     return time;
 }
