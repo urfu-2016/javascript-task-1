@@ -29,7 +29,7 @@ function translationFromArabicToRoman(number) {
 function romanTime(time) {
     try {
         if (!isTime(time)) {
-            throw new TypeError('Incorrect time!');
+            throw new TypeError('Неверное время');
         }
         time = time.split(':');
         var hour = parseInt(time[0]);
