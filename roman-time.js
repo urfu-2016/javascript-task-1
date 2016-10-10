@@ -6,6 +6,7 @@
  */
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
+    checkLength(time);
     var timeArray = time.split(':');
     var arabicHour = 0;
     var arabicMinute = 0;
@@ -22,6 +23,12 @@ function romanTime(time) {
     result = convertTime(arabicHour) + ":" + convertTime(arabicMinute);
 
     return result;
+}
+
+function checkLength(time) {
+	if (time.length > 5) {
+		throw new TypeError("Некорректное время");
+	}
 }
 
 function convertTime(number) {
