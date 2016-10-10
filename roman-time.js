@@ -5,8 +5,8 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function toRoman(x) {
-    var arab = [0,1,4,5,9,10,40,50];
-    var roman = ["N","I","IV","V","IX","X","XL","L"];
+    var arab = [0, 1, 4, 5, 9, 10, 40, 50];
+    var roman = ["N", "I", "IV", "V", "IX", "X", "XL", "L"];
     var n = arab.length - 1;
     var Res = '';
     if (x === 0) {
