@@ -1,12 +1,81 @@
 'use strict';
 
-/**
- * @param {String} time – время в формате HH:MM (например, 09:05)
- * @returns {String} – время римскими цифрами (IX:V)
- */
+var arabicToRomanTable = {
+    1: 'I',
+    4: 'IV',
+    5: 'V',
+    9: 'IX',
+    10: 'X', 
+    40: 'XL',
+    50: 'L'
+    };
+
+var orderedArabicNumbers = [50, 40, 10, 9, 5, 4, 1];
+
 function romanTime(time) {
-    // Немного авторского кода и замечательной магии
+    var normalizedTime = normalize(time);
+    time = convertTimeToRoman(normalizedTime.hours, orderedArabicNumbers) + ':' + convertTimeToRoman(normalizedTime.minutes, orderedArabicNumbers);
     return time;
+}
+
+function containsDigit(time, digit) {
+    return (time/digit) >= 1;
+}
+
+function determineTheOrder(arabicToConvert, orderedNumbers){
+    var orderOfRomanDigits = [];
+    var j = 0;
+    for (var i = 0; i < orderedNumbers.length; i++){
+        while (arabicToConvert >= 0){
+            if (containsDigit(arabicToConvert, orderedNumbers[i]) == true){
+                orderOfRomanDigits[j] = orderedNumbers[i];
+                arabicToConvert -= orderedNumbers[i];
+                j++;
+            } else {
+                break;
+            }
+        }
+    }
+    return orderOfRomanDigits;
+}
+
+function renderResult(orderOfRoman){
+    var result = "";
+    for (var i = 0; i < orderOfRoman.length; i++) {
+        result += arabicToRomanTable[orderOfRoman[i]];
+    }
+    return result;
+}
+
+function convertTimeToRoman(time, orderedNumbers) {
+    if (time == 0) {
+        return 'N';
+    } else {
+        var orderOfDigits = determineTheOrder(time, orderedNumbers);
+        return renderResult(orderOfDigits);
+    }
+}
+
+function normalize(time) {
+    var splittedTime;
+    if(time != null) {
+        splittedTime = time.split(':');
+    } else {
+        throw new TypeError('Неверное время');
+    }
+    var hours = parseInt(splittedTime[0]);
+    var minutes = parseInt(splittedTime[1]);
+    validate(hours, minutes);
+    return {
+        hours: hours,
+        minutes: minutes
+    };
+}
+
+function validate(hours, minutes) {
+    if(hours < 0 || hours > 23 || minutes < 0 || minutes > 59 || isNaN(hours) || isNaN(minutes) || hours == null || minutes == null) {
+        throw new TypeError('Неверное время');
+    }
 }
 
 module.exports = romanTime;
