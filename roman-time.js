@@ -12,8 +12,8 @@ function romanTime(time) {
     var hoursMin = time.split(':');
     var hours = parseInt(hoursMin[0], 10);
     var min = parseInt(hoursMin[1], 10);
-    if (Number.isInteger(hours) && Number.isInteger(min) && hoursMin.length === 2) {
-        if (hours < 24 && min < 60 && hours >= 0 && min >= 0 && hoursMin[0].length <= 2 && hoursMin[1].length <= 2) {
+    if (Number.isInteger(hours) && Number.isInteger(min) && hours >= 0 && min >= 0) {
+        if (hours < 24 && min < 60 && hoursMin[0].length <= 2 && hoursMin[1].length <= 2) {
             hours = convertToRomanNumber(hours);
             min = convertToRomanNumber(min);
             time = hours + ':' + min;
