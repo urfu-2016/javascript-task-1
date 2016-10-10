@@ -56,6 +56,14 @@ function romanTime(time) {
     }
 
     var data = time.split(":");
+    data.filter(function (value) {
+        if (value.startsWith("+") || value.startsWith("-")) {
+            throw new TypeError("Неверное время");
+        }
+
+        return value;
+    });
+
     var hour = parseInt(data[0]);
     var minute = parseInt(data[1]);
 
