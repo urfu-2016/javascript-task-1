@@ -5,12 +5,15 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    if (isNaN(parseInt(time)) || time.length !== 5) {
+    if (isNaN(parseInt(time))) {
         throw new TypeError(['Неверное время']);
     }
     var array = time.split(':');
     var hour = array[0];
     var minutes = array[1];
+    if ((array.length !== 2) || (hour.length !== 2) || (minutes.length !== 2)){
+        throw new TypeError(['Неверное время']);
+    }
     if (!(isCorrectHour(hour) && isCorrectMinutes(minutes))) {
         throw new TypeError(['Неверное время']);
     }
