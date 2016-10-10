@@ -14,9 +14,9 @@ var orderedArabicNumbers = [50, 40, 10, 9, 5, 4, 1];
 
 function romanTime(time) {
     var normalizedTime = normalize(time);
-    time = convertTimeToRoman(normalizedTime.hours, orderedArabicNumbers) + ':'
-    + convertTimeToRoman(normalizedTime.minutes, orderedArabicNumbers);
-    
+    time = convertTimeToRoman(normalizedTime.hours, orderedArabicNumbers) + ':' + 
+    convertTimeToRoman(normalizedTime.minutes, orderedArabicNumbers);
+
     return time;
 }
 
@@ -38,7 +38,7 @@ function determineTheOrder(arabicToConvert, orderedNumbers) {
             }
         }
     }
-    
+
     return orderOfRomanDigits;
 }
 
@@ -47,7 +47,7 @@ function renderResult(orderOfRoman) {
     for (var i = 0; i < orderOfRoman.length; i++) {
         result += arabicToRomanTable[orderOfRoman[i]];
     }
-    
+
     return result;
 }
 
@@ -56,7 +56,7 @@ function convertTimeToRoman(time, orderedNumbers) {
         return 'N';
     }
     var orderOfDigits = determineTheOrder(time, orderedNumbers);
-    
+
     return renderResult(orderOfDigits);
 }
 
@@ -70,6 +70,7 @@ function normalize(time) {
     var hours = parseInt(splittedTime[0]);
     var minutes = parseInt(splittedTime[1]);
     validate(hours, minutes);
+
     return {
         hours: hours,
         minutes: minutes
@@ -77,8 +78,8 @@ function normalize(time) {
 }
 
 function validate(hours, minutes) {
-    if (hours < 0 || hours > 23 || minutes < 0 || minutes > 59 || isNaN(hours)
-    || isNaN(minutes) || hours == null || minutes == null) {
+    if (hours < 0 || hours > 23 || minutes < 0 || minutes > 59 || isNaN(hours) ||
+    isNaN(minutes) || hours == null || minutes == null) {
         throw new TypeError('Неверное время');
     }
 }
