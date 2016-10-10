@@ -1,13 +1,17 @@
 'use strict';
 
-function tryParseInt(str, defaultValue) {
-    return parseInt(str, 10) == str ? parseInt(str) : defaultValue;
+var filterInt = function (value) {
+    if(/^(\-|\+)?([0-9]+|Infinity)$/.test(value)) {
+
+        return Number(value);
+    }
+    return NaN;
 }
 
 function isValidTime2(time) {
     var splitted = time.split(':');
     for (var i = splitted.length - 1; i >= 0; i--) {
-        if (tryParseInt(splitted[i], null) === null) {
+        if (filterInt(splitted[i]) === NaN) {
 
             return false;
         }
@@ -62,7 +66,8 @@ function castHours(hours) {
 
 function castMinutes(minutes) {
     var answer = castToRoman(minutes);
-    answer.replace("XXXXX", "L");
+    answer = answer.replace("XXXXX", "L");
+    answer = answer.replace("XXXX", "XL");
 
     return answer;
 }
