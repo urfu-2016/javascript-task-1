@@ -6,11 +6,8 @@
  */
 function romanTime(time) {
     if (time === 0) {
-     
+
         return 'N';
-    }
-    if (time.length > 5 || time === null || time === undefined) {
-        throw new TypeError('Неверное время');
     }
     // Немного авторского кода и замечательной магии
     var hoursMin = time.split(':');
