@@ -18,38 +18,23 @@ var romanNumer = {
     50: 'L'
 };
 
-// Разделяем время на часы и минуты
-function splitStringTime(stringTime) {
+// Выделяем десятки и единицы
+function convertTime(time) {
 
-    var splitTimeResult = [];
+    var dozens = Math.floor(time / 10);
+    var unit = time % 10;
 
-    for (var i = 0; i < stringTime.length; i++) {
+    if (dozens === 0) {
 
-        var splitHour = stringTime.charAt(i);
+        return romanNumer[unit];
 
-        splitTimeResult.push(splitHour);
+    } else if (unit === 0) {
 
-    }
-
-    return splitTimeResult;
-}
-
-// Ковертиуем и 'склеиваем' время
-function glueTime(dH, uH, dM, uM) {
-
-    var romanResult;
-
-    if ((dH === 0) && (uM === 0)) {
-
-        romanResult = romanNumer[uH] + ":" + romanNumer[dM];
-
-    } else {
-
-        romanResult = romanNumer[dH] + romanNumer[uH] + ":" + romanNumer[dM] + romanNumer[uM];
+        return romanNumer[dozens * 10];
 
     }
 
-    return romanResult;
+    return romanNumer[dozens * 10] + romanNumer[unit];
 }
 
 function checkNaN(hrs, min) {
@@ -61,12 +46,11 @@ function checkNaN(hrs, min) {
 
 }
 
-function checkCorrect(hrs, min) {
+function checkRegExp(time) {
 
-    var hours = parseInt(hrs, 10);
-    var minutes = parseInt(min, 10);
+    var regExp = /^([0-1]\d?[0-9]|2[0-3])(:[0-5][0-9])$/;
 
-    return hours >= 0 && hours < 24 && minutes >= 0 && minutes < 60;
+    return regExp.test(time);
 
 }
 
@@ -88,11 +72,6 @@ function checkNullUndf(time) {
 
 }
 
-function checkLen(hrs, min) {
-
-    return hrs.length === 2 && min.length === 2;
-}
-
 /**
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
@@ -100,25 +79,19 @@ function checkLen(hrs, min) {
 function romanTime(time) {
 
     var splitDate = time.split(':');
-    var getHour = splitDate[0];
-    var getMin = splitDate[1];
+    var getHour = parseInt(splitDate[0], 10);
+    var getMin = parseInt(splitDate[1], 10);
 
-    if (!checkType(time) || checkNullUndf(time) || checkNaN(getHour, getMin) ||
-        !checkCorrect(getHour, getMin) || !checkLen(getHour, getMin)) {
+    if (!checkType(time) || checkNullUndf(time) || checkNaN(getHour, getMin) || !checkRegExp(time)) {
 
         throw new TypeError('Incorrect time format!');
 
     }
 
-    var HH = splitStringTime(getHour);
-    var dozensHours = parseInt(HH[0] * 10, 10); // Десятки в часах
-    var unitHours = parseInt(HH[1]); // Единицы в часах
+    var HH = convertTime(getHour);
+    var MM = convertTime(getMin);
 
-    var MM = splitStringTime(getMin);
-    var dozensMinutes = parseInt(MM[0] * 10, 10); // Десятки в минутах
-    var unitMinutes = parseInt(MM[1]); // Единицы в минутах
-
-    time = glueTime(dozensHours, unitHours, dozensMinutes, unitMinutes);
+    time = HH + ':' + MM;
 
     return time;
 
