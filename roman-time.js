@@ -10,6 +10,7 @@ function isCorrectTime(time) {
     (parseInt(splitTime(time)[1], 10) < 60)) {
         return true;
     }
+
     return false;
 }
 
@@ -24,6 +25,7 @@ function canSeparate(time) {
     if (REG_EXP.test(time)) {
         return true;
     }
+
     return false;
 }
 
@@ -38,8 +40,7 @@ function convertTime(number) {
         if (number >= ARABIC[n]) {
             result += ROMAN[n];
             number -= ARABIC[n];
-        }
-        else {
+        } else {
             n--;
         }
     }
@@ -50,10 +51,10 @@ function convertTime(number) {
 function romanTime(time) {
     if (!isCorrectTime(time)) {
         throw new TypeError('Неверное время');
-    }
-    else {
+    } else {
         var hours = parseInt(splitTime(time)[0], 10);
         var minutes = parseInt(splitTime(time)[1], 10);
+        
         return convertTime(hours) + separator + convertTime(minutes);
     }
 }
