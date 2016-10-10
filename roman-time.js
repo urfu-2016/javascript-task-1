@@ -22,7 +22,7 @@ function romanTime(time) {
 }
 
 function isTimeFormatCorrect(time) {
-    var NotEmpty = time !== null && time !== undefined;
+    var timeNotEmpty = time !== null && time !== undefined;
     var isTimeCorrect = typeof time === 'string' && time.indexOf(':') !== -1;
 
     return timeNotEmpty && isTimeCorrect;
