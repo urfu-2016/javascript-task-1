@@ -11,7 +11,7 @@ function romanTime(time) {
     var array = time.split(':');
     var hour = array[0];
     var minutes = array[1];
-    if ((array.length !== 2) || (hour.length !== 2) || (minutes.length !== 2)){
+    if ((array.length !== 2) || (hour.length !== 2) || (minutes.length !== 2)) {
         throw new TypeError(['Неверное время']);
     }
     if (!(isCorrectHour(hour) && isCorrectMinutes(minutes))) {
