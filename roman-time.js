@@ -24,6 +24,9 @@ function roman(units, dozens) {
 }
 
 function romanTime(time) {
+    if (time === null || time === undefined) {
+        throw new TypeError("Неверное время");
+    }
     time = time.split(':');
     var hour = Number(time[0]);
     var minute = Number(time[1]);
@@ -36,4 +39,3 @@ function romanTime(time) {
     return time;
 }
 module.exports = romanTime;
-
