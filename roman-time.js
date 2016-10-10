@@ -6,9 +6,7 @@
  */
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
-    if (time === undefined) {
-        throw new TypeError("Некорректное время");
-    }
+    checkUndefined(time);
     checkLength(time);
     var timeArray = [];
     if (time.charAt(2) === ":") {
@@ -25,13 +23,23 @@ function romanTime(time) {
         throw new TypeError("Некорректное время");
     }
     checkNaN(arabicHour, arabicMinute);
-    if (arabicHour < 0 || arabicMinute < 0 || arabicHour > 23 || arabicMinute > 59) {
-        throw new TypeError("Некорректное время");
-    }
+    checkInterval(arabicHour, arabicMinute);
     var result = "";
     result = convertTime(arabicHour) + ":" + convertTime(arabicMinute);
 
     return result;
+}
+
+function checkUndefined(time) {
+    if (time === undefined) {
+        throw new TypeError("Некорректное время");
+    }
+}
+
+function checkInterval(arabicHour, arabicMinute) {
+    if (arabicHour < 0 || arabicMinute < 0 || arabicHour > 23 || arabicMinute > 59) {
+        throw new TypeError("Некорректное время");
+    }
 }
 
 function checkNaN(arabicHour, arabicMinute) {
