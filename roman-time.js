@@ -14,11 +14,11 @@ function convertToRomanNum(num) {
     return num;
 }
 function isValid(time) {
-    if (time === null || time === undefined) {
+    if (time === null || time === undefined || time.length !== 5) {
         throw new TypeError('Неверное время');
     } else {
         var arrHM = time.split(':');
-        if (arrHM.length !== 2 || isNaN(arrHM[0]) || isNaN(arrHM[1])) {
+        if (isNaN(arrHM[0]) || isNaN(arrHM[1])) {
             throw new TypeError('Неверное время');
         }
     }
@@ -35,7 +35,7 @@ function romanTime(time) {
     var hours = parseInt(arrHM[0], 10);
     var min = parseInt(arrHM[1], 10);
     if (isValid(time)) {
-        if (hours < 24 && hours >= 0 && min < 60 && min >= 0) {
+        if (hours < 24 && hours >= 0 && min < 60 && min >= 0 && arrHM.length === 2) {
             hours = convertToRomanNum(hours);
             min = convertToRomanNum(min);
             time = hours + ':' + min;
