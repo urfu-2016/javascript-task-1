@@ -1,18 +1,18 @@
 'use strict';
 
-function TryParseInt(str, defaultValue) {
+function tryParseInt(str, defaultValue) {
     return parseInt(str, 10) === str ? parseInt(str) : defaultValue;
 }
 
 function isValidTime2(time) {
     var splitted = time.split(':');
     for (var i = splitted.length - 1; i >= 0; i--) {
-        if (TryParseInt(splitted[i], null) === null) {
+        if (tryParseInt(splitted[i], null) === null) {
 
             return false;
         }
     }
-    if (parseInt(splitted[0]) > 23){
+    if (parseInt(splitted[0]) > 23) {
 
         return false;
     }
@@ -30,7 +30,7 @@ function isValidTime1(time) {
         return false;
     }
     var splitted = time.split(':');
-    if (splitted.length !== 2){
+    if (splitted.length !== 2) {
 
         return false;
     }
@@ -42,7 +42,7 @@ function castToRoman(twoDigits) {
     var answer = "";
     var digitsCast = { 0: "", 1: "I", 2: "II", 3: "III", 4: "IV",
                5: "V", 6: "VI", 7: "VII", 8: "VIII", 9: "IX" };
-    if (twoDigits === "00"){
+    if (twoDigits === "00") {
 
         return "N";
     }
@@ -74,13 +74,12 @@ function castMinutes(minutes) {
 
 function romanTime(time) {
     if (isValidTime1(time)) {
-        if (isValidTime2(time)){
+        if (isValidTime2(time)) {
             return castHours(time.split(':')[0]) + ":" + castMinutes(time.split(':')[1]);
         }
     }
-    throw new TypeError("Неверное время")
+    throw new TypeError("Неверное время");
 }
-
 
 
 module.exports = romanTime;
