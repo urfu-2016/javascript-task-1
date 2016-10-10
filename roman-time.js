@@ -8,13 +8,13 @@ function toRomanTime(parseHour,parseMinute) {
     var romanHour = '';
     var romanMinute = '';
     var romanNumerals = {
-        "I",
-        "IV",
-        "V",
-        "IX",
-        "X",
-        "XL",
-        "L"
+        'I',
+        'IV',
+        'V',
+        'IX',
+        'X',
+        'XL',
+        'L'
     };
     var arabicNumerals = {
         1,
