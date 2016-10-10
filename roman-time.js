@@ -17,7 +17,8 @@ function toRoman(x) {
             Res = Res + roman[n];
             x = x - arab[n];
         }
-        else {
+        else
+        {
             n = n - 1;
         }
     }
