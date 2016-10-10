@@ -20,13 +20,14 @@ function convertToRoman(arab) {
 }
 
 function romanTime(time) {
+
+    if ((time.length !== 5) || (time.match(/([0-1]\d|2[0-3]):[0-5]\d/)) === null) {
+        throw new TypeError("Wrong format of input");
+    }
+
     var arrSymb = time.split(':');
     var hour = parseInt(arrSymb[0], 10);
     var min = parseInt(arrSymb[1], 10);
-
-    if ((arrSymb.length !== 2) || (hour < 0) || (hour > 23) || (min < 0) || (min > 59)) {
-        throw new TypeError("Wrong format of input");
-    }
 
     time = convertToRoman(hour) + ':' + convertToRoman(min);
 
