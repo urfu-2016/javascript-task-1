@@ -11,7 +11,7 @@ function romanTime(time) {
     var array = time.split(':');
     var hour = array[0];
     var minutes = array[1];
-    if ((array.length !== 2) || (hour.length !== 2) || (minutes.length !== 2)) {
+    if (isInCorrectFormat(array)) {
         throw new TypeError(['Неверное время']);
     }
     if (!(isCorrectHour(hour) && isCorrectMinutes(minutes))) {
@@ -97,6 +97,14 @@ function getMinutes(dictionary, minutes) {
     return time;
 }
 
+function isInCorrectFormat(array) {
+    var h = array[0].replace(/[^0-9]/g, '');
+    var m = array[1].replace(/[^0-9]/g, '');
+
+    return (array.length !== 2) || (h.length !== 2) || (m.length !== 2);
+
+}
 
 module.exports = romanTime;
+
 
