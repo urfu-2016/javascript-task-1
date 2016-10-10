@@ -51,7 +51,8 @@ function romanTime(time) {
         throw new TypeError('Неверный формат времени');
     }
     if (tempTime[0] >= 0 && tempTime[0] <= 23 &&
-        tempTime[1] >= 0 && tempTime[1] <= 59) {
+        tempTime[1] >= 0 && tempTime[1] <= 59 &&
+        !isNaN(tempTime[0]) && !isNaN(tempTime[1])) {
         tempTime[0] = convertToRoman(firstRomanNumbers, secondRomanNumbers, tempTime[0]);
         tempTime[1] = convertToRoman(firstRomanNumbers, secondRomanNumbers, tempTime[1]);
     } else {
