@@ -1,7 +1,7 @@
 'use strict';
 
 function tryParseInt(str, defaultValue) {
-    return parseInt(str, 10) === str ? parseInt(str) : defaultValue;
+    return parseInt(str, 10) == str ? parseInt(str) : defaultValue;
 }
 
 function isValidTime2(time) {
