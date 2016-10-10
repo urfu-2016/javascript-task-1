@@ -2,7 +2,7 @@
 
 function isValiable(hour, minute, time) {
     return hour > 23 || hour < 0 || minute > 59 || minute < 0 ||
-        time[1].length === 0 || time[0].length === 0;
+        time[1].length !== 2 || time[0].length !== 2;
 }
 
 function roman(units, dozens) {
