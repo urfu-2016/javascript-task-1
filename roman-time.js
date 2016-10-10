@@ -12,7 +12,7 @@ var filterInt = function (value) {
 function isValidTime2(time) {
     var splitted = time.split(':');
     for (var i = splitted.length - 1; i >= 0; i--) {
-        if (filterInt(splitted[i]).isNaN) {
+        if (isNaN(filterInt(splitted[i]))) {
 
             return false;
         }
