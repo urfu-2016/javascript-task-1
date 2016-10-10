@@ -95,17 +95,18 @@ function romanTime(time) {
     var splitDate = time.split(':');
     var getHour = splitDate[0];
     var getMinutes = splitDate[1];
-    var ERROR_MESSAGE = 'Incorrect format time!';
 
     if (!checkTimeOnType(time) || checkTimeOnUndf(time) || checkTimeOnNaN(getHour, getMinutes)) {
 
-        throw new TypeError(ERROR_MESSAGE);
+        throw new TypeError('Incorrect time format!');
 
-    }
+    } else {
 
-    if (!checkTimeOnCorrect(getHour, getMinutes) || checkTimeOnNull(time)) {
+        if (!checkTimeOnCorrect(getHour, getMinutes) || checkTimeOnNull(time)) {
 
-        throw new TypeError(ERROR_MESSAGE);
+            throw new TypeError('Incorrect time format!');
+
+        }
 
     }
 
