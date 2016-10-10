@@ -16,13 +16,19 @@ function romanTime(time) {
     } catch (e) {
         throw new TypeError("Некорректное время");
     }
-    if (isNaN(arabicHour) || isNaN(arabicMinute) || arabicHour > 23 || arabicMinute > 59) {
+    if (arabicHour < 0 || arabicMinute < 0 || arabicHour > 23 || arabicMinute > 59) {
         throw new TypeError("Некорректное время");
     }
     var result = "";
     result = convertTime(arabicHour) + ":" + convertTime(arabicMinute);
 
     return result;
+}
+
+function checkNaN(time) {
+    if (isNaN(arabicHour) || isNaN(arabicMinute)) {
+        throw new TypeError("Некорректное время");
+    }
 }
 
 function checkLength(time) {
