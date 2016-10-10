@@ -14,7 +14,7 @@ function convertToRomanNum(num) {
     return num;
 }
 function isValid(time) {
-    if (time === null || time === undefined || time.length !== 5) {
+    if (time === null || time === undefined || time.length > 5) {
         throw new TypeError('Неверное время');
     } else {
         var arrHM = time.split(':');
@@ -35,7 +35,7 @@ function romanTime(time) {
         var arrHM = time.split(':');
         var hours = parseInt(arrHM[0], 10);
         var min = parseInt(arrHM[1], 10);
-        if (hours < 24 && min < 60 && arrHM[0].length === 2 && arrHM[1].length === 2) {
+        if (hours < 24 && min < 60) {
             hours = convertToRomanNum(hours);
             min = convertToRomanNum(min);
             time = hours + ':' + min;
