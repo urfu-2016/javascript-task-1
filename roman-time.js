@@ -40,10 +40,7 @@ function romanTime(time) {
     var splitTime = time.split(':');
     var parseHour = parseInt(splitTime[0]);
     var parseMinute = parseInt(splitTime[1]);
-    if (isNaN(parseHour) || isNaN(parseMinute)) {
-        throw new TypeError();
-    }
-    if (parseHour < 0 || parseHour > 23 || parseMinute < 0 || parseMinute > 59) {
+    if (isNaN(parseHour) || isNaN(parseMinute) || parseHour > 23 || parseMinute > 59) {
         throw new TypeError();
     }
 
