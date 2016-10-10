@@ -14,7 +14,7 @@ function convertToRomanNum(num) {
     return num;
 }
 function isValid(time) {
-    if (time.length > 5) {
+    if (time.length > 5 || time === null) {
         throw new TypeError('Неверное время');
     } else {
         var arrHM = time.split(':');
