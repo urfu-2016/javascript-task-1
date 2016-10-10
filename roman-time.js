@@ -12,13 +12,16 @@ function romanTime(time) {
     var hoursMin = time.split(':');
     var hours = parseInt(hoursMin[0], 10);
     var min = parseInt(hoursMin[1], 10);
-    if (hours < 24 && min < 60 && hoursMin[0].length <= 2 && hoursMin[1].length <= 2 && Number.isInteger(hours) && Number.isInteger(min)) {
-        hours = convertToRomanNumber(hours);
-        min = convertToRomanNumber(min);
-        time = hours + ':' + min;
+    if (hoursMin[0].length <= 2 && hoursMin[1].length <= 2 && Number.isInteger(hours) && Number.isInteger(min)) {
+        if (hours < 24 && min < 60 ) {
+            hours = convertToRomanNumber(hours);
+            min = convertToRomanNumber(min);
+            time = hours + ':' + min;
 
-        return time;
+            return time;
+        }
     }
+        
     throw new TypeError('Неверное время');
 }
 
