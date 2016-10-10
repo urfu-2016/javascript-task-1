@@ -15,7 +15,11 @@ function romanTime(time) {
     } catch (e) {
         throw new TypeError("Некорректное время");
     }
-    if (isNaN(arabicHour) || isNaN(arabicMinute) || arabicHour > 23 || arabicMinute > 59 || arabicHour < 0 || arabicMinute < 0) {
+    if (arabicHour < 0 || arabicMinute < 0) {
+        throw new TypeError("Некорректное время");
+    }
+    if (isNaN(arabicHour) || isNaN(arabicMinute) || arabicHour > 23 ||
+     arabicMinute > 59) {
         throw new TypeError("Некорректное время");
     }
     var result = "";
