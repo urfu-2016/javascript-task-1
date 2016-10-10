@@ -11,7 +11,7 @@ function romanTime(time) {
         throw new TypeError("Некорректное время");
     }
     var timeArray = time.split(':');
-    var arabicHour = parseInt(timeArray[0]);;
+    var arabicHour = parseInt(timeArray[0]);
     var arabicMinute = parseInt(timeArray[1]);
     result = convertTime(arabicHour) + ":" + convertTime(arabicMinute);
 
@@ -20,13 +20,13 @@ function romanTime(time) {
 
 function isValidTime(time) {
     var timeArray = time.split(':');
-    var arabicHour = parseInt(timeArray[0]);;
+    var arabicHour = parseInt(timeArray[0]);
     var arabicMinute = parseInt(timeArray[1]);
     checkNaN(arabicHour, arabicMinute);
 
     return (/\d\d:\d\d/.test(time) && arabicHour >= 0 && arabicMinute >= 0 &&
      arabicHour < 24 && arabicMinute < 60 && isValidLength(time));
-} 
+}
 
 function checkNaN(arabicHour, arabicMinute) {
     if (isNaN(arabicHour) || isNaN(arabicMinute)) {
@@ -37,9 +37,8 @@ function checkNaN(arabicHour, arabicMinute) {
 function isValidLength(time) {
     if (time.length === 5) {
         return true;
-    } else {
-        return false;     
     }
+    return false;
 }
 
 function convertTime(number) {
