@@ -102,9 +102,9 @@ function romanTime(time) {
 
     } else if (!checkTimeOnCorrect(getHour, getMinutes) || checkTimeOnNull(time)) {
 
-            throw new TypeError('Incorrect time format!');
+        throw new TypeError('Incorrect time format!');
 
-        }
+    }
 
     var HH = splitStringTime(getHour);
     var dozensHours = parseInt(HH[0] * 10, 10); // Десятки в часах
