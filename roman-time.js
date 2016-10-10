@@ -5,11 +5,14 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
+    if (time.length > 5 || time === null || time === undefined) {
+        throw new TypeError('Неверное время');
+    }
     // Немного авторского кода и замечательной магии
     var hoursMin = time.split(':');
     var hours = parseInt(hoursMin[0], 10);
     var min = parseInt(hoursMin[1], 10);
-    if (hours < 24 && min < 60 && hoursMin[0].length <= 2 && hoursMin[1].length <= 2) {
+    if (hours < 24 && min < 60 && hoursMin[0].length <= 2 && hoursMin[1].length <= 2 && Number.isInteger(hours) && Number.isInteger(min)) {
         hours = convertToRomanNumber(hours);
         min = convertToRomanNumber(min);
         time = hours + ':' + min;
