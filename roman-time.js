@@ -1,17 +1,17 @@
 'use strict';
 
-function toRomanTime(parseHour,parseMinute) {
+function toRomanTime(parseHour, parseMinute) {
     var romanHour = '';
     var romanMinute = '';
     var romanNumerals = ['I', 'IV', 'V', 'IX', 'X', 'XL', 'L'];
     var arabicNumerals = [1, 4, 5, 9, 10, 40, 50];
-    var position = romanNumerals.length - 1 ;
+    var position = romanNumerals.length - 1;
     if (parseMinute !== 0) {
         while (parseMinute > 0) {
             if (parseMinute >= arabicNumerals[position]) {
                 romanHour += romanNumerals[position];
                 parseHour -= arabicNumerals[position];
-            } 
+            }
             --position;
         }
     } else {
@@ -23,7 +23,7 @@ function toRomanTime(parseHour,parseMinute) {
             if (parseHour >= arabicNumerals[position]) {
                 romanHour += romanNumerals[position];
                 parseHour -= arabicNumerals[position];
-            } 
+            }
             --position;
         }
     } else {
@@ -47,7 +47,7 @@ function romanTime(time) {
         throw new TypeError();
     }
 
-    return toRomanTime(parseHour,parseMinute);
+    return toRomanTime(parseHour, parseMinute);
 }
 
 module.exports = romanTime;
