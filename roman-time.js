@@ -27,9 +27,16 @@ function romanTime(time) {
 }
 
 function isValid(time) {
-    if (time === null || time === undefined || time.length > 5 || time.length !== 5) {
+    if (time === null || time === undefined || time.length > 5) {
         throw new TypeError('Неверное время');
+    } else {
+        var arrHM = time.split(':');
+        if (isNaN(arrHM[0]) || isNaN(arrHM[1])) {
+            throw new TypeError('Неверное время');
+        }
     }
+
+    return true;
 }
 
 function convertToRomanNumber(number) {
