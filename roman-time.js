@@ -34,6 +34,10 @@ function isValidTime1(time) {
 
         return false;
     }
+    if (time.length !== 5) {
+
+        return false;
+    }
     var splitted = time.split(':');
     if (splitted.length !== 2) {
 
