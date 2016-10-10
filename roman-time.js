@@ -5,7 +5,7 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    if (time.length > 5 || time === null || time === undefined) {
+    if (time.length !== 5 || time.length > 5 || time === null || time === undefined) {
         throw new TypeError('Неверное время');
     }
     // Немного авторского кода и замечательной магии
