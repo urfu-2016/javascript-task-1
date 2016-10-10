@@ -36,7 +36,9 @@ function intToRoman(number) {
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    var [hours, minutes] = parseTime(time);
+    var data = parseTime(time);
+    var hours = data[0];
+    var minutes = data[1];
     
     return intToRoman(hours) + ':' + intToRoman(minutes);
 }
