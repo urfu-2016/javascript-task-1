@@ -1,17 +1,18 @@
 'use strict';
 
 var filterInt = function (value) {
-    if(/^(\-|\+)?([0-9]+|Infinity)$/.test(value)) {
+    if (/^(\-|\+)?([0-9]+|Infinity)$/.test(value)) {
 
         return Number(value);
     }
+
     return NaN;
-}
+};
 
 function isValidTime2(time) {
     var splitted = time.split(':');
     for (var i = splitted.length - 1; i >= 0; i--) {
-        if (filterInt(splitted[i]) === NaN) {
+        if (filterInt(splitted[i]).isNaN) {
 
             return false;
         }
