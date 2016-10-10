@@ -52,7 +52,7 @@ function glueTime(dH, uH, dM, uM) {
     return romanResult;
 }
 
-function checkTimeOnNaN(hrs, min) {
+function checkNaN(hrs, min) {
 
     var hours = parseInt(hrs, 10);
     var minutes = parseInt(min, 10);
@@ -61,7 +61,7 @@ function checkTimeOnNaN(hrs, min) {
 
 }
 
-function checkTimeOnCorrect(hrs, min) {
+function checkCorrect(hrs, min) {
 
     var hours = parseInt(hrs, 10);
     var minutes = parseInt(min, 10);
@@ -70,20 +70,25 @@ function checkTimeOnCorrect(hrs, min) {
 
 }
 
-function checkTimeOnType(time) {
+function checkType(time) {
 
     return typeof time === 'string';
 
 }
 
-function checkTimeOnUndf(time) {
+function checkUndf(time) {
 
     return typeof time === undefined;
 }
 
-function checkTimeOnNull(time) {
+function checkNull(time) {
 
     return time === null;
+}
+
+function checkLen(hrs, min) {
+
+    return hrs.length === 2 && min.length === 2;
 }
 
 /**
@@ -94,13 +99,13 @@ function romanTime(time) {
 
     var splitDate = time.split(':');
     var getHour = splitDate[0];
-    var getMinutes = splitDate[1];
+    var getMin = splitDate[1];
 
-    if (!checkTimeOnType(time) || checkTimeOnUndf(time) || checkTimeOnNaN(getHour, getMinutes)) {
+    if (!checkType(time) || checkUndf(time) || checkNaN(getHour, getMin)) {
 
         throw new TypeError('Incorrect time format!');
 
-    } else if (!checkTimeOnCorrect(getHour, getMinutes) || checkTimeOnNull(time)) {
+    } else if (!checkCorrect(getHour, getMin) || checkNull(time) || !checkLen(getHour, getMin)) {
 
         throw new TypeError('Incorrect time format!');
 
@@ -110,7 +115,7 @@ function romanTime(time) {
     var dozensHours = parseInt(HH[0] * 10, 10); // Десятки в часах
     var unitHours = parseInt(HH[1]); // Единицы в часах
 
-    var MM = splitStringTime(getMinutes);
+    var MM = splitStringTime(getMin);
     var dozensMinutes = parseInt(MM[0] * 10, 10); // Десятки в минутах
     var unitMinutes = parseInt(MM[1]); // Единицы в минутах
 
