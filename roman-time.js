@@ -45,7 +45,7 @@ function romanTime(time) {
         }
 
         //максимальное число повторений подряд римской цифры в числе
-        const REPEAT_LIMIT = 3;
+        var repeatLimit = 3;
         //Римское число - составной объект
         var romanNum = {
 
@@ -94,7 +94,7 @@ function romanTime(time) {
         }
         //исключение повторов числа более 3 раз
         for (i = 0; i < romanNum.accord.length; i++) {
-            if (romanNum.accord[i].count > REPEAT_LIMIT) {
+            if (romanNum.accord[i].count > repeatLimit) {
                 romanNum.accord[i].count = 1;
                 romanNum.accord[i].addCount = 1;
 
