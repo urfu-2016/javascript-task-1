@@ -57,7 +57,9 @@ function romanTime(time) {
 
     var data = time.split(":");
     data.filter(function (value) {
-        if (value.startsWith("+") || value.startsWith("-")) {
+        if (!isNaN(parseInt(value[0])) ||
+            !isNaN(parseInt(value[1]))) {
+
             throw new TypeError("Неверное время");
         }
 
