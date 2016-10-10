@@ -22,7 +22,7 @@ function romanTime(time) {
     var arrHoursMin = time.split(':');
     var hours = parseInt(arrHoursMin[0], 10);
     var min = parseInt(arrHoursMin[1], 10);
-    if (hours < 24 && min < 60 && arrHoursMin[0].length === 2 && arrHoursMin[1].length === 2) {
+    if (hours < 24 && min < 60 && arrHoursMin[0].length === 2 && arrHoursMin[1].length === 2 && arrHoursMin.length === 2) {
         hours = convertToRomanNum(hours);
         min = convertToRomanNum(min);
         time = hours + ':' + min;
