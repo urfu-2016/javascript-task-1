@@ -8,14 +8,14 @@ function checkRange(numbers) {
 }
 
 function checkForErrors(time) {
+    var numbers;
     try {
-        var numbers = time.split(':');
+        numbers = time.split(':');
         parseInt(numbers[0], 10);
         parseInt(numbers[1], 10);
     } catch (e) {
         throw new TypeError('Неверное время');
     }
-    var numbers = time.split(':');
     checkRange(numbers);
     if (time.length !== 5 || numbers.length !== 2 ||
         numbers[0].length !== 2 || numbers[1].length !== 2) {
