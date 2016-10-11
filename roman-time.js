@@ -50,7 +50,7 @@ function checkTime(time) {
 }
 
 function checkNaN(hours, min) {
-    if (Number.isNaN(hours) || Number.isNaN(min)) {
+    if (isNaN(hours) || isNaN(min)) {
         throw new TypeError();
     }
 }
