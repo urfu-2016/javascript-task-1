@@ -9,12 +9,12 @@ function romanTime(time) {
         throwError(8, time);
     }
     var timeParts = time.split(':');
-    if (isNaN(timeParts[0]) || isNaN(timeParts[1])) {
+    if (timeParts.length !== 2 || isNaN(timeParts[0]) || isNaN(timeParts[1])) {
         throwError(12, time);
     }
     var hours = parseInt(timeParts[0], 10);
     var minutes = parseInt(timeParts[1], 10);
-    if (isTimeOutOfRange(hours, minutes)) {
+    if (isTimeNotInteger(timeParts[0], timeParts[1]) || isTimeOutOfRange(hours, minutes)) {
         throwError(17, time);
     }
 
@@ -26,6 +26,10 @@ function isTimeFormatCorrect(time) {
     var isTimeCorrect = typeof time === 'string' && time.indexOf(':') !== -1;
 
     return timeNotEmpty && isTimeCorrect;
+}
+
+function isTimeNotInteger(hours, minutes) {
+    return (parseFloat(hours) - parseInt(hours, 10) > 0) || (parseFloat(minutes) - parseInt(minutes, 10) > 0);
 }
 
 function isTimeOutOfRange(hours, minutes) {
