@@ -36,7 +36,7 @@ function checkNumb(hours, min) {
 function checkNull(time) {
     if (time.Length > 5 || time === undefined || time === null) {
         throw new TypeError();
-    }  
+    }
 }
 
 module.exports = romanTime;
