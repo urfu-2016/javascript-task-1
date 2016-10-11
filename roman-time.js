@@ -27,18 +27,14 @@ function translationFromArabicToRoman(number) {
 }
 
 function romanTime(time) {
-    try {
-        if (!isTime(time)) {
-            throw new TypeError('Неверное время');
-        }
-        time = time.split(':');
-        var hour = parseInt(time[0]);
-        var minute = parseInt(time[1]);
-
-        return translationFromArabicToRoman(hour) + ':' + translationFromArabicToRoman(minute);
-    } catch (e) {
-        return e;
+    if (!isTime(time)) {
+        throw new TypeError('Неверное время');
     }
+    time = time.split(':');
+    var hour = parseInt(time[0]);
+    var minute = parseInt(time[1]);
+
+    return translationFromArabicToRoman(hour) + ':' + translationFromArabicToRoman(minute);
 }
 
 module.exports = romanTime;
