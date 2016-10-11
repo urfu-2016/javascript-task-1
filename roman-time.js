@@ -21,22 +21,25 @@ function concatinationTime(element) {
  */
 function romanTime(time) {
     var regexp = /[0-9][0-9]:[0-9][0-9]+$/i;
+    try {
+        if (regexp.test(time)) {
 
-    if (regexp.test(time)) {
+            var timeList = time.split(':').map(listElement => parseInt(listElement, 10));
 
-        var timeList = time.split(':').map( listElement => parseInt(listElement, 10));
+            var firstElement = timeList[0];
+            var secondElement = timeList[1];
 
-        var firstElement = timeList[0];
-        var secondElement = timeList[1];
+            if (firstElement >= 0 && firstElement <= 24 && secondElement >= 0 && secondElement <= 60) {
+                console.log(concatinationTime(firstElement) + ':' + concatinationTime(secondElement));
+                return;
+            } else {
+                throw new TypeError;
+            }
 
-        if (firstElement >= 0 && firstElement <= 24 && secondElement >= 0 && secondElement <= 60) {
-            console.log(concatinationTime(firstElement) + ':' + concatinationTime(secondElement));
-            return;
         } else {
             throw new TypeError;
         }
-
-    } else {
+    } catch (e) {
         throw new TypeError;
     }
 }
