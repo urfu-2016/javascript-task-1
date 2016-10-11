@@ -24,7 +24,7 @@ function romanTime(time) {
 function isTimeFormatCorrect(time) {
     var timeNotEmpty = (time !== null && time !== undefined);
     var timeIsString = (typeof time === 'string' && time.indexOf(':') !== -1);
-    var timeLengthCorrect = time.length() === 4;
+    var timeLengthCorrect = time.length() === 5;
 
     return timeNotEmpty && timeIsString && timeLengthCorrect;
 }
