@@ -7,9 +7,6 @@
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
     checkTime(time);
-    if (!time.includes(':')) {
-        throw new TypeError();
-    }
     var parsedTime = time.split(':');
     var hours = parseInt(parsedTime[0], 10);
     var min = parseInt(parsedTime[1], 10);
@@ -21,17 +18,21 @@ function romanTime(time) {
 
 function checkTime(time) {
     checkNull(time);
-    checkNumb(time);
-    checkNaN(time);
+    if (!time.includes(':')) {
+        throw new TypeError();
+    }
+    var splittedTime = time.split(':');
+    checkNumb(splittedTime[0], splittedTime[1]);
+    checkNaN(splittedTime[0], splittedTime[1]);
 }
 
-function checkNaN(time) {
+function checkNaN(hours, min) {
     if (Number.isNaN(hours) || Number.isNaN(min)) {
         throw new TypeError();
     }
 }
 
-function checkNumb(time) {
+function checkNumb(hours, min) {
     if (hours > 23 || hours < 0 || min > 59 || min < 0) {
         throw new TypeError();
     }
