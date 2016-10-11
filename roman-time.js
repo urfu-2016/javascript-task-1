@@ -4,6 +4,7 @@
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
  */
+
 var ROMAN = ['I', 'IV', 'V', 'IX', 'X', 'L'];
 function getRoman(n, time) {
     var result = '';
@@ -42,14 +43,17 @@ function getTime(listH, listM) {
 
     return [hours, minutes];
 }
+function Error(time) {
+    if (isNaN(parseInt(time[0], 10)) || (parseInt(time[0], 10) > 23) ||
+        (parseInt(time[0], 10) < 0) || (parseInt(time[1], 10) > 59) ||
+        (parseInt(time[1], 10) < 0)) {
+        throw new SyntaxError('Error');
+    }
+}
 function romanTime(time) {
     try {
         time = time.split(':');
-        if (isNaN(parseInt(time[0], 10)) || (parseInt(time[0], 10) > 23) ||
-            (parseInt(time[0], 10) < 0) || (parseInt(time[1], 10) > 59) ||
-            (parseInt(time[1], 10) < 0)) {
-            throw new SyntaxError('Error');
-        }
+        Error(time);
     } catch (e) {
 
         return '[TypeError : Неверное время]';
