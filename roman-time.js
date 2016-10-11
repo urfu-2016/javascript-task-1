@@ -26,16 +26,25 @@ function toRomanTime(parseHour, parseMinute) {
     return romanHour + ':' + romanMinute;
 }
 
-function romanTime(time) {
+function checkTime(time) {
     if (time === undefined || time === null) {
         throw new TypeError();
     }
-    var splitTime = time.split(':');
-    var parseHour = parseInt(splitTime[0]);
-    var parseMinute = parseInt(splitTime[1]);
+}
+
+function checkNum(num) {
     if (isNaN(parseHour) || isNaN(parseMinute) || parseHour > 23 || parseMinute > 59) {
         throw new TypeError();
     }
+}
+
+function romanTime(time) {
+    checkTime(time);
+    var splitTime = time.split(':');
+    var parseHour = parseInt(splitTime[0]);
+    var parseMinute = parseInt(splitTime[1]);
+    checkNum(parseHour);
+    checkNum(parseMinute);
 
     return toRomanTime(parseHour, parseMinute);
 }
