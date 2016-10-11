@@ -19,8 +19,7 @@ function romanTime(time) {
         }
             throw new TypeError('There are only 24 hours per day !');        	
         }
-    }
-        throw new TypeError('Expected argument is hh:mm !');   
+        throw new TypeError('Expected argument is hh:mm !'); 
     }
 
 
