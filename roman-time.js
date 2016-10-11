@@ -5,19 +5,14 @@ function romanTime(time) {
         var arraySplitTyme = time.split(':');
         var hh = parseInt(arraySplitTyme[0], 10);
         var mm = parseInt(arraySplitTyme[1], 10);
-		if (!isNaN(hh)) {
-            if (!isNaN(mm)) {
-                if (check(arraySplitTyme[0], hh, 23)) {
-                    if (check(arraySplitTyme[1], mm, 59)) {
-                        time = inRoman(arraySplitTyme[0]) + ':';
-                        time += inRoman(arraySplitTyme[1]);
-                        
-                        return time;
-                    }
-                }
+		if (!isNaN(hh)&& !(isNaN(mm)) ) {
+            if (check(arraySplitTyme[0], hh, 23) && check(arraySplitTyme[1], mm, 59)) {
+                    time = inRoman(arraySplitTyme[0]) + ':';
+                    time += inRoman(arraySplitTyme[1]);
+                    
+                    return time;
             }
         }
-        
         return exept();
     } catch (e) {
         return exept();
@@ -26,22 +21,22 @@ function romanTime(time) {
 
 module.exports = romanTime;
 
-
 function inRoman(element) {
     var arab = [1, 4, 5, 9, 10, 40, 50];
     var roman = ['I', 'IV', 'V', 'IX', 'X', 'XL', 'L'];
     var elementRom = '';
     var nombElem = 6;
     if (element === '00') {
-        elementRom = 'N'
-    } else {
-        while (element > 0) {
-            if (element >= arab[nombElem]) {
-                elementRom += roman[nombElem];
-                element -= arab[nombElem];
-            } else {
-                nombElem--;
-            }
+        elementRom = 'N';
+        
+        return elementRom;
+    } 
+    while (element > 0) {
+        if (element >= arab[nombElem]) {
+            elementRom += roman[nombElem];
+            element -= arab[nombElem];
+        } else {
+            nombElem--;
         }
     }
 
