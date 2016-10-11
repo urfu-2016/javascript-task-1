@@ -13,11 +13,12 @@ function romanTime(time) {
 
     if (isNaN(hours) || isNaN(minutes) || hours > 23 ||
         hours < 0 || minutes > 59 || minutes < 0) {
-        throw new TypeError('Неверное время');
-    } else {
-        time = ("" + convertNum(hours) + ":" + convertNum(minutes)); }
+        throw new TypeError('Неверное время'); }
+    else {
+        time = String(convertNum(hours) + ":" + convertNum(minutes));
 
-    return time;
+        return time;
+    }
 }
 
 function convertNum(num) {
