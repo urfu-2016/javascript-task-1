@@ -17,10 +17,10 @@ function romanTime(time) {
 
             return romanedTime;
         }
-            throw new TypeError('There are only 24 hours per day !');        	
-        }
-        throw new TypeError('Expected argument is hh:mm !'); 
+        throw new TypeError('There are 24 hours per day');
     }
+    throw new TypeError('Expected format was hh:mm');
+}
 
 
 function arabToRoman(numArab) {
@@ -35,20 +35,20 @@ function arabToRoman(numArab) {
     else {
         switch (firstArab) {
             case 4:
-            firstRoman = 'IV'
-            break
+                firstRoman = 'IV';
+                break;
             case 9:
-            firstRoman = 'IX'
-            break
+                firstRoman = 'IX';
+                break;
             default:
-            firstRoman = decomposeByRoman(firstArab);
+                firstRoman = decomposeByRoman(firstArab);
         }
         switch (secondArab) {
             case 40:
-            secondRoman = 'XL'
-            break
+                secondRoman = 'XL';
+                break;
             default:
-            secondRoman = decomposeByRoman(secondArab);
+                secondRoman = decomposeByRoman(secondArab);
         }
         numRoman = secondRoman + firstRoman;
     }
@@ -57,13 +57,13 @@ function arabToRoman(numArab) {
 }
 
 function decomposeByRoman(numArab) {
-        var quantityL = Math.floor(numArab / 50);
-        var quantityX = Math.floor(((numArab % 50) / 10));
-        var quantityV = Math.floor(((numArab % 50) % 10) / 5);
-        var quantityI = Math.floor((((numArab % 50) % 10) % 5) / 1);
-        var decomposedToRoman = ('L').repeat(quantityL) + ('X').repeat(quantityX) + ('V').repeat(quantityV) + ('I').repeat(quantityI);
+    var quanL = Math.floor(numArab / 50);
+    var quanX = Math.floor(((numArab % 50) / 10));
+    var quanV = Math.floor(((numArab % 50) % 10) / 5);
+    var quanI = Math.floor((((numArab % 50) % 10) % 5) / 1);
+    var decomposedToRoman = ('L').repeat(quanL) + ('X').repeat(quanX) + ('V').repeat(quanV) + ('I').repeat(quanI);
 
-        return decomposedToRoman;
+    return decomposedToRoman;
 }
 
 module.exports = romanTime;
