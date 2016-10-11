@@ -39,7 +39,7 @@ function wrongHM(hour, minutes) {
 }
 
 function romanTime(time) {
-    //var e = new TypeError('Неверное время');
+    // var e = new TypeError('Неверное время');
     if (wrongTime(time)) {
         throw new TypeError('Неверное время');
     //    return e.name + ': ' + e.message;
