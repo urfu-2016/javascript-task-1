@@ -25,18 +25,13 @@ function calculate(num) {
     var digits = ['N', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
     var decade = ['X', 'XX', 'XXX', 'XL', 'L'];
     var romTime = '';
-    if (num === 0) {
-        romTime += 'N';
-
-        return romTime;
-    }
-    var dec = Math.floor(num / 10);
-    var dig = num % 10;
-    if (dec > 0) {
-        romTime += decade[dec - 1];
-    }
-    if (dig > 0) {
-        romTime += digits[dig];
+    if (num <= 9) {
+        romTime += digits[num];
+    } else {
+        romTime += decade[(Math.floor(num / 10)) - 1];
+        if (num % 10 !== 0) {
+            romTime += digits[num % 10];
+        }
     }
 
     return romTime;
@@ -64,13 +59,13 @@ function checkNaN(hours, min) {
 }
 
 function checkNumb(hours, min) {
-    if (hours > 23 || hours < 0 || min > 59 || min < 0) {
+    if (hours >=24 || hours < 0 || min >= 60 || min < 0) {
         throw new TypeError();
     }
 }
 
 function checkNull(time) {
-    if (time.Length !== 4 || time === undefined || time === null) {
+    if (time.Length !== 5 || time === undefined || time === null) {
         throw new TypeError();
     }
 }
