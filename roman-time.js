@@ -18,19 +18,25 @@ function romanTime(time) {
     if ((hours > 23 && hours < 0) || (min > 60 && min <0)) {
         throw new TypeError()
     }
-    var rom1 = ["N", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"];
-    var rom2 = ["N", "I", "XX", "XXX", "XL", "L", "LX"];
+    var digits = ["N", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"];
+    var decade = ["X", "XX", "XXX", "XL", "L", "LX"];
     var romTime;
-    if (hours <= 10) {
-        romTime = rom1[hours];
+    if (hours <= 9) {
+        romTime = digits[hours];
     } else {
-        romTime = rom2[(hours / 10 | 0)] + rom1[hours % 10];
+        romTime = decade[(hours / 10 | 0)];
+        if (hours % 10 != 0) {
+            romTime += digits[hours % 10 - 1];
+        }
     }
     romTime += ":";
     if (min <= 10) {
-        romTime += rom1[hours];
+        romTime += digits[hours];
     } else {
-        romTime += rom2[(hours / 10 | 0)] + rom1[hours % 10];
+        romTime += decade[(hours / 10 | 0)];
+        if (hours % 10 != 0) {
+            romTime += digits[hours % 10 - 1];
+        }
 
     return romTime;
 }
