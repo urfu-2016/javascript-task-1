@@ -16,7 +16,7 @@ function checkForErrors(time, numbers) {
     }
     checkRange(numbers);
     if (time.length !== 5 || numbers.length !== 2 ||
-        numbers[0].length !== 2 || numbers[1].length !== 2 ) {
+        numbers[0].length !== 2 || numbers[1].length !== 2) {
         throw new TypeError('Неверное время');
     }
 }
@@ -63,10 +63,11 @@ function romanTime(time) {
     var numbers = time.split(':');
     checkForErrors(time, numbers);
     var finalString = '';
-    for (var j =0; j < 2; j++) {
+    for (var j = 0; j < 2; j++) {
         var justNumber = parseInt(numbers[j], 10);
         finalString = parseTime(justNumber, finalString, romanianDict, j);
     }
+
     return finalString;
 }
 
