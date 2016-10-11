@@ -31,8 +31,7 @@ function arabToRoman(numArab) {
     var secondRoman;
     if (numArab === 0) {
         numRoman = 'N';
-    }
-    else {
+    } else {
         switch (firstArab) {
             case 4:
                 firstRoman = 'IV';
@@ -57,13 +56,13 @@ function arabToRoman(numArab) {
 }
 
 function decomposeByRoman(numArab) {
-    var quanL = Math.floor(numArab / 50);
-    var quanX = Math.floor(((numArab % 50) / 10));
-    var quanV = Math.floor(((numArab % 50) % 10) / 5);
-    var quanI = Math.floor((((numArab % 50) % 10) % 5) / 1);
-    var decomposedToRoman = ('L').repeat(quanL) + ('X').repeat(quanX) + ('V').repeat(quanV) + ('I').repeat(quanI);
+    var L = Math.floor(numArab / 50);
+    var X = Math.floor(((numArab % 50) / 10));
+    var V = Math.floor(((numArab % 50) % 10) / 5);
+    var I = Math.floor((((numArab % 50) % 10) % 5) / 1);
+    var roman = ('L').repeat(L) + ('X').repeat(X) + ('V').repeat(V) + ('I').repeat(I);
 
-    return decomposedToRoman;
+    return roman;
 }
 
 module.exports = romanTime;
