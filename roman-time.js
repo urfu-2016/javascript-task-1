@@ -60,7 +60,7 @@ function error(time) {
 function romanTime(time) {
     isNull(time);
     error(time);
-    if (time.indexOf('.') >= 0) {
+    if ((time + ' ').indexOf('.') >= 0) {
         throw new TypeError('Not Int');
     }
     time = time.split(':');
