@@ -27,11 +27,10 @@ function isCorrect(time) {
     if (isNaN(hour) || isNaN(minute)) {
         return false;
     }
-    if (hour < 0 || hour > 23 || minute < 0 || minute > 59) {
+    else if (hour < 0 || hour > 23 || minute < 0 || minute > 59) {
         return false;
     }
-
-    return true;
+    else return true;
 }
 
 function toRoman(digit) {
