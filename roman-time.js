@@ -2,7 +2,7 @@
 
 /**
  * @param {String} element – перевод из арабской в римскую
- * @returns {String} – римские цифры
+ * @returns {String} – âðåìÿ ðèìñêèìè öèôðàìè (IX:V)
  */
 function concatinationTime(element) {
     var onesList = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
@@ -10,23 +10,21 @@ function concatinationTime(element) {
 
     if (element === 0) {
         return 'N';
-    } else {
-        return tensList[Math.floor(element / 10)] + onesList[element % 10];
     }
+    return tensList[Math.floor(element / 10)] + onesList[element % 10];
+
 }
 
 /**
- * @param {String} time – время в формате HH:MM (например, 09:05)
- * @returns {String} – время римскими цифрами (IX:V)
+ * @param {String} time – âðåìÿ â ôîðìàòå HH:MM (íàïðèìåð, 09:05)
+ * @returns {String} – âðåìÿ ðèìñêèìè öèôðàìè (IX:V)
  */
 function romanTime(time) {
     var regexp = /[0-9][0-9]:[0-9][0-9]+$/i;
 
     if (regexp.test(time)) {
 
-        var timeList = time.split(':').map(function(listElement) {
-            return parseInt(listElement, 10)
-        });
+        var timeList = time.split(':').map( listElement => parseInt(listElement, 10));
 
         var firstElement = timeList[0];
         var secondElement = timeList[1];
