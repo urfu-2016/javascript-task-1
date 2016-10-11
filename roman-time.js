@@ -3,7 +3,7 @@
 
 var UNITS = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
 var TENS = ['', 'X', 'XX', 'XXX', 'XL', 'L'];
-
+var PATTERN = /[0-9]+:[0-9]+/;
 
 function isHoursCorrect(hours) {
     return !isNaN(hours) && hours >= 0 && hours < 24;
@@ -14,10 +14,10 @@ function isMinutesCorrect(minutes) {
 }
 
 function parseTime(time) {
+	if (!PATTERN.test(time)) {
+		throw new TypeError('Неверное время');
+	}
     var splittedTime = time.split(':');
-    if (splittedTime.length !== 2) {
-        throw new TypeError('Неверное время')
-    }
     var hours = parseInt(splittedTime[0]);
     var minutes = parseInt(splittedTime[1]);
     if (!isHoursCorrect(hours) || !isMinutesCorrect(minutes)) {
@@ -41,10 +41,6 @@ function intToRoman(number) {
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    if (time === null || time === NaN) {
-        throw new TypeError("Неверное время");
-    }
-
     return parseTime(time)
     .map(intToRoman)
     .join(':');
