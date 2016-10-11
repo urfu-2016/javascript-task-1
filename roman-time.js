@@ -3,7 +3,7 @@
 
 var UNITS = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
 var TENS = ['', 'X', 'XX', 'XXX', 'XL', 'L'];
-var PATTERN = /[0-9]+:[0-9]+/;
+var PATTERN = /^[0-9]+:[0-9]+$/;
 
 function isHoursCorrect(hours) {
     return !isNaN(hours) && hours >= 0 && hours < 24;
