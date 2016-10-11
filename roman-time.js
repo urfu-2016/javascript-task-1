@@ -24,7 +24,7 @@ function translateToRome(hours, min) {
 function calculate(num) {
     var digits = ['N', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
     var decade = ['X', 'XX', 'XXX', 'XL', 'L'];
-    var romTime;
+    var romTime = '';
     if (num <= 9) {
         romTime += digits[num];
     } else {
