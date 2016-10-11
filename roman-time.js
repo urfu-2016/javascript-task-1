@@ -43,6 +43,9 @@ function checkTime(time) {
         throw new TypeError();
     }
     var splittedTime = time.split(':');
+    if (splittedTime.Length > 2) {
+        throw new TypeError();
+    }
     checkNumb(splittedTime[0], splittedTime[1]);
     checkNaN(splittedTime[0], splittedTime[1]);
 
