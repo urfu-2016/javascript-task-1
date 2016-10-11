@@ -41,8 +41,8 @@ function checkTime(time) {
         throw new TypeError();
     }
     var splittedTime = time.split(':');
-    var hours = parseInt(splittedTime[0], 10);
-    var min = parseInt(splittedTime[1], 10);
+    var hours = Number(splittedTime[0]);
+    var min = Number(splittedTime[1]);
     checkNumb(hours, min);
     checkNaN(hours, min);
 
