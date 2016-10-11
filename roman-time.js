@@ -4,14 +4,26 @@
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
  */
-function check(hours, minutes) {
-    var checkNaN = (isNaN(hours) || isNaN(minutes));
-    var checkNull = (hours === null || minutes === null);
+function checkLength(hours, minutes) {
     var checkMore = hours > 23 || minutes > 59;
     var checkMin = hours < 0 || minutes < 0;
-    if (checkNaN || checkNull || checkMore || checkMin) {
+
+    return checkMin || checkMore;
+}
+
+function checkIsNaNOrNull(hours, minutes) {
+    var checkNaN = (isNaN(hours) || isNaN(minutes));
+    var checkNull = (hours === null || minutes === null);
+
+    return checkNaN || checkNull;
+}
+
+function check(hours, minutes) {
+    if (checkLength(hours, minutes) || checkIsNaNOrNull(hours, minutes)) {
         throw new TypeError('Incorrect time');
     }
+
+    return true;
 }
 
 function timeTranslator(time, arrMinutes, arrHours) {
@@ -25,8 +37,9 @@ function timeTranslator(time, arrMinutes, arrHours) {
 
         return 'N';
     }
+    var newTime = first + second;
 
-    return first + second;
+    return newTime;
 }
 
 function romanTime(time) {
@@ -39,7 +52,8 @@ function romanTime(time) {
     var arrHours = ['', 'X', 'XX', 'XXX', 'XL', 'L', 'LX'];
     var romanHours = timeTranslator(hours, arrMinutes, arrHours);
     var romanMinutes = timeTranslator(minutes, arrMinutes, arrHours);
+    var newTime = romanHours + ':' + romanMinutes;
 
-    return romanHours + ':' + romanMinutes;
+    return newTime;
 }
 module.exports = romanTime;
