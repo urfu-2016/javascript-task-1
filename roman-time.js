@@ -7,12 +7,6 @@
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
     checkTime(time);
-    var parsedTime = time.split(':');
-    var hours = parseInt(parsedTime[0], 10);
-    var min = parseInt(parsedTime[1], 10);
-    var digits = ["N", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"];
-    var decade = ["X", "XX", "XXX", "XL", "L"];
-    var romTime;
     return time;
 }
 
