@@ -22,19 +22,20 @@ function translate(timeRoman) {
 }
 
 function range(hour, minutes, arr) {
-    if (hour > 23 || minutes >= 60 || hour < 0 || minutes < 0 || isNaN(arr[0]) || isNaN(arr[1])) {
+    if (hour > 23 || minutes >= 60 || hour < 0 || minutes < 0) {
         return true;
-    } else {
-        return false;
     }
+
+    return false;
 }
 
 function whole(arr) {
-    if (arr[0].indexOf('.') !== -1 || arr[1].indexOf('.') !== -1) {
+    if (arr[0].indexOf('.') !== -1 || arr[1].indexOf('.') !== -1  ||
+        isNaN(arr[0]) || isNaN(arr[1])) {
         return true;
-    } else {
-        return false;
     }
+
+    return false;
 }
 
 function romanTime(time) {
