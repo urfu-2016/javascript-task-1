@@ -15,6 +15,7 @@ function checkForErrors(time) {
     } catch (e) {
         throw new TypeError('Неверное время');
     }
+    var numbers = time.split(':');
     checkRange(numbers);
     if (time.length !== 5 || numbers.length !== 2 ||
         numbers[0].length !== 2 || numbers[1].length !== 2) {
