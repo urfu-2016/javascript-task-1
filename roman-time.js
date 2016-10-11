@@ -69,8 +69,8 @@ function normalize(time) {
     } else {
         throw new TypeError('Неверное время');
     }
-    var hours = parseInt(splittedTime[0]);
-    var minutes = parseInt(splittedTime[1]);
+    var hours = filterTimeParts(splittedTime[0]);
+    var minutes = filterTimeParts(splittedTime[1]);
     validate(hours, minutes);
 
     return {
@@ -93,4 +93,13 @@ function isNotValid(value, minValue, maxValue) {
 
     return false;
 }
+
+function filterTimeParts(value){
+    if (/^([0-9]{2})$/.test(value)) {
+        return Number(value);
+    }
+    
+    return NaN;
+}
+
 module.exports = romanTime;
