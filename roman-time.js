@@ -49,7 +49,7 @@ function determineTheOrder(arabicToConvert, orderedNumbers) {
 } 
 
 function renderResult(orderOfRoman) {
-    var result = "";
+    var result = '';
     for (var i = 0; i < orderOfRoman.length; i++) {
         result += arabicToRomanTable[orderOfRoman[i]];
     }
