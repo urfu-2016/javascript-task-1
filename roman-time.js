@@ -51,8 +51,12 @@ function error(time) {
     }
 }
 function romanTime(time) {
-    time = time.split(':');
-    error(time);
+    try {
+        time = time.split(':');
+        error(time);
+    } catch (e) {
+        throw new TypeError('Неверное время');
+    }
     var hours = parseInt(time[0], 10);
     var minutes = parseInt(time[1], 10);
     var listH = [parseInt(hours / 10, 10), parseInt(hours % 10 / 5, 10),
