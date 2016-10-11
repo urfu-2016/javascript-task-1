@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 /**
  * @param {String} time – время в формате HH:MM (например, 09:05)
@@ -10,38 +10,36 @@ function check(hours, minutes) {
     var checkMore = hours > 23 || minutes > 59;
     var checkMin = hours < 0 || minutes < 0;
     if (checkNaN || checkNull || checkMore || checkMin) {
-        throw new TypeError("Incorrect time");
+        throw new TypeError('Incorrect time');
     }
 }
 
 function timeTranslator(time, arrMinutes, arrHours) {
     var first = arrHours[parseInt(time / 10)];
     var second = arrMinutes[parseInt(time % 10)];
-    if (first !== "N" && second !== "N") {
-
-        return first + second;
-    }
-    if (first === "N" && second !== "N") {
+    if (first === 'N' && second !== 'N') {
 
         return second;
-    } else {
-
-        return "N";
     }
+    if (time === 0) {
+
+        return 'N';
+    }
+
+    return first + second;
 }
 
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
-    var arrTime = time.split(":");
+    var arrTime = time.split(':');
     var hours = Number(arrTime[0]);
     var minutes = Number(arrTime[1]);
     check(hours, minutes);
-    var arrMinutes = ["N", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"];
-    var arrHours = ["N", "X", "XX", "XXX", "XL", "L", "LX"];
+    var arrMinutes = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
+    var arrHours = ['', 'X', 'XX', 'XXX', 'XL', 'L', 'LX'];
     var romanHours = timeTranslator(hours, arrMinutes, arrHours);
     var romanMinutes = timeTranslator(minutes, arrMinutes, arrHours);
 
-    return romanHours + ":" + romanMinutes;
+    return romanHours + ':' + romanMinutes;
 }
-
 module.exports = romanTime;
