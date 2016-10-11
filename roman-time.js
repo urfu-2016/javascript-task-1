@@ -60,7 +60,7 @@ function romanTime(time) {
     var minutes = parseInt(arr[1]);
 
     if (range(hour, minutes, arr) || whole(arr) || notNull(time) || notNan(arr)) {
-        time = new TypeError('Неверное время', 'roman-time.js');
+        throw new TypeError('Неверное время', 'roman-time.js');
     } else {
         time = translate(hour) + ':' + translate(minutes);
     }
