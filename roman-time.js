@@ -12,7 +12,7 @@ function romanTime(time) {
     var parsedTime = time.split(':');
     var hours = parseInt(parsedTime[0], 10);
     var min = parseInt(parsedTime[1], 10);
-    if (Number.isNan(hours) || Number.isNan(min)) {
+    if (NaN != hours) || NaN != min) {
         throw new TypeError();
     }
     var rom = ["N", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"];
