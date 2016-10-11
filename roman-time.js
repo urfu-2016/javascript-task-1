@@ -43,9 +43,8 @@ function romanTime(time) {
     var hour = parseInt(arr[0]);
     var minutes = parseInt(arr[1]);
 
-    if (range(hour, minutes, arr) || time === '' || whole(arr)) {
-        //throw new TypeError('Неверное время', 'roman-time.js');
-        time = new TypeError('Неверное время', 'roman-time.js');
+    if (range(hour, minutes, arr) || time === '' || whole(arr) || time === ':') {
+        throw new TypeError('Неверное время', 'roman-time.js');
     } else {
         time = translate(hour) + ':' + translate(minutes);
     }
