@@ -94,11 +94,11 @@ function isNotValid(value, minValue, maxValue) {
     return false;
 }
 
-function filterTimeParts(value){
+function filterTimeParts(value) {
     if (/^([0-9]{2})$/.test(value)) {
         return Number(value);
     }
-    
+
     return NaN;
 }
 
