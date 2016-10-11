@@ -16,13 +16,20 @@ function isNull(time) {
         throw new TypeError('Length < 3');
     }
 }
-function error(time) {
+function nan(time) {
     time += ' ';
     time = time.split(':');
-    if (isNaN(parseInt(time[0], 10)) || (parseInt(time[0], 10) > 23) ||
+    if (isNaN(parseInt(time[0], 10)) || isNaN(parseInt(time[1], 10))) {
+        throw new TypeError('NaN');
+    }
+}
+function errorRange(time) {
+    time += ' ';
+    time = time.split(':');
+    if ((parseInt(time[0], 10) > 23) ||
         (parseInt(time[0], 10) < 0) || (parseInt(time[1], 10) > 59) ||
         (parseInt(time[1], 10) < 0)) {
-        throw new TypeError('NaN or Range');
+        throw new TypeError('Range');
     }
 }
 function isZero(union, ten) {
@@ -49,7 +56,8 @@ function correct(time) {
 }
 function romanTime(time) {
     isNull(time);
-    error(time);
+    nan(time);
+    errorRange(time);
     if ((time + ' ').indexOf('.') >= 0) {
         throw new TypeError('Not Int');
     }
