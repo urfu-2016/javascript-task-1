@@ -44,6 +44,7 @@ function romanTime(time) {
     if (time === null || time === NaN) {
         throw new TypeError("Неверное время");
     }
+
     return parseTime(time)
     .map(intToRoman)
     .join(':');
