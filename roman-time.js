@@ -1,9 +1,5 @@
 'use strict';
 
-/**
- * @param {String} time – время в формате HH:MM (например, 09:05)
- * @returns {String} – время римскими цифрами (IX:V)
- */
 function toRoman(num) {
     var numArabic = [1,4,5,9,10,40,50];
     var numRoman = ['I','IV','V','IX','X','XL','L'];
