@@ -14,11 +14,10 @@ function romanTime(time) {
     if (isNaN(hours) || isNaN(minutes) || hours > 23 ||
         hours < 0 || minutes > 59 || minutes < 0) {
         throw new TypeError('Неверное время');
-    }
-    else {
-        time = convertNum(hours) + ":" + convertNum(minutes);
+    } else {
+        time = (convertNum(hours) + ":" + convertNum(minutes));
 
-        return time; }
+        return time;}
 
 
 }
@@ -40,7 +39,7 @@ function convertNum(num) {
         20: 'XX',
         30: 'XXX',
         40: 'XL',
-        50: 'L',
+        50: 'L'
     };
 
     // остаток от деления (для начала равен самому числу)
@@ -57,7 +56,7 @@ function convertNum(num) {
     unit = num % 10;
     rom = accordMap[dec] + accordMap[unit];
 
-    return rom;
+    return rom.toString();
 }
 
 module.exports = romanTime;
