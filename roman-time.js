@@ -41,9 +41,6 @@ function checkTime(time) {
         throw new TypeError();
     }
     var splittedTime = time.split(':');
-    if (splittedTime.Length > 2) {
-        throw new TypeError();
-    }
     var hours = parseInt(splittedTime[0], 10);
     var min = parseInt(splittedTime[1], 10);
     checkNumb(hours, min);
