@@ -16,7 +16,12 @@ function nan(time) {
     if (/^\d{2}:\d{2}$/.test(time)) {
         throw new TypeError('NaN');
     }
-
+}
+function range(time) {
+    time = time.split(':');
+    if ((time[0].length > 2) || (time[0].length > 2)) {
+        throw new TypeError('NaN');
+    }
 }
 function errorRange(time) {
     time += ' ';
@@ -36,13 +41,10 @@ function isZero(union, ten) {
     return result;
 }
 function correct(time) {
-    if (/[A-Za-zА-Яа-я?!.,<>{}()#$^&;+=-_|*]/.test(time)) {
+    if (/[A-Za-zА-Яа-я?!.,<>{}()#$^&;+=-_|* ]/.test(time)) {
         throw new TypeError('No correct');
     }
     time = time.split(':');
-    if ((time[0].length > 2) || (time[1].length > 2)) {
-        throw new TypeError('No correct');
-    }
     if (time[0].length === 1) {
         time[0] = '0' + time[0];
     }
@@ -54,6 +56,7 @@ function correct(time) {
 }
 function romanTime(time) {
     nan(time);
+    range(time);
     errorRange(time);
     time = correct(time);
     time = time.split(':');
