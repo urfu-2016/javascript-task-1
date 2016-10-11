@@ -14,24 +14,23 @@ function romanTime(time) {
 }
 
 function translateToRome(hours, min) {
+    var romHours = calculate(hours);
+    var romMin = calculate(min);
+    var time = romHours + ':' + romMin;
+
+    return time;
+}
+
+function calculate(num) {
     var digits = ['N', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
     var decade = ['X', 'XX', 'XXX', 'XL', 'L'];
     var romTime;
-    if (hours <= 9) {
-        romTime = digits[hours];
+    if (num <= 9) {
+        romTime += digits[num];
     } else {
-        romTime = decade[(Math.floor(hours / 10)) - 1];
-        if (hours % 10 !== 0) {
-            romTime += digits[hours % 10];
-        }
-    }
-    romTime += ':';
-    if (min <= 9) {
-        romTime += digits[min];
-    } else {
-        romTime += decade[(Math.floor(min / 10)) - 1];
-        if (hours % 10 !== 0) {
-            romTime += digits[min % 10];
+        romTime += decade[(Math.floor(num / 10)) - 1];
+        if (num % 10 !== 0) {
+            romTime += digits[num % 10];
         }
     }
 
