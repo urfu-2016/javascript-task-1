@@ -43,20 +43,26 @@ function getTime(listH, listM) {
 
     return [hours, minutes];
 }
+function isNull(time) {
+    if (time === null) {
+        throw new TypeError('NUL');
+    }
+}
 function error(time) {
+    time = time.split(':');
     if (isNaN(parseInt(time[0], 10)) || (parseInt(time[0], 10) > 23) ||
         (parseInt(time[0], 10) < 0) || (parseInt(time[1], 10) > 59) ||
         (parseInt(time[1], 10) < 0)) {
-        throw new TypeError('Неверное время');
+        throw new TypeError('NaN or Range');
     }
 }
 function romanTime(time) {
-    try {
-        time = time.split(':');
-        error(time);
-    } catch (e) {
-        throw new TypeError('Неверное время');
+    isNull(time);
+    error(time);
+    if (time.indexOf('.') >= 0) {
+        throw new TypeError('Not Int');
     }
+    time = time.split(':');
     var hours = parseInt(time[0], 10);
     var minutes = parseInt(time[1], 10);
     var listH = [parseInt(hours / 10, 10), parseInt(hours % 10 / 5, 10),
