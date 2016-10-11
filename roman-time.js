@@ -15,6 +15,8 @@ function romanTime(time) {
         time = numberToRoman(hours) + ':' + numberToRoman(minutes);
 
         return time;
+    } else {
+        throw new TypeError('Неверное время');
     }
 }
 
