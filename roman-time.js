@@ -52,9 +52,9 @@ function romanTime(time) {
     var arrHours = ['', 'X', 'XX', 'XXX', 'XL', 'L', 'LX'];
     var romanHours = timeTranslator(hours, arrMinutes, arrHours);
     var romanMinutes = timeTranslator(minutes, arrMinutes, arrHours);
-    var newTime = romanHours + ':' + romanMinutes;
+    time = romanHours + ':' + romanMinutes;
 
-    return newTime;
+    return time;
 }
- 
+
 module.exports = romanTime;
