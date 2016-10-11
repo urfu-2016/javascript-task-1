@@ -24,7 +24,7 @@ function romanTime(time) {
     try {
         if (regexp.test(time)) {
 
-            var timeList = time.split(':').map(listElement => parseInt(listElement));
+            var timeList = time.split(':').map(listElement => Number(listElement));
 
             var firstElement = timeList[0];
             var secondElement = timeList[1];
