@@ -1,32 +1,52 @@
 'use strict';
 
 function romanTime(time) {
-    if (typeof time !== 'string') {
-        return exept();
+    checkIsTime(time);
+    var arraySplitTime = time.split(':');
+    if (arraySplitTime.length !== 2) {
+        exept(time);
     }
-    var arraySplitTyme = time.split(':');
-    if (arraySplitTyme.length > 2) {
-        return exept();
+    if (checkInt(arraySplitTime[0]) || checkInt(arraySplitTime[1])) {
+        exept(time);
     }
-	if(checkInt(arraySplitTyme[0]) || checkInt(arraySplitTyme[1])) {
-		return exept();
-	}
-    var hh = parseInt(arraySplitTyme[0], 10);
-    var mm = parseInt(arraySplitTyme[1], 10);
-    if (!isNaN(hh) && !(isNaN(mm))) {
-        if (check(arraySplitTyme[0], hh, 23) && check(arraySplitTyme[1], mm, 59)) {
-            time = inRoman(arraySplitTyme[0]) + ':';
-            time += inRoman(arraySplitTyme[1]);
-
-            return time;
-        }
-    }
-
-    return exept();
+    time = purseTime(arraySplitTime, time);
+    return time;
 }
 
 
 module.exports = romanTime;
+
+function checkIsTime(time) {
+    if (time === null || time === undefined || typeof time !== 'string') {
+        exept(time);
+    }
+    if (time.indexOf(':') === (-1)) {
+        exept(time);
+    }
+}
+
+function purseTime(arraySplitTime, time) {
+    var hh = parseInt(arraySplitTime[0], 10);
+    var mm = parseInt(arraySplitTime[1], 10);
+    if (!isNaN(hh) && !(isNaN(mm))) {
+        time = bodyTime(arraySplitTime, time, hh, mm);
+        return time;
+    }
+    exept(time);
+}
+
+function bodyTime(arraySplitTime, time, hh, mm) {
+    if (checkInt(arraySplitTime[0]) || checkInt(arraySplitTime[1])) {
+            exept(time);
+        }
+        if (check(arraySplitTime[0], hh, 23) && check(arraySplitTime[1], mm, 59)) {
+            time = inRoman(arraySplitTime[0]) + ':';
+            time += inRoman(arraySplitTime[1]);
+
+            return time;
+        }
+        exept(time);
+}
 
 function inRoman(element) {
     var arab = [1, 4, 5, 9, 10, 40, 50];
@@ -51,13 +71,13 @@ function inRoman(element) {
 }
 
 function checkInt(strElem) {
-	for(var i = 0; i < strElem.length; i++) {
-		var checkI = strElem.charAt(i);
-	    if (isNaN(parseInt(checkI, 10))) {
+    for (var i = 0; i < strElem.length; i++) {
+        var checkI = strElem.charAt(i);
+        if (isNaN(parseInt(checkI, 10))) {
             return true;
         }
-	}
-	return false;
+    }
+    return false;
 }
 
 function check(strEl, intEl, form) {
@@ -71,10 +91,6 @@ function check(strEl, intEl, form) {
     return true;
 }
 
-function exept() {
-    try {
-        throw new TypeError('TypeError: Неверное время');
-    } catch (e) {
-        return e.message;
-    }
+function exept(time) {
+    throw new TypeError(time+': Неверное время');
 }
