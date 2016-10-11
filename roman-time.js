@@ -47,12 +47,12 @@ function isNull(time) {
     if (time === null) {
         throw new TypeError('NUL');
     }
-    if((time + ' ').length < 4) {
+    if ((time + ' ').length < 4) {
         throw new TypeError('Length < 3');
     }
 }
 function error(time) {
-    time += " ";
+    time += ' ';
     time = time.split(':');
     if (isNaN(parseInt(time[0], 10)) || (parseInt(time[0], 10) > 23) ||
         (parseInt(time[0], 10) < 0) || (parseInt(time[1], 10) > 59) ||
