@@ -7,8 +7,29 @@
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
     checkTime(time);
+    var hours = parseInt(parsedTime[0], 10);
+    var min = parseInt(parsedTime[1], 10);
+    var digits = ['N', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
+    var decade = ['X', 'XX', 'XXX', 'XL', 'L'];
+    var romTime;
+    if (hours <= 9) {
+        romTime = digits[hours];
+    } else {
+        romTime = decade[(hours / 10 | 0) - 1];
+        if (hours % 10 != 0) {
+            romTime += digits[hours % 10];
+        }
+    }
+    romTime += ":";
+    if (min <= 9) {
+        romTime += digits[hours];
+    } else {
+        romTime += decade[(hours / 10 | 0) - 1];
+        if (hours % 10 != 0) {
+            romTime += digits[hours % 10];
+        }    
 
-    return time;
+    return romTime;
 }
 
 function checkTime(time) {
@@ -19,6 +40,9 @@ function checkTime(time) {
     var splittedTime = time.split(':');
     checkNumb(splittedTime[0], splittedTime[1]);
     checkNaN(splittedTime[0], splittedTime[1]);
+    var parsedTime = time.split(':');
+    
+    return splittedTime[0], splittedTime[1];
 }
 
 function checkNaN(hours, min) {
@@ -34,7 +58,7 @@ function checkNumb(hours, min) {
 }
 
 function checkNull(time) {
-    if (time.Length > 5 || time === undefined || time === null) {
+    if (time.Length > 4 || time === undefined || time === null) {
         throw new TypeError();
     }
 }
