@@ -6,17 +6,17 @@
  */
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
-    var splitTime = time.split('', 5);
-    var hours = parseInt(splitTime[0] + splitTime[1], 10);
-    var mins = parseInt(splitTime[3] + splitTime[4], 10);
-    if (checkCorrectTime(splitTime, hours, mins)) {
-        time = conversionTime(hours, mins);
+    if (checkCorrectTime(time.split(''))) {
+        var splitTime = time.split(':');
+        time = conversionTime(splitTime);
     }
 
     return time;
 }
 
-function checkCorrectTime(splitTime, hours, mins) {
+function checkCorrectTime(splitTime) {
+    var hours = parseInt(splitTime[0] + splitTime[1], 10);
+    var mins = parseInt(splitTime[3] + splitTime[4], 10);
     if (!isCorrectTime(splitTime) || splitTime.length !== 5) {
         throw new TypeError('Неверный формат времени (HH:MM)', 'roman-time.js');
     }
@@ -36,7 +36,9 @@ function isCorrectRange(hours, mins) {
     return false;
 }
 
-function conversionTime(hours, mins) {
+function conversionTime(splitTime) {
+    var hours = parseInt(splitTime[0], 10);
+    var mins = parseInt(splitTime[1], 10);
     var time = [];
     var decs = ['', 'X', 'XX', 'XXX', 'XL', 'L'];
     var nums = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
@@ -58,10 +60,12 @@ function conversionTime(hours, mins) {
 function isCorrectTime(splitTime) {
     for (var i = 0; i < splitTime.length; i++) {
         if (isNaN(parseInt(splitTime[i])) && i !== 2) {
+
             return false;
         }
     }
     if (splitTime[2] !== ':') {
+
         return false;
     }
 
