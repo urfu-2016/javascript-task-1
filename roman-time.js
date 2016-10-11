@@ -43,7 +43,7 @@ function romanTime(time) {
     var arrTime = time.split(':');
     var hours = Number(arrTime[0]);
     var minutes = Number(arrTime[1]);
-    if (time.length !== 5 ) {
+    if (time.length !== 5) {
         throw new TypeError('Incorrect time');
     }
     check(hours, minutes);
