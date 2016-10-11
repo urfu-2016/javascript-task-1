@@ -15,11 +15,9 @@ function romanTime(time) {
         hours < 0 || minutes > 59 || minutes < 0) {
         throw new TypeError('Неверное время');
     } else {
-        time = (convertNum(hours) + ":" + convertNum(minutes));
+        time = ("" + convertNum(hours) + ":" + convertNum(minutes)); }
 
-        return time;}
-
-
+    return time;
 }
 
 function convertNum(num) {
