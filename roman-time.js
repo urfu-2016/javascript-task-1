@@ -10,6 +10,11 @@ function romanTime(time) {
     }
 
     var arr = time.split(':');
+
+    if (arr.length > 2) {
+        throw new TypeError('Неверное время');
+    }
+
     var hours = Number(arr[0]);
     var minutes = Number(arr[1]);
 
