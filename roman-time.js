@@ -14,17 +14,14 @@ function isMinutesCorrect(minutes) {
 }
 
 function parseTime(time) {
-    if (time === null || time === NaN) {
-        throw new TypeError("Неверное время");
-    }
     var splittedTime = time.split(':');
     if (splittedTime.length !== 2) {
-        throw new TypeError("Неверное время");
+        throw new TypeError('Неверное время')
     }
     var hours = parseInt(splittedTime[0]);
     var minutes = parseInt(splittedTime[1]);
     if (!isHoursCorrect(hours) || !isMinutesCorrect(minutes)) {
-        throw new TypeError("Неверное время");
+        throw new TypeError('Неверное время');
     }
 
     return [hours, minutes];
@@ -44,6 +41,9 @@ function intToRoman(number) {
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
+    if (time === null || time === NaN) {
+        throw new TypeError("Неверное время");
+    }
     return parseTime(time)
     .map(intToRoman)
     .join(':');
