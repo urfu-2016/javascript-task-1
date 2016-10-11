@@ -30,7 +30,7 @@ function determineTheOrder(arabicToConvert, orderedNumbers) {
         }
         numberOfDigits = 0;
         var divisionRemain = arabicRemain % orderedNumbers[i];
-        if (arabicRemain != divisionRemain) {
+        if (arabicRemain !== divisionRemain) {
             numberOfDigits = (arabicRemain - divisionRemain) / orderedNumbers[i];
             arabicRemain = divisionRemain;
         }
@@ -80,12 +80,12 @@ function normalize(time) {
 }
 
 function validate(hours, minutes) {
-    if (isNotValid(hours, 0, 23) || isNotValid(minutes, 0, 59)){
+    if (isNotValid(hours, 0, 23) || isNotValid(minutes, 0, 59)) {
         throw new TypeError('Неверное время');
     }
 }
 
-function isNotValid (value, minValue, maxValue) {
+function isNotValid(value, minValue, maxValue) {
     if (isNaN(value) || value < minValue || value > maxValue) {
 
         return true;
