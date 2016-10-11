@@ -1,34 +1,27 @@
 'use strict';
 
-function toRomanTime(parseHour, parseMinute) {
-    var romanHour = '';
-    var romanMinute = '';
+function transformNum(arabicNumeral) {
+    var romanNumeral = '';
     var romanNumerals = ['I', 'IV', 'V', 'IX', 'X', 'XL', 'L'];
     var arabicNumerals = [1, 4, 5, 9, 10, 40, 50];
     var position = romanNumerals.length - 1;
-    if (parseMinute !== 0) {
-        while (parseMinute > 0) {
-            if (parseMinute >= arabicNumerals[position]) {
-                romanHour += romanNumerals[position];
-                parseHour -= arabicNumerals[position];
-            }
-            --position;
-        }
-    } else {
-        romanMinute = 'N';
+    if (arabicNumeral === 0) {
+        return 'N';
     }
-    position = romanNumerals.length - 3;
-    if (parseHour !== 0) {
-        while (parseHour > 0) {
-            if (parseHour >= arabicNumerals[position]) {
-                romanHour += romanNumerals[position];
-                parseHour -= arabicNumerals[position];
-            }
-            --position;
+    while (arabicNumeral > 0) {
+        if (arabicNumeral >= arabicNumerals[position]) {
+            romanNumeral += romanNumerals[position];
+            arabicNumeral -= arabicNumerals[position];
         }
-    } else {
-        romanHour = 'N';
+        --position;
     }
+
+    return romanNumeral;
+}
+
+function toRomanTime(parseHour, parseMinute) {
+    var romanHour = transformNum(parseHour);
+    var romanMinute = transformNum(parseMinute);
 
     return romanHour + ':' + romanMinute;
 }
