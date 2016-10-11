@@ -15,6 +15,9 @@ function isMinutesCorrect(minutes) {
 
 function parseTime(time) {
     var splittedTime = time.split(':');
+    if (splittedTime.length != 2) {
+        throw new TypeError("Неверное время");
+    }
     var hours = parseInt(splittedTime[0]);
     var minutes = parseInt(splittedTime[1]);
     if (!isHoursCorrect(hours) || !isMinutesCorrect(minutes)) {
