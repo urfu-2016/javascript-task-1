@@ -20,7 +20,7 @@ function translateToRome(hours, min) {
     if (hours <= 9) {
         romTime = digits[hours];
     } else {
-        romTime = decade[(math.floor(hours / 10)) - 1];
+        romTime = decade[(Math.floor(hours / 10)) - 1];
         if (hours % 10 !== 0) {
             romTime += digits[hours % 10];
         }
@@ -29,7 +29,7 @@ function translateToRome(hours, min) {
     if (min <= 9) {
         romTime += digits[min];
     } else {
-        romTime += decade[(math.floor(min/10)) - 1];
+        romTime += decade[(Math.floor(min / 10)) - 1];
         if (hours % 10 !== 0) {
             romTime += digits[min % 10];
         }
