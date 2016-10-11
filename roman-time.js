@@ -7,7 +7,6 @@
 
 var ROMAN = { 0: '', 1: 'I', 2: 'II', 3: 'III', 4: 'IV', 5: 'V',
     6: 'VI', 7: 'VII', 8: 'VIII', 9: 'IX', 10: 'X', 20: 'XX', 30: 'XXX', 40: 'XL', 50: 'L' };
-
 function isNull(time) {
     if (time === null) {
         throw new TypeError('NUL');
@@ -44,6 +43,9 @@ function isZero(union, ten) {
     return result;
 }
 function correct(time) {
+    if (/[A-Za-z]/.test(time)) {
+        throw new TypeError('No correct');
+    }
     time = time.split(':');
     if ((time[0].length > 2) || (time[1].length > 2)) {
         throw new TypeError('No correct');
@@ -75,5 +77,4 @@ function romanTime(time) {
 
     return hour + ':' + min;
 }
-
 module.exports = romanTime;
