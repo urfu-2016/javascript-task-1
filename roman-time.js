@@ -1,19 +1,21 @@
 'use strict';
 
 function toRoman(num) {
-    var numArabic = [1,4,5,9,10,40,50];
-    var numRoman = ['I','IV','V','IX','X','XL','L'];
+    var numArabic = [1, 4, 5, 9, 10, 40, 50];
+    var numRoman = ['I', 'IV', 'V', 'IX', 'X', 'XL', 'L'];
     var result = '';
     var n = numArabic.length - 1;
     if (num === 0) {
-    	result = 'N'
+        result = 'N';
     }
     while (num > 0) {
         if (num >= numArabic[n]) {
-        result += numRoman[n];
-        num -= numArabic[n];
+            result += numRoman[n];
+            num -= numArabic[n];
         }
-    else n--;
+        else {
+            n--;
+        }
     }
 
 return result;
