@@ -56,8 +56,8 @@ function romanTime(time) {
         10: 'X',
         0: ''
     };
-    var numbers = time.split(':');
     checkForErrors(time, numbers);
+    var numbers = time.split(':');
     var finalString = '';
     for (var j = 0; j < 2; j++) {
         var justNumber = parseInt(numbers[j], 10);
