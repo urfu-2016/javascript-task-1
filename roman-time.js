@@ -14,15 +14,15 @@ function isNull(time) {
     if ((time + ' ').length < 4) {
         throw new TypeError('Length < 3');
     }
-    if ((time + ' ').length < 6) {
-        throw new TypeError('Length > 6');
-    }
 }
 function nan(time) {
     time += ' ';
     time = time.split(':');
     if (isNaN(parseInt(time[0], 10)) || isNaN(parseInt(time[1], 10))) {
         throw new TypeError('NaN');
+    }
+    if (/^\d{2}:\d{2}$/.test(time)) {
+        throw new TypeError('No correct');
     }
 }
 function errorRange(time) {
