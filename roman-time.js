@@ -7,9 +7,19 @@
 
 var ROMAN = { 0: '', 1: 'I', 2: 'II', 3: 'III', 4: 'IV', 5: 'V',
     6: 'VI', 7: 'VII', 8: 'VIII', 9: 'IX', 10: 'X', 20: 'XX', 30: 'XXX', 40: 'XL', 50: 'L' };
+function isNull(time) {
+    if (time === null) {
+        throw new TypeError('NUL');
+    }
+    if ((time + ' ').length < 4) {
+        throw new TypeError('Length < 3');
+    }
+}
 function nan(time) {
-    if (/^\d{2}:\d{2}$/.test(time)) {
-        throw new TypeError('No correct');
+    time += ' ';
+    time = time.split(':');
+    if (isNaN(parseInt(time[0], 10)) || isNaN(parseInt(time[1], 10))) {
+        throw new TypeError('NaN');
     }
 
 }
@@ -31,7 +41,7 @@ function isZero(union, ten) {
     return result;
 }
 function correct(time) {
-    if (/[A-Za-z.,&*%$#@?][{})(-_=+><;|!/]/.test(time)) {
+    if (/[A-Za-zА-Яа-я?!.,]/.test(time)) {
         throw new TypeError('No correct');
     }
     time = time.split(':');
@@ -48,6 +58,7 @@ function correct(time) {
     return time[0] + ':' + time[1];
 }
 function romanTime(time) {
+    isNull(time);
     nan(time);
     errorRange(time);
     time = correct(time);
