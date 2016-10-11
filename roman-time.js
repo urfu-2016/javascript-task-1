@@ -25,12 +25,12 @@ function checkForErrors(time) {
 
 function parseTime(justNumber, finalString, romanianDict) {
 
-    if (justNumber > 50) {
+    if (justNumber >= 50) {
         justNumber -= 50;
         finalString += 'L';
-    } else if (justNumber > 40) {
+    } else if (justNumber >= 40) {
         justNumber -= 40;
-        finalString += 'IL';
+        finalString += 'XL';
     }
     var amountOfX = (justNumber - justNumber % 10) / 10;
     for (var i = 0; i < amountOfX; i++) {
