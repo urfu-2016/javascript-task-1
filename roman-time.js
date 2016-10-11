@@ -13,12 +13,14 @@ function romanTime(time) {
 
     if (isNaN(hours) || isNaN(minutes) || hours > 23 ||
         hours < 0 || minutes > 59 || minutes < 0) {
-        throw new TypeError('Неверное время'); }
-    else {
-        time = String(convertNum(hours) + ":" + convertNum(minutes));
-
-        return time;
+        throw new TypeError('Неверное время');
     }
+
+    var hoursR = convertNum(hours);
+    var minutesR = convertNum(minutes);
+    time = hoursR.concat(':', minutesR);
+
+    return time;
 }
 
 function convertNum(num) {
@@ -55,7 +57,7 @@ function convertNum(num) {
     unit = num % 10;
     rom = accordMap[dec] + accordMap[unit];
 
-    return rom.toString();
+    return rom;
 }
 
 module.exports = romanTime;
