@@ -11,8 +11,11 @@ function romanTime(time) {
     hours = parseInt((time.split(':', 2))[0], 10);
     minutes = parseInt((time.split(':', 2))[1], 10);
 
-    if (isNaN(hours) || isNaN(minutes) || hours > 23 ||
-        hours < 0 || minutes > 59 || minutes < 0) {
+    // isNaN(hours) || isNaN(minutes) || hours > 23 ||
+    // hours < 0 || minutes > 59 || minutes < 0
+
+    // instanceof
+    if (isNaN(hours) || isNaN(minutes)) {
         throw new TypeError('Неверное время');
     }
 
