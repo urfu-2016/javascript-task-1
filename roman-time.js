@@ -1,5 +1,12 @@
 'use strict';
 
+function checkRange(numbers) {
+    if (parseInt(numbers[0], 10) > 23 || parseInt(numbers[0], 10) < 0 ||
+        parseInt(numbers[1], 10) > 59 || parseInt(numbers[1], 10) < 0) {
+        throw new TypeError('Неверное время');
+    }
+}
+
 function checkForErrors(time, numbers) {
     try {
         parseInt(numbers[0], 10);
@@ -7,11 +14,10 @@ function checkForErrors(time, numbers) {
     } catch (e) {
         throw new TypeError('Неверное время');
     }
-    if (time.length !== 5 || numbers.length !== 2 || numbers[0].length !== 2 
-        || numbers[1].length !== 2 || parseInt(numbers[0], 10) > 23 
-        || parseInt(numbers[0], 10) < 0 || parseInt(numbers[1], 10) > 59 
-        || parseInt(numbers[1], 10) < 0) {
-        throw new TypeError('Неверное время'); 
+    checkRange(numbers);
+    if (time.length !== 5 || numbers.length !== 2 ||
+        numbers[0].length !== 2 || numbers[1].length !== 2 ) {
+        throw new TypeError('Неверное время');
     }
 }
 
@@ -20,8 +26,7 @@ function parseTime(justNumber, finalString, romanianDict, k) {
     if (justNumber > 50) {
         justNumber -= 50;
         finalString += 'L';
-    }
-    else if (justNumber > 40) {
+    } else if (justNumber > 40) {
         justNumber -= 40;
         finalString += 'IL';
     }
@@ -32,8 +37,7 @@ function parseTime(justNumber, finalString, romanianDict, k) {
     justNumber = justNumber % 10;
     if (justNumber !== 0) {
         finalString += romanianDict[justNumber];
-    }
-    else {
+    } else {
         finalString += 'N';
     }
     if (k < 1) {
@@ -60,10 +64,9 @@ function romanTime(time) {
     checkForErrors(time, numbers);
     var finalString = '';
     for (var j =0; j < 2; j++) {
-        var justNumber = parseInt(numbers[k], 10);
+        var justNumber = parseInt(numbers[j], 10);
         finalString = parseTime(justNumber, finalString, romanianDict, j);
     }
-    
     return finalString;
 }
 
