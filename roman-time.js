@@ -7,22 +7,6 @@
 
 var ROMAN = { 0: '', 1: 'I', 2: 'II', 3: 'III', 4: 'IV', 5: 'V',
     6: 'VI', 7: 'VII', 8: 'VIII', 9: 'IX', 10: 'X', 20: 'XX', 30: 'XXX', 40: 'XL', 50: 'L' };
-function nan(time) {
-    time += ' ';
-    time = time.split(':');
-    if (isNaN(parseInt(time[0], 10)) || isNaN(parseInt(time[1], 10))) {
-        throw new TypeError('NaN');
-    }
-    if (/^\d{2}:\d{2}$/.test(time)) {
-        throw new TypeError('NaN');
-    }
-}
-function range(time) {
-    time = time.split(':');
-    if ((time[0].length > 2) || (time[0].length > 2)) {
-        throw new TypeError('NaN');
-    }
-}
 function errorRange(time) {
     time += ' ';
     time = time.split(':');
@@ -44,29 +28,20 @@ function correct(time) {
     if (/[A-Za-zА-Яа-я?!.,<>{}()#$^&;+=-_|* '"@]/.test(time)) {
         throw new TypeError('No correct');
     }
-    time = time.split(':');
-    if (time[0].length === 1) {
-        time[0] = '0' + time[0];
+    if (!(/\d\d:\d\d/.test(time))) {
+        throw new TypeError('NaN');
     }
-    if (time[1].length === 1) {
-        time[1] = '0' + time[1];
-    }
-
-    return time[0] + ':' + time[1];
 }
 function romanTime(time) {
-    nan(time);
-    range(time);
     errorRange(time);
-    time = correct(time);
+    correct(time);
     time = time.split(':');
     var ten = parseInt(time[0][0]) * 10;
     var union = parseInt(time[0][1]);
     var hour = isZero(union, ten);
     ten = parseInt(time[1][0]) * 10;
     union = parseInt(time[1][1]);
-    var min = isZero(union, ten);
 
-    return hour + ':' + min;
+    return hour + ':' + isZero(union, ten);
 }
 module.exports = romanTime;
