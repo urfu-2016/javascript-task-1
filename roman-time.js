@@ -41,9 +41,9 @@ function whole(arr) {
 function notNull(time) {
     if (time === '' || time === ':' || typeof time !== 'string') {
         return true;
-   }
+    }
 
-   return false;
+    return false;
 }
 
 function romanTime(time) {
