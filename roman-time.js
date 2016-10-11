@@ -44,7 +44,7 @@ function romanTime(time) {
     var minutes = parseInt(arr[1]);
 
     if (range(hour, minutes, arr) || time === '' || whole(arr)) {
-        time = new TypeError('Неверное время');
+        throw new TypeError('Неверное время', 'roman-time.js');
     } else {
         time = translate(hour) + ':' + translate(minutes);
     }
