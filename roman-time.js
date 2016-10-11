@@ -38,12 +38,20 @@ function whole(arr) {
     return false;
 }
 
+function notNull(time) {
+    if (time === '' || time === ':' || typeof time !== 'string') {
+        return true;
+   }
+
+   return false;
+}
+
 function romanTime(time) {
     var arr = time.split(':');
     var hour = parseInt(arr[0]);
     var minutes = parseInt(arr[1]);
 
-    if (range(hour, minutes, arr) || time === '' || whole(arr) || time === ':') {
+    if (range(hour, minutes, arr) || whole(arr) || notNull(time)) {
         throw new TypeError('Неверное время', 'roman-time.js');
     } else {
         time = translate(hour) + ':' + translate(minutes);
