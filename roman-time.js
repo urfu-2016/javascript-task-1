@@ -38,7 +38,7 @@ function toRoman(digit) {
     digit = parseInt(digit);
     var str = '';
 
-    magicDigits.forEach(function(current, index) {
+    magicDigits.forEach(function (current) {
         if (digit >= current) {
             var a = parseInt(digit / current);
             digit -= a * current;
@@ -49,17 +49,17 @@ function toRoman(digit) {
         }
     });
 
-    //for (var i = 0; i < magicDigits.length; i++) {
-    //    var current = magicDigits[i];
-    //    if (digit >= current) {
-    //        var a = parseInt(digit / current);
-    //        digit -= a * current;
-    //        while (a > 0) {
-    //            str += dict[current];
-    //            a--;
-    //        }
-    //    }
-    //}
+    // for (var i = 0; i < magicDigits.length; i++) {
+    //     var current = magicDigits[i];
+    //     if (digit >= current) {
+    //         var a = parseInt(digit / current);
+    //         digit -= a * current;
+    //         while (a > 0) {
+    //             str += dict[current];
+    //             a--;
+    //         }
+    //     }
+    // }
 
     return str === '' ? 'N' : str;
 }
