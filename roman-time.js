@@ -21,14 +21,28 @@ function translate(timeRoman) {
     return timeTranslate;
 }
 
+function range(hour, minutes, arr) {
+    if (hour > 23 || minutes >= 60 || hour < 0 || minutes < 0 || isNaN(arr[0]) || isNaN(arr[1])) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function whole(arr) {
+    if (arr[0].indexOf('.') !== -1 || arr[1].indexOf('.') !== -1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 function romanTime(time) {
     var arr = time.split(':');
     var hour = parseInt(arr[0]);
     var minutes = parseInt(arr[1]);
 
-    if (hour < 0 || minutes < 0 || (parseFloat(arr[0]) ^ 0) !== parseFloat(arr[0]) ||
-       (parseFloat(arr[1]) ^ 0) !== parseFloat(arr[1]) || isNaN(arr[0]) || isNaN(arr[1]) ||
-       isNaN(hour) || hour > 23 || isNaN(minutes) || minutes >= 60) {
+    if (range(hour, minutes, arr) || whole(arr)) {
         time = new TypeError('Неверное время');
     } else {
         time = translate(hour) + ':' + translate(minutes);
