@@ -21,9 +21,7 @@ function nan(time) {
     if (isNaN(parseInt(time[0], 10)) || isNaN(parseInt(time[1], 10))) {
         throw new TypeError('NaN');
     }
-    if (/^\d{2}:\d{2}$/.test(time)) {
-        throw new TypeError('No correct');
-    }
+
 }
 function errorRange(time) {
     time += ' ';
@@ -43,7 +41,7 @@ function isZero(union, ten) {
     return result;
 }
 function correct(time) {
-    if (/[A-Za-z]/.test(time)) {
+    if (/[A-Za-z.,&*%$#@?][{})(-_=+><;|!/]/.test(time)) {
         throw new TypeError('No correct');
     }
     time = time.split(':');
@@ -63,9 +61,6 @@ function romanTime(time) {
     isNull(time);
     nan(time);
     errorRange(time);
-    if ((time + ' ').indexOf('.') >= 0) {
-        throw new TypeError('Not Int');
-    }
     time = correct(time);
     time = time.split(':');
     var ten = parseInt(time[0][0]) * 10;
