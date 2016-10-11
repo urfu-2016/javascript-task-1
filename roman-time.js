@@ -31,12 +31,13 @@ function romanTime(time) {
         if (firstElement >= 0 && firstElement <= 24 && secondElement >= 0 && secondElement <= 60) {
             console.log(concatinationTime(firstElement) + ':' + concatinationTime(secondElement));
             return;
+            
         } else {
-            throw new TypeError;
+            throw new TypeError();
         }
 
     } else {
-        throw new TypeError;
+        throw new TypeError();
     }
 }
 
