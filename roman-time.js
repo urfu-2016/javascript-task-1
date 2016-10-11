@@ -15,6 +15,9 @@ function isNull(time) {
     if ((time + ' ').length < 4) {
         throw new TypeError('Length < 3');
     }
+    if ((time + ' ').length > 6) {
+        throw new TypeError('Length > 6');
+    }
 }
 function error(time) {
     time += ' ';
