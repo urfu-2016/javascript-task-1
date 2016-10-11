@@ -64,7 +64,7 @@ function convertTimeToRoman(time, orderedNumbers) {
 
 function normalize(time) {
     var splittedTime;
-    if (typeof time === 'string') {
+    if (typeof time === 'string' && time.length === 5) {
         splittedTime = time.split(':');
     } else {
         throw new TypeError('Неверное время');
