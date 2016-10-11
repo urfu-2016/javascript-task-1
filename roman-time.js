@@ -10,8 +10,8 @@ function romanTime(time) {
     }
 
     var arr = time.split(':');
-    var hours = parseFloat(arr[0]);
-    var minutes = parseFloat(arr[1]);
+    var hours = Number(arr[0]);
+    var minutes = Number(arr[1]);
 
     if ((isNaN(hours)) || (isNaN(minutes)) || isWrongTime(hours, minutes)) {
         throw new TypeError('Неверное время');
