@@ -7,6 +7,14 @@ function checkRange(numbers) {
     }
 }
 
+function checkDigit(time) {
+    for (var i = 0; i < 5; i++) {
+        if (time[i] < '0' || time[i] > '9' && i !== 2) {
+            throw new TypeError('Неверное время');
+        }
+    }
+}
+
 function checkForErrors(time) {
     var numbers;
     try {
@@ -21,6 +29,7 @@ function checkForErrors(time) {
         numbers[0].length !== 2 || numbers[1].length !== 2) {
         throw new TypeError('Неверное время');
     }
+    checkDigit(time);
 }
 
 function parseTime(justNumber, finalString, romanianDict) {
@@ -54,9 +63,7 @@ function romanTime(time) {
         6: 'VI',
         7: 'VII',
         8: 'VIII',
-        9: 'IX',
-        10: 'X',
-        0: ''
+        9: 'IX'
     };
     checkForErrors(time);
     var numbers = time.split(':');
