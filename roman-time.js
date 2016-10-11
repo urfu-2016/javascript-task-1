@@ -49,7 +49,7 @@ function checkTime(time) {
     checkNumb(hours, min);
     checkNaN(hours, min);
 
-    return splittedTime;
+    return [hours, min];
 }
 
 function checkNaN(hours, min) {
