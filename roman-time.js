@@ -5,6 +5,9 @@ function romanTime(time) {
         return exept();
     }
     var arraySplitTyme = time.split(':');
+    if (arraySplitTyme.length > 2) {
+        return exept();
+    }
     var hh = parseInt(arraySplitTyme[0], 10);
     var mm = parseInt(arraySplitTyme[1], 10);
     if (!isNaN(hh) && !(isNaN(mm))) {
