@@ -7,6 +7,7 @@
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
     checkTime(time);
+
     return time;
 }
 
