@@ -24,10 +24,10 @@ function romanTime(time) {
     var regexp = /[0-9][0-9]:[0-9][0-9]+$/i;
     if (regexp.test(time)) {
 
-        var timeList = time.split(':');
+        var timeList = time.split(':').map(element => parseInt(element));
 
-        var firstElement = parseInt(timeList[0]);
-        var secondElement = parseInt(timeList[1]);
+        var firstElement = timeList[0];
+        var secondElement = timeList[1];
 
         if (firstElement >= 0 && firstElement < 24 && secondElement >= 0 && secondElement <= 60) {
 
@@ -40,4 +40,5 @@ function romanTime(time) {
     }
 }
 
+romanTime('24:00 ')
 module.exports = romanTime;
