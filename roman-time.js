@@ -29,7 +29,7 @@ function romanTime(time) {
         var firstElement = parseInt(timeList[0]);
         var secondElement = parseInt(timeList[1]);
 
-        if (firstElement >= 0 && firstElement <= 24 && secondElement >= 0 && secondElement <= 60) {
+        if (firstElement >= 0 && firstElement < 24 && secondElement >= 0 && secondElement <= 60) {
 
             return concatinationTime(firstElement) + ':' + concatinationTime(secondElement);
         }
