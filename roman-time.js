@@ -6,13 +6,13 @@
  */
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
-    checkTime(time);
+    var parsedTime = checkTime(time);
     var hours = parseInt(parsedTime[0], 10);
     var min = parseInt(parsedTime[1], 10);
-
-    return romTime;
-}
     
+    return translateToRome(hours, min);
+}
+
 function translateToRome(hours, min) {
     var digits = ['N', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
     var decade = ['X', 'XX', 'XXX', 'XL', 'L'];
@@ -21,7 +21,7 @@ function translateToRome(hours, min) {
         romTime = digits[hours];
     } else {
         romTime = decade[(hours / 10 | 0) - 1];
-        if (hours % 10 != 0) {
+        if (hours % 10 !== 0) {
             romTime += digits[hours % 10];
         }
     }
@@ -30,10 +30,12 @@ function translateToRome(hours, min) {
         romTime += digits[hours];
     } else {
         romTime += decade[(hours / 10 | 0) - 1];
-        if (hours % 10 != 0) {
+        if (hours % 10 !== 0) {
             romTime += digits[hours % 10];
         }
     }
+    
+    return romTime;
 }
 
 function checkTime(time) {
@@ -45,8 +47,8 @@ function checkTime(time) {
     checkNumb(splittedTime[0], splittedTime[1]);
     checkNaN(splittedTime[0], splittedTime[1]);
     var parsedTime = time.split(':');
-    
-    return splittedTime[0], splittedTime[1];
+
+    return splittedTime;
 }
 
 function checkNaN(hours, min) {
