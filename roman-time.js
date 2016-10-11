@@ -9,8 +9,9 @@ function romanTime(time) {
     if (time.Length > 5 || time === undefined || time === null) {
         throw new TypeError();
     }
-    if (!time.includes(':'))
+    if (!time.includes(':')) {
         throw new TypeError();
+    }
     var parsedTime = time.split(':');
     var hours = parseInt(parsedTime[0], 10);
     var min = parseInt(parsedTime[1], 10);
@@ -20,10 +21,8 @@ function romanTime(time) {
     if (hours > 23 || hours < 0 || min > 59 || min <0) {
         throw new TypeError()
     }
-    var digits = ["N", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"];
-    var decade = ["X", "XX", "XXX", "XL", "L"];
-    var romTime;
-    return romTime;
+
+    return time;
 }
 
 module.exports = romanTime;
