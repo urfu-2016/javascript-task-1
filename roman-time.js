@@ -9,7 +9,7 @@ var romanNumer = {
     5: 'V',
     6: 'VI',
     7: 'VII',
-    8: 'IIX',
+    8: 'VIII',
     9: 'IX',
     10: 'X',
     20: 'XX',
