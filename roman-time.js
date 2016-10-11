@@ -14,7 +14,7 @@ var orderedArabicNumbers = [50, 40, 10, 9, 5, 4, 1];
 
 function romanTime(time) {
     var normalizedTime = normalize(time);
-    time = convertTimeToRoman(normalizedTime.hours, orderedArabicNumbers) + ':' + 
+    time = convertTimeToRoman(normalizedTime.hours, orderedArabicNumbers) + ':' +
     convertTimeToRoman(normalizedTime.minutes, orderedArabicNumbers);
 
     return time;
@@ -26,21 +26,27 @@ function containsDigit(time, digit) {
 
 function determineTheOrder(arabicToConvert, orderedNumbers) {
     var orderOfRomanDigits = [];
-    var j = 0;
+    var arabicRemain = arabicToConvert;
+    var numberOfDigits;
     for (var i = 0; i < orderedNumbers.length; i++) {
-        while (arabicToConvert >= 0) {
-            if (containsDigit(arabicToConvert, orderedNumbers[i]) == true) {
-                orderOfRomanDigits[j] = orderedNumbers[i];
-                arabicToConvert -= orderedNumbers[i];
-                j++;
-            } else {
-                break;
-            }
+        if (arabicRemain < 0) { 
+            break;
+        }
+        numberOfDigits = 0;
+        var divisionRemain = arabicRemain % orderedNumbers[i];
+        if (arabicRemain != divisionRemain) {
+            numberOfDigits = (arabicRemain - divisionRemain) / orderedNumbers[i]; 
+            arabicRemain = divisionRemain;  
+        }
+        
+        while(numberOfDigits) {
+           orderOfRomanDigits.push(orderedNumbers[i]);
+           numberOfDigits--;
         }
     }
 
     return orderOfRomanDigits;
-}
+} 
 
 function renderResult(orderOfRoman) {
     var result = "";
@@ -52,7 +58,7 @@ function renderResult(orderOfRoman) {
 }
 
 function convertTimeToRoman(time, orderedNumbers) {
-    if (time == 0) {
+    if (time === 0) {
         return 'N';
     }
     var orderOfDigits = determineTheOrder(time, orderedNumbers);
