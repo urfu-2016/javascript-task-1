@@ -6,15 +6,12 @@
  */
 
 function romanTime(time) {
-    checkTime(time);
     var hoursAndMinutes = time.split(':');
     var hours = parseInt(hoursAndMinutes[0]);
     var minutes = parseInt(hoursAndMinutes[1]);
-    if (hours < 0 || hours > 23 || minutes < 0 || minutes > 59) {
-        throw new TypeError();
-    }
-
-
+    if (!checkTime(time,hours,minutes)) {
+        throw new TypeError()
+    };
     return (createNewString(hours)) + ':' +
            (createNewString(minutes));
 }
@@ -44,12 +41,9 @@ function createNewString(number) {
     return number === 0 ? 'N' : tens[Math.floor(number / 10)] + decimal[number % 10]
 }
 
-function checkTime(time) {
+function checkTime(time, hours, minutes) {
     var reTime = /\d\d[:]\d\d/;
-    if (time.search(reTime) === -1) {
-        throw new TypeError();
-    }
-    return true;
+    return (reTime.test(time) && (hours >= 0 && hours < 24 && minutes >= 0 && minutes < 60));
 }
 
 module.exports = romanTime;
