@@ -37,8 +37,6 @@ function parseTime(justNumber, finalString, romanianDict, k) {
     justNumber = justNumber % 10;
     if (justNumber !== 0) {
         finalString += romanianDict[justNumber];
-    } else if (justNumber === 0) {
-        finalString += 'N';
     }
     if (k < 1) {
         finalString += ':';
@@ -58,14 +56,19 @@ function romanTime(time) {
         7: 'VII',
         8: 'VIII',
         9: 'IX',
-        10: 'X'
+        10: 'X',
+        0: ''
     };
     var numbers = time.split(':');
     checkForErrors(time, numbers);
     var finalString = '';
     for (var j = 0; j < 2; j++) {
         var justNumber = parseInt(numbers[j], 10);
+        if (justNumber === 0){
+            finalString += 'N'
+        } else {
         finalString = parseTime(justNumber, finalString, romanianDict, j);
+        }
     }
 
     return finalString;
