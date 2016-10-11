@@ -1,99 +1,74 @@
 'use strict';
-/**
-'use strict';
 
 /**
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
  */
-
-function parse(time) {
-    switch (time) {
-        case 0:
-            return 'N';
-            break;
-        case 1:
-            return 'I';
-            break;
-        case 4:
-            return 'IV';
-            break;
-        case 5:
-            return 'V';
-            break;
-        case 9:
-            return 'IX';
-            break;
-        case 10:
-            return 'X';
-            break;
-        case 50:
-            return 'L';
-            break;
-    }
-}
-function getRoman(n ,time){
-    var result = ''
+var ROMAN = ['I', 'IV', 'V', 'IX', 'X', 'L'];
+function getRoman(n, time) {
+    var result = '';
     for (var i = 0; i < n; i++) {
-        result += parse(time);
+        result += ROMAN[time];
     }
+
     return result;
+}
+function fourOrNine(list, i) {
+    var time = '';
+    if ((list[1 + i] === 1) && (list[2 + i] === 4)) {
+        time = ROMAN[3];
+    }
+    if ((list[1 + i] === 0) && (list[2 + i] === 4)) {
+        time = ROMAN[1];
+    }
+
+    return time;
+}
+function getTime(listH, listM) {
+    var hours = getRoman(listH[0], 4);
+    var minutes = getRoman(listM[0], 5) + getRoman(listM[1], 4);
+    var time = fourOrNine(listH, 0);
+    if (time === '') {
+        hours += getRoman(listH[1], 2) + getRoman(listH[2], 0);
+    } else {
+        hours += time;
+    }
+    time = fourOrNine(listM, 1);
+    if (time === '') {
+        minutes += getRoman(listM[2], 2) + getRoman(listM[3], 0);
+    } else {
+        minutes += time;
+    }
+
+    return [hours, minutes];
 }
 function romanTime(time) {
     try {
-        var str =  time.split(':');
-        var hours = parseInt(str[0], 10);
-        var minutes = parseInt(str[1], 10);
-        if (isNaN(hours) || (hours > 23) || (hours < 0) || 
-            (minutes > 59) || (minutes < 0)) {
-                throw new SyntaxError('Error');
+        time = time.split(':');
+        if (isNaN(parseInt(time[0], 10)) || (parseInt(time[0], 10) > 23) ||
+            (parseInt(time[0], 10) < 0) || (parseInt(time[1], 10) > 59) ||
+            (parseInt(time[1], 10) < 0)) {
+            throw new SyntaxError('Error');
         }
+    } catch (e) {
+
+        return '[TypeError : Неверное время]';
     }
-    catch(e) {
-        if (e.name === 'ReferenceError') {
-            return '[TypeError : Неверное время]';
-        }
-        return '[' + e.name + ': Неверное время]';
-    }
-    var resultTime;
-    var listH = [parseInt(hours / 10, 10), parseInt(hours % 10 / 5,10),
+    var hours = parseInt(time[0], 10);
+    var minutes = parseInt(time[1], 10);
+    var listH = [parseInt(hours / 10, 10), parseInt(hours % 10 / 5, 10),
     parseInt(hours % 10 % 5, 10)];
-    var listM = [parseInt(minutes / 50, 10), parseInt(minutes % 50 / 10, 10), 
-    parseInt(minutes % 10 / 5,10),parseInt(minutes % 10 % 5, 10)];
-    if (listH[0] === 0 && listH[1] === 0 && listH[2] == 0)
-        resultTime = parse(0);
-    else{
-        resultTime = getRoman(listH[0], 10);
-        if (listH[1] === 1 && listH[2] == 4) {
-            resultTime += parse(9);
-        }
-        else
-        if (listH[1] === 0 && listH[2] == 4) {
-            resultTime += parse(4);
-        }
-        else
-            resultTime += getRoman(listH[1], 5) + getRoman(listH[2], 1);
+    var listM = [parseInt(minutes / 50, 10), parseInt(minutes % 50 / 10, 10),
+    parseInt(minutes % 10 / 5, 10), parseInt(minutes % 10 % 5, 10)];
+    time = getTime(listH, listM);
+    if (time[0] === '') {
+        time[0] = 'N';
     }
-    resultTime += ':';
-    if (listM[0] === 0 && listM[1] === 0 && listM[2] === 0) {
-    	resultTime += parse(0);
+    if (time[1] === '') {
+        time[1] = 'N';
     }
-    else{
-        resultTime += getRoman(listM[0], 50);
-        resultTime += getRoman(listM[1], 10);
-        if (listM[2] === 1 && listM[3] === 4) {
-            resultTime += parse(9);
-        }
-        else {
-            if (listM[2] === 0 && listM[3] === 4) {
-                resultTime += parse(4);
-            }
-            else {
-                resultTime += getRoman(listM[2], 5) + getRoman(listM[3], 1);
-            }
-        }
-    }
-    return resultTime;
+
+    return time[0] + ':' + time[1];
 }
 
 module.exports = romanTime;
