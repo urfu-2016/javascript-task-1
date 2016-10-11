@@ -35,7 +35,7 @@ function isZero(union, ten) {
 }
 function correct(time) {
     time = time.split(':');
-    if ((time[0].length > 2) || (time[0].length > 2)) {
+    if ((time[0].length > 2) || (time[1].length > 2)) {
         throw new TypeError('No correct');
     }
     if (time[0].length === 1) {
