@@ -7,8 +7,9 @@ function checkRange(numbers) {
     }
 }
 
-function checkForErrors(time, numbers) {
+function checkForErrors(time) {
     try {
+        var numbers = time.split(':');
         parseInt(numbers[0], 10);
         parseInt(numbers[1], 10);
     } catch (e) {
@@ -56,7 +57,7 @@ function romanTime(time) {
         10: 'X',
         0: ''
     };
-    checkForErrors(time, numbers);
+    checkForErrors(time);
     var numbers = time.split(':');
     var finalString = '';
     for (var j = 0; j < 2; j++) {
