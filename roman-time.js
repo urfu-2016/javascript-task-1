@@ -15,8 +15,22 @@ function romanTime(time) {
     if (Number.isNaN(hours) || Number.isNaN(min)) {
         throw new TypeError();
     }
-    var rom = ["N", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"];
-    var romTime = rom[hours % 12] + ":" + rom[min % 12];
+    if ((hours > 23 && hours < 0) || (min > 60 && min <0)) {
+        throw new TypeError()
+    }
+    var rom1 = ["N", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"];
+    var rom2 = ["N", "I", "XX", "XXX", "XL", "L", "LX"];
+    var romTime;
+    if (hours <= 10) {
+        romTime = rom1[hours];
+    } else {
+        romTime = rom2[(hours / 10 | 0)] + rom1[hours % 10];
+    }
+    romTime += ":"
+    if (min <= 10) {
+        romTime += rom1[hours];
+    } else {
+        romTime += rom2[(hours / 10 | 0)] + rom1[hours % 10];
 
     return romTime;
 }
