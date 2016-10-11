@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * @param {String} element – перевод из арабской в римскую
+ * @param {int} element – перевод из арабской в римскую
  * @returns {String} – âðåìÿ ðèìñêèìè öèôðàìè (IX:V)
  */
 function concatinationTime(element) {
@@ -9,12 +9,11 @@ function concatinationTime(element) {
     var tensList = ['', 'X', 'XX', 'XXX', 'XL', 'L', 'LX'];
 
     if (element === 0) {
-        
+
         return 'N';
     }
-    
-    return tensList[Math.floor(element / 10)] + onesList[element % 10];
 
+    return tensList[Math.floor(element / 10)] + onesList[element % 10];
 }
 
 /**
@@ -31,12 +30,10 @@ function romanTime(time) {
         var secondElement = parseInt(timeList[1]);
 
         if (firstElement >= 0 && firstElement <= 24 && secondElement >= 0 && secondElement <= 60) {
-            
-            return(concatinationTime(firstElement) + ':' + concatinationTime(secondElement));
 
-        } else {
-            throw new TypeError();
+            return(concatinationTime(firstElement) + ':' + concatinationTime(secondElement));
         }
+        throw new TypeError();
 
     } else {
         throw new TypeError();
