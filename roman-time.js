@@ -30,8 +30,11 @@ var romanMinutes;
 var separator = ':';
 function romanTime(time) {
     splitTime = time.split(separator);
-    hoursInteger = parseInt(splitTime[0]);
-    minutesInteger = parseInt(splitTime[1]);
+    if (time.length !== 5 ||
+        isNaN(hoursInteger = parseInt(splitTime[0])) ||
+        isNaN(minutesInteger = parseInt(splitTime[1]))) {
+        throw new TypeError('TypeError: Неверное время');
+    }
     if (hoursInteger < 24 && hoursInteger >= 0) {
         romanHours = translateToRoman(splitTime[0], 0);
         if (minutesInteger < 60 && minutesInteger >= 0) {
