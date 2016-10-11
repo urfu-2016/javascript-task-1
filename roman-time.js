@@ -59,7 +59,7 @@ function checkNaN(hours, min) {
 }
 
 function checkNumb(hours, min) {
-    if (hours >=24 || hours < 0 || min >= 60 || min < 0) {
+    if (hours >= 24 || hours < 0 || min >= 60 || min < 0) {
         throw new TypeError();
     }
 }
