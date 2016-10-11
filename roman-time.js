@@ -33,12 +33,24 @@ function isZero(union, ten) {
 
     return result;
 }
+function correct(time) {
+    time = time.split(':');
+    if (time[0].length === 1) {
+        time[0] = '0' + time[0];
+    }
+    if (time[1].length === 1) {
+        time[1] = '0' + time[1];
+    }
+
+    return time[0] + ':' + time[1];
+}
 function romanTime(time) {
     isNull(time);
     error(time);
     if ((time + ' ').indexOf('.') >= 0) {
         throw new TypeError('Not Int');
     }
+    time = correct(time);
     time = time.split(':');
     var ten = parseInt(time[0][0]) * 10;
     var union = parseInt(time[0][1]);
