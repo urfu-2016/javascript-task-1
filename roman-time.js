@@ -43,9 +43,9 @@ function createNewString(number) {
 }
 
 function checkTime(time) {
-    var reTime = /^(([0,1]\d)|(2[0-3]))[:][0-5]\d$/;
+    var regTime = /^(([0,1]\d)|(2[0-3]))[:][0-5]\d$/;
 
-    return (reTime.test(String(time)));
+    return (regTime.test(String(time)));
 }
 
 module.exports = romanTime;
