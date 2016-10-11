@@ -18,6 +18,7 @@ unitsTable['6'] = 'VI';
 unitsTable['7'] = 'VII';
 unitsTable['8'] = 'VIII';
 unitsTable['9'] = 'IX';
+
 /**
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
@@ -25,13 +26,14 @@ unitsTable['9'] = 'IX';
 
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
-    var hours, minutes;
-    var arrayOfTime = (time += '').split(':');
+    var hours;
+    var minutes;
+    time = String(time);
+    var arrayOfTime = time.split(':');
     if (isTimeCorrect(time) === true) {
         hours = convertTime(arrayOfTime[0]);
         minutes = convertTime(arrayOfTime[1]);
-    }
-    else {
+    } else {
         throw new TypeError ();
     }
 
@@ -44,17 +46,16 @@ function isTimeCorrect(time) {
 }
 
 function convertTime(time) {
-    var tens, units;
+    var tens;
+    var units;
     tens = getTens(time);
     units = getUnits(time);
-    if (tens == 0 && units == 0) {
+    if (tens === 0 && units === 0) {
 
         return 'N';
     }
-    else {
 
-        return tensTable[tens] + unitsTable[units] + '';
-    }
+    return String(tensTable[tens] + unitsTable[units]);
 }
 
 function getTens(time) {
