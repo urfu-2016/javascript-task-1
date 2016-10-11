@@ -7,10 +7,8 @@
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
     var parsedTime = checkTime(time);
-    var hours = parseInt(parsedTime[0], 10);
-    var min = parseInt(parsedTime[1], 10);
 
-    return translateToRome(hours, min);
+    return translateToRome(parsedTime[0], parsedTime[1]);
 }
 
 function translateToRome(hours, min) {
@@ -46,8 +44,10 @@ function checkTime(time) {
     if (splittedTime.Length > 2) {
         throw new TypeError();
     }
-    checkNumb(splittedTime[0], splittedTime[1]);
-    checkNaN(splittedTime[0], splittedTime[1]);
+    var hours = parseInt(splittedTime[0], 10);
+    var min = parseInt(splittedTime[1], 10);
+    checkNumb(hours, min);
+    checkNaN(hours, min);
 
     return splittedTime;
 }
