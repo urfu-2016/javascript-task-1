@@ -41,8 +41,8 @@ function checkNum(num, isHour) {
 function romanTime(time) {
     checkTime(time);
     var splitTime = time.split(':');
-    var parseHour = parseInt(splitTime[0]);
-    var parseMinute = parseInt(splitTime[1]);
+    var parseHour = parseInt(splitTime[0], 10);
+    var parseMinute = parseInt(splitTime[1], 10);
     checkNum(parseHour, true);
     checkNum(parseMinute, false);
 
