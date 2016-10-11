@@ -39,17 +39,17 @@ function wrongHM(hour, minutes) {
 }
 
 function romanTime(time) {
-    var e = new TypeError('Неверное время');
+    //var e = new TypeError('Неверное время');
     if (wrongTime(time)) {
-
-        return e.name + ': ' + e.message;
+        throw new TypeError('Неверное время');
+    //    return e.name + ': ' + e.message;
     }
     var splitTime = time.split(':');
     var hour = parseInt(splitTime[0], 10);
     var minutes = parseInt(splitTime[1], 10);
     if (wrongHM(hour, minutes)) {
-
-        return e.name + ': ' + e.message;
+        throw new TypeError('Неверное время');
+    //    return e.name + ': ' + e.message;
     }
 
     return toRoman(hour) + ':' + toRoman(minutes);
