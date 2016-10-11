@@ -6,15 +6,19 @@
  */
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
-    if (time.Length > 5 || time === undefined || time === null)
+    if (time.Length > 5 || time === undefined || time === null){
         throw new TypeError();
+    }
     var parsedTime = time.split(':');
     var hours = parseInt(parsedTime[0], 10);
     var min = parseInt(parsedTime[1], 10);
-    if (isNan(hours) || isNan(min))
+    if (Number.isNan(hours) || Number.isNan(min)){
         throw new TypeError();
+    }
     var rom = ["N", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"];
-    return rom[hours % 12] + ":" + rom[min % 12];
+    var time = rom[hours % 12] + ":" + rom[min % 12];
+    
+    return time;
 }
 
 module.exports = romanTime;
