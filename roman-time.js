@@ -26,7 +26,9 @@ function romanTime(time) {
     var hour = parseInt(arr[0]);
     var minutes = parseInt(arr[1]);
 
-    if (isNaN(hour) || hour > 23 || isNaN(minutes) || minutes >= 60) {
+    if (hour < 0 || minutes < 0 || (parseFloat(arr[0]) ^ 0) !== parseFloat(arr[0]) ||
+       (parseFloat(arr[1]) ^ 0) !== parseFloat(arr[1]) || isNaN(arr[0]) || isNaN(arr[1]) ||
+       isNaN(hour) || hour > 23 || isNaN(minutes) || minutes >= 60) {
         time = new TypeError('Неверное время');
     } else {
         time = translate(hour) + ':' + translate(minutes);
