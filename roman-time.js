@@ -9,7 +9,7 @@ function romanTime(time) {
     var parsedTime = checkTime(time);
     var hours = parseInt(parsedTime[0], 10);
     var min = parseInt(parsedTime[1], 10);
-    
+
     return translateToRome(hours, min);
 }
 
@@ -20,21 +20,21 @@ function translateToRome(hours, min) {
     if (hours <= 9) {
         romTime = digits[hours];
     } else {
-        romTime = decade[(hours / 10 | 0) - 1];
+        romTime = decade[(math.floor(hours / 10)) - 1];
         if (hours % 10 !== 0) {
             romTime += digits[hours % 10];
         }
     }
-    romTime += ":";
+    romTime += ':';
     if (min <= 9) {
-        romTime += digits[hours];
+        romTime += digits[min];
     } else {
-        romTime += decade[(hours / 10 | 0) - 1];
+        romTime += decade[(math.floor(min/10)) - 1];
         if (hours % 10 !== 0) {
-            romTime += digits[hours % 10];
+            romTime += digits[min % 10];
         }
     }
-    
+
     return romTime;
 }
 
@@ -46,7 +46,6 @@ function checkTime(time) {
     var splittedTime = time.split(':');
     checkNumb(splittedTime[0], splittedTime[1]);
     checkNaN(splittedTime[0], splittedTime[1]);
-    var parsedTime = time.split(':');
 
     return splittedTime;
 }
