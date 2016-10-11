@@ -54,13 +54,20 @@ function notNan(arr) {
     return false;
 }
 
+function leng(arr) {
+    if (arr[0].length > 2 || arr[1].length > 2) {
+        throw new TypeError('Неверное время', 'roman-time.js');
+    }
+}
+
 function romanTime(time) {
     var arr = time.split(':');
     var hour = parseInt(arr[0]);
     var minutes = parseInt(arr[1]);
+    leng(arr);
 
     if (range(hour, minutes, arr) || whole(arr) || notNull(time) || notNan(arr)) {
-        throw new TypeError('Неверное время', 'roman-time.js');
+        time = new TypeError('Неверное время', 'roman-time.js');
     } else {
         time = translate(hour) + ':' + translate(minutes);
     }
