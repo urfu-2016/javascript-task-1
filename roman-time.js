@@ -41,7 +41,7 @@ function checkTime(checkHours, checkMinuts) {
 }
 
 function convertToRome(arabicNumber) {
-    if (arabicNumber === '00') {
+    if (arabicNumber == '00') {
 
         return ('N');
     }
