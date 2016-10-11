@@ -65,7 +65,7 @@ function checkNumb(hours, min) {
 }
 
 function checkNull(time) {
-    if (time.Length !== 5 || time === undefined || time === null) {
+    if (time.length !== 5 || time === undefined || time === null) {
         throw new TypeError();
     }
 }
