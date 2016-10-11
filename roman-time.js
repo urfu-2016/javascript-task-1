@@ -18,8 +18,8 @@ function translateToRoman(string) {
     if (string[0] === 0) {
         string = romanArrayTens[parseInt(splitTime[0])];
     } else {
-        string = romanArrayOnes[parseInt(splitTime[0][0]) - 1]
-            + romanArrayTens[parseInt(splitTime[0][1])];
+        string = romanArrayOnes[parseInt(splitTime[0][0]) - 1] +
+            romanArrayTens[parseInt(splitTime[0][1])];
     }
 
     return string;
@@ -34,13 +34,15 @@ function romanTime(time) {
         translateToRoman(splitTime[0]);
         if (minutesInteger < 60 && minutesInteger >= 0) {
             translateToRoman(splitTime[1]);
-        } else throw new TypeError('TypeError: Неверное время');
-    } else throw new TypeError('TypeError: Неверное время');
+        } else {
+            throw new TypeError('TypeError: Неверное время');
+        }
+    } else {
+        throw new TypeError('TypeError: Неверное время');
+    }
     time = splitTime[0] + ':' + splitTime[1];
 
     return time;
 }
 
 module.exports = romanTime;
-
-
