@@ -6,19 +6,21 @@
  */
 function romanTime(time) {
 
-    var hours = parseInt((time.split(':', 2))[0], 10);
-    var minutes = parseInt((time.split(':', 2))[1], 10);
+    var hours;
+    var minutes;
+    hours = parseInt((time.split(':', 2))[0], 10);
+    minutes = parseInt((time.split(':', 2))[1], 10);
 
     if (isNaN(hours) || isNaN(minutes) || hours > 23 ||
         hours < 0 || minutes > 59 || minutes < 0) {
         throw new TypeError('Неверное время');
     }
     else {
-        var hoursRom = convertNum(hours);
-        var minutesRom = convertNum(minutes);
-        time = hoursRom + ":" + minutesRom; }
+        time = convertNum(hours) + ":" + convertNum(minutes);
 
-    return time;
+        return time; }
+
+
 }
 
 function convertNum(num) {
