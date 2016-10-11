@@ -12,13 +12,12 @@ function toRoman(num) {
         if (num >= numArabic[n]) {
             result += numRoman[n];
             num -= numArabic[n];
-        }
-        else {
+        } else {
             n--;
         }
     }
 
-return result;
+    return result;
 }
 
 function wrongTime(time) {
