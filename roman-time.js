@@ -5,35 +5,20 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    // Немного авторского кода и замечательной магии
-    //try {
-    // var timeArr = [2];
-    // timeArr = time.split(':', 2);
+
     var hours = parseInt((time.split(':', 2))[0], 10);
     var minutes = parseInt((time.split(':', 2))[1], 10);
 
     if (isNaN(hours) || isNaN(minutes) || hours > 23 ||
         hours < 0 || minutes > 59 || minutes < 0) {
-        throw TypeError('Неверное время');
+        throw new TypeError('Неверное время');
     }
-    else{
+    else {
         var hoursRom = convertNum(hours);
         var minutesRom = convertNum(minutes);
-        time = hoursRom + ":" + minutesRom;
-
-    }
-
-    romanTime.bind(null, '24:00')
+        time = hoursRom + ":" + minutesRom; }
 
     return time;
-
-
-    // }
-    // catch (e) {
-    //console.log(e);
-    //    time = e.toString();
-    // }
-
 }
 
 function convertNum(num) {
