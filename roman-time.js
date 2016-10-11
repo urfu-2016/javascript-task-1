@@ -10,6 +10,7 @@ function romanTime(time) {
         exept(time);
     }
     time = purseTime(arraySplitTime, time);
+
     return time;
 }
 
@@ -30,6 +31,7 @@ function purseTime(arraySplitTime, time) {
     var mm = parseInt(arraySplitTime[1], 10);
     if (!isNaN(hh) && !(isNaN(mm))) {
         time = bodyTime(arraySplitTime, time, hh, mm);
+		
         return time;
     }
     exept(time);
@@ -37,15 +39,15 @@ function purseTime(arraySplitTime, time) {
 
 function bodyTime(arraySplitTime, time, hh, mm) {
     if (checkInt(arraySplitTime[0]) || checkInt(arraySplitTime[1])) {
-            exept(time);
-        }
-        if (check(arraySplitTime[0], hh, 23) && check(arraySplitTime[1], mm, 59)) {
-            time = inRoman(arraySplitTime[0]) + ':';
-            time += inRoman(arraySplitTime[1]);
-
-            return time;
-        }
         exept(time);
+    }
+    if (check(arraySplitTime[0], hh, 23) && check(arraySplitTime[1], mm, 59)) {
+        time = inRoman(arraySplitTime[0]) + ':';
+        time += inRoman(arraySplitTime[1]);
+
+        return time;
+    }
+    exept(time);
 }
 
 function inRoman(element) {
@@ -77,6 +79,7 @@ function checkInt(strElem) {
             return true;
         }
     }
+
     return false;
 }
 
@@ -92,5 +95,5 @@ function check(strEl, intEl, form) {
 }
 
 function exept(time) {
-    throw new TypeError(time+': Неверное время');
+    throw new TypeError(time + ': Неверное время');
 }
