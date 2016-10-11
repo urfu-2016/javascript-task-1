@@ -14,8 +14,17 @@ function romanTime(time) {
     // isNaN(hours) || isNaN(minutes) || hours > 23 ||
     // hours < 0 || minutes > 59 || minutes < 0
 
-    // instanceof
+
+
     if (isNaN(hours) || isNaN(minutes)) {
+        throw new TypeError('Неверное время');
+    }
+
+    if (hours < 0 || hours > 23) {
+        throw new TypeError('Неверное время');
+    }
+
+    if (minutes > 59 || minutes < 0) {
         throw new TypeError('Неверное время');
     }
 
