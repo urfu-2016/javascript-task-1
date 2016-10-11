@@ -27,7 +27,8 @@ function toRomanTime(parseHour, parseMinute) {
 }
 
 function checkTime(time) {
-    if (time === undefined || time === null || time.length !== 5) {
+    var timeRegExp = /^\d\d:\d\d$/;
+    if (time === undefined || time === null || time.length !== 5 || !timeRegExp.test(time)) {
         throw new TypeError();
     }
 }
