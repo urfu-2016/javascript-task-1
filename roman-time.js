@@ -55,7 +55,7 @@ function notNan(arr) {
 }
 
 function leng(arr) {
-    if (arr[0].length == 1 || arr[1].length == 1) {
+    if (arr[0].length === 1 || arr[1].length === 1) {
         throw new TypeError('Неверное время', 'roman-time.js');
     }
 }
