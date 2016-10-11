@@ -11,9 +11,10 @@ var dict = { 50:'L', 40:'XL', 10:'X', 9:'IX', 5:'V', 4:'IV', 1:'I' };
 function romanTime(time) {
     var hour = time.split(':')[0];
     var minute = time.split(':')[1];
-    if (isCorrect(time))
+    if (isCorrect(time)) {
         return toRoman(hour) + ':' + toRoman(minute);
-    throw new TypeError("Неверное время", "roman-time.js", 16);
+    }
+    throw new TypeError('Неверное время', 'roman-time.js', 16);
 }
 
 function isCorrect(time) {
@@ -23,10 +24,13 @@ function isCorrect(time) {
     hour = parseInt(hour);
     minute = parseInt(minute);
 
-    if (isNaN(hour) || isNaN(minute))
+    if (isNaN(hour) || isNaN(minute)) {
         return false;
-    if (hour < 0 || hour > 23 || minute < 0 || minute > 59)
+    }
+    if (hour < 0 || hour > 23 || minute < 0 || minute > 59) {
         return false;
+    }
+
     return true;
 }
 
@@ -44,7 +48,8 @@ function toRoman(digit) {
             }
         }
     }
-    return str == '' ? 'N' : str;
+
+    return str === '' ? 'N' : str;
 }
 
 module.exports = romanTime;
