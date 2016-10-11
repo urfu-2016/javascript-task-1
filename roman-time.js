@@ -6,25 +6,22 @@ var TENS = ['', 'X', 'XX', 'XXX', 'XL', 'L'];
 
 
 function parseTime(time) {
-    var splited = time.toString().split(':');
-    if (splited.length != 2) {
-        throw new TypeError('Неверное время');
-    }
-    var hours = parseInt(splited[0]);
-    var minutes = parseInt(splited[1]);
+    var splittedTime = time.toString().split(':');
+    var hours = parseInt(splittedTime[0]);
+    var minutes = parseInt(splittedTime[1]);
     if (isNaN(hours) || isNaN(minutes)) {
         throw new TypeError('Неверное время');
     }
     if (hours < 0 || hours >= 24 || minutes < 0 || minutes >= 60) {
         throw new TypeError('Неверное время');
     }
-    
-    return [hours, minutes]
+
+    return [hours, minutes];
 }
 
 
 function intToRoman(number) {
-    if (number == 0) {
+    if (number === 0) {
         return 'N';
     }
 
@@ -36,11 +33,7 @@ function intToRoman(number) {
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    var data = parseTime(time);
-    var hours = data[0];
-    var minutes = data[1];
-    
-    return intToRoman(hours) + ':' + intToRoman(minutes);
+    return parseTime(time).map(intToRoman).join(':');
 }
 
 module.exports = romanTime;
