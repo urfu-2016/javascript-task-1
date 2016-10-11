@@ -24,17 +24,21 @@ function getRoman(time) {
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
     var part = time.split(':', 2);
-    var hours = Number(part[0]);
-    var minutes = Number(part[1]);
-    console.log('Час: ', hours, 'Минута: ', minutes);
-    if ((1 <= hours) && (hours <= 23) &&
-        (1 <= minutes && minutes <= 59)) {
-        console.log('Час: ', getRoman(hours), 'Минута: ', getRoman(minutes));
+    if ((part.length === 2) && (isNaN(time))) {
+        var hours = Number(part[0]);
+        var minutes = Number(part[1]);
     } else {
-        ((hours === 0 || hours === 24) || (minutes === 0));
-        {
-            throw new TypeError('Неверное время');
-        }
+        throw new TypeError('Неверное время');
+    }
+    if ((hours >= 1) && (hours <= 23) &&
+        (minutes >= 1) && (minutes <= 59)) {
+        var romHour = getRoman(hours);
+        var romMinute = getRoman(minutes);
+
+        return romHour + ':' + romMinute;
+    } else {
+        // ((hours === 0 || hours === 24) || (minutes === 0)); {
+        throw new TypeError('Неверное время');
     }
 }
 module.exports = romanTime;
