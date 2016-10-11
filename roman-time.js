@@ -49,6 +49,7 @@ function isNull(time) {
     }
 }
 function error(time) {
+    time += ' ';
     time = time.split(':');
     if (isNaN(parseInt(time[0], 10)) || (parseInt(time[0], 10) > 23) ||
         (parseInt(time[0], 10) < 0) || (parseInt(time[1], 10) > 59) ||
