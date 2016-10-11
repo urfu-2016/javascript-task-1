@@ -6,7 +6,7 @@
  */
 
 var magicDigits = [50, 40, 10, 9, 5, 4, 1];
-var dict = { 50:'L', 40:'XL', 10:'X', 9:'IX', 5:'V', 4:'IV', 1:'I' };
+var dict = { 50: 'L', 40: 'XL', 10: 'X', 9: 'IX', 5: 'V', 4: 'IV', 1: 'I' };
 
 function romanTime(time) {
     var hour = time.split(':')[0];
@@ -37,8 +37,8 @@ function isCorrect(time) {
 function toRoman(digit) {
     digit = parseInt(digit);
     var str = '';
-    for (var i = 0; i < magicDigits.length; i++) {
-        var current = magicDigits[i];
+
+    magicDigits.forEach(function(current, index) {
         if (digit >= current) {
             var a = parseInt(digit / current);
             digit -= a * current;
@@ -47,7 +47,19 @@ function toRoman(digit) {
                 a--;
             }
         }
-    }
+    });
+
+    //for (var i = 0; i < magicDigits.length; i++) {
+    //    var current = magicDigits[i];
+    //    if (digit >= current) {
+    //        var a = parseInt(digit / current);
+    //        digit -= a * current;
+    //        while (a > 0) {
+    //            str += dict[current];
+    //            a--;
+    //        }
+    //    }
+    //}
 
     return str === '' ? 'N' : str;
 }
