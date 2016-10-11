@@ -17,21 +17,21 @@ function romanTime(time) {
 
             return romanedTime;
         }
-        else throw new TypeError('There are only 24 hours per day !');
+            throw new TypeError('There are only 24 hours per day !');        	
+        }
     }
-    else throw new TypeError('Expected argument is hh:mm !');
-}
+        throw new TypeError('Expected argument is hh:mm !');   
+    }
+
 
 function arabToRoman(numArab) {
     var numRoman;
-    var firstArab = numArab%10;
+    var firstArab = numArab % 10;
     var secondArab = numArab - firstArab;
     var firstRoman;
     var secondRoman;
-    if (numArab == 0) {
+    if (numArab === 0) {
         numRoman = 'N';
-
-        return numRoman;
     }
     else {
         switch (firstArab) {
@@ -52,19 +52,17 @@ function arabToRoman(numArab) {
             secondRoman = decomposeByRoman(secondArab);
         }
         numRoman = secondRoman + firstRoman;
-
-        return numRoman;
     }
 
     return numRoman;
 }
 
 function decomposeByRoman(numArab) {
-        var quantityL = Math.floor(numArab/50);
-        var quantityX = Math.floor(((numArab%50)/10));
-        var quantityV = Math.floor(((numArab%50)%10)/5);
-        var quantityI = Math.floor((((numArab%50)%10)%5)/1);
-        var decomposedToRoman = ('L').repeat(quantityL)+('X').repeat(quantityX)+('V').repeat(quantityV)+('I').repeat(quantityI);
+        var quantityL = Math.floor(numArab / 50);
+        var quantityX = Math.floor(((numArab % 50) / 10));
+        var quantityV = Math.floor(((numArab % 50) % 10) / 5);
+        var quantityI = Math.floor((((numArab % 50) % 10) % 5) / 1);
+        var decomposedToRoman = ('L').repeat(quantityL) + ('X').repeat(quantityX) + ('V').repeat(quantityV) + ('I').repeat(quantityI);
 
         return decomposedToRoman;
 }
