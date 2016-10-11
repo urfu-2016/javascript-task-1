@@ -29,7 +29,7 @@ function arabToRoman(numArab) {
     var secondArab = numArab - firstArab;
     var firstRoman;
     var secondRoman;
-    if (numArab === 0) {
+    if ((+numArab) === 0) {
         numRoman = 'N';
     } else {
         switch (firstArab) {
