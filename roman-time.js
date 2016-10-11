@@ -13,12 +13,14 @@ function romanTime(time) {
     var minutes = parseInt(time[1]);
     if (hours >= 0 && hours <= 23 && minutes >= 0 && minutes <= 59) {
         time = numberToRoman(hours) + ':' + numberToRoman(minutes);
+
         return time;
     }
 }
 
 function isTime(time) {
     var re = /^[0-9]+:[0-9]+$/;
+
     return re.test(time);
 }
 
@@ -43,6 +45,7 @@ function numberToRoman(number) {
     if (romanNumber === '') {
         romanNumber = 'N';
     }
+
     return romanNumber;
 }
 
