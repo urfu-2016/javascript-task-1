@@ -21,7 +21,7 @@ function toRoman(num) {
 }
 
 function wrongTime(time) {
-    if (time === null || time === undefined || time === Infinity || time === -Infinity || time.length > 5) {
+    if (time === null || time === undefined || time === Infinity || time === -Infinity) {
 
         return true;
     }
@@ -29,8 +29,17 @@ function wrongTime(time) {
     return false;
 }
 
-function wrongHM(hour, minutes) {
-    if (hour >= 24 || minutes >= 60 || hour < 0 || minutes < 0 || isNaN(hour) || isNaN(minutes)) {
+function wrongHour(hour) {
+    if (hour >= 24 || hour < 0 || isNaN(hour)) {
+
+        return true;
+    }
+
+    return false;
+}
+
+function wrongMinutes(minutes) {
+    if (minutes >= 60 || minutes < 0 || isNaN(minutes)) {
 
         return true;
     }
@@ -39,17 +48,17 @@ function wrongHM(hour, minutes) {
 }
 
 function romanTime(time) {
-    var e = new TypeError('Неверное время');
-    if (wrongTime(time)) {
-        //throw new TypeError('Неверное время');
-        return e.name + ': ' + e.message;
+    // var e = new TypeError('Неверное время');
+    if (wrongTime(time) || time.length > 5) {
+        throw new TypeError('Неверное время');
+    //    return e.name + ': ' + e.message;
     }
     var splitTime = time.split(':');
     var hour = Number(splitTime[0]);
     var minutes = Number(splitTime[1]);
-    if (wrongHM(hour, minutes)) {
-    //    throw new TypeError('Неверное время');
-        return e.name + ': ' + e.message;
+    if (wrongHour(hour) ||  wrongMinutes(minutes)) {
+        throw new TypeError('Неверное время');
+    //    return e.name + ': ' + e.message;
     }
 
     return toRoman(hour) + ':' + toRoman(minutes);
