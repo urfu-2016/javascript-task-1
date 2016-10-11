@@ -21,7 +21,7 @@ function checkForErrors(time, numbers) {
     }
 }
 
-function parseTime(justNumber, finalString, romanianDict, k) {
+function parseTime(justNumber, finalString, romanianDict) {
 
     if (justNumber > 50) {
         justNumber -= 50;
@@ -37,9 +37,6 @@ function parseTime(justNumber, finalString, romanianDict, k) {
     justNumber = justNumber % 10;
     if (justNumber !== 0) {
         finalString += romanianDict[justNumber];
-    }
-    if (k < 1) {
-        finalString += ':';
     }
 
     return finalString;
@@ -67,7 +64,10 @@ function romanTime(time) {
         if (justNumber === 0) {
             finalString += 'N';
         } else {
-            finalString = parseTime(justNumber, finalString, romanianDict, j);
+            finalString = parseTime(justNumber, finalString, romanianDict);
+        }
+        if (j < 1) {
+            finalString += ':';
         }
     }
 
