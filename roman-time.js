@@ -1,9 +1,5 @@
 'use strict';
 
-/**
- * @param {String} time – время в формате HH:MM (например, 09:05)
- * @returns {String} – время римскими цифрами (IX:V)
- */
 function checkLength(hours, minutes) {
     var checkMore = hours > 23 || minutes > 59;
     var checkMin = hours < 0 || minutes < 0;
