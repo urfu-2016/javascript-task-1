@@ -30,7 +30,7 @@ function purseTime(arraySplitTime, time) {
     var mm = parseInt(arraySplitTime[1], 10);
     if (!isNaN(hh) && !(isNaN(mm))) {
         time = bodyTime(arraySplitTime, time, hh, mm);
-		
+
         return time;
     }
     exept(time);
