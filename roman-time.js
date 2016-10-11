@@ -14,6 +14,9 @@ function isMinutesCorrect(minutes) {
 }
 
 function parseTime(time) {
+    if (time === null || time === NaN) {
+        throw new TypeError("Неверное время");
+    }
     var splittedTime = time.split(':');
     if (splittedTime.length !== 2) {
         throw new TypeError("Неверное время");
