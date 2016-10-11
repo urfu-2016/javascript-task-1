@@ -14,7 +14,7 @@ function romanTime(time) {
     }
     var hours = parseInt(timeParts[0], 10);
     var minutes = parseInt(timeParts[1], 10);
-    if (isTimeNotInteger(timeParts[0], timeParts[1]) || isTimeOutOfRange(hours, minutes)) {
+    if (isTimeOutOfRange(hours, minutes)) {
         throwError(17, time);
     }
 
@@ -26,10 +26,6 @@ function isTimeFormatCorrect(time) {
     var isTimeCorrect = typeof time === 'string' && time.indexOf(':') !== -1;
 
     return timeNotEmpty && isTimeCorrect;
-}
-
-function isTimeNotInteger(hours, minutes) {
-    return (parseFloat(hours) - parseInt(hours, 10) > 0) || (parseFloat(minutes) - parseInt(minutes, 10) > 0);
 }
 
 function isTimeOutOfRange(hours, minutes) {
