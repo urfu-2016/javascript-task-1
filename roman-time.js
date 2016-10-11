@@ -32,8 +32,8 @@ function checkTime(time) {
     }
 }
 
-function checkNum(num) {
-    if (isNaN(parseHour) || isNaN(parseMinute) || parseHour > 23 || parseMinute > 59) {
+function checkNum(num, isHour) {
+    if (isNaN(num) || (isHour ? num > 23 : num > 59)) {
         throw new TypeError();
     }
 }
@@ -43,8 +43,8 @@ function romanTime(time) {
     var splitTime = time.split(':');
     var parseHour = parseInt(splitTime[0]);
     var parseMinute = parseInt(splitTime[1]);
-    checkNum(parseHour);
-    checkNum(parseMinute);
+    checkNum(parseHour, true);
+    checkNum(parseMinute, false);
 
     return toRomanTime(parseHour, parseMinute);
 }
