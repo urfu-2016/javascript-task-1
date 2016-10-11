@@ -5,7 +5,6 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    // Немного авторского кода и замечательной магии
     if (checkCorrectTime(time.split(''))) {
         var splitTime = time.split(':');
         time = conversionTime(splitTime);
