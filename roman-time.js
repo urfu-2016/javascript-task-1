@@ -24,11 +24,8 @@ function isZero(union, ten) {
     return result;
 }
 function correct(time) {
-    if (/[A-Za-zА-Яа-я?!.,<>{}()#$^&;+=-_|* '"@]/.test(time)) {
-        throw new TypeError('No correct');
-    }
     if (!(/\d\d:\d\d/.test(time))) {
-        throw new TypeError('NaN');
+        throw new TypeError('No correct');
     }
 }
 function romanTime(time) {
