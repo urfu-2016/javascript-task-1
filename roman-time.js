@@ -37,7 +37,7 @@ function parseTime(justNumber, finalString, romanianDict, k) {
     justNumber = justNumber % 10;
     if (justNumber !== 0) {
         finalString += romanianDict[justNumber];
-    } else if (justNumber == 0) {
+    } else if (justNumber === 0) {
         finalString += 'N';
     }
     if (k < 1) {
