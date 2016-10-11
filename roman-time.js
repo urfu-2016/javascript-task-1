@@ -56,7 +56,6 @@ function arabToRoman(numArab) {
         return numRoman;
     }
 
-
     return numRoman;
 }
 
