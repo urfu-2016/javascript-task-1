@@ -11,13 +11,12 @@ function romanTime(time) {
     time = time.split(':');
     var hours = parseInt(time[0]);
     var minutes = parseInt(time[1]);
-    if (hours >= 0 && hours <= 23 && minutes >= 0 && minutes <= 59) {
-        time = numberToRoman(hours) + ':' + numberToRoman(minutes);
-
-        return time;
-    } else {
+    if (hours < 0 || hours > 23 || minutes < 0 || minutes > 59) {
         throw new TypeError('Неверное время');
     }
+    time = numberToRoman(hours) + ':' + numberToRoman(minutes);
+
+    return time;
 }
 
 function isTime(time) {
