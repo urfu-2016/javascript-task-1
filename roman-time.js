@@ -15,9 +15,6 @@ function isNull(time) {
     if ((time + ' ').length < 4) {
         throw new TypeError('Length < 3');
     }
-    if ((time + ' ').length > 6) {
-        throw new TypeError('Length > 6');
-    }
 }
 function error(time) {
     time += ' ';
@@ -38,8 +35,9 @@ function isZero(union, ten) {
 }
 function correct(time) {
     time = time.split(':');
-    time = parseInt(time[0]) + ':' + parseInt(time[1]);
-    time = time.split(':');
+    if ((time[0].length > 2) || (time[0].length > 2)) {
+        throw new TypeError('No correct');
+    }
     if (time[0].length === 1) {
         time[0] = '0' + time[0];
     }
