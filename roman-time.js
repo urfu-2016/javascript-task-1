@@ -12,12 +12,14 @@ function concatinationTime(element) {
         
         return 'N';
     }
+    
     return tensList[Math.floor(element / 10)] + onesList[element % 10];
 
 }
 
 /**
  * @param {String} time – âðåìÿ â ôîðìàòå HH:MM (íàïðèìåð, 09:05)
+ * @returns {String} – âðåìÿ ðèìñêèìè öèôðàìè (IX:V)
  */
 function romanTime(time) {
     var regexp = /[0-9][0-9]:[0-9][0-9]+$/i;
@@ -29,7 +31,8 @@ function romanTime(time) {
         var secondElement = parseInt(timeList[1]);
 
         if (firstElement >= 0 && firstElement <= 24 && secondElement >= 0 && secondElement <= 60) {
-            window.alert(concatinationTime(firstElement) + ':' + concatinationTime(secondElement));
+            
+            return(concatinationTime(firstElement) + ':' + concatinationTime(secondElement));
 
         } else {
             throw new TypeError();
