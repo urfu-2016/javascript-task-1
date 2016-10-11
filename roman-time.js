@@ -14,15 +14,15 @@ function romanTime(time) {
 
         if (isNaN(hours) || isNaN(minutes) || hours > 23 ||
             hours < 0 || minutes > 59 || minutes < 0) {
-            throw new TypeError('TypeError: Неверное время');
+            throw new TypeError(null);
         }
-        else {
-            var hoursRom = convertNum(hours);
-            var minutesRom = convertNum(minutes);
-            time = hoursRom + ":" + minutesRom; }
+
+        var hoursRom = convertNum(hours);
+        var minutesRom = convertNum(minutes);
+        time = hoursRom + ":" + minutesRom;
     }
     catch (e) {
-        console.info('TypeError: Неверное время');
+        console.log('TypeError: Неверное время');
     }
 
     return time;
@@ -46,7 +46,7 @@ function convertNum(num) {
         30: 'XXX',
         40: 'XL',
         50: 'L',
-    };
+    }
 
     // остаток от деления (для начала равен самому числу)
     num = parseInt(num, 10);
