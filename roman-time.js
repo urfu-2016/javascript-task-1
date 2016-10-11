@@ -43,7 +43,7 @@ function romanTime(time) {
     var hour = parseInt(arr[0]);
     var minutes = parseInt(arr[1]);
 
-    if (range(hour, minutes, arr) || whole(arr)) {
+    if (range(hour, minutes, arr) || time === '' || whole(arr)) {
         time = new TypeError('Неверное время');
     } else {
         time = translate(hour) + ':' + translate(minutes);
