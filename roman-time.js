@@ -22,8 +22,7 @@ function romanTime(time) {
         time = hoursRom + ":" + minutesRom;
     }
     catch (e) {
-        console.info('TypeError: Неверное время');
-    }
+        console.info('TypeError: Неверное время'); }
 
     return time;
 }
