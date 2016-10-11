@@ -56,7 +56,7 @@ function romanTime(time) {
     var splitTime = time.split(':');
     var hour = Number(splitTime[0]);
     var minutes = Number(splitTime[1]);
-    if (wrongHour(hour) ||  wrongMinutes(minutes)) {
+    if (wrongHour(hour) || wrongMinutes(minutes)) {
         throw new TypeError('Неверное время');
     //    return e.name + ': ' + e.message;
     }
