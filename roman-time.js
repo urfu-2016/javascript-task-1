@@ -31,7 +31,7 @@ function romanTime(time) {
 
         if (firstElement >= 0 && firstElement <= 24 && secondElement >= 0 && secondElement <= 60) {
 
-            return(concatinationTime(firstElement) + ':' + concatinationTime(secondElement));
+            return concatinationTime(firstElement) + ':' + concatinationTime(secondElement);
         }
         throw new TypeError();
 
