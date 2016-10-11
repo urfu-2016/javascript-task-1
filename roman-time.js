@@ -1,23 +1,24 @@
 'use strict';
 
 function romanTime(time) {
-    try {
-        var arraySplitTyme = time.split(':');
-        var hh = parseInt(arraySplitTyme[0], 10);
-        var mm = parseInt(arraySplitTyme[1], 10);
-		if (!isNaN(hh)&& !(isNaN(mm)) ) {
-            if (check(arraySplitTyme[0], hh, 23) && check(arraySplitTyme[1], mm, 59)) {
-                    time = inRoman(arraySplitTyme[0]) + ':';
-                    time += inRoman(arraySplitTyme[1]);
-                    
-                    return time;
-            }
-        }
-        return exept();
-    } catch (e) {
+    if (typeof time !== 'string' ){
         return exept();
     }
+    var arraySplitTyme = time.split(':');
+    var hh = parseInt(arraySplitTyme[0], 10);
+    var mm = parseInt(arraySplitTyme[1], 10);
+    if (!isNaN(hh) && !(isNaN(mm))) {
+        if (check(arraySplitTyme[0], hh, 23) && check(arraySplitTyme[1], mm, 59)) {
+            time = inRoman(arraySplitTyme[0]) + ':';
+            time += inRoman(arraySplitTyme[1]);
+
+            return time;
+        }
+    }
+
+    return exept();
 }
+
 
 module.exports = romanTime;
 
@@ -44,13 +45,13 @@ function inRoman(element) {
 }
 
 function check(strEl, intEl, form) {
-    if (strEl.length > 2){
+    if (strEl.length > 2) {
         return false;
     }
-    if(intEl > form) {
+    if (intEl > form) {
         return false;
     }
-    
+
     return true;
 }
 
