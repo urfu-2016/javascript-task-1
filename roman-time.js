@@ -8,6 +8,9 @@ function romanTime(time) {
     if (arraySplitTyme.length > 2) {
         return exept();
     }
+	if(checkInt(arraySplitTyme[0]) || checkInt(arraySplitTyme[1])) {
+		return exept();
+	}
     var hh = parseInt(arraySplitTyme[0], 10);
     var mm = parseInt(arraySplitTyme[1], 10);
     if (!isNaN(hh) && !(isNaN(mm))) {
@@ -45,6 +48,16 @@ function inRoman(element) {
     }
 
     return elementRom;
+}
+
+function checkInt(strElem) {
+	for(var i = 0; i < strElem.length; i++) {
+		var checkI = strElem.charAt(i);
+	    if (isNaN(parseInt(checkI, 10))) {
+            return true;
+        }
+	}
+	return false;
 }
 
 function check(strEl, intEl, form) {
