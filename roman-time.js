@@ -20,33 +20,29 @@ function romanTime(time) {
     return time;
 }
 
-function containsDigit(time, digit) {
-    return (time / digit) >= 1;
-}
-
 function determineTheOrder(arabicToConvert, orderedNumbers) {
     var orderOfRomanDigits = [];
     var arabicRemain = arabicToConvert;
     var numberOfDigits;
     for (var i = 0; i < orderedNumbers.length; i++) {
-        if (arabicRemain < 0) { 
+        if (arabicRemain < 0) {
             break;
         }
         numberOfDigits = 0;
         var divisionRemain = arabicRemain % orderedNumbers[i];
         if (arabicRemain != divisionRemain) {
-            numberOfDigits = (arabicRemain - divisionRemain) / orderedNumbers[i]; 
-            arabicRemain = divisionRemain;  
+            numberOfDigits = (arabicRemain - divisionRemain) / orderedNumbers[i];
+            arabicRemain = divisionRemain;
         }
-        
-        while(numberOfDigits) {
-           orderOfRomanDigits.push(orderedNumbers[i]);
-           numberOfDigits--;
+
+        while (numberOfDigits) {
+            orderOfRomanDigits.push(orderedNumbers[i]);
+            numberOfDigits--;
         }
     }
 
     return orderOfRomanDigits;
-} 
+}
 
 function renderResult(orderOfRoman) {
     var result = '';
@@ -68,7 +64,7 @@ function convertTimeToRoman(time, orderedNumbers) {
 
 function normalize(time) {
     var splittedTime;
-    if (time != null) {
+    if (time !== null) {
         splittedTime = time.split(':');
     } else {
         throw new TypeError('Неверное время');
@@ -84,10 +80,17 @@ function normalize(time) {
 }
 
 function validate(hours, minutes) {
-    if (hours < 0 || hours > 23 || minutes < 0 || minutes > 59 || isNaN(hours) ||
-    isNaN(minutes) || hours == null || minutes == null) {
+    if (isNotValid(hours, 0, 23) || isNotValid(minutes, 0, 59)){
         throw new TypeError('Неверное время');
     }
 }
 
+function isNotValid (value, minValue, maxValue) {
+    if (isNaN(value) || value < minValue || value > maxValue) {
+
+        return true;
+    }
+
+    return false;
+}
 module.exports = romanTime;
