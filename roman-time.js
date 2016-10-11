@@ -1,7 +1,7 @@
 'use strict';
 
 function romanTime(time) {
-    if (typeof time !== 'string' ){
+    if (typeof time !== 'string') {
         return exept();
     }
     var arraySplitTyme = time.split(':');
@@ -29,9 +29,9 @@ function inRoman(element) {
     var nombElem = 6;
     if (element === '00') {
         elementRom = 'N';
-        
+
         return elementRom;
-    } 
+    }
     while (element > 0) {
         if (element >= arab[nombElem]) {
             elementRom += roman[nombElem];
