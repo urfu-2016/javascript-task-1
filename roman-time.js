@@ -16,13 +16,14 @@ function romanTime(time) {
             hours < 0 || minutes > 59 || minutes < 0) {
             throw new TypeError('TypeError: Неверное время');
         }
-
-        var hoursRom = convertNum(hours);
-        var minutesRom = convertNum(minutes);
-        time = hoursRom + ":" + minutesRom;
+        else {
+            var hoursRom = convertNum(hours);
+            var minutesRom = convertNum(minutes);
+            time = hoursRom + ":" + minutesRom; }
     }
     catch (e) {
-        console.info('TypeError: Неверное время'); }
+        console.info('TypeError: Неверное время');
+    }
 
     return time;
 }
