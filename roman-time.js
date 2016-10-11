@@ -43,7 +43,8 @@ function getTime(listH, listM) {
 
     return [hours, minutes];
 }
-function Error(time) {
+function error(time) {
+    time = time.split(':');
     if (isNaN(parseInt(time[0], 10)) || (parseInt(time[0], 10) > 23) ||
         (parseInt(time[0], 10) < 0) || (parseInt(time[1], 10) > 59) ||
         (parseInt(time[1], 10) < 0)) {
@@ -51,13 +52,7 @@ function Error(time) {
     }
 }
 function romanTime(time) {
-    try {
-        time = time.split(':');
-        Error(time);
-    } catch (e) {
-
-        return e;
-    }
+    error(time);
     var hours = parseInt(time[0], 10);
     var minutes = parseInt(time[1], 10);
     var listH = [parseInt(hours / 10, 10), parseInt(hours % 10 / 5, 10),
