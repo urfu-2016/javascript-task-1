@@ -9,6 +9,11 @@ function romanTime(time) {
     checkTime(time);
     var hours = parseInt(parsedTime[0], 10);
     var min = parseInt(parsedTime[1], 10);
+
+    return romTime;
+}
+    
+function translateToRome(hours, min) {
     var digits = ['N', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
     var decade = ['X', 'XX', 'XXX', 'XL', 'L'];
     var romTime;
@@ -27,9 +32,8 @@ function romanTime(time) {
         romTime += decade[(hours / 10 | 0) - 1];
         if (hours % 10 != 0) {
             romTime += digits[hours % 10];
-        }    
-
-    return romTime;
+        }
+    }
 }
 
 function checkTime(time) {
