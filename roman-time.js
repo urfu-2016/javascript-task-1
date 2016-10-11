@@ -26,7 +26,7 @@ function romanTime(time) {
     } else {
         romTime = rom2[(hours / 10 | 0)] + rom1[hours % 10];
     }
-    romTime += ":"
+    romTime += ":";
     if (min <= 10) {
         romTime += rom1[hours];
     } else {
