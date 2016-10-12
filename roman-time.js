@@ -39,7 +39,7 @@ function whole(arr) {
 }
 
 function notNull(time) {
-    if (time === '' || time === ':' || time.length >=4 || typeof time !== 'string') {
+    if (time === '' || time === ':' || time.length >= 4 || typeof time !== 'string') {
         return true;
     }
 
