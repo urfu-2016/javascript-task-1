@@ -42,7 +42,7 @@ function romanTime(time) {
 
 function isTimeCorrect(time) {
 
-    return (/[0-1][0-9]:[0-5][0-9]/.test(time) || /[2][0-3]:[0-5][0-9]/.test(time));
+    return (/^[0-1][0-9]:[0-5][0-9]$/.test(time) || /^[2][0-3]:[0-5][0-9]$/.test(time));
 }
 
 function convertTime(time) {
