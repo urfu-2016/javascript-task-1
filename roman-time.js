@@ -54,7 +54,7 @@ function roman1(time) {
 }
 function romanTime(time) {
     var timeSplit = time.split(':');
-    if (timeSplit[0] == undefined || timeSplit[1] == undefined) {
+    if (timeSplit[0] === undefined || timeSplit[1] === undefined) {
         throw new TypeError();
     }
     if (isNaN(timeSplit[0]) || isNaN(timeSplit[1])) {
