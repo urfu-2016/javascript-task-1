@@ -5,15 +5,7 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    var timeArray = time.split(':');
-    var hours = filterInt(timeArray[0]);
-    var minutes = filterInt(timeArray[1]);
-    if (minutes < 0 || hours < 0 || minutes > 59 || hours > 23 ||
-        Number.isNaN(hours) === true || Number.isNaN(minutes) === true) {
-        return new TypeError('Время указано неверно!');
-    }
-
-    return convert(hours) + ':' + convert(minutes);
+    return main(time);
 }
 function filterInt(value) {
     if (/^(\-|\+)?([0-9]+|Infinity)$/.test(value)) {
@@ -40,6 +32,17 @@ function convert(numb) {
     }
 
     return result;
+}
+function main(time) {
+    var timeArray = time.split(':');
+    var hours = filterInt(timeArray[0]);
+    var minutes = filterInt(timeArray[1]);
+    if (minutes < 0 || hours < 0 || minutes > 59 || hours > 23 ||
+        Number.isNaN(hours) === true || Number.isNaN(minutes) === true) {
+        return new TypeError('Время указано неверно!');
+    }
+
+    return convert(hours) + ':' + convert(minutes);
 }
 
 module.exports = romanTime;
