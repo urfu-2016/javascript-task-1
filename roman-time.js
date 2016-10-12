@@ -34,11 +34,10 @@ function checkInput(time) {
 
 
 function setRomanNumerals(number) {
-    var result = '';    
     var dozens = ['X', 'XX', 'XXX', 'XL', 'L'];
-    var numerals = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX']
+    var numerals = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
 
-    return dozens[Number(number[0])-1] + numerals[Number(number[1])-1];
+    return dozens[Number(number[0]) - 1] + numerals[Number(number[1]) - 1];
 }
 
 
