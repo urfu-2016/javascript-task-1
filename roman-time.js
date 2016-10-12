@@ -7,7 +7,7 @@
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
     var number = {};
-    number[0] = 'N';
+    number[0] = '';
     number[1] = 'I';
     number[2] = 'II';
     number[3] = 'III';
@@ -31,10 +31,12 @@ function romanTime(time) {
         if (time.charAt(i) === ':') {
             a = time.substring(0, i);
             b = time.substring(i + 1, time.length);
-            if (parseInt(a, 10) !== +a) throw new TypeError();
-            if (parseInt(b, 10) != +b) throw new TypeError();
-            if (a < 0 || a > 23) throw new TypeError();
-            if (b < 0 || b > 59) throw new TypeError();
+            if (parseInt(a, 10) !== +a || parseInt(b, 10) !== +b) {
+                throw new TypeError();
+            }
+            if (a < 0 || a > 23 || b < 0 || b > 59) {
+                throw new TypeError();
+            }
             break;
         }		
     }
@@ -57,17 +59,11 @@ function romanTime(time) {
     if (b1 === 0 && b2 === 0) {
         b = 'N';
     }
-    else if (b1 === 0) 
-    {
-        b = number[b2];
-    }
-    else if (b2 === 0) {
-        b = number[b1];
-    }
     else {
         b = number[b2] + '' + number[b1];
     }
     time = a + ':' + b;
+    
     return time;
 }
 
