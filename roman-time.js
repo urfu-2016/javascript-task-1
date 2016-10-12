@@ -5,7 +5,7 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    var reg = /([0-9]{1,2}):([0-9]{1,2})/;
+    var reg = /^([0-9]{2}):([0-9]{2})$/;
     if (!reg.test(time)) {
         throw new TypeError('Неверное время', 'roman-time.js', 10);
     }
