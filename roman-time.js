@@ -59,7 +59,7 @@ function romanTime1(time) {
 }
 function romanTime2(time) {
     var timeSplit = time.split(':');
-    if (timeSplit[0].length !== 2) {
+    if (timeSplit[0].length !== 2 || timeSplit[1].length !== 2) {
         throw new TypeError();
     }
 
