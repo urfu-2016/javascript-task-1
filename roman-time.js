@@ -26,8 +26,7 @@ function roman(time) {
     {
         hours = cifrii[(a[0])] + cifri[a[1]];
     }
-    else
-    {
+    else {
         hours = cifrii[a[0]];
     }
 
@@ -50,8 +49,7 @@ function roman1(time) {
     if (b[0] !== 0 && b[1] !== 0) {
         minutes = cifrii[(b[0])] + cifri[b[1]];
     }
-    else
-    {
+    else {
         minutes = cifrii[b[0]];
     }
 
@@ -59,13 +57,13 @@ function roman1(time) {
 }
 function romanTime(time) {
     var timeSplit = time.split(':');
+    var b = timeSplit[1].split('');
     if (timeSplit[0] === undefined || timeSplit[1] === undefined) {
         throw new TypeError();
     }
-     if (isNaN(timeSplit[0]) || isNaN(timeSplit[1])) {
+    if (isNaN(timeSplit[0]) || isNaN(timeSplit[1])) {
         throw new TypeError();
     }
-    var b = timeSplit[1].split('');
 
     return (roman(time) + ':' + roman1(time));
 }
