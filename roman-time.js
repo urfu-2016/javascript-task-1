@@ -5,7 +5,7 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-// Немного авторского кода и замечательной магии
+    // Немного авторского кода и замечательной магии
 // проверка на лишние символы
     if ((isNaN(parseInt(time[0], 10)) === true) || (isNaN(parseInt(time[1], 10)) === true) ||
         (isNaN(parseInt(time[3], 10)) === true) || (isNaN(parseInt(time[4], 10)) === true)) {
