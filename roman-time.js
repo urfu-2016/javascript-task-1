@@ -1,11 +1,11 @@
 'use strict';
 
 function convertToRoman(hours, minutes, halfTime) {
-    var rightNumbers = { '00': 'N', '0': '', '1': 'I', '2': 'II', '3': 'III', '4': 'IV',
+    var rightNumbers = {'0': '', '1': 'I', '2': 'II', '3': 'III', '4': 'IV',
     '5': 'V', '6': 'VI', '7': 'VII', '8': 'VIII', '9': 'IX' };
-    var leftNumbers = { '00': 'N', '1': 'X', '2': 'XX', '3': 'XXX', '4': 'XL', '5': 'L' };
-    halfTime[0] = leftNumbers[hours[0]] + rightNumbers[hours[1]];
-    halfTime[1] = leftNumbers[minutes[0]] + rightNumbers[minutes[1]];
+    var leftNumbers = {'0': '', '1': 'X', '2': 'XX', '3': 'XXX', '4': 'XL', '5': 'L' };
+    halfTime[0] === '00' : halfTime[0] = 'N' ? halfTime[0] = leftNumbers[hours[0]] + rightNumbers[hours[1]];
+    halfTime[1] === '00' : halfTime[1] = 'N' ? halfTime[1] = leftNumbers[minutes[0]] + rightNumbers[minutes[1]];
 
     return (halfTime);
 }
