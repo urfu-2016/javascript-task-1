@@ -46,7 +46,8 @@ function romanTime(time) {
     var a1 = a % 10;
     var a2 = a - a1;
     if (a1 === 0 && a2 === 0) {
-        a = 'N'; }
+        a = 'N';
+    }
     else if (a1 === 0) {
         a = number[a2];
     }
