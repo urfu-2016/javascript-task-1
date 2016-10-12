@@ -55,6 +55,7 @@ function romanTime(time) {
     var hours = Number(halfTime[0].split(''));
     var minutes = Number(halfTime[1].split(''));
     if (isCorrectTime(halfTime, time) && isCorrectNumbers(hours, minutes)) {
+    	time = convertToRoman(hours, minutes, halfTime).join(':');
     } else {
         throw new TypeError('Неверный формат времени');
     }
