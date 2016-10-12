@@ -30,18 +30,12 @@ function romanTime(time) {
     for (var i = 0; i < time.length; i++) {
         if (time.charAt(i) === ':') {
             a = time.substring(0, i);
-            b = time.substring(i + 1, time.length);
-            if (parseInt(a, 10) !== Number(a)) {
-                throw new TypeError();
-            }
-            if (parseInt(b, 10) !== Number(b)) {
-                throw new TypeError();
-            }
-            if (boool(a, b)) {
-                throw new TypeError();
-            }
+            b = time.substring(i + 1, time.length);           
             break;
         }
+    }
+    if (boool(a, b)) {
+        throw new TypeError();
     }
     var a1 = a % 10;
     if (a1 === 0 && a - a1 === 0) {
@@ -57,16 +51,20 @@ function romanTime(time) {
     else {
         b = String(number[b - b1] + '' + number[b1]);
     }
-    time = a + ':' + b;
-    
+    time = a + ':' + b;    
     return time;
 }
 
 function boool(a, b) {
-    if (a < 0 || a > 23 || b < 0 || b > 59) {
+    if (parseInt(a, 10) !== Number(a)) {
         return true;
     }
-    
+    if (parseInt(b, 10) !== Number(b)) {
+        return true;
+    }
+    if (a < 0 || a > 23 || b < 0 || b > 59) {
+        return true;
+    }    
     return false;
 }
 
