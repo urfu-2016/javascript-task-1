@@ -72,9 +72,9 @@ function digitToRoman(digit, isDecade) {
         case 0:
             return processNoRemainder(digit);
         case 4:
-            return processMinusOneDelimiter(digit);
+            return processMinusOneRemainder(digit);
         default:
-            return processDefault(digit, remainder);
+            return processDefaultRemainder(digit, remainder);
     }
 }
 module.exports = romanTime;
