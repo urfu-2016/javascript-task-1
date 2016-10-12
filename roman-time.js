@@ -8,19 +8,16 @@ function convert(TransNumbers){
 	var ArabMind = [1, 4, 5, 9, 10, 40, 50];
     var RomMind = ["I", "IV", "V", "IX", "X", "XL", "L"];
 	var n=ArabMind.length - 1;
-	if ((TransNumbers == '0') || (TransNumbers == '00')) {
-	return 'N'}
-    else {
-	while (TransNumbers > 0) {
+		while (TransNumbers > 0) {
         if (TransNumbers >= ArabMind[n]){
             RomNumber += RomMind[n];
             TransNumbers -= ArabMind[n];
         }
         else {n--};
-    }
-    }
-	return RomNumber;
-    
+    };
+	if ((TransNumbers == '0') || (TransNumbers == '00')) {
+	return 'N'}
+	else {return RomNumber};  
 };
 function romanTime(time) {
     var timeSet = time.split(':');
