@@ -71,8 +71,9 @@ function toRomanNumbers(x) {
     if (x1 === 0 && x - x1 === 0) {
         x = 'N';
     } else {
-        x = String(number[x - x1] + '' + number[x1]);
+        x = String(number[x - x1]) + String(number[x1]);
     }
+
     return x;
 }
 
