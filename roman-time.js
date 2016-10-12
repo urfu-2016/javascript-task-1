@@ -6,17 +6,15 @@
  */
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
-   	var romantime;
     var timeSplit =time.split(':');
-	if (timeSplit[0]>23 ||timeSplit[0]<0 || timeSplit[1]>59 || timeSplit[1]<0 ){
-
+	if (timeSplit[0] > 23 || timeSplit[0] < 0 || timeSplit[1] > 59 || timeSplit[1] < 0 ){
 	throw new TypeError;	
 	}
 	if (isNaN(timeSplit[0]) || isNaN(timeSplit[1])){
 	throw new TypeError;
 	
 	}
-	if (timeSplit[0]==NaN ||timeSplit[0]===undefined || timeSplit[1]==NaN || timeSplit[1]===undefined ){
+	if (timeSplit[0] == NaN || timeSplit[0] === undefined || timeSplit[1] == NaN || timeSplit[1] === undefined ){
 
 	throw new TypeError;
 	
@@ -32,26 +30,26 @@ function romanTime(time) {
 	parseInt(b[0],10);
 	parseInt(b[1],10);
 	
-	if (a[0]==0 && a[1]==0){
+	if (a[0] == 0 && a[1] == 0){
 		 hours=cifri[0];	   
-	}	if(a[0]==0 && a[1]!=0){
+	}	if(a[0] == 0 && a[1] != 0){
 			hours=cifri[a[1]];
-		}	if(a[0]!=0 && a[1]!=0){
+		}	if(a[0] != 0 && a[1] != 0){
 				hours=cifrii[(a[0])]+cifri[a[1]];
 			}
-			if(a[0]!=0 && a[1]==0){
+			if(a[0] != 0 && a[1] == 0){
 			hours=cifrii[a[0]];
 			}
 			
 			
-	if (b[0]==0 && b[1]==0){
+	if (b[0] == 0 && b[1] == 0){
 	   minutes=cifri[0];
-	}	if(b[0]==0 && b[1]!=0){
+	}	if(b[0] == 0 && b[1] != 0){
 			minutes=cifri[b[1]];
-		}	if(b[0]!=0 && b[1]!=0){
+		}	if(b[0] != 0 && b[1] != 0){
 				minutes=cifrii[(b[0]/10)]+cifri[b[1]];
 			}
-			if(b[0]!=0 && b[1]==0){
+			if(b[0] != 0 && b[1] == 0){
 			minutes=cifrii[b[0]];
 			}
 			if(minutes==''){
