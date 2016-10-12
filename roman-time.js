@@ -30,8 +30,8 @@ function checkTime(time) {
 
         return;
     }
-    hours = parseInt(hours);
-    minutes = parseInt(minutes);
+    hours = parseInt(hours, 10);
+    minutes = parseInt(minutes, 10);
     if (checkTimeInterval(hours, minutes)) {
 
         return [hours, minutes];
@@ -54,11 +54,8 @@ function toRoman(number) {
     }
     var decimal = ['', 'X', 'XX', 'XXX', 'XL', 'L'];
     var numbers = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
-    var firstIndex = number / 10;
-    firstIndex = parseInt(firstIndex, 10);
-    var secondIndex = number % 10;
 
-    return decimal[firstIndex] + numbers[secondIndex];
+    return decimal[parseInt(number / 10, 10)] + numbers[number % 10];
 }
 
 module.exports = romanTime;
