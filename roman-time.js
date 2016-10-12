@@ -9,7 +9,8 @@ function convert(TransNumbers){
     var RomMind = ["I", "IV", "V", "IX", "X", "XL", "L"];
 	var n=ArabMind.length - 1;
 	if ((TransNumbers == '0') || (TransNumbers == '00')) {
-	return 'N';
+	return 'N'}
+    else {
 	while (TransNumbers > 0) {
         if (TransNumbers >= ArabMind[n]){
             RomNumber += RomMind[n];
@@ -17,7 +18,9 @@ function convert(TransNumbers){
         }
         else {n--};
     }
+    }
 	return RomNumber;
+    
 };
 function romanTime(time) {
     var timeSet = time.split(':');
