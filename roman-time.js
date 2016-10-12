@@ -20,7 +20,7 @@ function roman(time) {
         hours = cifri[0];
     } else {
     if (a[0] === '0' && a[1] !== '0') {
-        hours = cifri[a[1]-5];
+        hours = cifrii[a[1]];
     } else {
     if (a[0] !== '0' && a[1] !== '0') {
         hours = cifrii[(a[0])] + cifri[a[1]];
@@ -44,7 +44,7 @@ function roman1(time) {
         minutes = cifri[0];
     }
     if (b[0] === '0' && b[1] !== '0') {
-        minutes = cifri[b[1]];
+        minutes = cifrii[b[1]];
     }
     if (b[0] !== '0' && b[1] !== '0') {
         minutes = cifrii[(b[0])] + cifri[b[1]];
