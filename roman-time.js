@@ -40,7 +40,7 @@ function romanTime(time) {
     a = toRomanNumbers(a);
     b = toRomanNumbers(b);
     time = a + ':' + b;
-    
+
     return time;
 }
 
@@ -54,6 +54,7 @@ function isCorrectTime(a, b) {
     if (isCorrectNumbers(a, b)) {
         return true;
     }
+
     return false;
 }
 
@@ -61,6 +62,7 @@ function isCorrectNumbers(a, b) {
     if (a < 0 || a > 23 || b < 0 || b > 59) {
         return true;
     }
+
     return false;
 }
 
