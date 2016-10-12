@@ -16,6 +16,10 @@ function romanTime(time) {
 }
 
 function isCorrect(time) {
+    return (typeof(time) === 'string' && inRange(time));
+}
+
+function inRange(time) {
     var hour = parseInt(time.split(':')[0]);
     var minute = parseInt(time.split(':')[1]);
 
@@ -31,10 +35,7 @@ function toRoman(digit) {
         if (digit >= current) {
             var a = parseInt(digit / current);
             digit -= a * current;
-            while (a > 0) {
-                str += dict[current];
-                a--;
-            }
+            str += dict[current].repeat(a);
         }
     });
 
