@@ -21,8 +21,7 @@ function convertToRoman(parsed) {
 }
 
 function parsePart(part) {
-    if (part.length !== 2 || part.indexOf('+') !== -1 ||
-     part.indexOf('.') !== -1 || part.indexOf(',') !== -1) {
+    if (part.length !== 2 || isNaN(parseInt(part[0])) || isNaN(parseInt(part[1]))) {
         throw new TypeError();
     }
 
