@@ -27,14 +27,26 @@ var minutesInteger;
 var hoursInteger;
 var romanHours;
 var romanMinutes;
+var timeSecond;
 var separator = ':';
+function checkingTime(check) {
+    timeSecond = check[0] + check[1];
+    for (var j = 0; j <= 3; j++) {
+        if (isNaN(timeSecond[j])) {
+            throw new TypeError('TypeError: Неверное время');
+        }
+    }
+
+    return;
+}
 function romanTime(time) {
-    splitTime = time.split(separator);
-    if (time.length !== 5 ||
-        isNaN(hoursInteger = parseInt(splitTime[0])) ||
-        isNaN(minutesInteger = parseInt(splitTime[1]))) {
+    if (time.length !== 5) {
         throw new TypeError('TypeError: Неверное время');
     }
+    splitTime = time.split(separator);
+    hoursInteger = parseInt(splitTime[0]);
+    minutesInteger = parseInt(splitTime[1]);
+    checkingTime(splitTime);
     if (hoursInteger < 24 && hoursInteger >= 0) {
         romanHours = translateToRoman(splitTime[0], 0);
         if (minutesInteger < 60 && minutesInteger >= 0) {
