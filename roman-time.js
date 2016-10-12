@@ -5,8 +5,8 @@ function toRoman(x) {
         return 'N';
     }
 
-    var numbers = [50, 10, 9, 5, 4, 1];
-    var symbols = ['L', 'X', 'IX', 'V', 'IV', 'I'];
+    var numbers = [50, 40, 10, 9, 5, 4, 1];
+    var symbols = ['L', 'XL', 'X', 'IX', 'V', 'IV', 'I'];
 
     var res = '';
     for (var i = 0; i < numbers.length; i++) {
@@ -28,7 +28,7 @@ function romanTime(time) {
     if (!/^[0-9]{2}:[0-9]{2}$/.test(time)) {
         throw new TypeError('Incorrect time');
     }
-
+``
     var hh = Number(time.slice(0, 2));
     var mm = Number(time.slice(3, 5));
 
