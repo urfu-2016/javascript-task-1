@@ -25,42 +25,42 @@ function getNumeric(hh) {
 // римские цифры 1 - I ; 5 - V; 10 - X; 50 - L
 // по условию задачи 0 - N
     var rimTime = '';
-    var k,i;
+    var k, i;
 
-    if (hh==0) {
+    if (hh === 0) {
 
         return 'N';
     }
 
-    if ((hh-hh%50) > 0) {
+    if ((hh - hh % 50) > 0) {
         rimTime = rimTime + 'L';
-        hh = hh%50;
+        hh = hh % 50;
     }
 
-    if ((hh - hh%10) === 9 || (hh-hh%10) === 40) {
+    if ((hh - hh % 10) === 9 || (hh - hh % 10) === 40) {
         rimTime = rimTime + 'XL';
-        hh = hh%10;
+        hh = hh % 10;
     } else {
-        if ((hh-hh%10) > 0) {
-            k = (hh - hh%10)/10;
-            for (i=0; i<k; i++) {
+        if ((hh - hh % 10) > 0) {
+            k = (hh - hh % 10) / 10;
+            for (i = 0; i < k; i++) {
                 rimTime = rimTime + 'X';
             }
-            hh = hh%10;
+            hh = hh % 10;
         }
     }
 	
-    if ((hh%5) === 4) {
+    if ((hh % 5) === 4) {
         rimTime = rimTime + 'IX';
     } else {
-        if ((hh-hh%5) > 0) {
+        if ((hh - hh % 5) > 0) {
             rimTime = rimTime + 'V';
-            hh = hh%5;
+            hh = hh % 5;
         }
 
-        if (hh%5 > 0) {
-            k = hh%5;
-            for (i=0; i<k; i++) {
+        if (hh % 5 > 0) {
+            k = hh % 5;
+            for (i = 0; i < k; i++) {
                 rimTime = rimTime + 'I';
             }
         }
