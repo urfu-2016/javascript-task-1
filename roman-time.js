@@ -22,7 +22,7 @@ function convertToRoman(parsed) {
 
 function parsePart(part, itemIndex) {
     var parsed = parseInt(part, 10);
-    if (part.indexOf('+') !== -1) {
+    if (part.indexOf('.') !== -1) {
         throw new TypeError();
     }
     if (isNaN(parsed) || parsed < 0 || parsed > (itemIndex === 0 ? 23 : 59)) {
