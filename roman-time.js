@@ -11,13 +11,9 @@ function romanTime(time) {
     }
     var hour = Number(parseTime[1]);
     var min = Number(parseTime[2]);
-    if (!Number.isInteger(hour) || !Number.isInteger(min)) {
-        throw new TypeError('Неверное время', 'roman-time.js', 15);
-    }
     if (hour < 0 || hour > 23 || min < 0 || min > 59) {
         throw new TypeError('Неверное время', 'roman-time.js', 18);
     }
-
     function convertArabiсToRoman(integer) {
         if (integer === 0) {
             return 'N';
