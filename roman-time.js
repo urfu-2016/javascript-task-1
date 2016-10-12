@@ -1,14 +1,15 @@
 'use strict';
 var cifri = ['N', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
 var cifrii = ['N', 'X', 'XX', 'XXX', 'XL', 'L'];
+var timeSplit = time.split(':');
+var a = timeSplit[0].split('');
+var minutes;
 
 /**
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
  */
-function roman(time) {
-    var timeSplit = time.split(':');
-    var a = timeSplit[0].split('');
+function roman(time) {    
     var hours;
     if (timeSplit[0] > 23 || timeSplit[0] < 0) {
         throw new TypeError();
@@ -31,8 +32,6 @@ function roman(time) {
     return hours;
 }
 function romanTime(time) {
-    var timeSplit = time.split(':');
-    var minutes;
     if (timeSplit[1] > 59 || timeSplit[1] < 0) {
         throw new TypeError();
     }
