@@ -6,9 +6,11 @@ var romanTime = require('./roman-time');
 console.info(romanTime('09:10'));
 
 // Выведет 'N:N'
+
 console.info(romanTime('00:00'));
 
 // Выведет 'XXIII:LIX'
+
 console.info(romanTime('23:59'));
 
 // Выбросится ошибка [TypeError: Неверное время]
