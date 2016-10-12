@@ -6,13 +6,13 @@
  * @throws TypeError
  */
 function romanTime(time) {
-    if (!time || (typeof(time) !== 'string')) {
+    if (!time || (typeof(time) !== 'string') || time.length !== 5) {
         throw new TypeError('Неверное время');
     }
     var splits = time.split(':');
     var hours = parseInt(splits[0], 10);
     var minutes = parseInt(splits[1], 10);
-    if (!isValidPeriod(hours, minutes)) {
+    if (splits.length !== 2 || !isValidPeriod(hours, minutes)) {
         throw new TypeError('Неверное время');
     }
 
