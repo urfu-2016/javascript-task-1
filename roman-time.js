@@ -19,7 +19,7 @@ function romanTime(time) {
         if (integer === 0) {
             return 'N';
         }
-        var romanNumerals = [[1, 'I'], [4, 'IV'], [5, 'V'], 
+        var romanNumerals = [[1, 'I'], [4, 'IV'], [5, 'V'],
             [9, 'IX'], [10, 'X'], [40, 'XL'], [50, 'L']];
         var roman = '';
         var i = romanNumerals.length - 1;
@@ -27,12 +27,11 @@ function romanTime(time) {
             if (integer >= romanNumerals[i][0]) {
                 roman += romanNumerals[i][1];
                 integer -= romanNumerals[i][0];
+            } else {
+                i--;
             }
-            else {
-               i--; 
-            } 
         }
-        
+
         return roman;
     }
 
