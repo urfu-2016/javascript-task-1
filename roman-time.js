@@ -57,13 +57,22 @@ function romanTime1(time) {
 
     return (1);
 }
+function romanTime2(time) {
+    var timeSplit = time.split(':');
+    if (timeSplit[0].length !== 2) {
+        throw new TypeError();
+    }
+
+    return (1);
+}
 function romanTime(time) {
     var timeSplit = time.split(':');
     romanTime1(time);
+    romanTime2(time);
     if (timeSplit[0] === undefined || timeSplit[1] === undefined) {
         throw new TypeError();
     }
-    if (timeSplit[0] > 59 || timeSplit[0] < 0 || isNaN(timeSplit[1])) {
+    if (timeSplit[1] > 59 || timeSplit[1] < 0 || isNaN(timeSplit[1])) {
         throw new TypeError();
     }
 
