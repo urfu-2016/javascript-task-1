@@ -6,17 +6,26 @@
  * @throws TypeError
  */
 function romanTime(time) {
-    if (!time || (typeof(time) !== 'string') || time.length !== 5) {
+    var parsedTime = parseTime(time);
+
+    return getRoman(parsedTime.H) + ':' + getRoman(parsedTime.M);
+}
+
+function parseTime(time) {
+    if (!time || (typeof(time) !== 'string')) {
         throw new TypeError('Неверное время');
     }
     var splits = time.split(':');
+    if (splits.length !== 2 || splits[0].length !== 2 || splits[1].length !==2) {
+        throw new TypeError('Неверное время');
+    }
     var hours = parseInt(splits[0], 10);
     var minutes = parseInt(splits[1], 10);
-    if (splits.length !== 2 || !isValidPeriod(hours, minutes)) {
+    if (!isValidPeriod(hours, minutes)) {
         throw new TypeError('Неверное время');
     }
 
-    return getRoman(hours) + ':' + getRoman(minutes);
+    return {H: hours, M: minutes};
 }
 
 function isValidPeriod(hours, minutes) {
