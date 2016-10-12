@@ -15,11 +15,16 @@ function toRoman(x) {
     ]);
 
     var res = '';
-    for (var part of parts) {
-        while (x >= part[0]) {
-            x -= part[0];
-            res += part[1];
-        }
+    var it = parts.keys();
+    while (true) {
+        var part = it.next();
+        if (part.done) break;
+        var number = part.value;
+        var symbols = parts.get(part.value);
+        while (x >= number) {
+            x -= number;
+            res += symbols;
+        }     
     }
 
     return res;
