@@ -39,7 +39,7 @@ function whole(arr) {
 }
 
 function notNull(time) {
-    if (time === '' || time === ':' || time.length >= 4 || typeof time !== 'string') {
+    if (time === '' || time === ':' || typeof time !== 'string') {
         return true;
     }
 
@@ -55,9 +55,14 @@ function notNan(arr) {
 }
 
 function romanTime(time) {
-    var arr = time.split(':');
-    var hour = parseInt(arr[0]);
-    var minutes = parseInt(arr[1]);
+    if (time === '' || time.length !== 5) {
+        throw new TypeError('Неверное время', 'roman-time.js');
+    } else {
+        var arr = time.split(':');
+        var hour = parseInt(arr[0]);
+        var minutes = parseInt(arr[1]);
+    }
+
 
     if (range(hour, minutes, arr) || whole(arr) || notNull(time) || notNan(arr)) {
         throw new TypeError('Неверное время', 'roman-time.js');
