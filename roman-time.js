@@ -11,7 +11,7 @@ function romanTime(time) {
     }
     var hour = Number(parseTime[1]);
     var min = Number(parseTime[2]);
-    if (!hour.isInteger() || !min.isInteger()) {
+    if (!Number.isInteger(hour) || !Number.isInteger(min)) {
         throw new TypeError('Неверное время', 'roman-time.js', 15);
     }
     if (hour < 0 || hour > 23 || min < 0 || min > 59) {
