@@ -11,20 +11,7 @@ function romanTime(time) {
     hours = parseInt((time.split(':', 2))[0], 10);
     minutes = parseInt((time.split(':', 2))[1], 10);
 
-    // isNaN(hours) || isNaN(minutes) || hours > 23 ||
-    // hours < 0 || minutes > 59 || minutes < 0
-
-
-
-    if (isNaN(hours) || isNaN(minutes)) {
-        throw new TypeError('Неверное время');
-    }
-
-    if (hours < 0 || hours > 23) {
-        throw new TypeError('Неверное время');
-    }
-
-    if (minutes > 59 || minutes < 0) {
+    if (isNotValidHours(hours) || isNotValidMinutes(minutes)) {
         throw new TypeError('Неверное время');
     }
 
@@ -70,6 +57,24 @@ function convertNum(num) {
     rom = accordMap[dec] + accordMap[unit];
 
     return rom;
+}
+
+function isNotValidHours(h) {
+    if (isNaN(h) || h < 0 || h > 23) {
+
+        return true;
+    }
+
+    return false;
+}
+
+function isNotValidMinutes(m) {
+    if (isNaN(m) || m < 0 || m > 59) {
+
+        return true;
+    }
+
+    return false;
 }
 
 module.exports = romanTime;
