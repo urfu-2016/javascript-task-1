@@ -12,10 +12,10 @@ function romanTime(time) {
 }
 
 function parseTime(time) {
-    if (!time || (typeof(time) !== 'string')) {
+    if (!time || (typeof(time) !== 'string') || !time.match(/^\d\d:\d\d$/)) {
         throw new TypeError('Неверное время');
     }
-    var splits = splitTime(time);
+    var splits = time.split(':');
     var hours = parseInt(splits[0], 10);
     var minutes = parseInt(splits[1], 10);
     if (!isValidPeriod(hours, minutes)) {
@@ -23,15 +23,6 @@ function parseTime(time) {
     }
 
     return { H: hours, M: minutes };
-}
-
-function splitTime(time) {
-    var splits = time.split(':');
-    if (splits.length !== 2 || splits[0].length !== 2 || splits[1].length !== 2) {
-        throw new TypeError('Неверное время');
-    }
-
-    return splits;
 }
 
 function isValidPeriod(hours, minutes) {
