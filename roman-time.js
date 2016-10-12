@@ -35,11 +35,11 @@ function digitToRoman(digit, isDecade) {
     if (typeof(isDecade) === 'undefined') {
         isDecade = false;
     }
-    var one = 'I';
-    var five = 'V';
-    var ten = 'X';
-    var fifty = 'L';
-    var remainder = digit % 5;
+    var one = 'I',
+        five = 'V',
+        ten = 'X',
+        fifty = 'L',
+        remainder = digit % 5;
     switch (remainder) {
         case 0:
             if (digit === 5) {
