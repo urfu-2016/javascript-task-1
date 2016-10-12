@@ -1,15 +1,12 @@
 'use strict';
 
-function convertToRoman(hours, minute, halfTime) {
-	var rightNumbers = { 0: '', 1: 'I', 2: 'II', 3: 'III', 4: 'IV', 5: 'V', 
+function convertToRoman(hours, minutes, halfTime) {
+    var rightNumbers = { 0: '', 1: 'I', 2: 'II', 3: 'III', 4: 'IV', 5: 'V',
 		6: 'VI', 7: 'VII', 8: 'VIII', 9: 'IX' };
     var leftNumbers = { 1: 'X', 2: 'XX', 3: 'XXX', 4: 'XL', 5: 'L' };
-    
-    //h+h
     halfTime[0] = leftNumbers[hours[0]].concat(rightNumbers[hours[1]]);
-    //m+m
     halfTime[1] = leftNumbers[minutes[0]].concat(rightNumbers[minutes[1]]);
-    //hh+mm
+
     return (halfTime);
 }
 
@@ -24,25 +21,27 @@ function isCorrectNumbers(hours, minutes) {
 
             return true;
         }
+
         return false;
-    } 
-    catch (e) {
+    } catch (e) {
+
         return false;
     }
 }
 
 function isCorrectTime(halfTime, time) {
 	try {
-        if ((time.length === 5 && halfTime.length === 2) &&
-        	(halfTime[0] >= 0 && halfTime[0] <= 23 &&
-        	 halfTime[1] >= 0 && halfTime[1] <= 59 &&
-        	 !isNaN(halfTime[0]) && !isNaN(halfTime[1]))) {
-            
-            return true;
+	    if ((time.length === 5 && halfTime.length === 2) &&
+            (halfTime[0] >= 0 && halfTime[0] <= 23 &&
+            halfTime[1] >= 0 && halfTime[1] <= 59 &&
+            !isNaN(halfTime[0]) && !isNaN(halfTime[1]))) {
+
+	        return true;
         }
+
         return false;
-    } 
-    catch (e) {
+    } catch (e) {
+
         return false;
     }
 }
@@ -52,20 +51,14 @@ function isCorrectTime(halfTime, time) {
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-
-	//hh, mm
     var halfTime = time.split(':');
-    //h, h
-    //leftNumber, rightNumber
     var hours = Number(halfTime[0].split(''));
-    //m, m
-    //leftNumber, rightNumber
     var minutes = Number(halfTime[1].split(''));
-
     if (isCorrectTime(halfTime, time) && isCorrectNumbers(hours, minutes)) {
     } else {
-    	throw new TypeError('Неверный формат времени');
+        throw new TypeError('Неверный формат времени');
     }
+
     return time;
 }
 
