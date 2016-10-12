@@ -6,15 +6,22 @@
  */
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
+    'use strict';
+
+/**
+ * @param {String} time – время в формате HH:MM (например, 09:05)
+ * @returns {String} – время римскими цифрами (IX:V)
+ */
+function romanTime(time) {
+
     if ((isNaN(parseInt(time[0], 10)) === true) || (isNaN(parseInt(time[1], 10)) === true) ||
         (isNaN(parseInt(time[3], 10)) === true) || (isNaN(parseInt(time[4], 10)) === true)) {
         console.info(parseInt(time.slice(3, 5)));
         throw new TypeError();
     } else {
-       
+        var pattern = '';
         if ((time.length === 5) && (parseInt(time.slice(0, 2)) < 24) &&
             (parseInt(time.slice(3, 5)) < 60)) {
-            var pattern = '';
             pattern = patternOwn(pattern, time, 0);
 
             pattern += ':';
