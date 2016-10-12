@@ -18,7 +18,7 @@ function romanTime(time) {
 }
 
 function checkTime(time) {
-    if (!time || typeof time !== 'string') {
+    if (!time || typeof time !== 'string' || time.length !== 5) {
 
         return;
     }
@@ -26,7 +26,8 @@ function checkTime(time) {
     var hours = splitTime[0];
     var minutes = splitTime[1];
 
-    if (checkTimeParts(hours, minutes)) {
+
+    if (timeIsNan(hours, minutes)) {
 
         return;
     }
@@ -38,9 +39,16 @@ function checkTime(time) {
     }
 }
 
-function checkTimeParts(hours, minutes) {
+function timeIsNan(hours, minutes) {
 
-    return (isNaN(hours) || isNaN(minutes) || !hours || hours === ' ' || !minutes || hours === ' ');
+    return (isNaN(hours) || isNaN(minutes) || !hours || !minutes || checkTimeParts(hours, minutes));
+}
+
+function checkTimeParts(hours, minutes) {
+    if (hours.length !== 2 || minutes.length !== 2) {
+
+        return true;
+    }
 }
 
 function checkTimeInterval(hours, minutes) {
