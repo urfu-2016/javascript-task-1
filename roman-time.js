@@ -6,7 +6,6 @@ function convertToRoman(hours, minutes, halfTime) {
     var leftNumbers = { '00': 'N', '1': 'X', '2': 'XX', '3': 'XXX', '4': 'XL', '5': 'L' };
     halfTime[0] = leftNumbers[hours[0]].concat(rightNumbers[hours[1]]);
     halfTime[1] = leftNumbers[minutes[0]].concat(rightNumbers[minutes[1]]);
-    }
 
     return (halfTime);
 }
