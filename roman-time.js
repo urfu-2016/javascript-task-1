@@ -30,8 +30,7 @@ function getNumeric(hh) {
     }
 
     var rimTime = '';
-    var k = 0,
-        i = 0;
+    var k = 0;
 
     if ((hh - hh % 50) > 0) {
         rimTime = rimTime + 'L';
@@ -43,11 +42,22 @@ function getNumeric(hh) {
         hh = hh % 10;
     } else if ((hh - hh % 10) > 0) {
         k = (hh - hh % 10) / 10;
-        for (i = 0; i < k; i++) {
+        for (var i = 0; i < k; i++) {
             rimTime = rimTime + 'X';
         }
         hh = hh % 10;
     }
+
+    rimTime = rimTime + getNumbericLessTen(hh);
+
+    return rimTime;
+}
+
+// возвращает переданное число в римских цифрах
+// римские цифры 1 - I ; 5 - V;
+function getNumericLessTen(hh) {
+    var rimTime = '';
+    var k = 0;
 
     if ((hh % 5) === 4) {
         rimTime = rimTime + 'IX';
@@ -59,7 +69,7 @@ function getNumeric(hh) {
 
         if (hh % 5 > 0) {
             k = hh % 5;
-            for (i = 0; i < k; i++) {
+            for (var i = 0; i < k; i++) {
                 rimTime = rimTime + 'I';
             }
         }
