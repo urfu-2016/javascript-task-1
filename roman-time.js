@@ -28,7 +28,7 @@ function getNumeric(hh) {
 
         return 'N';
     }
-    
+
     var rimTime = '',
         k,
         i;
@@ -42,12 +42,12 @@ function getNumeric(hh) {
         rimTime = rimTime + 'XL';
         hh = hh % 10;
     } else if ((hh - hh % 10) > 0) {
-            k = (hh - hh % 10) / 10;
-            for (i = 0; i < k; i++) {
-                rimTime = rimTime + 'X';
-            }
-            hh = hh % 10;
+        k = (hh - hh % 10) / 10;
+        for (i = 0; i < k; i++) {
+            rimTime = rimTime + 'X';
         }
+        hh = hh % 10;
+    }
 
     if ((hh % 5) === 4) {
         rimTime = rimTime + 'IX';
