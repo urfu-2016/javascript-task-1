@@ -63,7 +63,7 @@ function romanTime(time) {
     } else {
         throw new TypeError('Неверный формат времени');
     }
-    
+
     return time;
 }
 
