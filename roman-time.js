@@ -8,7 +8,7 @@ function romanTime(time) {
     var timeArray = time.split(':');
     var hours = filterInt(timeArray[0]);
     var minutes = filterInt(timeArray[1]);
-    if (isItNaN(hours) * isItNaN(minutes) === 1 *
+    if (isItNaN(hours) * isItNaN(minutes) *
         Number(isCorrectHour(hours)) * Number(isCorrectMinute(minutes)) === 1) {
         return convert(hours) + ':' + convert(minutes);
     }
