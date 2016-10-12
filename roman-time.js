@@ -39,13 +39,13 @@ function convertToRoman(num) {
 
 function romanTime(time) {
     if (!/^\d{2}:\d{2}$/.test(time)) {
-        throw TypeError();
+        throw new TypeError();
     }
     var parsedTime = time.split(':');
     var hours = parseInt(parsedTime[0], 10);
     var minutes = parseInt(parsedTime[1], 10);
     if (hours < 0 || hours > 23 || minutes < 0 || minutes > 59) {
-        throw TypeError();
+        throw new TypeError();
     }
 
     return convertToRoman(hours).toString() + ':' + convertToRoman(minutes).toString();
