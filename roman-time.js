@@ -9,6 +9,7 @@ function romanTime(time) {
     var hours = filterInt(timeArray[0]);
     var minutes = filterInt(timeArray[1]);
     isItNaN(hours);
+    lengthOfTime(time);
     if (isItNaN(hours) + isItNaN(minutes) +
         isCorrectHour(hours) + isCorrectMinute(minutes) === 4) {
 
@@ -63,5 +64,10 @@ function isCorrectMinute(value) {
     }
 
     return 1;
+}
+function lengthOfTime(time) {
+  if (time.length != 5) {
+    throw new TypeError();
+  }
 }
 module.exports = romanTime;
