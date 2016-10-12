@@ -13,7 +13,7 @@ function romanTime(time) {
         throw new TypeError();
     }
     time = setRomanNumerals(hours);
-    time += ' : ' + setRomanNumerals(minutes);
+    time += ':' + setRomanNumerals(minutes);
 
     return time;
 }
@@ -33,52 +33,12 @@ function checkInput(time) {
 }
 
 
-function setRomanNumerals19(number) {
-    var result = ''
-    if (number === '1' || number === '2'|| number === '3') {
-        for (var i = 0; i < Number(number) ; i++) {
-            result += 'I';
-        }
-    }
-    if (number==='4') {
-        result += 'IV';
-    }
-    if (number==='5' || number==='6'|| number==='7'|| number==='8') {
-        result += 'V';
-        for (var i = 0; i < Number(number%5) ; i++) {
-            result += 'I';
-        }
-    }
-    if (number==='9') {
-        result += 'IX';
-    }
-
-    return result;
-}
-
-
 function setRomanNumerals(number) {
-    var result = ';'
-    if (number<10) {
-        setRomanNumerals19(number);
-    }
-    if (number>=10 && number<=19) {
-        result += 'X' + setRomanNumerals19(number[1]);
-    }
-    if (number>=20 && number<=29) {
-        result += 'XX' + setRomanNumerals19(number[1]);
-    }
-    if (number>=30 && number<=39) {
-        result += 'XXX' + setRomanNumerals19(number[1]);
-    }
-    if (number>=40 && number<=49) {
-        result += 'XL' + setRomanNumerals19(number[1]);
-    }
-    if (number>=50 && number<=59) {
-        result += 'L' + setRomanNumerals19(number[1]);
-    }
+    var result = '';    
+    var dozens = ['X', 'XX', 'XXX', 'XL', 'L'];
+    var numerals = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX']
 
-    return result;
+    return dozens[Number(number[0])-1] + numerals[Number(number[1])-1];
 }
 
 
