@@ -5,8 +5,37 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    // Немного авторского кода и замечательной магии
-    return time;
+    var timeArray = time.split(':');
+    var hours = filterInt(timeArray[0]);
+    var minutes = filterInt(timeArray[1]);
+    function filterInt(value) {
+        if(/^(\-|\+)?([0-9]+|Infinity)$/.test(value))
+            return Number(value);
+        return NaN;
+    }
+    function convert(numb) {
+        var arabArray=[1,4,5,9,10,40,50];
+        var romArray= ["I", "IV", "V", "IX", "X", "XL", "L"];
+        if (numb == 0) {
+            return 'N';
+        }
+        var result = '';
+        var n = arabArray.length - 1;
+        while (numb >0) {
+            if (numb>=arabArray[n])  {
+                result += romArray[n];
+                numb-=arabArray[n];
+            } else {
+                n--;
+            }
+        }
+        return result;
+      }
+    if (minutes < 0||hours < 0||minutes > 59||23 < hours||Number.isNaN(hours) == true||Number.isNaN(minutes) == true) {
+    console.log('Время указано неверно')
+    } else {
+      return time = convert(hours)+ ":" + convert(minutes);
+    }
 }
 
 module.exports = romanTime;
