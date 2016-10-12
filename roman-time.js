@@ -6,6 +6,11 @@
  */
 function romanTime(time) {
 
+    isNotValidTime
+    if (isNotValidTime(time)) {
+        throw new TypeError('Неверное время');
+    }
+
     var hours;
     var minutes;
     hours = parseInt((time.split(':', 2))[0], 10);
@@ -58,6 +63,14 @@ function convertNum(num) {
 
     return rom;
 }
+function isNotValidTime(t) {
+    if (typeof (t) === 'object' || t === 'undefined' || typeof (t) === 'boolean') {
+
+        return true;
+    }
+
+    return false;
+}
 
 function isNotValidHours(h) {
     if (isNaN(h) || h < 0 || h > 23) {
@@ -78,3 +91,4 @@ function isNotValidMinutes(m) {
 }
 
 module.exports = romanTime;
+
