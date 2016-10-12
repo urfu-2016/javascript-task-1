@@ -4,13 +4,12 @@
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
  */
-exports.isStar = false;
 function romanTime(time) {
     var timeArray = time.split(':');
     var hours = filterInt(timeArray[0]);
     var minutes = filterInt(timeArray[1]);
     if (isItNaN(hours) + isItNaN(minutes) +
-        Number(isCorrectHour(hours)) + Number(isCorrectMinute(minutes)) === 4) {
+        (isCorrectHour(hours)) + (isCorrectMinute(minutes)) === 4) {
         return convert(hours) + ':' + convert(minutes);
     }
 
