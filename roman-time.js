@@ -48,15 +48,15 @@ function isItNaN(value) {
 
     return 1;
 }
-function isCorrectHour(hours) {
-    if (hours >= 24 || hours < 0) {
+function isCorrectHour(value) {
+    if (value >= 24 || value < 0) {
         return 0;
     }
 
     return 1;
 }
-function isCorrectMinute(minutes) {
-    if (minutes > 59 || minutes < 0) {
+function isCorrectMinute(value) {
+    if (value > 59 || value < 0) {
         return 0;
     }
 
