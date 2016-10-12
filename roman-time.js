@@ -21,7 +21,7 @@ function checkHoursArgument(hours) {
  */
 function romanTime(time) {
     var splittedTime = time.split(':');
-    if (splittedTime.length !== 2) {
+    if (splittedTime.length !== 2 || splittedTime[0].length != 2 || splittedTime[1].length != 2) {
         throw new TypeError();
     }
     var hours = parseInt(splittedTime[0]);
