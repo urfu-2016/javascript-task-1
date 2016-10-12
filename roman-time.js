@@ -5,7 +5,7 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    var parseTime = time.match( /(\d{2}):((\d{2}))/ );
+    var parseTime = time.match(/(\d{2}):((\d{2}))/);
     if (time === null) {
         throw new TypeError('Неверное время', 'roman-time.js', 10);
     }
@@ -16,10 +16,11 @@ function romanTime(time) {
     }
 
     function convertArabiсToRoman(integer) {
-        if (integer === 0){
+        if (integer === 0) {
             return 'N';
         }
-        var romanNumerals = [[1, 'I'], [4, 'IV'], [5, 'V'], [9, 'IX'], [10, 'X'], [40, 'XL'], [50, 'L']];
+        var romanNumerals = [[1, 'I'], [4, 'IV'], [5, 'V'], 
+            [9, 'IX'], [10, 'X'], [40, 'XL'], [50, 'L']];
         var roman = '';
         var i = romanNumerals.length - 1;
         while (integer > 0) {
@@ -27,8 +28,11 @@ function romanTime(time) {
                 roman += romanNumerals[i][1];
                 integer -= romanNumerals[i][0];
             }
-            else i--;
+            else {
+               i--; 
+            } 
         }
+        
         return roman;
     }
 
