@@ -39,6 +39,8 @@ function convertToRoman(number) {
     if (decadesCount === 0) {
         return digitToRoman(onesCount);
     }
+	if (onesCount === 0)
+		return digitToRoman(decadesCount);
 
     return digitToRoman(decadesCount, true) + digitToRoman(onesCount);
 }
