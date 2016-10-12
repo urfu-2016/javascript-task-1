@@ -45,5 +45,5 @@ function convert(numb) {
 
     return result;
 }
-    
+
 module.exports = romanTime;
