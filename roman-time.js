@@ -12,12 +12,14 @@ function romanTime(time) {
         Number.isNaN(hours) === true || Number.isNaN(minutes) === true) {
         return new TypeError('Время указано неверно!');
     }
+    
     return convert(hours) + ':' + convert(minutes);
 }
 function filterInt(value) {
     if (/^(\-|\+)?([0-9]+|Infinity)$/.test(value)) {
         return Number(value);
     }
+    
     return NaN;
 }
 function convert(numb) {
@@ -29,13 +31,14 @@ function convert(numb) {
     var result = '';
     var n = arabArray.length - 1;
     while (numb > 0) {
-    if (numb >= arabArray[n]) {
-        result += romArray[n];
-        numb -= arabArray[n];
+        if (numb >= arabArray[n]) {
+            result += romArray[n];
+            numb -= arabArray[n];
         } else {
-            n--;
+        n--;
         }
     }
+    
     return result;
 }
 
