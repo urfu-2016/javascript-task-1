@@ -20,8 +20,8 @@ function isCorrect(time) {
 }
 
 function inRange(time) {
-    var hour = parseInt(time.split(':')[0]);
-    var minute = parseInt(time.split(':')[1]);
+    var hour = Number(time.split(':')[0]);
+    var minute = Number(time.split(':')[1]);
 
     return (!isNaN(hour) && !isNaN(minute) &&
         hour >= 0 && hour <= 23 && minute >= 0 && minute <= 59);
