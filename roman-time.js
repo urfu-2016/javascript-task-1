@@ -11,16 +11,23 @@ function romanTime(time) {
     }
     var hours = parseInt(splittedTime[0]);
     var minutes = parseInt(splittedTime[1]);
-    if (isNaN(minutes) || minutes < 0 || minutes > 59) {
-        throw new TypeError();
-    }
-    if (isNaN(hours) || hours < 0 || hours > 23) {
-        throw TypeError;
-    }
+    checkMinutesArgument(minutes);
+	checkHoursArgument(hours);
+    
     var convertedMinutes = convertToRoman(minutes);
     var convertedHours = convertToRoman(hours);
 
     return (convertedHours + ':' + convertedMinutes);
+}
+function checkMinutesArgument(minutes) {
+    if (isNaN(minutes) || minutes < 0 || minutes > 59) {
+        throw new TypeError();
+    }
+}
+function checkHoursArguments(hours) {
+    if (isNaN(hours) || hours < 0 || hours > 23) {
+        throw new TypeError();
+    }
 }
 function convertToRoman(number) {
     var decadesCount = Math.floor(number / 10);
@@ -35,30 +42,39 @@ function digitToRoman(digit, isDecade) {
     if (typeof(isDecade) === 'undefined') {
         isDecade = false;
     }
-    var one = 'I',
-        five = 'V',
-        ten = 'X',
-        fifty = 'L',
-        remainder = digit % 5;
+    var one = 'I';
+    var five = 'V';
+    var ten = 'X';
+    var fifty = 'L';
+    var remainder = digit % 5;
     switch (remainder) {
         case 0:
-            if (digit === 5) {
-                return isDecade ? fifty : five;
-            }
-
-            return 'N';
+            return processNoRemainder(digit);
         case 4:
-            if (digit > 5) {
-                return isDecade ? 'NotImplenented' : one + ten;
-            }
-
-            return isDecade ? ten + fifty : one + five;
+            return processMinusOneDelimiter(digit);
         default:
-            if (digit > 5) {
-                return isDecade ? fifty + ten.repeat(remainder) : five + one.repeat(remainder);
-            }
-
-            return isDecade ? ten.repeat(remainder) : one.repeat(remainder);
+            return processDefault(digit);
     }
+}
+function processNoRemainder(digit) {
+    if (digit === 5) {
+        return isDecade ? fifty : five;
+    }
+    
+    return 'N';
+}
+function processMinusOneRemainder(digit) {
+    if (digit > 5) {
+        return isDecade ? 'NotImplenented' : one + ten;
+    }
+
+    return isDecade ? ten + fifty : one + five;
+}
+function processDefaultRemainder(digit) {
+    if (digit > 5) {
+        return isDecade ? fifty + ten.repeat(remainder) : five + one.repeat(remainder);
+    }
+
+    return isDecade ? ten.repeat(remainder) : one.repeat(remainder);
 }
 module.exports = romanTime;
