@@ -5,21 +5,21 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 var number = {};
-    number[0] = '';
-    number[1] = 'I';
-    number[2] = 'II';
-    number[3] = 'III';
-    number[4] = 'IV';
-    number[5] = 'V';
-    number[6] = 'VI';
-    number[7] = 'VII';
-    number[8] = 'VIII';
-    number[9] = 'IX';
-    number[10] = 'X';
-    number[20] = 'XX';
-    number[30] = 'XXX';
-    number[40] = 'XL';
-    number[50] = 'L';
+number[0] = '';
+number[1] = 'I';
+number[2] = 'II';
+number[3] = 'III';
+number[4] = 'IV';
+number[5] = 'V';
+number[6] = 'VI';
+number[7] = 'VII';
+number[8] = 'VIII';
+number[9] = 'IX';
+number[10] = 'X';
+number[20] = 'XX';
+number[30] = 'XXX';
+number[40] = 'XL';
+number[50] = 'L';
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
     if (typeof time === 'undefined' || typeof time === 'object') {
@@ -38,8 +38,9 @@ function romanTime(time) {
         throw new TypeError();
     }
     a = toRomanNumbers(a);
-    b = toRomanNumbers(b);  
+    b = toRomanNumbers(b);
     time = a + ':' + b;
+    
     return time;
 }
 
@@ -67,8 +68,7 @@ function toRomanNumbers(x) {
     var x1 = x % 10;
     if (x1 === 0 && x - x1 === 0) {
         x = 'N';
-    }
-    else {
+    } else {
         x = String(number[x - x1] + '' + number[x1]);
     }
     return x;
