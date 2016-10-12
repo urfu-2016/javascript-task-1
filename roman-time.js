@@ -8,13 +8,11 @@ function romanTime(time) {
     var timeArray = time.split(':');
     var hours = filterInt(timeArray[0]);
     var minutes = filterInt(timeArray[1]);
+    isItNaN(minutes);
+    isItNan(hours);
     isCorrectHour(hours);
-    if (isItNaN(hours) + isItNaN(minutes) +
-        (isCorrectHour(hours)) + (isCorrectMinute(minutes)) === 4) {
-        return convert(hours) + ':' + convert(minutes);
-    }
-
-    return new TypeError('Время указано неверно!');
+    isCorrectMinute(minutes);
+    return convert(hours) + ':' + convert(minutes);
 }
 function filterInt(value) {
     if (/^(\-|\+)?([0-9]+|Infinity)$/.test(value)) {
@@ -44,7 +42,7 @@ function convert(numb) {
 }
 function isItNaN(value) {
     if (Number.isNaN(value) === true) {
-        return 0;
+        throw new TypeError();
     }
 
     return 1;
@@ -58,7 +56,7 @@ function isCorrectHour(value) {
 }
 function isCorrectMinute(value) {
     if (value > 59 || value < 0) {
-        return 0;
+        throw new TypeError();
     }
 
     return 1;
