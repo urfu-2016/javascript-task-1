@@ -22,13 +22,11 @@ function roman(time) {
     if (a[0] === 0 && a[1] !== 0) {
         hours = cifri[a[1]];
     }
-    if (a[0] !== 0 && a[1] !== 0)
-    {
+    if (a[0] !== 0 && a[1] !== 0) {
         hours = cifrii[(a[0])] + cifri[a[1]];
     }
     else {
-        hours = cifrii[a[0]];
-    }
+        hours = cifrii[a[0]];}
 
     return hours;
 }
@@ -50,14 +48,12 @@ function roman1(time) {
         minutes = cifrii[(b[0])] + cifri[b[1]];
     }
     else {
-        minutes = cifrii[b[0]];
-    }
+        minutes = cifrii[b[0]];}
 
     return minutes;
 }
 function romanTime(time) {
-    var timeSplit = time.split(':');
-    var b = timeSplit[1].split('');
+    var timeSplit = time.split(':');  
     if (timeSplit[0] === undefined || timeSplit[1] === undefined) {
         throw new TypeError();
     }
