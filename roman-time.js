@@ -18,14 +18,16 @@ function roman(time) {
     parseInt(a[1], 10);
     if (a[0] === 0 && a[1] === 0) {
         hours = cifri[0];
-    }
+    } else {
     if (a[0] === 0 && a[1] !== 0) {
         hours = cifri[a[1]];
-    }
+    } else {
     if (a[0] !== 0 && a[1] !== 0) {
         hours = cifrii[(a[0])] + cifri[a[1]];
     } else {
         hours = cifrii[a[0]];
+    }
+    }
     }
 
     return hours;
@@ -40,14 +42,16 @@ function roman1(time) {
     parseInt(b[1], 10);
     if (b[0] === 0 && b[1] === 0) {
         minutes = cifri[0];
-    }
+    } else {
     if (b[0] === 0 && b[1] !== 0) {
         minutes = cifri[b[1]];
-    }
+    } else{
     if (b[0] !== 0 && b[1] !== 0) {
         minutes = cifrii[(b[0])] + cifri[b[1]];
     } else {
         minutes = cifrii[b[0]];
+    }
+    }
     }
 
     return minutes;
