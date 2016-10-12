@@ -5,11 +5,11 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    var reg = /([0-9]{2}):(([0-9]{2}))/;
+    var reg = /([0-9]{2}):([0-9]{2})/;
     if (!reg.test(time)) {
         throw new TypeError('Неверное время', 'roman-time.js', 10);
     }
-    var parseTime = time.match(/([0-9]{2}):(([0-9]{2}))/);
+    var parseTime = time.match(reg);
     var hour = Number(parseTime[1]);
     var min = Number(parseTime[2]);
     if (hour < 0 || hour > 23 || min < 0 || min > 59) {
