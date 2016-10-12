@@ -12,7 +12,9 @@ function romanTime(time) {
         if (/^(\-|\+)?([0-9]+|Infinity)$/.test(value)) {
             return Number(value);
         }
-        return NaN;
+        {
+            return NaN;
+        }
     }
     function convert(numb) {
         var arabArray = [1, 4, 5, 9, 10, 40, 50];
@@ -30,12 +32,15 @@ function romanTime(time) {
                 n--;
             }
         }
-        return result;
+        {
+            return result;
+        }
     }
     if (minutes < 0 || hours < 0 || minutes > 59 || hours > 23 ||
         Number.isNaN(hours) === true || Number.isNaN(minutes) === true) {
         return new TypeError('Время указано неверно!');
-    } else {
+    }
+    {
         return convert(hours) + ':' + convert(minutes);
     }
 }
