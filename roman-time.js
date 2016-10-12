@@ -1,5 +1,4 @@
 'use strict';
-
 function convertTo(TransNumbers) {
     var firstDigital = ['', 'X', 'XX', 'XXX', 'XL', 'L'];
     var secondDigits = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
