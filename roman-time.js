@@ -48,7 +48,7 @@ function getNumeric(hh) {
         hh = hh % 10;
     }
 
-    rimTime = rimTime + getNumbericLessTen(hh);
+    rimTime = rimTime + getNumericLessTen(hh);
 
     return rimTime;
 }
@@ -68,8 +68,8 @@ function getNumericLessTen(hh) {
         }
 
         if (hh % 5 > 0) {
-            k = hh % 5;
-            for (var i = 0; i < k; i++) {
+            //k = hh % 5;
+            for (var i = 0; i < (hh % 5); i++) {
                 rimTime = rimTime + 'I';
             }
         }
