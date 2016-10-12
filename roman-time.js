@@ -11,7 +11,7 @@ function romanTime(time) {
     }
     var hours = parseInt(splittedTime[0]);
     var minutes = parseInt(splittedTime[1]);
-    if (isNaN(minutes) || minutes < 0 || minutes > 59) { 
+    if (isNaN(minutes) || minutes < 0 || minutes > 59) {
         throw new TypeError();
     }
     if (isNaN(hours) || hours < 0 || hours > 23) {
@@ -19,7 +19,7 @@ function romanTime(time) {
     }
     var convertedMinutes = convertToRoman(minutes);
     var convertedHours = convertToRoman(hours);
-	
+
     return (convertedHours + ':' + convertedMinutes);
 }
 function convertToRoman(number) {
@@ -28,12 +28,12 @@ function convertToRoman(number) {
     if (decadesCount === 0) {
         return digitToRoman(onesCount);
     }
-	
+
     return digitToRoman(decadesCount, true) + digitToRoman(onesCount);
 }
 function digitToRoman(digit, isDecade) {
     if (typeof(isDecade) === 'undefined') {
-        isDecade=false;
+        isDecade = false;
     }
     var one = 'I';
     var five = 'V';
@@ -45,19 +45,19 @@ function digitToRoman(digit, isDecade) {
             if (digit === 5) {
                 return isDecade ? fifty : five;
             }
-			
+
             return 'N';
         case 4:
             if (digit > 5) {
                 return isDecade ? 'NotImplenented' : one + ten;
             }
-			
+
             return isDecade ? ten + fifty : one + five;
         default:
             if (digit > 5) {
                 return isDecade ? fifty + ten.repeat(remainder) : five + one.repeat(remainder);
             }
-			
+
             return isDecade ? ten.repeat(remainder) : one.repeat(remainder);
     }
 }
