@@ -73,7 +73,7 @@ function romanTime(time) {
     }
 
     return (
-        naturalNumberToRomanNumeral(hours) + 
+        naturalNumberToRomanNumeral(hours) +
         ':' +
         naturalNumberToRomanNumeral(minutes));
 }
