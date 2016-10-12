@@ -66,8 +66,8 @@ function isCorrectMinute(value) {
     return 1;
 }
 function lengthOfTime(time) {
-  if (time.length != 5) {
-    throw new TypeError();
+    if (time.length !== 5) {
+        throw new TypeError();
   }
 }
 module.exports = romanTime;
