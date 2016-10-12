@@ -1,15 +1,20 @@
 'use strict';
 
+var ONE = 'I';
+var FIVE = 'V';
+var TEN = 'X';
+var FIFTY = 'L';
 function checkMinutesArgument(minutes) {
     if (isNaN(minutes) || minutes < 0 || minutes > 59) {
         throw new TypeError();
     }
 }
-function checkHoursArguments(hours) {
+function checkHoursArgument(hours) {
     if (isNaN(hours) || hours < 0 || hours > 23) {
         throw new TypeError();
     }
 }
+
 /**
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
@@ -39,33 +44,29 @@ function convertToRoman(number) {
 }
 function processNoRemainder(digit) {
     if (digit === 5) {
-        return isDecade ? this.FIFTY : this.FIVE;
+        return isDecade ? FIFTY : FIVE;
     }
     
     return 'N';
 }
 function processMinusOneRemainder(digit) {
     if (digit > 5) {
-        return isDecade ? 'NotImplenented' : this.ONE + this.TEN;
+        return isDecade ? 'NotImplenented' : ONE + TEN;
     }
 
-    return isDecade ? this.TEN + this.FIFTY : this.ONE + this.FIVE;
+    return isDecade ? TEN + FIFTY : ONE + this.FIVE;
 }
 function processDefaultRemainder(digit, remainder) {
     if (digit > 5) {
-        return isDecade ? this.FIFTY + this.TEN.repeat(remainder) : this.FIVE + this.ONE.repeat(remainder);
+        return isDecade ? FIFTY + TEN.repeat(remainder) : FIVE + ONE.repeat(remainder);
     }
 
-    return isDecade ? thisTEN.repeat(remainder) : this.ONE.repeat(remainder);
+    return isDecade ? TEN.repeat(remainder) : ONE.repeat(remainder);
 }
 function digitToRoman(digit, isDecade) {
     if (typeof(isDecade) === 'undefined') {
         isDecade = false;
     }
-    this.ONE = 'I';
-    this.FIVE = 'V';
-    this.TEN = 'X';
-    this.FIFTY = 'L';
     var remainder = digit % 5;
     switch (remainder) {
         case 0:
