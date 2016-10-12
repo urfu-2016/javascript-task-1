@@ -31,8 +31,8 @@ function isCorrectNumbers(hours, minutes) {
 function isCorrectTime(halfTime, time) {
     try {
         if ((time.length === 5 && halfTime.length === 2) &&
-            (halfTime[0] >= 0 && halfTime[0] <= 23 &&
-            halfTime[1] >= 0 && halfTime[1] <= 59 &&
+            (Number(halfTime[0]) >= 0 && Number(halfTime[0]) <= 23 &&
+            Number(halfTime[1]) >= 0 && Number(halfTime[1]) <= 59 &&
             !isNaN(halfTime[0]) && !isNaN(halfTime[1]))) {
 
             return true;
