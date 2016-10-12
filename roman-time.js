@@ -7,7 +7,9 @@ function convertTo(TransNumbers) {
         return 'N';
     }
     var trans = firstDigital[Math.floor(TransNumbers / 10)];
-    trans = trans + secondDigits[TransNumbers % 10]; return trans;
+    trans = trans + secondDigits[TransNumbers % 10];
+    
+    return trans;
 }
 function romanTime(time) {
     var timeSet = time.split(':');
