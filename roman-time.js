@@ -46,28 +46,31 @@ function romanTime(time) {
     var a1 = a % 10;
     var a2 = a - a1;
     if (a1 === 0 && a2 === 0) {
-        a = 'N';
-    }
-    else if (a1 === 0)
-        a = number[a2];
-    else if (a2 === 0)
-        a = number[a1];
-    else
-        a = String(number[a2]) + '' + String(number[a1]);
+        a = 'N'; }
+    else if (a1 === 0) {
+        a = number[a2]; }
+    else if (a2 === 0) {
+        a = number[a1]; }
+    else {
+        a = String(number[a2]) + '' + String(number[a1]); }
     var b1 = b % 10;
     var b2 = b - b1;
     if (b1 === 0 && b2 === 0) {
         b = 'N';
     }
-    else 
+    else {
         b = number[b2] + '' + number[b1];
+    }
     time = a + ':' + b;
     
     return time;
 }
+
 function Bool (a,b){
-    if (a < 0 || a > 23 || b < 0 || b > 59) return true;
-    else return false
+    if (a < 0 || a > 23 || b < 0 || b > 59) {
+        return true;
+    }
+    return false;
 }
 
 module.exports = romanTime;
