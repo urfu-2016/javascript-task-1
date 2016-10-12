@@ -36,7 +36,15 @@ function arabicToRim(x) {
 
     return rimValue;
 }
+
+function checkNullUndefined(x) {
+    if ((x === null) || (x === undefined)) {
+        throw new TypeError();
+    }
+}
+
 function romanTime(time) {
+    checkNullUndefined(time);
     var arrayOfHoursAndMinutes = time.split(':');
     var hours = arrayOfHoursAndMinutes[0];
     var minutes = arrayOfHoursAndMinutes[1];
