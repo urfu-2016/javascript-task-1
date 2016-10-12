@@ -11,6 +11,7 @@ function romanTime(time) {
         console.info(parseInt(time.slice(3, 5)));
         throw new TypeError();
     } else {
+       
         if ((time.length === 5) && (parseInt(time.slice(0, 2)) < 24) &&
             (parseInt(time.slice(3, 5)) < 60)) {
             var pattern = '';
@@ -24,6 +25,7 @@ function romanTime(time) {
             throw new TypeError();
         }
     }
+
     return time;
 }
 function patternOwn(pattern, time, n) {
