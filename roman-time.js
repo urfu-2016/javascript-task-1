@@ -50,9 +50,11 @@ function isCorrectTime(halfTime, time) {
  */
 function romanTime(time) {
     var halfTime = time.split(':');
+    var hours;
+    var minutes;
     if (isCorrectTime(halfTime, time)) {
-        var hours = Number(halfTime[0].split(''));
-        var minutes = Number(halfTime[1].split(''));
+        hours = Number(halfTime[0].split(''));
+        minutes = Number(halfTime[1].split(''));
     } else {
         throw new TypeError('Неверный формат времени');
     }
