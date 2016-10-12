@@ -45,7 +45,7 @@ function setRomanNumerals(number) {
     if (Number(number[1]) === 0) {
         return dozens[Number(number[0]) - 1];
     }
-    
+
     return dozens[Number(number[0]) - 1] + numerals[Number(number[1]) - 1];
 }
 
