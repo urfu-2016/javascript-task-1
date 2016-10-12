@@ -28,7 +28,7 @@ function romanTime(time) {
     if (!/^[0-9]{2}:[0-9]{2}$/.test(time)) {
         throw new TypeError('Incorrect time');
     }
-    ``
+
     var hh = Number(time.slice(0, 2));
     var mm = Number(time.slice(3, 5));
 
