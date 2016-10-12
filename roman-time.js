@@ -36,7 +36,15 @@ function checkInput(time) {
 function setRomanNumerals(number) {
     var dozens = ['X', 'XX', 'XXX', 'XL', 'L'];
     var numerals = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
-
+    if (number === '00') {
+        return 'N';
+    }
+    if (Number(number[0]) === 0) {
+        return numerals[Number(number[1]) - 1];
+    }
+    if (Number(number[1]) === 0) {
+        return dozens[Number(number[0]) - 1];
+    }
     return dozens[Number(number[0]) - 1] + numerals[Number(number[1]) - 1];
 }
 
