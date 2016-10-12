@@ -41,7 +41,7 @@ function convertToRoman(number) {
     }
     if (onesCount === 0) {
         return digitToRoman(decadesCount);
-	}
+    }
 
     return digitToRoman(decadesCount, true) + digitToRoman(onesCount);
 }
