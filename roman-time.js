@@ -28,6 +28,6 @@ function romanTime(time) {
     } catch (e) {
         throw new TypeError('Неверное время');
     }
-};
+}
 
 module.exports = romanTime;
