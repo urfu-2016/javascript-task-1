@@ -22,10 +22,10 @@ function convertToRoman(parsed) {
 
 function parsePart(part, itemIndex) {
     var parsed = parseInt(part, 10);
-    if (isNaN(parsed)) {
+    if (part.indexOf('+') !== -1) {
         throw new TypeError();
     }
-    if (parsed < 0 || parsed > (itemIndex === 0 ? 23 : 59)) {
+    if (isNaN(parsed) || parsed < 0 || parsed > (itemIndex === 0 ? 23 : 59)) {
         throw new TypeError();
     }
 
