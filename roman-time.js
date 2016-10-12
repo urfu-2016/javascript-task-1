@@ -1,13 +1,12 @@
 'use strict';
-
+    cifri = ['N', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
+    cifrii = ['N', 'X', 'XX', 'XXX', 'XL', 'L'];
 /**
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
  */
-function roman(time){
+function roman(time) {
     var timeSplit =time.split(':');
-    var cifri = ['N','I','II','III','IV','V','VI','VII','VIII','IX'];
-    var cifrii = ['N','X','XX','XXX','XL','L'];
     var a = timeSplit[0].split('');
     parseInt(a[0],10);
     parseInt(a[1],10);
@@ -20,9 +19,7 @@ function romanTime(time) {
     var timeSplit =time.split(':');
     if (timeSplit[0] > 23 || timeSplit[0] < 0 || timeSplit[1] > 59 || timeSplit[1] < 0 ){ throw new TypeError(); }
     if (isNaN(timeSplit[0]) || isNaN(timeSplit[1])){ throw new TypeError(); }
-    if (timeSplit[0] == NaN || timeSplit[0] === undefined || timeSplit[1] == NaN || timeSplit[1] === undefined ){ throw new TypeError();}
-    var cifri = ['N','I','II','III','IV','V','VI','VII','VIII','IX'];
-    var cifrii = ['N','X','XX','XXX','XL','L'];    
+    if (timeSplit[0] == NaN || timeSplit[0] === undefined || timeSplit[1] == NaN || timeSplit[1] === undefined ){ throw new TypeError();}   
     var b = timeSplit[1].split('');   
     parseInt(b[0],10);
     parseInt(b[1],10);
