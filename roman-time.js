@@ -6,15 +6,14 @@
  */
 function romanTime(time) {
 
-    isNotValidTime
-    if (isNotValidTime(time)) {
-        throw new TypeError('Неверное время');
-    }
-
     var hours;
     var minutes;
-    hours = parseInt((time.split(':', 2))[0], 10);
-    minutes = parseInt((time.split(':', 2))[1], 10);
+    try {
+        hours = parseInt((time.split(':', 2))[0], 10);
+        minutes = parseInt((time.split(':', 2))[1], 10);
+    } catch(e) {
+        throw new TypeError('Неверное время'); }
+
 
     if (isNotValidHours(hours) || isNotValidMinutes(minutes)) {
         throw new TypeError('Неверное время');
@@ -62,14 +61,6 @@ function convertNum(num) {
     rom = accordMap[dec] + accordMap[unit];
 
     return rom;
-}
-function isNotValidTime(t) {
-    if (typeof (t) === 'object' || t === 'undefined' || typeof (t) === 'boolean') {
-
-        return true;
-    }
-
-    return false;
 }
 
 function isNotValidHours(h) {
