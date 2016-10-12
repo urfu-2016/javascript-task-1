@@ -10,8 +10,12 @@ function romanTime(time) {
     var minutes = filterInt(timeArray[1]);
     isItNaN(hours);
     isCorrectHour(hours);
+    if (isItNaN(hours) + isItNaN(minutes) +
+        isCorrectHour(hours) + isCorrectMinute(minutes) === 4) {
+      return convert(hours) + ':' + convert(minutes);
+    }
 
-    return convert(hours) + ':' + convert(minutes);
+    return new TypeError('Время указано неверно!');
 }
 function filterInt(value) {
     if (/^(\-|\+)?([0-9]+|Infinity)$/.test(value)) {
