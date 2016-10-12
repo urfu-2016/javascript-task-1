@@ -19,16 +19,12 @@ function romanTime(time) {
     var arrayTime = time.split(':');
     var hours = parseInt(arrayTime[0]);
     var mins = parseInt(arrayTime[1]);
-    if (!(isNaN(hours) && isNaN(mins)))
-    {
-        if (hours < 24 && mins < 60)
-        {
+    if (!(isNaN(hours) && isNaN(mins))) {
+        if (hours < 24 && mins < 60) {
             return romanNumbers[hours] + ':' + romanNumbers[(mins)];
         }
     }
     else
-    {
-        throw new TypeError();
-    }
+    { throw new TypeError(); }
 }
 module.exports = romanTime;
