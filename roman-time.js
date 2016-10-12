@@ -48,11 +48,14 @@ function romanTime(time) {
     if (a1 === 0 && a2 === 0) {
         a = 'N'; }
     else if (a1 === 0) {
-        a = number[a2]; }
+        a = number[a2];
+    }
     else if (a2 === 0) {
-        a = number[a1]; }
+        a = number[a1];
+    }
     else {
-        a = String(number[a2]) + '' + String(number[a1]); }
+        a = String(number[a2]) + '' + String(number[a1]);
+    }
     var b1 = b % 10;
     var b2 = b - b1;
     if (b1 === 0 && b2 === 0) {
