@@ -32,7 +32,7 @@ function toRoman(number) {
 
     var result = '';
     result += ones[number % 10];
-    result += tens[(number / 10) % 10];
+    result += tens[Math.floor(number / 10) % 10];
 
     if (result === '') {
         result = zero;
