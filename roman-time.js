@@ -20,11 +20,17 @@ function convertToRoman(parsed) {
     return result;
 }
 
-function parsePart(part, itemIndex) {
-    var parsed = parseInt(part, 10);
-    if (part.length !== 2) {
+function parsePart(part) {
+    if (part.length !== 2 || part.indexOf('+') !== -1 ||
+     part.indexOf('.') !== -1 || part.indexOf(',') !== -1) {
         throw new TypeError();
     }
+
+    return part;
+}
+
+function validatePart(part, itemIndex) {
+    var parsed = parseInt(part, 10);
     if (isNaN(parsed) || parsed < 0 || parsed > (itemIndex === 0 ? 23 : 59)) {
         throw new TypeError();
     }
@@ -45,6 +51,7 @@ function romanTime(time) {
         throw new TypeError();
     }
     var result = parts.map(parsePart)
+    .map(validatePart)
     .map(convertToRoman)
     .join(':');
 
