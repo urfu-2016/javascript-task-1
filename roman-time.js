@@ -8,13 +8,13 @@ function romanTime(time) {
 
     var hours;
     var minutes;
-    try {
-        hours = parseInt((time.split(':', 2))[0], 10);
-        minutes = parseInt((time.split(':', 2))[1], 10);
-    } catch (e) {
+    if (isNotValidTime(time)) {
         throw new TypeError('Неверное время');
     }
-
+    // try {
+    hours = parseInt((time.split(':', 2))[0], 10);
+    minutes = parseInt((time.split(':', 2))[1], 10);
+    // } catch (e) { }
 
     if (isNotValidHours(hours) || isNotValidMinutes(minutes)) {
         throw new TypeError('Неверное время');
@@ -62,6 +62,15 @@ function convertNum(num) {
     rom = accordMap[dec] + accordMap[unit];
 
     return rom;
+}
+
+function isNotValidTime(t) {
+    if (t === undefined || typeof(t) === 'object' || typeof(t) === 'boolean' || isNaN(t)) {
+
+        return true;
+    }
+
+    return false;
 }
 
 function isNotValidHours(h) {
