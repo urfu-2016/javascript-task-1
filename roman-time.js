@@ -24,7 +24,7 @@ function toRoman(x) {
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    time = String(time);
+    time = String(time).trim();
     if (!/^\d\d:\d\d$/.test(time)) {
         throw new TypeError('Incorrect time');
     }
