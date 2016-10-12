@@ -11,7 +11,7 @@ function romanTime(time) {
     var minutes = parseInt(tokens[1], 10);
 
     if (checkHours(hours) || checkMinutes(minutes)) {
-        throw new Error('TypeError: Неверное время');
+        throw new TypeError('Неверное время');
     }
 
     return toRoman(hours) + ':' + toRoman(minutes);
