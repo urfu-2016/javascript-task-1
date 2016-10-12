@@ -49,8 +49,8 @@ function roman1(time) {
 
     return minutes;
 }
-function romanTime1(time){
-     var timeSplit = time.split(':');
+function romanTime1(time) {
+    var timeSplit = time.split(':');
     if (timeSplit[0] > 23 || timeSplit[0] < 0 || isNaN(timeSplit[0])) {
         throw new TypeError();
     }
