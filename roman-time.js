@@ -10,6 +10,8 @@ function romanTime(time) {
     var minutes = filterInt(timeArray[1]);
     isItNaN(hours);
     isCorrectHour(hours);
+    isCorrectMinute(minutes);
+    isItNaN(minutes);
     if (isItNaN(hours) + isItNaN(minutes) +
         isCorrectHour(hours) + isCorrectMinute(minutes) === 4) {
 
