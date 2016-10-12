@@ -49,11 +49,11 @@ function isItNaN(value) {
     return 1;
 }
 function isCorrectHour(value) {
-    if (value === 24 || value < 0 || value > 24) {
-        return 0;
+    if (value >= 0 && value <= 23) {
+        return 1;
     }
 
-    return 1;
+    return 0;
 }
 function isCorrectMinute(value) {
     if (value > 59 || value < 0) {
