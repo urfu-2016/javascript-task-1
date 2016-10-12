@@ -4,27 +4,23 @@
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
  */
-function convert(TransNumbers){
-	var ArabMind = [1, 4, 5, 9, 10, 40, 50];
-    var RomMind = ["I", "IV", "V", "IX", "X", "XL", "L"];
-	var n=ArabMind.length - 1;
-		while (TransNumbers > 0) {
-        if (TransNumbers >= ArabMind[n]){
-            RomNumber += RomMind[n];
-            TransNumbers -= ArabMind[n];
-        }
-        else {n--};
-    };
-	if ((TransNumbers == '0') || (TransNumbers == '00')) {
-	return 'N'}
-	else {return RomNumber};  
-};
+function convert(TransNumbers) {
+     var firstDigital = ["", "X", "XX", "XXX", "XL", "L"];
+     var secondDigits = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"];
+     if (parseInt(arabTime, 10) === 0) {
+         return 'N';
+     }
+     var trans = firstDigital[Math.floor(arabTime / 10)];
+     trans = trans + secondDigits[arabTime % 10];
+     return trans;
+ }
+
 function romanTime(time) {
     var timeSet = time.split(':');
 	var ValidMinutes = (timeSet[1].length === 2) && (timeSet[1] >= 0) && (timeSet[1] <= 59);
 	var ValidHours = (timeSet[0].length === 2) && (timeSet[0] >= 0)&&(timeSet[0] <= 23);	
     if (ValidHours && ValidHours && timeSet.length === 2) {
-         return Convert(timeSet[0]) + ':' + Convert(timeSet[1]);
+         return сonvert(timeSet[0]) + ':' + сonvert(timeSet[1]);
       }
 	throw new TypeError('TypeError');}
 module.exports = romanTime;
