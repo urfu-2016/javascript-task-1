@@ -10,6 +10,9 @@ function roman(time) {
     var timeSplit = time.split(':');
     var a = timeSplit[0].split('');
     var hours;
+    if (timeSplit[0] > 23 || timeSplit[0] < 0) {
+        throw new TypeError();
+    }
     parseInt(a[0], 10);
     parseInt(a[1], 10);
     if (a[0] === 0 && a[1] === 0) {
@@ -30,10 +33,10 @@ function roman(time) {
 function romanTime(time) {
     var timeSplit = time.split(':');
     var minutes;
-    if (timeSplit[0] > 23 || timeSplit[0] < 0 || timeSplit[1] > 59 || timeSplit[1] < 0) {
+    if (timeSplit[1] > 59 || timeSplit[1] < 0) {
         throw new TypeError();
     }
-    if (isNaN(timeSplit[0]) || isNaN(timeSplit[1])){
+    if (isNaN(timeSplit[0]) || isNaN(timeSplit[1])) {
         throw new TypeError();
     }
     if (timeSplit[0] === undefined || timeSplit[1] === undefined) {
