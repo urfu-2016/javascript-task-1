@@ -43,21 +43,21 @@ function convert(numb) {
 }
 function isItNaN(value) {
     if (Number.isNaN(value) === true) {
-      return 0;
+        return 0;
     }
 
     return 1;
 }
 function isCorrectHour(hours) {
     if (hours > 23 || hours < 0) {
-      return 0;
+        return 0;
     }
 
     return 1;
 }
 function isCorrectMinute(minutes) {
     if (minutes > 59 || minutes < 0) {
-      return 0;
+        return 0;
     }
 
     return 1;
