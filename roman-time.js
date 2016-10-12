@@ -8,6 +8,7 @@ function romanTime(time) {
     var timeArray = time.split(':');
     var hours = filterInt(timeArray[0]);
     var minutes = filterInt(timeArray[1]);
+    isCorrectHour(hours);
     if (isItNaN(hours) + isItNaN(minutes) +
         (isCorrectHour(hours)) + (isCorrectMinute(minutes)) === 4) {
         return convert(hours) + ':' + convert(minutes);
@@ -50,7 +51,7 @@ function isItNaN(value) {
 }
 function isCorrectHour(value) {
     if (value >= 0 && value <= 23) {
-        return 1;
+        throw new TypeError();
     }
 
     return 0;
