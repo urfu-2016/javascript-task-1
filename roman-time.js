@@ -5,7 +5,7 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-
+    // Немного авторского кода и замечательной магии
     var hour = ['X', 'XX', 'XXX', 'XL', 'L'];
     var minute = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
 
