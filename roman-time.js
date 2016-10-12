@@ -31,8 +31,8 @@ function toRoman(number) {
     var zero = 'N';
 
     var result = '';
-    result += ones[number % 10];
-    result += tens[Math.floor(number / 10) % 10];
+    result = result + ones[number % 10];
+    result = result + tens[Math.floor(number / 10) % 10];
 
     if (result === '') {
         result = zero;
