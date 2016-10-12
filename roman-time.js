@@ -1,19 +1,22 @@
 'use strict';
-    cifri = ['N', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
-    cifrii = ['N', 'X', 'XX', 'XXX', 'XL', 'L'];
+var cifri = ['N', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
+var cifrii = ['N', 'X', 'XX', 'XXX', 'XL', 'L'];
+
 /**
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function roman(time) {
-    var timeSplit =time.split(':');
+    var timeSplit = time.split(':');
     var a = timeSplit[0].split('');
-    parseInt(a[0],10);
-    parseInt(a[1],10);
-    if (a[0] == 0 && a[1] == 0){ var hours = cifri[0]; }
-    if (a[0] == 0 && a[1] !== 0){ hours = cifri[a[1]]; }
-    if (a[0] !== 0 && a[1] !== 0){ hours = cifrii[(a[0])] + cifri[a[1]]; }
-    if (a[0] !== 0 && a[1] == 0){ hours = cifrii[a[0]]; }
+    parseInt(a[0], 10);
+    parseInt(a[1], 10);
+    if (a[0] == 0 && a[1] == 0) { var hours = cifri[0]; }
+    if (a[0] == 0 && a[1] !== 0) { hours = cifri[a[1]]; }
+    if (a[0] !== 0 && a[1] !== 0) { hours = cifrii[(a[0])] + cifri[a[1]]; }
+    if (a[0] !== 0 && a[1] == 0) { hours = cifrii[a[0]]; }
+    
+    return hours;
 }
 function romanTime(time) {
     var timeSplit =time.split(':');
