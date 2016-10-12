@@ -1,7 +1,7 @@
 'use strict';
 
 function convertToRoman(hours, minutes, halfTime) {
-    var rightNumbers = { 0: '', 1: 'I', 2: 'II', 3: 'III', 4: 'IV', 
+    var rightNumbers = { 0: '', 1: 'I', 2: 'II', 3: 'III', 4: 'IV',
     5: 'V', 6: 'VI', 7: 'VII', 8: 'VIII', 9: 'IX' };
     var leftNumbers = { 1: 'X', 2: 'XX', 3: 'XXX', 4: 'XL', 5: 'L' };
     halfTime[0] = leftNumbers[hours[0]].concat(rightNumbers[hours[1]]);
@@ -23,8 +23,8 @@ function isCorrectNumbers(hours, minutes) {
         }
 
         return false;
-        } catch (e) {
-            return false;
+    } catch (e) {
+        return false;
     }
 }
 
@@ -39,8 +39,7 @@ function isCorrectTime(halfTime, time) {
         }
 
         return false;
-        } catch (e) {
-
+    } catch (e) {
         return false;
     }
 }
