@@ -55,14 +55,16 @@ function romanTime(time) {
     if (isCorrectTime(halfTime, time)) {
         hours = Number(halfTime[0].split(''));
         minutes = Number(halfTime[1].split(''));
+        if (isCorrectNumbers(hours, minutes)) {
+            time = convertToRoman(hours, minutes, halfTime).join(':');
+        } else {
+            throw new TypeError('Неверный формат времени');
+        }
     } else {
         throw new TypeError('Неверный формат времени');
     }
-    if (isCorrectNumbers(hours, minutes)) {
-        time = convertToRoman(hours, minutes, halfTime).join(':');
-    } else {
-        throw new TypeError('Неверный формат времени');
-    }
+   
+
 
     return time;
 }
