@@ -65,7 +65,7 @@ function convertNum(num) {
 }
 
 function isNotValidTime(t) {
-    if (t === undefined || typeof(t) === 'object' || typeof(t) === 'boolean' || isNaN(t)) {
+    if (t === undefined || typeof(t) === 'object' || typeof(t) === 'boolean') {
 
         return true;
     }
