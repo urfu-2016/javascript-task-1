@@ -37,7 +37,7 @@ function digitToRoman(digit, isDecade){
 	var fifty = 'L';
 	var remainder = digit % 5;
 	switch (remainder){
-	    case 0:
+		case 0:
 			if (digit == 5)
 				return isDecade ? fifty : five;
 			return 'N';
