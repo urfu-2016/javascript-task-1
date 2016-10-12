@@ -42,21 +42,21 @@ function convertToRoman(number) {
 
     return digitToRoman(decadesCount, true) + digitToRoman(onesCount);
 }
-function processNoRemainder(digit) {
+function processNoRemainder(isDecade, digit) {
     if (digit === 5) {
         return isDecade ? FIFTY : FIVE;
     }
-    
+
     return 'N';
 }
-function processMinusOneRemainder(digit) {
+function processMinusOneRemainder(isDecade, digit) {
     if (digit > 5) {
         return isDecade ? 'NotImplenented' : ONE + TEN;
     }
 
-    return isDecade ? TEN + FIFTY : ONE + this.FIVE;
+    return isDecade ? TEN + FIFTY : ONE + FIVE;
 }
-function processDefaultRemainder(digit, remainder) {
+function processDefaultRemainder(isDecade, digit, remainder) {
     if (digit > 5) {
         return isDecade ? FIFTY + TEN.repeat(remainder) : FIVE + ONE.repeat(remainder);
     }
@@ -70,11 +70,11 @@ function digitToRoman(digit, isDecade) {
     var remainder = digit % 5;
     switch (remainder) {
         case 0:
-            return processNoRemainder(digit);
+            return processNoRemainder(isDecade, digit);
         case 4:
-            return processMinusOneRemainder(digit);
+            return processMinusOneRemainder(isDecade, digit);
         default:
-            return processDefaultRemainder(digit, remainder);
+            return processDefaultRemainder(isDecade, digit, remainder);
     }
 }
 module.exports = romanTime;
