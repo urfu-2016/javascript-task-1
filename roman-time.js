@@ -30,10 +30,10 @@ function checkSplittedTime(splittedTime) {
 function romanTime(time) {
     var splittedTime = time.split(':');
     checkSplittedTime(splittedTime);
-    if (!isNaN(parseInt(splittedTime[0][1]))) {
+    if (isNaN(parseInt(splittedTime[0][1]))) {
         throw new TypeError();
     }
-    if (!isNaN(parseInt(splittedTime[1][1]))) {
+    if (isNaN(parseInt(splittedTime[1][1]))) {
         throw new TypeError();
     }
     var hours = parseInt(splittedTime[0]);
