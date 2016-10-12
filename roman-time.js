@@ -5,26 +5,15 @@ function toRoman(x) {
         return 'N';
     }
 
-    var parts = new Map([
-        [50, 'L'],
-        [10, 'X'],
-        [9, 'IX'],
-        [5, 'V'],
-        [4, 'IV'],
-        [1, 'I']
-    ]);
+    var numbers = [50, 10, 9, 5, 4, 1];
+    var symbols = ['L', 'X', 'IX', 'V', 'IV', 'I'];
 
     var res = '';
-    var it = parts.keys();
-    while (true) {
-        var part = it.next();
-        if (part.done) break;
-        var number = part.value;
-        var symbols = parts.get(part.value);
-        while (x >= number) {
-            x -= number;
-            res += symbols;
-        }     
+    for (var i = 0; i < numbers.length; i++) {
+        while (x >= numbers[i]) {
+            x -= numbers[i];
+            res += symbols[i];
+        }
     }
 
     return res;
