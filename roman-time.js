@@ -21,16 +21,17 @@ function romanTime(time) {
 }
 
 // возвращает переданное число в римских цифрах
-function getNumeric(hh) {
 // римские цифры 1 - I ; 5 - V; 10 - X; 50 - L
 // по условию задачи 0 - N
-    var rimTime = '';
-    var k, i;
-
+function getNumeric(hh) {
     if (hh === 0) {
 
         return 'N';
     }
+    
+    var rimTime = '',
+        k,
+        i;
 
     if ((hh - hh % 50) > 0) {
         rimTime = rimTime + 'L';
@@ -40,16 +41,14 @@ function getNumeric(hh) {
     if ((hh - hh % 10) === 9 || (hh - hh % 10) === 40) {
         rimTime = rimTime + 'XL';
         hh = hh % 10;
-    } else {
-        if ((hh - hh % 10) > 0) {
+    } else if ((hh - hh % 10) > 0) {
             k = (hh - hh % 10) / 10;
             for (i = 0; i < k; i++) {
                 rimTime = rimTime + 'X';
             }
             hh = hh % 10;
         }
-    }
-	
+
     if ((hh % 5) === 4) {
         rimTime = rimTime + 'IX';
     } else {
