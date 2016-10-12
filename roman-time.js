@@ -12,7 +12,7 @@ function romanTime(time) {
     isCorrectHour(hours);
     if (isItNaN(hours) + isItNaN(minutes) +
         isCorrectHour(hours) + isCorrectMinute(minutes) === 4) {
-        
+
         return convert(hours) + ':' + convert(minutes);
     }
 
