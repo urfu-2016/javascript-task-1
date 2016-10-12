@@ -6,7 +6,7 @@
  * @throws TypeError
  */
 function romanTime(time) {
-    if (!time) {
+    if (!time || (typeof(time) !== 'string')) {
         throw new TypeError('Неверное время');
     }
     var splits = time.split(':');
