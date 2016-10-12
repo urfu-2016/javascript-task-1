@@ -1,11 +1,5 @@
-'use strict';
-
-/**
- * @param {String} time – время в формате HH:MM (например, 09:05)
- * @returns {String} – время римскими цифрами (IX:V)
- */
 function romanTime(time) {
-    var regExTime = /\d\d:\d\d/;
+    var regExTime = /^\d\d:\d\d$/;
     if (regExTime.test(time)) {
         var splittedTime = time.split(':');
         var hoursArab = splittedTime[0];
@@ -64,5 +58,3 @@ function decomposeByRoman(numArab) {
 
     return roman;
 }
-
-module.exports = romanTime;
