@@ -24,7 +24,7 @@ function isZero(union, ten) {
     return result;
 }
 function correct(time) {
-    if (!(/\d\d:\d\d/.test(time))) {
+    if (!(/^\d\d:\d\d$/.test(time))) {
         throw new TypeError('No correct');
     }
 }
