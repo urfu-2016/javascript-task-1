@@ -14,6 +14,14 @@ function checkHoursArgument(hours) {
         throw new TypeError();
     }
 }
+function checkSplittedTime(splittedTime) {
+    if (splittedTime.length !== 2) {
+        throw new TypeError();
+    }
+    if (splittedTime[0].length !== 2 || splittedTime[1].length !== 2) {
+        throw new TypeError();
+    }
+}
 
 /**
  * @param {String} time – время в формате HH:MM (например, 09:05)
@@ -21,9 +29,7 @@ function checkHoursArgument(hours) {
  */
 function romanTime(time) {
     var splittedTime = time.split(':');
-    if (splittedTime.length !== 2 || splittedTime[0].length != 2 || splittedTime[1].length != 2) {
-        throw new TypeError();
-    }
+    checkSplittedTime(splittedTime);
     var hours = parseInt(splittedTime[0]);
     var minutes = parseInt(splittedTime[1]);
     checkMinutesArgument(minutes);
