@@ -10,17 +10,19 @@ function romanTime(time) {
     var hours = parseInt(tokens[0], 10);
     var minutes = parseInt(tokens[1], 10);
 
-    if (isNaN(hours) || isNaN(minutes)) {
-        throw new Error('TypeError: Неверное время');
-    }
-    if (hours < 0 || hours > 23) {
-        throw new Error('TypeError: Неверное время');
-    }
-    if (minutes < 0 || minutes > 60) {
+    if (checkHours(hours) || checkMinutes(minutes)) {
         throw new Error('TypeError: Неверное время');
     }
 
     return toRoman(hours) + ':' + toRoman(minutes);
+}
+
+function checkHours(hours) {
+    return isNaN(hours) || hours < 0 || hours > 23;
+}
+
+function checkMinutes(minutes) {
+    return isNaN(minutes) || minutes < 0 || minutes > 60;
 }
 
 function toRoman(number) {
