@@ -53,7 +53,7 @@ function romanTime(time) {
     if (typeof time !== 'string') {
         throw new TypeError('The parameter is not a string');
     }
-    
+
     if (!/^\d+:\d+$/.test(time)) {
         throw new TypeError('The parameter is not a pair of numbers separated by a colon');
     }
@@ -66,7 +66,7 @@ function romanTime(time) {
 
     var hours = parseInt(parts[0], 10);
     var minutes = parseInt(parts[1], 10);
-	
+
     if (!isIntegerFromRange(hours, 0, 23)) {
         throw new TypeError(
             'The hours part is not a valid natural number or lies outside of [0; 23]');
