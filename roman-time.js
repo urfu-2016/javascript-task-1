@@ -25,7 +25,7 @@ function toRoman(x) {
  */
 function romanTime(time) {
     time = String(time).trim();
-    if (!/^\d\d:\d\d$/.test(time)) {
+    if (!/^[0-9]{2}:[0-9]{2}$/.test(time)) {
         throw new TypeError('Incorrect time');
     }
 
