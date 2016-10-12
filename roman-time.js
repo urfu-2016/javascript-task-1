@@ -52,17 +52,13 @@ function toRoman(number) {
     if (number === 0) {
         return 'N';
     }
-    var roman = '';
-    var ARABIC_NUMBERS = [50, 40, 10, 9, 5, 4, 1];
-    var ROMAN_NUMBERS = ['L', 'XL', 'X', 'IX', 'V', 'IV', 'I'];
-    for (var i = 0; i <= ARABIC_NUMBERS.length; i++) {
-        while (number % ARABIC_NUMBERS[i] < number) {
-            roman += ROMAN_NUMBERS[i];
-            number -= ARABIC_NUMBERS[i];
-        }
-    }
+    var decimal = ['', 'X', 'XX', 'XXX', 'XL', 'L'];
+    var numbers = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
+    var firstIndex = number / 10;
+    firstIndex = parseInt(firstIndex, 10);
+    var secondIndex = number % 10;
 
-    return roman;
+    return decimal[firstIndex] + numbers[secondIndex];
 }
 
 module.exports = romanTime;
