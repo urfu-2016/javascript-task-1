@@ -6,9 +6,9 @@
  */
 function romanTime(time) {
 
-    var mask = /\d{2}:\d{2}/;
+    var mask = /^\d{2}:\d{2}$/;
 
-    if (isNotCorrectMask(mask, time)) {
+    if (!mask.test(time)) {
         throw new TypeError('Неверное время');
     }
 
@@ -68,16 +68,6 @@ function convertNum(num) {
     rom = accordMap[dec] + accordMap[unit];
 
     return rom;
-}
-
-
-function isNotCorrectMask(m, t) {
-    if (m.test(t)) {
-
-        return false;
-    }
-
-    return true;
 }
 
 function isNotValidHours(h) {
