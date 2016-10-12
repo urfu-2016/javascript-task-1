@@ -51,10 +51,10 @@ function isItNaN(value) {
 }
 function isCorrectHour(value) {
     if (value >= 0 && value <= 23) {
-        throw new TypeError();
+        return 1;
     }
 
-    return 0;
+    throw new TypeError();
 }
 function isCorrectMinute(value) {
     if (value > 59 || value < 0) {
