@@ -5,14 +5,17 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    var parseTime = time.match(/(\d{2}):((\d{2}))/);
+    var parseTime = time.match(/(\d{1,2}):((\d{1,2}))/);
     if (time === null) {
         throw new TypeError('Неверное время', 'roman-time.js', 10);
     }
     var hour = Number(parseTime[1]);
     var min = Number(parseTime[2]);
+    if (!hour.isInteger() || !min.isInteger()) {
+        throw new TypeError('Неверное время', 'roman-time.js', 15);
+    }
     if (hour < 0 || hour > 23 || min < 0 || min > 59) {
-        throw new TypeError('Неверное время', 'roman-time.js', 10);
+        throw new TypeError('Неверное время', 'roman-time.js', 18);
     }
 
     function convertArabiсToRoman(integer) {
