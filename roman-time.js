@@ -6,15 +6,21 @@
  */
 function romanTime(time) {
 
-    var hours;
-    var minutes;
-    if (isNotValidTime(time)) {
+    var mask = /\d{2}:\d{2}/;
+
+    if (isNotCorrectMask(mask, time)) {
         throw new TypeError('Неверное время');
     }
-    // try {
-    hours = parseInt((time.split(':', 2))[0], 10);
-    minutes = parseInt((time.split(':', 2))[1], 10);
-    // } catch (e) { }
+
+    var hours;
+    var minutes;
+
+    try {
+        hours = parseInt((time.split(':', 2))[0], 10);
+        minutes = parseInt((time.split(':', 2))[1], 10);
+    } catch (e) {
+        throw new TypeError('Неверное время');
+    }
 
     if (isNotValidHours(hours) || isNotValidMinutes(minutes)) {
         throw new TypeError('Неверное время');
@@ -64,13 +70,14 @@ function convertNum(num) {
     return rom;
 }
 
-function isNotValidTime(t) {
-    if (t === undefined || typeof(t) === 'object' || typeof(t) === 'boolean') {
 
-        return true;
+function isNotCorrectMask(m, t) {
+    if (m.test(t)) {
+
+        return false;
     }
 
-    return false;
+    return true;
 }
 
 function isNotValidHours(h) {
