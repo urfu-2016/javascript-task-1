@@ -18,6 +18,7 @@ function romanTime(time) {
     }
 
     return convert(hours) + ':' + convert(minutes);
+    }
 }
 function filterInt(value) {
     if (/^(\-|\+)?([0-9]+|Infinity)$/.test(value)) {
@@ -45,5 +46,4 @@ function convert(numb) {
 
     return result;
 }
-
 module.exports = romanTime;
