@@ -1,3 +1,7 @@
+'use strict';
+        function romanTime(time) {
+
+            return time;}
 function basedigit(x) {
     var y
     switch (x) {
@@ -15,7 +19,7 @@ function basedigit(x) {
     return (y)
 }
 
-
+module.exports = romanTime;
     function isInteger(s) {
         return (s.toString().search(/^-?[0-9]+$/) == 0);
     }
@@ -74,6 +78,12 @@ function roman_time() {
     else
     if (ex[1] == 0)
         document.getElementById('test').innerHTML = '<span style="">' + z1[0] + ':' + 'N' + 'N';
+    else
+    if (ex[0] == 0)
+        document.getElementById('test').innerHTML = '<span style="">' + 'N' + 'N'+ ':' + z2[0];
+    else
+    if ((ex[1] == 0) && (ex[0] == 0))
+        document.getElementById('test').innerHTML = '<span style="">' + 'N' + 'N' + ':' + 'N' + 'N';
     else
         if ((z1.length == 1) && (z2.length == 1))
         document.getElementById('test').innerHTML = z1[0] + ':' + z2[0];
