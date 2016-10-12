@@ -69,9 +69,6 @@ function romanTime(time) {
     var timeSplit = time.split(':');
     romanTime1(time);
     romanTime2(time);
-    if (timeSplit[0] === undefined || timeSplit[1] === undefined) {
-        throw new TypeError();
-    }
     if (timeSplit[1] > 59 || timeSplit[1] < 0 || isNaN(timeSplit[1])) {
         throw new TypeError();
     }
