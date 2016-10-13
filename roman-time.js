@@ -35,7 +35,8 @@ function getNumeric(hh) {
         return 'N';
     }
 
-    var arrayTime["", hh]; // [0] - rimTime (string), [1] - hh (integer)
+    //arrayTime [0] - rimTime (string), [1] - hh (integer)
+    var arrayTime = ["", hh];
 
     while (arrayTime[1] > 0) {
         arrayTime = onSwitch(arrayTime[0], arrayTime[1]);
