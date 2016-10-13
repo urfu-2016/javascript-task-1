@@ -16,6 +16,10 @@ function romanTime(time) {
 
     var arrayTime = time.split(':');
 
+     if (arrayTime.length !== 2) {
+         throw new TypeError ('Неверное время.');
+     }
+
     var hh = parseInt(arrayTime[0], 10);
     var mm = parseInt(arrayTime[1], 10);
 
