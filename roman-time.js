@@ -12,7 +12,7 @@ function romanTime(time) {
 
     // если смогла преобразовать, надо проверить, чтобы часы были от 00 до 23 и минуты 00 до 60
     if (checkRange(hh, mm) === true) {
-        return new TypeError ('Неверное время.');
+        throw new TypeError ('Неверное время.');
     }
 
     time = getNumeric(hh) + ':' + getNumeric(mm);
