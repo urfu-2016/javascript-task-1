@@ -51,19 +51,33 @@ function getNumeric(hh) {
 function onSwitch(rimTime, hh) {
 
     switch (true) {
+        case hh >= 50 :
+            rimTime = rimTime + 'L';
+            hh = hh - 50;
+            break;
         case hh >= 40 :
-            if (hh >= 50) {
-                rimTime = rimTime + 'L';
-                hh = hh - 50;
-            } else {
-                rimTime = rimTime + 'XL';
-                hh = hh - 40;
-            }
+            rimTime = rimTime + 'XL';
+            hh = hh - 40;
             break;
         case hh >= 10 :
             rimTime = rimTime + 'X';
             hh = hh - 10;
             break;
+        default :
+            return onSwitchLessTen(rimTime, hh);
+
+        // no default
+    }
+
+    return [rimTime, hh];
+}
+
+// возвращает переданное число в римских цифрах
+// римские цифры 1 - I ; 5 - V; 10 - X; 50 - L
+// по условию задачи 0 - N
+function onSwitchLessTen(rimTime, hh) {
+
+    switch (true) {
         case hh === 9 :
             rimTime = rimTime + 'IX';
             hh = hh - 9;
