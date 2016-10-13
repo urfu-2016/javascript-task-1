@@ -6,12 +6,14 @@
  */
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
-    var arrayTime = time.split(':');
 
-    if ((arrayTime[0].replace(/\s+/g, ' ')).length !== 2 ||
-        (arrayTime[1].replace(/\s+/g, ' ')).length !== 2) {
+    if (time === undefined || time === null || (time.replace(/\s+/g, ' ')).length !== 5) {
         throw new TypeError ('Неверное время.');
     }
+
+    time = time.replace(/\s+/g, ' ');
+
+    var arrayTime = time.split(':');
 
     var hh = parseInt(arrayTime[0], 10);
     var mm = parseInt(arrayTime[1], 10);
