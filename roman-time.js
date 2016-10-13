@@ -61,8 +61,10 @@ function getNumeric(hh) {
                 rimTime = rimTime + 'I';
                 hh = hh - 1;
                 break;
+
+            // no default
         }
-    }   
+    }
 
     return rimTime;
 }
