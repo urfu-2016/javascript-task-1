@@ -7,11 +7,11 @@
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
     var arrayTime = time.split(':');
-    
-    if (arrayTime[0].length !== 2 || arrayTime[1].length !== 2) {
+
+    if ((arrayTime[0].replace(/^\s+|\s+$/g, '')).length !== 2 || (arrayTime[1].replace(/^\s+|\s+$/g, '')).length !== 2) {
         throw new TypeError ('Неверное время.');
     }
-    
+
     var hh = parseInt(arrayTime[0], 10);
     var mm = parseInt(arrayTime[1], 10);
 
