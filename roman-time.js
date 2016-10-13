@@ -36,4 +36,4 @@ function romanTime(time) {
     return decimalToRoman(time[0]) + ':' + decimalToRoman(time[1]);
 }
 
-module.exports = romanTimee;
+module.exports = romanTime;
