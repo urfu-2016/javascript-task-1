@@ -7,7 +7,7 @@
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
 
-    if (correctTime(time)) {
+    if (!correctTime(time)) {
         throw new TypeError ('Неверное время.');
     }
 
@@ -32,10 +32,12 @@ function romanTime(time) {
     return time;
 }
 
+// резрешу брать только цифры в указанном диапазоне
 function correctTime(time) {
 
-    return (typeof(time) !== 'string' || time === undefined || time === null ||
-        (time.replace(/\s+/g, ' ')).length !== 5);
+    return /^[0-2][0-9]:[0-5][0-9]$/.test(time);
+    // (typeof(time) !== 'string' || time === undefined || time === null ||
+    // (time.replace(/\s+/g, ' ')).length !== 5);
 }
 
 // если смогла преобразовать, надо проверить, чтобы часы были от 00 до 23 и минуты 00 до 60
