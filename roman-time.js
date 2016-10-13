@@ -29,7 +29,7 @@ function romanTime(time) {
 // если смогла преобразовать, надо проверить, чтобы часы были от 00 до 23 и минуты 00 до 60
 function checkRange(hh, mm) {
 
-    return (isNaN(hh) || isNaN(mm) || (hh < 0) || (hh > 23) || (mm < 0) || (mm > 60));
+    return (isNaN(hh) || isNaN(mm) || (hh < 0) || (hh > 23) || (mm < 0) || (mm > 59));
 }
 
 // возвращает переданное число в римских цифрах
