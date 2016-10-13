@@ -11,13 +11,19 @@ function romanTime(time) {
     var mm = parseInt(arrayTime[1], 10);
 
     // если смогла преобразовать, надо проверить, чтобы часы были от 00 до 23 и минуты 00 до 60
-    if (isNaN(hh) || isNaN(mm) || (hh < 0) || (hh > 23) || (mm < 0) || (mm > 60)) {
+    if checkRange(hh, mm) {
         return new TypeError ('Неверное время.');
     }
 
     time = getNumeric(hh) + ':' + getNumeric(mm);
 
     return time;
+}
+
+// если смогла преобразовать, надо проверить, чтобы часы были от 00 до 23 и минуты 00 до 60
+function checkRange(hh, mm) {
+
+    return (isNaN(hh) || isNaN(mm) || (hh < 0) || (hh > 23) || (mm < 0) || (mm > 60))
 }
 
 // возвращает переданное число в римских цифрах
