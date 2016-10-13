@@ -35,8 +35,8 @@ function getNumeric(hh) {
         return 'N';
     }
 
-    //arrayTime [0] - rimTime (string), [1] - hh (integer)
-    var arrayTime = ["", hh];
+    // arrayTime [0] - rimTime (string), [1] - hh (integer)
+    var arrayTime = ['', hh];
 
     while (arrayTime[1] > 0) {
         arrayTime = onSwitch(arrayTime[0], arrayTime[1]);
@@ -51,13 +51,14 @@ function getNumeric(hh) {
 function onSwitch(rimTime, hh) {
 
     switch (true) {
-        case hh >= 50 :
-            rimTime = rimTime + 'L';
-            hh = hh - 50;
-            break;
         case hh >= 40 :
-            rimTime = rimTime + 'XL';
-            hh = hh - 40;
+            if (hh >= 50) {
+                rimTime = rimTime + 'L';
+                hh = hh - 50;
+            } else {
+                rimTime = rimTime + 'XL';
+                hh = hh - 40;
+            }
             break;
         case hh >= 10 :
             rimTime = rimTime + 'X';
