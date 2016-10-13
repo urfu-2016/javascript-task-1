@@ -7,8 +7,7 @@
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
 
-    if (typeof(time) !== 'string' || time === undefined || time === null ||
-        (time.replace(/\s+/g, ' ')).length !== 5) {
+    if (correctTime(time)) {
         throw new TypeError ('Неверное время.');
     }
 
@@ -16,9 +15,9 @@ function romanTime(time) {
 
     var arrayTime = time.split(':');
 
-     if (arrayTime.length !== 2) {
-         throw new TypeError ('Неверное время.');
-     }
+    if (arrayTime.length !== 2) {
+        throw new TypeError ('Неверное время.');
+    }
 
     var hh = parseInt(arrayTime[0], 10);
     var mm = parseInt(arrayTime[1], 10);
@@ -31,6 +30,12 @@ function romanTime(time) {
     time = getNumeric(hh) + ':' + getNumeric(mm);
 
     return time;
+}
+
+function correctTime(time) {
+
+    return (typeof(time) !== 'string' || time === undefined || time === null ||
+        (time.replace(/\s+/g, ' ')).length !== 5);
 }
 
 // если смогла преобразовать, надо проверить, чтобы часы были от 00 до 23 и минуты 00 до 60
