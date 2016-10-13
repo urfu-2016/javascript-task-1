@@ -7,7 +7,8 @@
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
 
-    if (time === undefined || time === null || (time.replace(/\s+/g, ' ')).length !== 5) {
+    if (typeof(time) !== 'string' || time === undefined || time === null ||
+        (time.replace(/\s+/g, ' ')).length !== 5) {
         throw new TypeError ('Неверное время.');
     }
 
