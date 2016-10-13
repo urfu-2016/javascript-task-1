@@ -11,7 +11,7 @@ function romanTime(time) {
     var mm = parseInt(arrayTime[1], 10);
 
     // если смогла преобразовать, надо проверить, чтобы часы были от 00 до 23 и минуты 00 до 60
-    if checkRange(hh, mm) {
+    if (checkRange(hh, mm) === true) {
         return new TypeError ('Неверное время.');
     }
 
