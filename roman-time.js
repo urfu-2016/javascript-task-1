@@ -50,7 +50,7 @@ function romanTime(time) {
     var hours = arrayOfHoursAndMinutes[0];
     var minutes = arrayOfHoursAndMinutes[1];
     // добавляю проверку на несколько двоеточий
-    if ((hours.length === 2) && (minutes.length === 2) && (arrayOfHoursAndMinutes.length < 3)) {
+    if ((hours.length === 2) && (minutes.length === 2) && (arrayOfHoursAndMinutes.length === 2)) {
         // если обе строки состоят из двух символов, то проверяем дальше
         var hoursNum = Number(hours);
         var minutesNum = Number(minutes);
