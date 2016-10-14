@@ -27,11 +27,15 @@ function arabicToRim(x) {
             40: 'XL',
             50: 'L'
         };
-
     if (x <= 10) {
         rimValue = rimNum[x];
     } else {
-        rimValue = rimNum[x - x % 10] + rimNum[x % 10];
+        var rimValueNew = rimNum[x - x % 10] + rimNum[x % 10];
+        if ((x % 10) === 0) {
+            rimValue = rimNum[x - x % 10];
+        } else {
+            rimValue = rimValueNew;
+        }
     }
 
     return rimValue;
