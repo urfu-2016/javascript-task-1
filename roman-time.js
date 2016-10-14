@@ -57,10 +57,19 @@ function getRightHours(time) {
     return false;
 }
 
+function getNonBug(time) {
+    if (time === Infinity || time === null || time === undefined) {
+
+        return true;
+    }
+
+    return false;
+}
+
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
     var part = time.split(':', 2);
-    if (getRightMinutes(time) || getRightHours(time) || time === undefined || time === null) {
+    if (getRightMinutes(time) || getRightHours(time) || getNonBug(time)) {
         throw new TypeError('Неверное время');
     }
     var hours = Number(part[0]);
