@@ -60,7 +60,7 @@ function getRightHours(time) {
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
     var part = time.split(':', 2);
-    if (getRightMinutes(time) || getRightHours(time)) {
+    if (getRightMinutes(time) || getRightHours(time) || (typeof (time)!== 'string')) {
         throw new TypeError('Неверное время');
     }
     var hours = Number(part[0]);
