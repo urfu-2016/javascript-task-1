@@ -55,7 +55,8 @@ function romanTime(time) {
         var hoursNum = Number(hours);
         var minutesNum = Number(minutes);
         if (!isNaN(hoursNum) && !isNaN(minutesNum) && (hoursNum !== ' ') && (minutesNum !== ' ') &&
-            (hoursNum >= 0) &&
+            (hoursNum >= 0) && (Math.floor(hoursNum) === hoursNum) &&
+            (Math.floor(minutesNum) === minutesNum) &&
             (hoursNum <= 23) && (minutesNum >= 0) && (minutesNum <= 59)) {
             // если оба числа и в правильнои диапазоне
             // тогда дальше переводим их в римские
