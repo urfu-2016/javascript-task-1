@@ -50,11 +50,12 @@ function romanTime(time) {
     var hours = arrayOfHoursAndMinutes[0];
     var minutes = arrayOfHoursAndMinutes[1];
     // добавляю проверку на несколько двоеточий
-    if ((hours.length === 2) && (minutes.length === 2) && (arrayOfHoursAndMinutes.length === 2)) {
+    if ((hours.length === 2) && (minutes.length === 2) && (arrayOfHoursAndMinutes.length === 2) &&
+        (hours.indexOf(' ') === -1) && (minutes.indexOf(' ') === -1)) {
         // если обе строки состоят из двух символов, то проверяем дальше
         var hoursNum = Number(hours);
         var minutesNum = Number(minutes);
-        if (!isNaN(hoursNum) && !isNaN(minutesNum) && (hoursNum !== ' ') && (minutesNum !== ' ') &&
+        if (!isNaN(hoursNum) && !isNaN(minutesNum) &&
             (hoursNum >= 0) && (Math.floor(hoursNum) === hoursNum) &&
             (Math.floor(minutesNum) === minutesNum) &&
             (hoursNum <= 23) && (minutesNum >= 0) && (minutesNum <= 59)) {
