@@ -51,6 +51,12 @@ function roman1(time) {
 }
 function romanTime1(time) {
     var timeSplit = time.split(':');
+    var a = timeSplit[0].split('');
+    a[0] = parseInt(a[0], 10);
+    a[1] = parseInt(a[1], 10);
+    if (isNaN(a[0]) || isNaN(a[1])) {
+        throw new TypeError();
+    }
     if (timeSplit[0] > 23 || timeSplit[0] < 0 || isNaN(timeSplit[0])) {
         throw new TypeError();
     }
@@ -59,6 +65,12 @@ function romanTime1(time) {
 }
 function romanTime2(time) {
     var timeSplit = time.split(':');
+    var b = timeSplit[1].split('');
+    b[0] = parseInt(b[0], 10);
+    b[1] = parseInt(b[1], 10);
+    if (isNaN(b[0]) || isNaN(b[1])) {
+        throw new TypeError();
+    }
     if (timeSplit[0].length !== 2 || timeSplit[1].length !== 2) {
         throw new TypeError();
     }
