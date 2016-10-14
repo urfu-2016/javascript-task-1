@@ -37,18 +37,19 @@ function arabicToRim(x) {
     return rimValue;
 }
 
-function checkNullUndefined(x) {
-    if ((x === null) || (x === undefined)) {
+function checkNullUndefinedNotString(x) {
+    if ((x === null) || (x === undefined) || (typeof x !== 'string')) {
         throw new TypeError();
     }
 }
 
 function romanTime(time) {
-    checkNullUndefined(time);
+    checkNullUndefinedNotString(time);
     var arrayOfHoursAndMinutes = time.split(':');
     var hours = arrayOfHoursAndMinutes[0];
     var minutes = arrayOfHoursAndMinutes[1];
-    if ((hours.length === 2) && (minutes.length === 2)) {
+    // добавляю проверку на несколько двоеточий
+    if ((hours.length === 2) && (minutes.length === 2) && (arrayOfHoursAndMinutes.length < 3)) {
         // если обе строки состоят из двух символов, то проверяем дальше
         var hoursNum = Number(hours);
         var minutesNum = Number(minutes);
