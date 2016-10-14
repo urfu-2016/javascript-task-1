@@ -52,8 +52,9 @@ function romanTime(time) {
     // добавляю проверку на несколько двоеточий
     if ((hours.length === 2) && (minutes.length === 2) && (arrayOfHoursAndMinutes.length < 3)) {
         // если обе строки состоят из двух символов, то проверяем дальше
-        var hoursNum = Number(hours);
-        var minutesNum = Number(minutes);
+        // изменила Number на parseInt
+        var hoursNum = parseInt(hours, 10);
+        var minutesNum = parseInt(minutes, 10);
         if (!isNaN(hoursNum) && !isNaN(minutesNum) && (hoursNum >= 0) &&
             (hoursNum <= 23) && (minutesNum >= 0) && (minutesNum <= 59)) {
             // если оба числа и в правильнои диапазоне
