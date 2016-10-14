@@ -38,7 +38,8 @@ function arabicToRim(x) {
 }
 
 function checkNullUndefinedNotString(x) {
-    if ((x === null) || (x === undefined) || (typeof x !== 'string')) {
+    // добавила проверку на то, что в строке обязательно есть :
+    if ((x === null) || (x === undefined) || (typeof x !== 'string') || (x.indexOf(':') === -1)) {
         throw new TypeError();
     }
 }
