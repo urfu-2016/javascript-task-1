@@ -58,7 +58,8 @@ function getRightHours(time) {
 }
 
 function getNonBug(time) {
-    if (time === Infinity || time === -Infinity || time === null || time === undefined) {
+    if (time.length !== 5 || time === Infinity ||
+        time === -Infinity || time === null || time === undefined) {
 
         return true;
     }
