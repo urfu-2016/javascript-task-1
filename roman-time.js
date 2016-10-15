@@ -7,15 +7,16 @@
 function romanTime(time) {
     try {
         var time2 = String(time);
+				time = '';
         var h = 0;
         var i = 0;
         while (time2[i] !== ':') {
-        h += time2[i];
-        i++;
+            h += time2[i];
+            i++;
         }
         var m = 0;
         for (++i; i<time2.length; i++) {
-        m += time2[i];
+            m += time2[i];
         }
         h = Number(h);
 		    if (h==NaN || h>23 || h<0) {
@@ -29,13 +30,13 @@ function romanTime(time) {
         m = to_roman(m);
         time = h + ':' + m;
     }
-	catch (err){
+	catch (err) {
 			console.log(err.name + ':' + err.message)
 	}
 	return time;
 }
 
-function to_roman (num){
+function to_roman (num) {
     var res = '';
     if (num==0) {
         return 'N';
