@@ -10,7 +10,7 @@ function toRoman(x) {
     var n = arab.length - 1;
     var Res = '';
     if (x === 0) {
-        return "N";
+        return 'N';
     }
     while (x > 0) {
         if (x >= arab[n]) {
