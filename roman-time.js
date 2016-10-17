@@ -30,7 +30,7 @@ function correctTime(hours, minutes) {
  */
 
 function romanTime(time) {
-    if (typeof time !== 'string' || isNaN (time.substring (0,1)) || isNaN (time.substring (3))) {
+    if (typeof time !== 'string' || isNaN (time.substring (0, 1)) || isNaN (time.substring (3))) {
         throw new TypeError ('Неверное время');
     }
     var partTime = time.split (':');
