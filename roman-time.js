@@ -1,6 +1,6 @@
 'use strict';
 
-/*
+/**
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
  */
@@ -29,7 +29,7 @@ function correctTime(hours, minutes) {
 }
 
 function romanTime(time) {
-    if (isNaN (parseInt (time, 10))) {
+    if (typeof time !== 'string') {
         throw new TypeError ('Неверное время');
     }
     var partTime = time.split (':');
