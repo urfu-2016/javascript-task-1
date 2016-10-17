@@ -30,11 +30,11 @@ function correctTime(hours, minutes) {
  */
 
 function romanTime(time) {
-    if (typeof time !== 'string' || isNaN (time.substring (1, 1)) || isNaN (time.substring (3)) || isNaN (time.substring (4))) {
+    if (typeof time !== 'string' || isNaN (time.substring (1, 2)) || isNaN (time.substring (4))) {
         throw new TypeError ('Неверное время');
     }
     var partTime = time.split (':');
-    if (partTime.length === 2 && partTime[0].length === 2 && partTime[1].length === 2) {
+    if (partTime.length === 2 && partTime[0].length === 2) {
         var hours = parseInt (partTime[0], 10);
         var minutes = parseInt (partTime[1], 10);
         if (correctTime (hours, minutes)) {
