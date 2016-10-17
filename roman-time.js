@@ -1,9 +1,5 @@
 'use strict';
 
-/**
- * @param {String} time – время в формате HH:MM (например, 09:05)
- * @returns {String} – время римскими цифрами (IX:V)
- */
 function toRoman(x) {
     var arab = [0, 1, 4, 5, 9, 10, 40, 50];
     var roman = ['N', 'I', 'IV', 'V', 'IX', 'X', 'XL', 'L'];
@@ -27,6 +23,11 @@ function toRoman(x) {
 function correctTime(hours, minutes) {
     return (hours >= 0 && hours <= 23 && minutes >= 0 && minutes <= 59);
 }
+
+/**
+ * @param {String} time – время в формате HH:MM (например, 09:05)
+ * @returns {String} – время римскими цифрами (IX:V)
+ */
 
 function romanTime(time) {
     if (typeof time !== 'string') {
