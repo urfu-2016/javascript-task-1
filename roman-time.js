@@ -34,12 +34,13 @@ function romanTime(time) {
         throw new TypeError ('Неверное время');
     }
     var partTime = time.split (':');
-    if (partTime.length === 2 && partTime[0].length === 2 && partTime[1].length === 2) {
-        var hours = parseInt (partTime[0], 10);
-        var minutes = parseInt (partTime[1], 10);
-        if (correctTime (hours, minutes)) {
-            return toRoman (hours) + ':' + toRoman (minutes);
-        }
+    if (partTime.length !== 2 && partTime[0].length !== 2 && partTime[1].length !== 2) {
+        throw new TypeError ('Неверное время');
+    }
+    var hours = parseInt (partTime[0], 10);
+    var minutes = parseInt (partTime[1], 10);
+    if (correctTime (hours, minutes)) {
+        return toRoman (hours) + ':' + toRoman (minutes);
     }
 
     throw new TypeError ('Неверное время');
