@@ -46,7 +46,10 @@ function isCorrect(hours, minutes) {
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    var splitedTime = time.split(':');
+    var splitedTime = [];
+    if (time.length === 5) {
+        splitedTime = time.split(':');
+    }
 
     if (isCorrect(splitedTime[0], splitedTime[1])) {
         return arabicToRoman(splitedTime[0]) + ':' + arabicToRoman(splitedTime[1]);
