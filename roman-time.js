@@ -35,8 +35,35 @@ function getHours(hour) {
         case 10:
             return 'X';
     }
-
 }
+
+function getNumber(number) {
+    switch (number){
+        case '00':
+            return 'N';
+        case '01':
+            return 'I';
+        case '02':
+            return 'II';
+        case '03':
+            return 'III';
+        case '04':
+            return 'IV';
+        case '05':
+            return 'V';
+        case '06':
+            return 'VI';
+        case '07':
+            return 'VII';
+        case '08':
+            return 'VII';
+        case '09':
+            return 'IX';
+        case '10':
+            return 'X';
+    }
+}
+
 
 function romanTime(time) {
     checkIsValid(time);
@@ -59,7 +86,7 @@ function romanTime(time) {
     var str = '';
 
     if (times[0]<= 10) {
-        str += getHours(times[0]) + ':';
+        str += getNumber(times[0]) + ':';
     }
     else {
         var hour = times[0];
@@ -76,7 +103,7 @@ function romanTime(time) {
     }
 
     if (times[1]<=10){
-        str += getHours(times[1]);
+        str += getNumber(times[1]);
     }
     else if (times[1] < 40){
         var minutes = times[1];
@@ -100,7 +127,7 @@ function romanTime(time) {
             str += getHours(times[1] % 10);
         }
     }
-    
+
     return str;
 }
 
