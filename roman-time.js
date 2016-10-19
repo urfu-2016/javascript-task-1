@@ -25,7 +25,6 @@ function roman(time) {
         if (a[0] !== 0 && a[1] === 0) {
                 hours = romnambers[a[0]];
             }
-
             return hours;
     }
 function roman1(time) {
