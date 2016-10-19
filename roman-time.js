@@ -14,7 +14,7 @@ function returnRomanTime(data) {
         5: 'L'
     };
         var BNumbers = {
-            0: '',
+            0: ' ',
             1: 'I',
             2: 'II',
             3: 'III',
