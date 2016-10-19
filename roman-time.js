@@ -17,8 +17,9 @@ function romanTime(time) {
     var hours = parseInt(parts[0], 10);
     var minutes = parseInt(parts[1], 10);
 
-    if (isNaN(hours) || isNaN(minutes) || hours < 0 || hours > 23 || minutes < 0 || minutes > 60)
-    { throw new TypeError(); }
+    if (isNaN(hours) || isNaN(minutes) || hours < 0 || hours > 23 || minutes < 0 || minutes > 60) {
+         throw new TypeError();
+    }
 
     time = arToRom(hours) + ':' + arToRom(minutes);
     return time;
@@ -32,8 +33,9 @@ function arToRom(pattern) {
     resPattern += first[pattern % 10];
     resPattern += second[(pattern / 10) % 10];
 
-    if (result === '')
-    { resPattern = ou; }
+    if (resPattern === '') {
+         resPattern = ou; 
+    }
 
     return resPattern;
 
