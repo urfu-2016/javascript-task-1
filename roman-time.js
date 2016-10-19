@@ -69,9 +69,7 @@ function romanTime(time) {
     var startTime = time.split(':');
     var hours = ERTime(startTime[0]);
     var minutes = ERTime(startTime[1]);
-
     isValidate(hours, minutes);
-
     time = returnRomanTime(hours) + ":" + returnRomanTime(minutes);
     return time;
 }
