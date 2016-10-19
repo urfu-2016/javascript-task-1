@@ -28,7 +28,6 @@ function returnRomanTime(data) {
         if (data === 0) {
             return "N";
         }
-
     return HNumbers[Math.floor(data / 10)] + BNumbers[Math.floor(data % 10)];
     }
 
@@ -74,6 +73,5 @@ function romanTime(time) {
     isValidate(hours, minutes);
 
     time = returnRomanTime(hours) + ":" + returnRomanTime(minutes);
-
     return time;
 }
