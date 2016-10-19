@@ -78,7 +78,7 @@ function romanTime2(time) {
            return (1);
     }
 function romanTime(time) {
-        // Немного авторского кода и замечательной магии
+       
            return time;
        var timeSplit = time.split(':');
         romanTime1(time);
