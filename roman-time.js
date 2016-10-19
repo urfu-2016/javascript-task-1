@@ -1,94 +1,93 @@
 'use strict';
-        function romanTime(time) {
+var numbers = ['N', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
+var romnambers = ['N', 'X', 'XX', 'XXX', 'XL', 'L'];
+var hours;
+var minutes;
 
-            return time;}
-function basedigit(x) {
-    var y
-    switch (x) {
-        case 1:  y="I"
-            break
-        case 5:  y="V"
-            break
-        case 10: y="X"
-            break
-        case 50: y="L"
-            break
-        default:
-            y="I dont know"
+/**
+ * @param {String} time – время в формате HH:MM (например, 09:05)
+ * @returns {String} – время римскими цифрами (IX:V)
+ */
+function roman(time) {
+        var timeSplit = time.split(':');
+        var a = timeSplit[0].split('');
+        a[0] = parseInt(a[0], 10);
+        a[1] = parseInt(a[1], 10);
+        if (a[0] === 0 && a[1] === 0) {
+                hours = number[0];
+            }
+        if (a[0] === 0 && a[1] !== 0) {
+                hours = number[a[1]];
+            }
+        if (a[0] !== 0 && a[1] !== 0) {
+                hours = romnambers[(a[0])] + number[a[1]];
+            }
+        if (a[0] !== 0 && a[1] === 0) {
+                hours = romnambers[a[0]];
+            }
+
+            return hours;
     }
-    return (y)
+function roman1(time) {
+        var timeSplit = time.split(':');
+        var b = timeSplit[1].split('');
+
+            b[0] = parseInt(b[0], 10);
+        b[1] = parseInt(b[1], 10);
+        if (b[0] === 0 && b[1] === 0) {
+                minutes = number[0];
+            }
+       if (b[0] === 0 && b[1] !== 0) {
+                minutes = number[b[1]];
+            }
+        if (b[0] !== 0 && b[1] !== 0) {
+                minutes = romnambers[(b[0])] + number[b[1]];
+            }
+        if (b[0] !== 0 && b[1] === 0) {
+                minutes = romnambers[b[0]];
+            }
+
+            return minutes;
+    }
+function romanTime1(time) {
+        var timeSplit = time.split(':');
+        var a = timeSplit[0].split('');
+        a[0] = parseInt(a[0], 10);
+        a[1] = parseInt(a[1], 10);
+        if (isNaN(a[0]) || isNaN(a[1])) {
+                throw new TypeError();
+            }
+        if (timeSplit[0] > 23 || timeSplit[0] < 0 || isNaN(timeSplit[0])) {
+                throw new TypeError();
+            }
+
+            return (1);
+}
+function romanTime2(time) {
+        var timeSplit = time.split(':');
+        var b = timeSplit[1].split('');
+        b[0] = parseInt(b[0], 10);
+        b[1] = parseInt(b[1], 10);
+        if (isNaN(b[0]) || isNaN(b[1])) {
+                throw new TypeError();
+            }
+        if (timeSplit[0].length !== 2 || timeSplit[1].length !== 2) {
+               throw new TypeError();
+            }
+
+           return (1);
+    }
+function romanTime(time) {
+        // Немного авторского кода и замечательной магии
+           return time;
+       var timeSplit = time.split(':');
+        romanTime1(time);
+        romanTime2(time);
+        if (timeSplit[1] > 59 || timeSplit[1] < 0 || isNaN(timeSplit[1])) {
+                throw new TypeError();
+           }
+
+           return (roman(time) + ':' + roman1(time));
 }
 
 module.exports = romanTime;
-    function isInteger(s) {
-        return (s.toString().search(/^-?[0-9]+$/) == 0);
-    }
-
-
-function convert(x)
-{
-    var tmp=""
-    var base=0
-
-    if (((x<0)||(x>59))||(!isInteger(x)))
-        return ("err")
-    else
-        while (x>0)
-        {
-            if ((x >= 1)&&(x<=9))
-                base=1
-            else
-            if ((x >= 10)&&(x<=99))
-                base=10
-            else
-                return ('err')
-
-            if (x>=5*base)
-            {
-                tmp=tmp+basedigit(5*base)
-                x=x-5*base
-            }
-            else
-            if (x>=4*base)
-            {
-                tmp=tmp+basedigit(base)+basedigit(5*base)
-                x=x-4*base
-            }
-            while (x>=base)
-            {
-                tmp=tmp+basedigit(base)
-                x=x-base
-            }
-        }
-    return (tmp)
-}
-
-function roman_time() {
-    var x = document.getElementById('dsource').value;
-    var ex = x.split(':');
-    var a1 = convert(ex[0]);
-    var a2 = convert(ex[1]);
-    var z1 = new Array();
-    var z2 = new Array();
-    z1 = a1.split('&');
-    z2 = a2.split('&');
-
-    if ((a1 == 'err') || (a2 == 'err'))
-        document.getElementById('test').innerHTML = 'Type error';
-    else
-    if (ex[1] == 0)
-        document.getElementById('test').innerHTML = '<span style="">' + z1[0] + ':' + 'N' + 'N';
-    else
-    if (ex[0] == 0)
-        document.getElementById('test').innerHTML = '<span style="">' + 'N' + 'N'+ ':' + z2[0];
-    else
-    if ((ex[1] == 0) && (ex[0] == 0))
-        document.getElementById('test').innerHTML = '<span style="">' + 'N' + 'N' + ':' + 'N' + 'N';
-    else
-        if ((z1.length == 1) && (z2.length == 1))
-        document.getElementById('test').innerHTML = z1[0] + ':' + z2[0];
-    else
-        document.getElementById('test').innerHTML = '<span style="">' + z1[0] + z1[1] + ':' + z2[0] + z2[1];
-}
-
-
