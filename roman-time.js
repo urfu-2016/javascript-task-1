@@ -20,7 +20,8 @@ function romanTime(time) {
     if (isNaN(hours) || isNaN(minutes) || hours < 0 || hours > 23 || minutes < 0 || minutes > 60)
     {throw new TypeError();}
 
-    return arToRom(hours) + ':' + arToRom(minutes);
+    time = arToRom(hours) + ':' + arToRom(minutes);
+    return time;
 
 }
 
