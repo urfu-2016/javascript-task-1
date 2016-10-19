@@ -1,92 +1,79 @@
 'use strict';
-var numbers = ['N', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
-var romnambers = ['N', 'X', 'XX', 'XXX', 'XL', 'L'];
-var hours;
-var minutes;
+
+/**
+  * @param {Number} data – получает на вход число - часы или минуты (например, 3)
+  * @returns {String} – римскую версию числа (III)
+  */
+    function returnRomanTime(data) {
+        var HNumbers = {
+                0: '',
+                1: 'X',
+                2: 'XX',
+                3: 'XXX',
+                4: 'XL',
+                5: 'L'
+        };
+        var BNumbers = {
+                0: '',
+                1: 'I',
+                2: 'II',
+                3: 'III',
+                4: 'IV',
+                5: 'V',
+                6: 'VI',
+                7: 'VII',
+                8: 'VIII',
+                9: 'IX'
+        };
+        if (data === 0) {
+                return "N";
+            }
+
+            return HNumbers[Math.floor(data / 10)] + BNumbers[Math.floor(data % 10)];
+    }
+
+/**
+  * @param {Number} h – часы (например, 12)
+  * @param {Number} m - минуты (например, 12)
+  */
+    function isValidate(h, m) {
+            if (h < 0 || h > 23 || m < 0 || m > 59) {
+                    throw new TypeError('Неверное время');
+                }
+        }
+
+/**
+ + * @param {String} data – часы или минуты (например, 12)
+ + * @returns {Number} m - минуты (например, 12)
+  */
+    function ERTime(data) {
+            var re = /^\d\d$/;
+            if (!re.test(data)) {
+                    throw new TypeError('Неверное время');
+                }
+            try {
+                   return parseInt(data);
+                } catch (e) {
+                   throw new TypeError('Неверное время');
+               }
+
+            }
 
 /**
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
  */
-function roman(time) {
-        var timeSplit = time.split(':');
-        var a = timeSplit[0].split('');
-        a[0] = parseInt(a[0], 10);
-        a[1] = parseInt(a[1], 10);
-        if (a[0] === 0 && a[1] === 0) {
-                hours = number[0];
+    function romanTime(time) {
+            if (typeof time !== 'string' && time.length !== 5) {
+                throw new TypeError('Неверное время');
             }
-        if (a[0] === 0 && a[1] !== 0) {
-                hours = number[a[1]];
-            }
-        if (a[0] !== 0 && a[1] !== 0) {
-                hours = romnambers[(a[0])] + number[a[1]];
-            }
-        if (a[0] !== 0 && a[1] === 0) {
-                hours = romnambers[a[0]];
-            }
-            return hours;
-    }
-function roman1(time) {
-        var timeSplit = time.split(':');
-        var b = timeSplit[1].split('');
+        var startTime = time.split(':');
+        var hours = ERTime(startTime[0]);
+        var minutes = ERTime(startTime[1]);
 
-            b[0] = parseInt(b[0], 10);
-        b[1] = parseInt(b[1], 10);
-        if (b[0] === 0 && b[1] === 0) {
-                minutes = number[0];
-            }
-       if (b[0] === 0 && b[1] !== 0) {
-                minutes = number[b[1]];
-            }
-        if (b[0] !== 0 && b[1] !== 0) {
-                minutes = romnambers[(b[0])] + number[b[1]];
-            }
-        if (b[0] !== 0 && b[1] === 0) {
-                minutes = romnambers[b[0]];
-            }
+            isValidate(hours, minutes);
 
-            return minutes;
-    }
-function romanTime1(time) {
-        var timeSplit = time.split(':');
-        var a = timeSplit[0].split('');
-        a[0] = parseInt(a[0], 10);
-        a[1] = parseInt(a[1], 10);
-        if (isNaN(a[0]) || isNaN(a[1])) {
-                throw new TypeError();
-            }
-        if (timeSplit[0] > 23 || timeSplit[0] < 0 || isNaN(timeSplit[0])) {
-                throw new TypeError();
-            }
+            time = returnRomanTime(hours) + ":" + returnRomanTime(minutes);
 
-            return (1);
+    return time;
 }
-function romanTime2(time) {
-        var timeSplit = time.split(':');
-        var b = timeSplit[1].split('');
-        b[0] = parseInt(b[0], 10);
-        b[1] = parseInt(b[1], 10);
-        if (isNaN(b[0]) || isNaN(b[1])) {
-                throw new TypeError();
-            }
-        if (timeSplit[0].length !== 2 || timeSplit[1].length !== 2) {
-               throw new TypeError();
-            }
-
-           return (1);
-    }
-function romanTime(time) {
-       
-           return time;
-       var timeSplit = time.split(':');
-        romanTime1(time);
-        romanTime2(time);
-        if (timeSplit[1] > 59 || timeSplit[1] < 0 || isNaN(timeSplit[1])) {
-                throw new TypeError();
-           }
-
-           return (roman(time) + ':' + roman1(time));
-}
-
-module.exports = romanTime;
