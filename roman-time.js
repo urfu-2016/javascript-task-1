@@ -5,7 +5,7 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function checkIsValid(time) {
-    if (time == null || time == undefined || time.length < 5){
+    if (time === null || time === undefined || time.length < 5){
         throw new TypeError('Ошибка, неверный тип данных!', 'roman-time.js');
     }
 }
@@ -75,7 +75,7 @@ function romanTime(time) {
         throw new TypeError('Ошибка, неверный тип данных!', 'roman-time.js');
     }
 
-    if (times.length != 2){
+    if (times.length !== 2){
         throw new TypeError('Ошибка, неверный тип данных!', 'roman-time.js');
     }
 
