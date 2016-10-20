@@ -10,19 +10,18 @@ function toRoman(num) {
     var j = arab.length - 1;
     var res = '';
     if (num === 0) {
-      res = 'N';
+        res = 'N';
     }
     while (num > 0) {
         if (num >= arab[j]) {
             res += roman[j];
             num -= arab[j];
         }
-        else {
-            j--;
-        }
+        else { j--; }
     }
     return res;
 }
+
 /**
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
@@ -30,12 +29,14 @@ function toRoman(num) {
 function romanTime(time) {
     var strs = time.split(':');
     var numTime = [parseInt(strs[0], 10), parseInt(strs[1], 10)];
-  //  console.info(numTime);
-    if (numTime[0].isNaN || numTime[1].isNaN || numTime[0]*numTime[1] < 0 || numTime[0]>23 || numTime[1]>59) {
+    if (numTime[0].isNaN || numTime[1].isNaN || numTime[0] * numTime[1] < 0
+      || numTime[0] > 23 || numTime[1] > 59) {
         throw new TypeError('Неверное время');
-        return ;
+
+        return NaN;
     }
     time = toRoman(numTime[0]) + ':' + toRoman(numTime[1]);
+
     return time;
 }
 module.exports = romanTime;
