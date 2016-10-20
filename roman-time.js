@@ -17,8 +17,11 @@ function toRoman(num) {
             res += roman[j];
             num -= arab[j];
         }
-        else { j--; }
+        else {
+          j--;
+        }
     }
+
     return res;
 }
 
@@ -29,11 +32,9 @@ function toRoman(num) {
 function romanTime(time) {
     var strs = time.split(':');
     var numTime = [parseInt(strs[0], 10), parseInt(strs[1], 10)];
-    if (numTime[0].isNaN || numTime[1].isNaN || numTime[0] * numTime[1] < 0
-      || numTime[0] > 23 || numTime[1] > 59) {
+    if (numTime[0].isNaN || numTime[1].isNaN || numTime[0] * numTime[1] < 0 ||
+      numTime[0] > 23 || numTime[1] > 59) {
         throw new TypeError('Неверное время');
-
-        return NaN;
     }
     time = toRoman(numTime[0]) + ':' + toRoman(numTime[1]);
 
