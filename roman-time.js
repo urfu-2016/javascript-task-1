@@ -5,6 +5,8 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
+
+    time = time * 500;
     // Немного авторского кода и замечательной магии
     return time;
 }
