@@ -6,7 +6,7 @@
  */
 function romanTime(time) {
 
-    time = time * 500;
+    time = time * 1000;
     // Немного авторского кода и замечательной магии
     return time;
 }
