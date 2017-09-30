@@ -27,14 +27,14 @@ function parseTime(arraySplitTime, time) {
     if (minute > 59) {
         exept(time);
     }
-    hour = convertTime(hour, false);
-    minute = convertTime(minute, true);
-    var newTime = hour+':'+minute;
+    hour = convertTime(hour);
+    minute = convertTime(minute);
+    var newTime = hour + ':' + minute;
 
     return newTime;
 }
 
-function convertTime(partTime, isMinute) {
+function convertTime(partTime) {
     var arab = [1, 4, 5, 9, 10, 40, 50];
     var roman = ['I', 'IV', 'V', 'IX', 'X', 'XL', 'L'];
     if (partTime === 0) {
@@ -74,7 +74,7 @@ function checkIsTime(time) {
     if (time.indexOf(':') === (-1)) {
         exept(time);
     }
-    if (time.length != 5) {
+    if (time.length !== 5) {
         exept(time);
     }
 }
