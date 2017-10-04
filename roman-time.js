@@ -17,7 +17,7 @@ function toRoman(num) {
     return rezult;
 }
 function romanTime(time) {
-    if (typeof(time) == "null") {
+    if (time == "null") {
         return new TypeError();
     }
     var hours = Number(time.substring(0,2));
