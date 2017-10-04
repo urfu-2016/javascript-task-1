@@ -6,15 +6,16 @@ function toRoman(num) {
     var rezult = '';
     var n = arab.length - 1;
     if (num === 0) {
-    return "N";
+        return 'N';
     }
-    while (num > 0) { 
-       if (num >= arab[n]) {
+    while (num > 0) {
+        if (num >= arab[n]) {
            rezult += roman[n];
            num -= arab[n];
-       }
-       else n--;
+        }
+        else n--;   
     }
+
     return rezult;
 }
 function romanTime(time) {
@@ -23,10 +24,10 @@ function romanTime(time) {
     }
     var hours = Number(time.substring(0, 2));
     var minutes = Number(time.substring(3, 5));
-    if (hours >= 24 ||  hours < 0 || minutes >= 60 || minutes < 0 || time.length !== 5) {
+    if (hours >= 24 || hours < 0 || minutes >= 60 || minutes < 0 || time.length !== 5) {
         return new TypeError('Неверное время');
     }
-    return toRoman(hours) + ":" + toRoman(minutes);
+return toRoman(hours) + ':' + toRoman(minutes);
 }
 
 module.exports = romanTime;
