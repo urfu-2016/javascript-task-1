@@ -22,7 +22,7 @@ function toRoman(num) {
 function romanTime(time) {
     var hours = Number(time.substring(0, 2));
     var minutes = Number(time.substring(3, 5));
-    if (hours >= 24 || hours < 0 || minutes >= 60 || minutes < 0 || time.charAt !== ':') {
+    if (hours >= 24 || hours < 0 || minutes >= 60 || minutes < 0 || time.charAt === ':') {
         throw new TypeError();
     }
 
