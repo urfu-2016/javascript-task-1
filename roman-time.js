@@ -24,9 +24,9 @@ function romanTime(time) {
     var minutes = Number(time.substring(3, 5));
     if (hours >= 24 || hours < 0 || minutes >= 60 || minutes < 0 || time.length !== 5) {
         return new TypeError();
-    } else {
-    return toRoman(hours) + ':' + toRoman(minutes);
     }
+
+    return toRoman(hours) + ':' + toRoman(minutes);
 }
 
 module.exports = romanTime;
