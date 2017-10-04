@@ -13,9 +13,9 @@ function toRoman(num) {
             rezult += roman[n];
             num -= arab[n];
         }
-        else { 
+        else {
             n--;
-        }   
+             }
     }
 
     return rezult;
