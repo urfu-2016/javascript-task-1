@@ -12,10 +12,9 @@ function toRoman(num) {
         if (num >= arab[n]) {
             rezult += roman[n];
             num -= arab[n];
-        }
-        else {
+        } else {
             n--;
-             }
+        }
     }
 
     return rezult;
